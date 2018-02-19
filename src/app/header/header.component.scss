@@ -1,8 +1,26 @@
 $grid-columns:100 !important;
 div.container-fluid{
   background-image: url('../../assets/imgs/menu_bar.png');
-
+  background-repeat: round;
 }
+.col-10.search{
+  background-image: url('../../assets/imgs/search_box@2x.png');
+  background-repeat: round;
+}
+.search{
+  border-radius: 20px;
+  background: none;
+  border-color: #F7E60f;
+  padding: 1px;
+  border: none;
+  outline: none;
+  color: #F7E60f;
+  text-indent: 6px;
+  width: 72%;
+}
+//div{
+//  border:1px solid black;
+//}
 
 
 
