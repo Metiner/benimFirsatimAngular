@@ -4,7 +4,7 @@
       <img style="width: 120%" src="../../assets/imgs/benim_firsatim_logo@2x.png">
     </div>
     <div class="col-7 offset-6">
-      <img (mouseenter)="lol()" style="width: 100%" src="../../assets/imgs/one_cikanlar_icon@2x.png">
+      <img style="width: 100%" src="../../assets/imgs/one_cikanlar_icon@2x.png">
     </div>
     <div class="col-7 offset-2">
       <img style="width: 100%" src="../../assets/imgs/yukselenler_icon@2x.png">
@@ -13,8 +13,9 @@
       <img style="width: 60%" src="../../assets/imgs/yeniler_icon@2x.png">
     </div>
     <div class="col-7 offset-2">
-      <img style="width: 100%" src="../../assets/imgs/kategoriler_icon_18pt_mark_bold@2x.png">
+      <img (mouseenter)="slideCategoriesDiv('in')"  style="width: 100%" src="../../assets/imgs/kategoriler_icon_18pt_mark_bold@2x.png">
     </div>
+
     <div class="col-12 offset-10">
       <img style="width: 100%" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
     </div>
@@ -25,5 +26,14 @@
       <img style="width: 100%" src="../../assets/imgs/profilim_icon@2x.png">
     </div>
 
+  </div>
+</div>
+<div class="row">
+  <div class="col-20 offset-40">
+    <div class="categories" (mouseleave)="slideCategoriesDiv('out')" [@slideInOut]="categoriesAnimation">
+      <div class="row" *ngFor="let category of categories">
+        <div class="col">{{category}}</div>
+      </div>
+    </div>
   </div>
 </div>
