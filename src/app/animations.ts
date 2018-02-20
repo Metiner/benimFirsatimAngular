@@ -3,7 +3,7 @@ import {animate, group, state, style, transition, trigger} from "@angular/animat
 export const slideInOutAnimation = [
   trigger('slideInOut',[
     state('in',style({
-      'max-height':'500px',
+      'max-height':'3000px',
       'visibility':'visible',
       'opacity':'1'
     })),
@@ -15,10 +15,10 @@ export const slideInOutAnimation = [
       animate('400ms ease-in-out',style({
         'opacity':'0'
       })),
-      animate('600ms ease-in-out',style({
+      animate('200ms ease-in-out',style({
         'max-height':'0px'
       })),
-      animate('700ms ease-in-out',style({
+      animate('500ms ease-in-out',style({
         'visibility':'hidden'
       }))
     ])]),
@@ -26,10 +26,10 @@ export const slideInOutAnimation = [
       animate('400ms ease-in-out',style({
         'opacity':'1'
       })),
-      animate('600ms ease-in-out',style({
+      animate('200ms ease-in-out',style({
         'max-height':'500px'
       })),
-      animate('700ms ease-in-out',style({
+      animate('500ms ease-in-out',style({
         'visibility':'visible'
       }))
     ])])

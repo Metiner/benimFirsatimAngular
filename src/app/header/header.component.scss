@@ -1,7 +1,7 @@
 $grid-columns:100 !important;
 div.container-fluid{
   background-image: url('../../assets/imgs/menu_bar.png');
-  background-repeat: round;
+  background-size: cover;
 }
 .col-10.search{
   background-image: url('../../assets/imgs/search_box@2x.png');
@@ -26,5 +26,6 @@ div.container-fluid{
 .categories {
   background-image: url('../../assets/imgs/kategoriler_bg@2x.png');
   border-radius: 0px 0px 40px 40px;
-  height: 100px;
+  z-index: -1;
+  position: absolute;
 }
