@@ -1,6 +1,7 @@
 
 import {Component} from '@angular/core';
-import {slideInOutAnimation} from "../animations";
+import {slideInOutAnimation} from '../animations';
+import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,12 @@ import {slideInOutAnimation} from "../animations";
 })
 export class HeaderComponent {
   categoriesAnimation = 'out';
-  categories = ["selamın","aleyküm"];
-
+  categories = [];
+  constructor(public benimFirsatimLibrary:BenimFirsatimLibrary){
+    this.benimFirsatimLibrary.getCategories().subscribe(response=>{
+      this.categories = response.json();
+    })
+  }
   slideCategoriesDiv(state){
     this.categoriesAnimation = state;
   }
