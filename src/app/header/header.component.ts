@@ -12,6 +12,7 @@ import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 export class HeaderComponent {
 
   categoriesAnimation = 'out';
+  myProfileAnimation = 'out';
   categories = [];
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary){
@@ -22,6 +23,9 @@ export class HeaderComponent {
 
   slideCategoriesDiv(state){
     this.categoriesAnimation = state;
+  }
+  slideMyProfileDiv(state){
+    this.myProfileAnimation = state;
   }
 
   getCategoryIcon(categoryId){

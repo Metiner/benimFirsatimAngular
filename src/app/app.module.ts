@@ -8,12 +8,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from "@angular/http";
 import {BenimFirsatimLibrary} from "./services/benimFirsatimLibrary";
+import {ContentComponent} from "./content/content.component";
+import { PointTableComponent } from './point-table/point-table.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContentComponent,
+    PointTableComponent
   ],
   imports: [
     BrowserModule,
