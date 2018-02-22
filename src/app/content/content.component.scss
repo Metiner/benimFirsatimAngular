@@ -1,11 +1,10 @@
-.row{
-  background-image: url('../../assets/imgs/background_pattern@2x.png');
-  background-size: cover;
-}
+
 //div{
 //  border:1px solid black;
 //}
-.mozWebkit{
-    height: -moz-available;          /* WebKit-based browsers will ignore this. */
-    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+.background{
+//    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+//  height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  background-image: url('../../assets/imgs/background_pattern@2x.png');
+  background-size: contain;
 }

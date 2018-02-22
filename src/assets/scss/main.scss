@@ -1,4 +1,7 @@
-
+html{
+  background-image: url('../../assets/imgs/background_pattern@2x.png');
+  background-size: cover;
+}
 @font-face {
   font-family: "Mark Pro";
   src: url("../../assets/fonts/MarkPro.otf") format("otf")
@@ -34,5 +37,9 @@
 @font-face {
   font-family: "Mark Pro-Light";
   src: url("../../assets/fonts/MarkPro-Light.otf") format("otf")
+}
+@font-face {
+  font-family: "Mark Pro-Italic";
+  src: url("../../assets/fonts/MarkPro-Italic.otf") format("otf")
 }
 

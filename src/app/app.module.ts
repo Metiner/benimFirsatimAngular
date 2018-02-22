@@ -10,6 +10,8 @@ import {HttpModule} from "@angular/http";
 import {BenimFirsatimLibrary} from "./services/benimFirsatimLibrary";
 import {ContentComponent} from "./content/content.component";
 import { PointTableComponent } from './point-table/point-table.component';
+import { DealComponent } from './deal/deal.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { PointTableComponent } from './point-table/point-table.component';
     AppComponent,
     HeaderComponent,
     ContentComponent,
-    PointTableComponent
+    PointTableComponent,
+    DealComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
