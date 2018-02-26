@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 
 @Component({
   selector:'app-content',
@@ -7,7 +8,8 @@ import {Component} from "@angular/core";
 })
 export class ContentComponent{
 
-  constructor(){
+
+  constructor() {
 
   }
 }

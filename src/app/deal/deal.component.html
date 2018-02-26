@@ -1,13 +1,14 @@
-<div class="row" style="border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
+
+<div *ngFor="let deal of deals" class="row" [ngClass]="{'lastItemMargin':isItLastItem(deal)}" style="border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
   <div class="col-20">
-    <img src="../../assets/imgs/post_img@2x.png" style="width: 100%">
+    <img src="https://benimfirsatim.com{{deal.image_url}}" style="width: 100%">
   </div>
   <div class="col-78 offset-1">
     <div class="row">
-      <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">Vestel 48FD7300 48" 122 cm Dahili Uydu Alıcılı Dahili Wifi Smart Full HD Ekran LED TV</span>
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">{{deal.title}}</span>
     </div>
     <div class="row" style="padding-top: 1%">
-      <span style="font-family: 'Mark Pro-Medium';font-size: 15px;color:#234491">2 nesildir fln kullaniyoruz biz, gayet guzel. Genelde Turkiyede fiyati 300-400 tl arasinda gidip geliyordu, gayet uygun su an icin o nedenle. 6 saate yakin sicak tutuyor cay vs koyunca icine, metal oldugundan tasimasi da kolay, darbelere vs iyi dayaniyor.</span>
+      <span style="font-family: 'Mark Pro-Medium';font-size: 15px;color:#234491">{{deal.details}}</span>
     </div>
     <div class="row" style="align-items: center;flex-wrap: nowrap;padding-top: 1%">
       <div class="col-20">
@@ -16,7 +17,7 @@
             <img src="../../assets/imgs/price_tag@2x.png" style="width: 100%">
           </div>
           <div class="col-65">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 28px;color: #234491;">270.0₺</span>
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 28px;color: #234491;">{{deal.price}}₺</span>
           </div>
         </div>
       </div>
@@ -26,7 +27,7 @@
             <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 100%">
           </div>
           <div class="col" style="margin-left: -55%">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">35</span>
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.votes_sum}}</span>
           </div>
         </div>
       </div>
@@ -36,28 +37,28 @@
             <img src="../../assets/imgs/comment_button@2x.png" style="width: 100%">
           </div>
           <div class="col" style="margin-left: -55%">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">12</span>
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.comments_count}}</span>
           </div>
         </div>
       </div>
       <div class="col-50">
-        <span style="font-family: 'Mark Pro-Italic';font-size: 23px;color:#234491">www.hepsiburada.com</span>
+        <span style="font-family: 'Mark Pro-Italic';font-size: 23px;color:#234491">{{deal.vendor.website}}</span>
       </div>
     </div>
     <div class="row" style="align-items: flex-end">
       <div class="col-60">
         <div class="row" style="align-items: center;flex-wrap: nowrap">
           <div class="col-7" style="padding: 0px">
-            <img src="../../assets/imgs/kullanici_img@2x.png" style="width: 100%">
+            <img src="{{deal.user.avatar_url}}" style="width: 100%;border-radius: 50%">
           </div>
           <div class="col-25">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">kullanıcı1</span>
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.user.name}}</span>
           </div>
           <div class="col-30">
-            <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">79 görüntülenme</span>
+            <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{deal.user.score}} görüntülenme</span>
           </div>
           <div class="col-30">
-            <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">12-11-2017 16:43</span>
+            <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{deal.created_at.substr(0,10)}}</span>
           </div>
         </div>
       </div>

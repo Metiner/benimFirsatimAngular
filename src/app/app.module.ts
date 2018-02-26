@@ -29,7 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     HttpModule
   ],
-  providers: [BenimFirsatimLibrary],
+  providers: [BenimFirsatimLibrary,HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,8 @@
 
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Injectable, Output} from '@angular/core';
 import {slideInOutAnimation} from '../animations';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,10 @@ export class HeaderComponent {
     this.myProfileAnimation = state;
   }
 
+
+  onCategoryChange(type){
+    this.benimFirsatimLibrary.changeCategory(type);
+  }
   getCategoryIcon(categoryId){
     var src = "";
     switch (categoryId){
