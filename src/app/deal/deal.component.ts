@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 import {HeaderComponent} from "../header/header.component";
 
@@ -17,7 +17,6 @@ export class DealComponent implements OnInit {
     this.setDeals(this.pageCode);
     this.benimFirsatimLib.categoryChanged.subscribe({
       next: (pageCode: string) => {
-        console.log(pageCode)
         this.setDeals(pageCode);
       }
     })
@@ -32,10 +31,9 @@ export class DealComponent implements OnInit {
 
     this.benimFirsatimLib.getPage(pageCode, DealComponent.pagination).subscribe((data) => {
 
-      DealComponent.pagination++;
       this.deals = data.json();
-
     });
+
   }
 
   isItLastItem(deal){
@@ -43,7 +41,4 @@ export class DealComponent implements OnInit {
       return true;
   }
 
-  getChangeCategoryEvent(event)
-  {
-  }
 }
