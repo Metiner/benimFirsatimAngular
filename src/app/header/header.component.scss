@@ -19,15 +19,16 @@
   height: 100%;
   margin-left: 10%;
 }
-//
-//div{
-//border:1px solid black;
-//}
+
+div{
+border:1px solid black;
+}
 
 
 .categories {
   background-image: url('../../assets/imgs/kategoriler_bg@2x.png');
   border-radius: 0px 0px 40px 40px;
+  background-repeat: no-repeat;
   z-index: 1;
   position: absolute;
   overflow: hidden;

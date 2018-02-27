@@ -27,13 +27,12 @@
     </div>
   </div>
   <div class="row" style="margin-top: -3px;">
-    <div class="col-3 offset-5">
+    <div class="col-4 offset-5">
       <div class="categories" (mouseleave)="slideCategoriesDiv('out')" [@slideInOut]="categoriesAnimation">
         <div class="row" style="align-items: flex-end">
-          <div class="col-5" *ngFor="let category of categories">
-
-            <div class="row" style="padding: 10px 0px 10px 0px;">
-              <div class="col-2 offset-1">
+          <div class="col-6" *ngFor="let category of categories">
+            <div class="row" style="padding: 10px 0px 10px 0px;flex-wrap: nowrap">
+              <div class="col-4 offset-1">
                 <img src="{{getCategoryIcon(category.id)}}" style="max-width: 100%;max-height: 100%">
               </div>
               <div class="col">
@@ -44,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="col-1 offset-11">
+    <div class="col-4 offset-11">
       <div class="myProfile" (mouseleave)="slideMyProfileDiv('out')" [@slideInOut]="myProfileAnimation">
         <div class="row myProfileItemRow">
           <div class="col offset-2 myProfileItemCol">
