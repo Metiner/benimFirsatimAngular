@@ -6,22 +6,20 @@
   position: relative;
   z-index: 2;
 }
-.col-10.search{
-  background-image: url('../../assets/imgs/search_box@2x.png');
-  background-repeat: round;
+.col.search{
 }
 .search{
-  border-radius: 20px;
-  background: none;
-  border-color: #F7E60f;
-  padding: 1px;
-  border: none;
   outline: none;
   color: #F7E60f;
+  background: none;
   text-indent: 6px;
-  width: 72%;
+  border:2px solid;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  margin-left: 10%;
 }
-
+//
 //div{
 //border:1px solid black;
 //}
@@ -47,4 +45,7 @@
 }
 .myProfileItemCol{
   text-align: right;
+}
+.menu_categories{
+  width: 80%;
 }
