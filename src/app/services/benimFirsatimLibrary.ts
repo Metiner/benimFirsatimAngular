@@ -4,7 +4,9 @@ import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class BenimFirsatimLibrary {
-  api_address = "https://benimfirsatim.com";
+  //api_address = "https://benimfirsatim.com";
+  api_address = "http://localhost:3000";
+
 
   categoryChanged = new Subject<string>();
 
