@@ -12,14 +12,23 @@ import {Subject} from "rxjs/Subject";
 })
 export class HeaderComponent {
 
+  lottieConfig: Object;
+  anim:any;
   categoriesAnimation = 'out';
   myProfileAnimation = 'out';
   categories = [];
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary){
-    this.benimFirsatimLibrary.getCategories().subscribe(response=>{
+    this.lottieConfig = {
+      path: 'assets/animations/categories.json',
+      autoplay: true,
+      loop: true
+    };
+    this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
-    })
+
+
+    });
   }
 
   slideCategoriesDiv(state){
@@ -98,5 +107,9 @@ export class HeaderComponent {
         break;
     }
     return src;
+  }
+
+  handleAnimation(anim: any) {
+    this.anim = anim;
   }
 }

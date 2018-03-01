@@ -12,7 +12,7 @@ import {ContentComponent} from "./content/content.component";
 import { PointTableComponent } from './point-table/point-table.component';
 import { DealComponent } from './deal/deal.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {LottieAnimationViewModule} from 'ng-lottie';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    LottieAnimationViewModule.forRoot()
   ],
   providers: [BenimFirsatimLibrary,HeaderComponent],
   bootstrap: [AppComponent]

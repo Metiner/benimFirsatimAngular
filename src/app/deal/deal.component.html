@@ -1,47 +1,48 @@
 
 <div *ngFor="let deal of deals" class="row" [ngClass]="{'lastItemMargin':isItLastItem(deal)}" style="border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
   <div class="col-3" style="text-align: center">
-    <img src="https://benimfirsatim.com{{deal.image_url}}" style="width: 100%;">
+    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 70%;min-width: 70%">
   </div>
   <div class="col-9">
     <div class="row">
       <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title}}</span>
     </div>
     <div class="row" style="padding-top: 1%">
-      <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details}}</span>
+      <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details.slice(0,200).concat('..')}}</span>
     </div>
     <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
-      <div class="col-3">
+      <div class="col-2">
         <div class="row" style="align-items: center;flex-wrap: nowrap;">
           <div class="col-3 nopadding">
-            <img src="../../assets/imgs/price_tag@2x.png" style="width: 100%">
+            <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
           </div>
-          <div class="col nopadding" style="margin-left: 5%">
+          <div class="col nopadding" style="margin-left: 15%">
             <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{deal.price}}₺</span>
           </div>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-1">
         <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-          <div class="col-6 nopadding">
-            <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 100%">
+          <div class="col-5 nopadding">
+            <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
           </div>
-          <div class="col nopadding" style="margin-left: -20%">
+          <div class="col nopadding" style="margin-left:20%">
             <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.votes_sum}}</span>
           </div>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-1">
         <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-          <div class="col-6 nopadding">
-            <img src="../../assets/imgs/comment_button@2x.png" style="width: 100%">
+          <div class="col-5 offset-1 nopadding">
+            <img src="../../assets/imgs/comment_button@2x.png" style="
+            width: 250%">
           </div>
-          <div class="col-4  nopadding" style="margin-left: -20%">
+          <div class="col  nopadding" style="margin-left: 20%">
             <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.comments_count}}</span>
           </div>
         </div>
       </div>
-      <div class="col" style="text-overflow: ellipsis;overflow: hidden;">
+      <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
         <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{deal.vendor.website}}</span>
       </div>
     </div>
@@ -49,7 +50,7 @@
       <div class="col-8">
         <div class="row" style="align-items: center;flex-wrap: nowrap">
           <div class="col-1" style="padding: 0px;align-self: flex-end">
-            <img src="{{deal.user.avatar_url}}" style="width: 100%;border-radius: 50%">
+            <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
           </div>
           <div class="col" style=";align-self: flex-end">
             <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.user.name}}</span>
@@ -78,3 +79,4 @@
     </div>
   </div>
 </div>
+

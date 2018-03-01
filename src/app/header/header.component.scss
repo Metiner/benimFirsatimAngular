@@ -27,8 +27,9 @@ border:1px solid black;
 
 .categories {
   background-image: url('../../assets/imgs/kategoriler_bg@2x.png');
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0px 0px 70px 0px;
   background-repeat: no-repeat;
+  background-size: cover;
   z-index: 1;
   position: absolute;
   overflow: hidden;
@@ -39,6 +40,7 @@ border:1px solid black;
   border-radius: 0px 0px 40px 40px;
   position: absolute;
   z-index: 1;
+  width: 80%;
 }
 .row.myProfileItemRow{
   margin: 6%;
@@ -49,4 +51,13 @@ border:1px solid black;
 }
 .menu_categories{
   width: 80%;
+}
+.one_cikanlar_animated{
+  image:url("../../assets/gifs/one_cikanlar.gif")
+}
+.menu_categories_animated{
+  width: 30%;
+}
+svg{
+  width: 30%;
 }

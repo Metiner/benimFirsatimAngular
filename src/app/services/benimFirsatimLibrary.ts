@@ -18,9 +18,9 @@ export class BenimFirsatimLibrary {
   public getPage(page_code,pagination){
     //let opt = this.setHeader();
     let possible_page_codes = ['hot','rising','newcomers'];
+
     /*if(possible_page_codes.indexOf(page_code)=== -1){
       return;
-
     }*/
     return this.http.get(this.api_address + '/'+page_code+'.json?page='+pagination+'&per_page=3');
   }
