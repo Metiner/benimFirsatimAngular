@@ -25,23 +25,39 @@ export const slideInOutAnimation = [
     ])]),
      transition('out=>in',[group([
 
-      animate('300ms',style({
+      animate('800ms',style({
         'visibility':'visible',
         'max-height':'1000px',
-        'opacity':'1',
         'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
       })),
-       animate('300ms',keyframes([
+       animate('450ms',style({
+         'opacity':'1',
+         })),
+       animate('800ms',keyframes([
          style({
            paddingBottom : '0px',
            offset : 0
          }),
          style({
-           paddingBottom : '60px',
-           offset : 0.1
+           paddingBottom : '10px',
+           offset : 0.5
           }),
          style({
            paddingBottom : '0px',
+           offset : 1
+         })
+       ])),
+       animate('800ms',keyframes([
+         style({
+           paddingTop:'0px',
+           offset : 0
+         }),
+         style({
+           paddingTop:'10px',
+           offset : 0.5
+         }),
+         style({
+           paddingTop:'0px',
            offset : 1
          })
        ]))
