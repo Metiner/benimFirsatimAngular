@@ -12,18 +12,23 @@ import {Subject} from "rxjs/Subject";
 })
 export class HeaderComponent {
 
-  lottieConfig: Object;
-  anim:any;
+  oneCikanlarAnimConf: Object;
+  yukselenlerAnimConf: Object;
+  yenilerAnimConf: Object;
+  categoriesAnimConf: Object;
+
+  oneCikanlarAnim:any;
+  yukselenlerAnim:any;
+  yenilerAnim:any;
+  categoriesAnim:any;
+
   categoriesAnimation = 'out';
   myProfileAnimation = 'out';
   categories = [];
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary){
-    this.lottieConfig = {
-      path: 'assets/animations/categories.json',
-      autoplay: true,
-      loop: true
-    };
+
+    this.initializeAnims();
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
 
@@ -31,6 +36,118 @@ export class HeaderComponent {
     });
   }
 
+
+  initializeAnims() {
+    this.oneCikanlarAnimConf = {
+      path: 'assets/animations/one_cikanlar_anim.json',
+      autoplay: false,
+      loop: true
+    };
+    this.yukselenlerAnimConf = {
+      path: 'assets/animations/yukselenler_anim.json',
+      autoplay: false,
+      loop: true
+    };
+    this.yenilerAnimConf = {
+      path: 'assets/animations/yeniler_anim.json',
+      autoplay: false,
+      loop: true
+    };
+    this.categoriesAnimConf = {
+      path: 'assets/animations/categories.json',
+      autoplay: false,
+      loop: true
+    };
+  }
+
+  createAnim(anim,type){
+    // type
+    // 1- onceCikanlar
+    // 2 - yukselenler
+    // 3 - yeniler
+    // 4- kategoriler
+
+    switch (type){
+      case 1:
+        this.oneCikanlarAnim = anim;
+        break;
+      case 2:
+        this.yukselenlerAnim = anim;
+        break;
+      case 3:
+        this.yenilerAnim = anim;
+        break;
+      case 4:
+        this.categoriesAnim = anim;
+        break;
+    }
+  }
+  playAnim(type){
+    // type
+    // 1- onceCikanlar
+    // 2 - yukselenler
+    // 3 - yeniler
+    // 4- kategoriler
+
+    switch (type){
+      case 1:
+        this.oneCikanlarAnim.play();
+        break;
+      case 2:
+        this.yukselenlerAnim.play();
+        break;
+      case 3:
+        this.yenilerAnim.play();
+        break;
+      case 4:
+        this.categoriesAnim.play();
+        break;
+    }
+  }
+  pauseAnim(type){
+    // type
+    // 1- onceCikanlar
+    // 2 - yukselenler
+    // 3 - yeniler
+    // 4- kategoriler
+
+    switch (type){
+      case 1:
+        this.oneCikanlarAnim.pause();
+        break;
+      case 2:
+        this.yukselenlerAnim.pause();
+        break;
+      case 3:
+        this.yenilerAnim.pause();
+        break;
+      case 4:
+        this.categoriesAnim.pause();
+        break;
+    }
+  }
+  stopAnim(type){
+    // type
+    // 1- onceCikanlar
+    // 2 - yukselenler
+    // 3 - yeniler
+    // 4- kategoriler
+
+    switch (type){
+      case 1:
+        this.oneCikanlarAnim.stop();
+        break;
+      case 2:
+        this.yukselenlerAnim.stop();
+        break;
+      case 3:
+        this.yenilerAnim.stop();
+        break;
+      case 4:
+        this.categoriesAnim.stop();
+        break;
+    }
+  }
   slideCategoriesDiv(state){
     this.categoriesAnimation = state;
   }
@@ -107,9 +224,5 @@ export class HeaderComponent {
         break;
     }
     return src;
-  }
-
-  handleAnimation(anim: any) {
-    this.anim = anim;
   }
 }

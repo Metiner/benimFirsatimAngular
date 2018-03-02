@@ -19,17 +19,17 @@
   height: 100%;
   margin-left: 10%;
 }
-
+/*
 div{
 border:1px solid black;
-}
+}*/
 
 
 .categories {
   background-image: url('../../assets/imgs/kategoriler_bg@2x.png');
-  border-radius: 0px 0px 70px 0px;
+  border-radius: 0px 0px 60px 60px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
   z-index: 1;
   position: absolute;
   overflow: hidden;
@@ -52,12 +52,4 @@ border:1px solid black;
 .menu_categories{
   width: 80%;
 }
-.one_cikanlar_animated{
-  image:url("../../assets/gifs/one_cikanlar.gif")
-}
-.menu_categories_animated{
-  width: 30%;
-}
-svg{
-  width: 30%;
-}
+

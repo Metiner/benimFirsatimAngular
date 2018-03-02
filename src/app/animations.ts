@@ -1,11 +1,12 @@
-import {animate, group, state, style, transition, trigger} from "@angular/animations";
+import {animate, group, keyframes, state, style, transition, trigger} from "@angular/animations";
 
 export const slideInOutAnimation = [
   trigger('slideInOut',[
     state('in',style({
-      'max-height':'2000px',
       'visibility':'visible',
-      'opacity':'1'
+      'max-height':'1000px',
+      'opacity':'1',
+      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
     })),
     state('out',style({
       'max-height':'0px',
@@ -22,17 +23,29 @@ export const slideInOutAnimation = [
         'visibility':'hidden'
       }))
     ])]),
-    transition('out=>in',[group([
+     transition('out=>in',[group([
 
-      animate('400ms ease-in-out',style({
-        'visibility':'visible'
+      animate('300ms',style({
+        'visibility':'visible',
+        'max-height':'1000px',
+        'opacity':'1',
+        'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
       })),
-      animate('400ms ease-in-out',style({
-        'max-height':'500px'
-      })),
-      animate('400ms ease-in-out',style({
-        'opacity':'1'
-      }))
+       animate('300ms',keyframes([
+         style({
+           paddingBottom : '0px',
+           offset : 0
+         }),
+         style({
+           paddingBottom : '60px',
+           offset : 0.1
+          }),
+         style({
+           paddingBottom : '0px',
+           offset : 1
+         })
+       ]))
+
     ])])
   ])
 
