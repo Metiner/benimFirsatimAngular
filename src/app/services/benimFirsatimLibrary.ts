@@ -8,7 +8,10 @@ export class BenimFirsatimLibrary {
   //api_address = "http://localhost:3000";
 
 
-  categoryChanged = new Subject<string>();
+  categoryChanged = new Subject<any>();
+
+  currentCategory = 'hot';
+  private _currentPaging = 1;
 
   constructor(public http: Http ) {
   }
@@ -16,12 +19,9 @@ export class BenimFirsatimLibrary {
   //Page code can be,
   //'hot','rising' or 'newcomers'
   public getPage(page_code,pagination){
-    //let opt = this.setHeader();
+
     let possible_page_codes = ['hot','rising','newcomers'];
 
-    /*if(possible_page_codes.indexOf(page_code)=== -1){
-      return;
-    }*/
     return this.http.get(this.api_address + '/'+page_code+'.json?page='+pagination+'&per_page=3');
   }
 
@@ -29,6 +29,19 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/categories');
   }
   public changeCategory(type){
-    this.categoryChanged.next(type);
+    this.currentPaging = 1;
+    this.currentCategory = type;
+    this.categoryChanged.next();
+  }
+
+  get currentPaging(): number {
+    return this._currentPaging;
+  }
+
+  set currentPaging(value: number) {
+    if(value > 0){
+      this._currentPaging = value;
+      //this.categoryChanged.next();
+    }
   }
 }

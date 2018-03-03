@@ -1,39 +1,59 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 import {HeaderComponent} from "../header/header.component";
+import {dealStateTrigger} from "../animations";
+import {AnimationEvent} from "@angular/animations";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-deal',
   templateUrl: './deal.component.html',
-  styleUrls: ['./deal.component.scss']
+  styleUrls: ['./deal.component.scss'],
+  animations:[dealStateTrigger]
 })
 export class DealComponent implements OnInit {
 
-  static pagination = 1;
   deals = [];
+  displayedDeals = [];
   pageCode = "hot";
+  mySubscription: Subscription;
 
   constructor(public benimFirsatimLib:BenimFirsatimLibrary) {
-    this.setDeals(this.pageCode);
-    this.benimFirsatimLib.categoryChanged.subscribe({
-      next: (pageCode: string) => {
-        this.setDeals(pageCode);
+
+    var page = this;
+    this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({
+      next: () => {
+        this.setDeals();
       }
     })
 
 
   }
   ngOnInit(){
+    this.setDeals();
+  }
+
+  setDeals(){
+    this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
+      this.displayedDeals = [];
+      this.deals = data.json();
+      if(this.deals.length >= 1){
+        this.displayedDeals.push(this.deals[0]);
+      }
+    });
 
   }
 
-  setDeals(pageCode){
+  onDealAnimated(event:AnimationEvent,lastItemIndex){
 
-    this.benimFirsatimLib.getPage(pageCode, DealComponent.pagination).subscribe((data) => {
-
-      this.deals = data.json();
-    });
-
+    if(event.fromState != 'void'){
+      return;
+    }
+    if(this.deals.length > lastItemIndex + 1){
+      this.displayedDeals.push(this.deals[lastItemIndex+1])
+    }else{
+      this.deals = this.displayedDeals;
+    }
   }
 
   isItLastItem(deal){

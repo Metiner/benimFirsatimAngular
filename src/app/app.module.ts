@@ -13,6 +13,7 @@ import { PointTableComponent } from './point-table/point-table.component';
 import { DealComponent } from './deal/deal.component';
 import { FooterComponent } from './footer/footer.component';
 import {LottieAnimationViewModule} from 'ng-lottie';
+import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {LottieAnimationViewModule} from 'ng-lottie';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    LottieAnimationViewModule.forRoot()
+    LottieAnimationViewModule.forRoot(),
+    ScrollToModule.forRoot() // scroll to library.
   ],
   providers: [BenimFirsatimLibrary,HeaderComponent],
   bootstrap: [AppComponent]

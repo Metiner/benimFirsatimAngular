@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ScrollToService,ScrollToConfigOptions} from '@nicky-lenaers/ngx-scroll-to';
+import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  public ngxScrollToOffset:number;
+
+
+  constructor(private _scrollTo:ScrollToService,
+              private benimFirsatimLib: BenimFirsatimLibrary) { }
 
   ngOnInit() {
   }
 
+  scrollToTop(){
+
+    const config: ScrollToConfigOptions = {
+      offset : -3000
+    }
+
+    this._scrollTo.scrollTo(config);
+
+  }
+
+  nextPage(){
+      this.benimFirsatimLib.currentPaging++;
+  }
+
+  previousPage(){
+      this.benimFirsatimLib.currentPaging--;
+  }
 }

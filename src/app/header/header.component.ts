@@ -157,8 +157,10 @@ export class HeaderComponent {
 
 
   onCategoryChange(type){
+    this.benimFirsatimLibrary.getPage(type,1);
     this.benimFirsatimLibrary.changeCategory(type);
   }
+
   getCategoryIcon(categoryId){
     var src = "";
     switch (categoryId){

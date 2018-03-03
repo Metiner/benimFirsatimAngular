@@ -1,69 +1,81 @@
 import {animate, group, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {AnimationTrigger} from "@angular/animations/browser/src/dsl/animation_trigger";
 
 export const slideInOutAnimation = [
   trigger('slideInOut',[
     state('in',style({
-      'visibility':'visible',
-      'max-height':'1000px',
-      'opacity':'1',
+      opacity:1,
+      transform:'translateY(0)',
       'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
     })),
     state('out',style({
-      'max-height':'0px',
-      'opacity':'0',
-      'visibility':'hidden'})),
+      opacity:0,
+      transform:'translateY(0)',
+      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
+    })),
     transition('in=>out',[group([
-      animate('100ms ease-in-out',style({
-        'opacity':'0'
-      })),
-      animate('100ms ease-in-out',style({
-        'max-height':'0px'
-      })),
-      animate('100ms ease-in-out',style({
-        'visibility':'hidden'
-      }))
+      animate('700ms ease-out',keyframes([
+        style({
+          opacity:1,
+          offset:0,
+          transform:'translateY(0)'
+        }),
+        style({
+          opacity:0,
+          offset:0.4,
+          transform:'translateY(-2%)',
+        }),
+        style({
+          opacity:0,
+          offset:1,
+          transform:'translateY(2%)'
+        })
+      ]))
     ])]),
      transition('out=>in',[group([
 
-      animate('800ms',style({
-        'visibility':'visible',
-        'max-height':'1000px',
-        'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
-      })),
-       animate('450ms',style({
-         'opacity':'1',
-         })),
-       animate('800ms',keyframes([
+       animate('700ms ease-out',keyframes([
          style({
-           paddingBottom : '0px',
-           offset : 0
+           opacity:0,
+           offset:0,
+           transform:'translateY(2%)'
          }),
          style({
-           paddingBottom : '10px',
-           offset : 0.5
-          }),
-         style({
-           paddingBottom : '0px',
-           offset : 1
-         })
-       ])),
-       animate('800ms',keyframes([
-         style({
-           paddingTop:'0px',
-           offset : 0
+           opacity:0,
+           offset:0.4,
+           transform:'translateY(-2%)',
          }),
          style({
-           paddingTop:'10px',
-           offset : 0.5
-         }),
-         style({
-           paddingTop:'0px',
-           offset : 1
+           opacity:1,
+           offset:1,
+           transform:'translateY(0)'
          })
        ]))
-
+     ])
     ])])
-  ])
-
 
 ]
+
+export const dealStateTrigger = trigger('dealState',[
+  transition(':enter',[
+    animate('500ms',keyframes([
+      style({
+        opacity:0,
+        offset:0,
+        transform:'translateY(20%)'
+      }),
+      style({
+        opacity:0,
+        offset:0.4,
+        transform:'translateY(-10%)',
+      }),
+      style({
+        opacity:1,
+        offset:1,
+        transform:'translateY(0)'
+      })
+    ]))
+  ])
+])
+
+

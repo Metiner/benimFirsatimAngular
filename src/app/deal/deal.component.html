@@ -1,7 +1,11 @@
 
-<div *ngFor="let deal of deals" class="row" [ngClass]="{'lastItemMargin':isItLastItem(deal)}" style="min-height: 10%;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
+<div *ngFor="let deal of displayedDeals;let i = index" class="row"
+     [ngClass]="{'lastItemMargin':isItLastItem(deal)}"
+     @dealState
+     (@dealState.done)="onDealAnimated($event,i)"
+     style="height: 230px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
   <div class="col-3" style="text-align: center">
-    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 70%;min-width: 70%">
+    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 60%">
   </div>
   <div class="col-9">
     <div class="row">
@@ -53,7 +57,7 @@
             <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
           </div>
           <div class="col" style=";align-self: flex-end">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.user.name}}</span>
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
           </div>
           <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
             <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;">{{deal.user.score}} görüntülenme</span>
