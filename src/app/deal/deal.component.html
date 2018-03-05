@@ -1,11 +1,10 @@
-
 <div *ngFor="let deal of displayedDeals;let i = index" class="row"
      [ngClass]="{'lastItemMargin':isItLastItem(deal)}"
      @dealState
      (@dealState.done)="onDealAnimated($event,i)"
      style="height: 230px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
   <div class="col-3" style="text-align: center">
-    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 60%">
+    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 110px">
   </div>
   <div class="col-9">
     <div class="row">

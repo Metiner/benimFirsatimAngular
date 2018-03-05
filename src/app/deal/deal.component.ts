@@ -52,6 +52,7 @@ export class DealComponent implements OnInit {
     if(this.deals.length > lastItemIndex + 1){
       this.displayedDeals.push(this.deals[lastItemIndex+1])
     }else{
+      this.benimFirsatimLib.dealAnimationContinues = false;
       this.deals = this.displayedDeals;
     }
   }

@@ -4,11 +4,12 @@ import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class BenimFirsatimLibrary {
-  api_address = "https://benimfirsatim.com";
-  //api_address = "http://localhost:3000";
+  //api_address = "https://benimfirsatim.com";
+  api_address = "http://localhost:3000";
 
 
   categoryChanged = new Subject<any>();
+  private _dealAnimationContinues = true;
 
   currentCategory = 'hot';
   private _currentPaging = 1;
@@ -39,9 +40,21 @@ export class BenimFirsatimLibrary {
   }
 
   set currentPaging(value: number) {
-    if(value > 0){
+
+    if(value > 1 && !this.dealAnimationContinues){
+      this.dealAnimationContinues = true;
       this._currentPaging = value;
-      //this.categoryChanged.next();
+      this.categoryChanged.next();
     }
   }
+
+
+  get dealAnimationContinues(): boolean {
+    return this._dealAnimationContinues;
+  }
+
+  set dealAnimationContinues(value: boolean) {
+    this._dealAnimationContinues = value;
+  }
+
 }

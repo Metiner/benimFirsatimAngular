@@ -14,6 +14,13 @@ import { DealComponent } from './deal/deal.component';
 import { FooterComponent } from './footer/footer.component';
 import {LottieAnimationViewModule} from 'ng-lottie';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
+import {RouterModule, Routes} from "@angular/router";
+import { SingleDealComponent } from './single-deal/single-deal.component';
+
+const appRoutes : Routes = [
+  { path : 'deal' , component:SingleDealComponent},
+  { path : '' , component:DealComponent},
+]
 
 @NgModule({
   declarations: [
@@ -22,7 +29,8 @@ import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
     ContentComponent,
     PointTableComponent,
     DealComponent,
-    FooterComponent
+    FooterComponent,
+    SingleDealComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,8 @@ import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
     FormsModule,
     HttpModule,
     LottieAnimationViewModule.forRoot(),
-    ScrollToModule.forRoot() // scroll to library.
+    ScrollToModule.forRoot(), // scroll to library.
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [BenimFirsatimLibrary,HeaderComponent],
   bootstrap: [AppComponent]

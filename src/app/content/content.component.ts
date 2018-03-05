@@ -1,5 +1,4 @@
 import {Component} from "@angular/core";
-import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 
 @Component({
   selector:'app-content',
