@@ -159,70 +159,71 @@ export class HeaderComponent {
   onCategoryChange(type){
     this.benimFirsatimLibrary.getPage(type,1);
     this.benimFirsatimLibrary.changeCategory(type);
+
   }
 
   getCategoryIcon(categoryId){
     var src = "";
     switch (categoryId){
       case 1:
-        src = '../../assets/imgs/mode_tekstil_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/mode_tekstil_icon.svg';
         break;
       case 12:
-        src = '../../assets/imgs/kisisel_bakim@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/kisisel_bakim.svg';
         break;
       case 18:
-          src = '../../assets/imgs/cinden_icon@2x.png';
+          src = 'assassets/svgs/categoryIconSvgs/cinden_icon.svg';
         break;
       case 5:
-          src = '../../assets/imgs/yazilim_icon@2x.png';
+          src = 'assets/svgs/categoryIconSvgs/yazilim_icon.svg';
         break;
       case 13:
-        src = '../../assets/imgs/eglence_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/eglence_icon.svg';
         break;
       case 3:
-        src = '../../assets/imgs/elektronik_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/elektronik_icon.svg';
         break;
       case 6:
-        src = '../../assets/imgs/music_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/music_icon.svg';
         break;
       case 10:
-        src = '../../assets/imgs/beyaz_esya_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/beyaz_esya_icon.svg';
         break;
       case 15:
-        src = '../../assets/imgs/yeme_icme_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/yeme_icme_icon.svg';
         break;
       case 2:
-        src = '../../assets/imgs/aksesuar_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/aksesuar_icon.svg';
         break;
       case 4:
-        src = '../../assets/imgs/mobilya_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/mobilya_icon.svg';
         break;
       case 14:
-        src = '../../assets/imgs/bilgisayar_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/bilgisayar_icon.svg';
         break;
       case 16:
-        src = '../../assets/imgs/tatil_gezi_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/tatil_gezi_icon.svg';
         break;
       case 19:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon.svg';
         break;
       case 17:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
         break;
       case 7:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
         break;
       case 8:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
         break;
       case 10:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
         break;
       case 11:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
         break;
       case 20:
-        src = '../../assets/imgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
         break;
     }
     return src;

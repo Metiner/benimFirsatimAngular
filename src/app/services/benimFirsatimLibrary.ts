@@ -5,7 +5,8 @@ import {Subject} from "rxjs/Subject";
 @Injectable()
 export class BenimFirsatimLibrary {
   //api_address = "https://benimfirsatim.com";
-  api_address = "http://localhost:3000";
+  //api_address = "http://localhost:3000";
+  api_address = "https://app-b7b3c182-2419-47ad-a597-caf24ce3f70c.cleverapps.io";
 
 
   categoryChanged = new Subject<any>();
@@ -30,9 +31,13 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/categories');
   }
   public changeCategory(type){
-    this.currentPaging = 1;
-    this.currentCategory = type;
-    this.categoryChanged.next();
+    if(!this.dealAnimationContinues){
+      this.dealAnimationContinues = true;
+      this.currentPaging = 1;
+      this.currentCategory = type;
+      this.categoryChanged.next();
+    }
+
   }
 
   get currentPaging(): number {
@@ -41,7 +46,7 @@ export class BenimFirsatimLibrary {
 
   set currentPaging(value: number) {
 
-    if(value > 1 && !this.dealAnimationContinues){
+    if(value > 0 && !this.dealAnimationContinues){
       this.dealAnimationContinues = true;
       this._currentPaging = value;
       this.categoryChanged.next();

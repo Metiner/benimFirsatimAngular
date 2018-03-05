@@ -15,7 +15,6 @@ export class DealComponent implements OnInit {
 
   deals = [];
   displayedDeals = [];
-  pageCode = "hot";
   mySubscription: Subscription;
 
   constructor(public benimFirsatimLib:BenimFirsatimLibrary) {

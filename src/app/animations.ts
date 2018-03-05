@@ -58,7 +58,7 @@ export const slideInOutAnimation = [
 
 export const dealStateTrigger = trigger('dealState',[
   transition(':enter',[
-    animate('500ms',keyframes([
+    animate('300ms',keyframes([
       style({
         opacity:0,
         offset:0,
