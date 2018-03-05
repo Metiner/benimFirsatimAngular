@@ -4,6 +4,7 @@ import {HeaderComponent} from "../header/header.component";
 import {dealStateTrigger} from "../animations";
 import {AnimationEvent} from "@angular/animations";
 import {Subscription} from "rxjs/Subscription";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-deal',
@@ -17,7 +18,8 @@ export class DealComponent implements OnInit {
   displayedDeals = [];
   mySubscription: Subscription;
 
-  constructor(public benimFirsatimLib:BenimFirsatimLibrary) {
+  constructor(public benimFirsatimLib:BenimFirsatimLibrary,
+              public route:Router) {
 
     var page = this;
     this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({
@@ -54,6 +56,10 @@ export class DealComponent implements OnInit {
       this.benimFirsatimLib.dealAnimationContinues = false;
       this.deals = this.displayedDeals;
     }
+  }
+
+  goToDeal(dealId){
+    this.route.navigate(['/deal/' + dealId]);
   }
 
   isItLastItem(deal){

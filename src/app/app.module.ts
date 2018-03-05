@@ -18,7 +18,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { SingleDealComponent } from './single-deal/single-deal.component';
 
 const appRoutes : Routes = [
-  { path : 'deal' , component:SingleDealComponent},
+  { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
 ]
 

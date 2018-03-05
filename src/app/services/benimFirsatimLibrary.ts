@@ -31,6 +31,7 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/categories');
   }
   public changeCategory(type){
+      this.currentPaging = 1;
     if(!this.dealAnimationContinues){
       this.dealAnimationContinues = true;
       this.currentPaging = 1;

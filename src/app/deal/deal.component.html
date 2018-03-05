@@ -4,11 +4,11 @@
      (@dealState.done)="onDealAnimated($event,i)"
      style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
   <div class="col-3" style="text-align: center">
-    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 110px">
+    <img src="https://benimfirsatim.com{{deal.image_url}}" style="max-width: 200px;max-height: 200px">
   </div>
   <div class="col-9">
     <div class="row title">
-      <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
+      <span (click)="goToDeal(deal.id)" style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
     </div>
     <div class="row" style="padding-top: 1%">
       <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details.slice(0,200).concat('..')}}</span>
