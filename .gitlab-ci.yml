@@ -5,8 +5,8 @@ stages:
 deploy:
   stage: deploy
   script:
-    - npm install -g @angular/cli 
-    - npm install
+    - npm install --unsafe-perm -g @angular/cli 
+    - npm install --unsafe-perm
     - pwd
     - ls
     - echo 'BUILD STARTED'
