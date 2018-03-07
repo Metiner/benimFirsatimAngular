@@ -7,11 +7,11 @@ deploy:
   before_script:
    - npm install -g @angular-cli 
    - npm install
-   - apt update -y
-   - apt upgrade -y
-   - apt install lftp
   script:
-    - ng build --target=production
+    - npm build
+    - apt update -y
+    - apt upgrade -y
+    - apt install lftp
     - lftp -e "mirror -R dist /" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
   except:
     - tags
