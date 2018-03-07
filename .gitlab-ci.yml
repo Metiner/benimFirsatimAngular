@@ -1,0 +1,33 @@
+image: 
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  untracked: true
+  paths:
+    - node_modules/
+    - dist/
+stages:
+  - build
+  - deploy
+
+
+runBuild:
+  stage: build
+  before_script:
+   - npm install -g angular-cli
+   - npm install
+  script:
+    - ng build --target=production
+  except:
+    - tags
+
+runDeploy:
+  stage: deploy
+  before_script:
+    - apt update
+    - apt upgrade
+    - apt install lftp
+  script:
+    - lftp -e "mirror -R dist /" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
+  
+
+
