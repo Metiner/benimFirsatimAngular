@@ -1,14 +1,7 @@
-image: node:9.7.1
-cache:
-  key: "$CI_BUILD_REF_NAME"
-  untracked: true
-  paths:
-    - node_modules/
-    - dist/
+image: node:8.1
 stages:
   - build
   - deploy
-
 
 runBuild:
   stage: build
