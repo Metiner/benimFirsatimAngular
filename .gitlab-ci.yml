@@ -5,10 +5,10 @@ stages:
 deploy:
   stage: deploy
   before_script:
-   - npm install --unsafe-perms -g angular-cli 
-   - npm install --unsafe-perms
-   - apt update
-   - apt upgrade
+   - npm install -g angular-cli 
+   - npm install
+   - apt update -y
+   - apt upgrade -y
    - apt install lftp
   script:
     - ng build --target=production
