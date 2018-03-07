@@ -5,8 +5,8 @@ stages:
 deploy:
   stage: deploy
   before_script:
-   - npm install -g angular-cli
-   - npm install
+   - npm install --silent -g @angular-cli 
+   - npm install --silent
    - apt update
    - apt upgrade
    - apt install lftp
