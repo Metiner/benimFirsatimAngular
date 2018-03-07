@@ -5,7 +5,6 @@ stages:
 deploy:
   stage: deploy
   script:
-    - rm package-lock.json
     - npm install -g @angular-cli 
     - npm install
     - npm build
