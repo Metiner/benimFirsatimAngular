@@ -7,7 +7,9 @@ deploy:
   script:
     - npm install -g angular-cli 
     - npm install
-    - npm build
+    - echo 'BUILD STARTED'
+    - ng build --prod
+    - echo 'BUILD FINISHED'
     - apt update -y
     - apt upgrade -y
     - apt install lftp
