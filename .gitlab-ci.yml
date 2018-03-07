@@ -1,26 +1,18 @@
 image: node:8.1
 stages:
-  - build
   - deploy
 
-runBuild:
-  stage: build
+deploy:
+  stage: deploy
   before_script:
    - npm install -g angular-cli
    - npm install
+   - apt update
+   - apt upgrade
+   - apt install lftp
   script:
     - ng build --target=production
+    - lftp -e "mirror -R dist /" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
   except:
     - tags
-
-runDeploy:
-  stage: deploy
-  before_script:
-    - apt update
-    - apt upgrade
-    - apt install lftp
-  script:
-    - lftp -e "mirror -R dist /" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
-  
-
 
