@@ -10,6 +10,7 @@ deploy:
     - echo 'BUILD STARTED'
     - ng build --prod
     - echo 'BUILD FINISHED'
+    - ls
     - apt update -y
     - apt upgrade -y
     - apt install lftp
