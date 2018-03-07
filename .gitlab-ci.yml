@@ -1,13 +1,10 @@
-image: node:8.1
+image: node:6.13.0
 stages:
   - deploy
 
 deploy:
   stage: deploy
   before_script:
-   - mkdir /home/node/.npm-global
-   - PATH=/home/node/.npm-global/bin:$PATH
-   - NPM_CONFIG_PREFIX=/home/node/.npm-global
    - npm install --unsafe-perms -g angular-cli 
    - npm install --unsafe-perms
    - apt update
