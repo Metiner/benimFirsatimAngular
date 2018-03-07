@@ -4,10 +4,9 @@ stages:
 
 deploy:
   stage: deploy
-  before_script:
-   - npm install -g @angular-cli 
-   - npm install
   script:
+    - npm install -g @angular-cli 
+    - npm install
     - npm build
     - apt update -y
     - apt upgrade -y
