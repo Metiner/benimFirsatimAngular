@@ -36,6 +36,7 @@ export class DealComponent implements OnInit {
 
   setDeals(){
     this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
+      this.benimFirsatimLib.currentDeals = data.json();
       this.displayedDeals = [];
       this.deals = data.json();
       if(this.deals.length >= 1){

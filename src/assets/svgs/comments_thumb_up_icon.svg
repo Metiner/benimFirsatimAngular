@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="3274 803 68.426 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7e60f;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.218" y1="0.549" x2="0.788" y2="0.539" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#234491"/>
+      <stop offset="1" stop-color="#2b8b56"/>
+    </linearGradient>
+  </defs>
+  <g id="thumb_up_icon" transform="translate(3174 177)">
+    <rect id="Rectangle_9" data-name="Rectangle 9" class="cls-1" width="45.957" height="20.426" rx="10.213" transform="translate(122.468 636.213)"/>
+    <circle id="Ellipse_6" data-name="Ellipse 6" class="cls-1" cx="20" cy="20" r="20" transform="translate(100 626)"/>
+    <path id="thumb_up" class="cls-2" d="M8.486,21.216a2.13,2.13,0,0,1-2.121-2.121V8.486A1.784,1.784,0,0,1,7,7l7-7,1.169,1.061A2.209,2.209,0,0,1,15.6,2.226v.32l-1.061,4.88h6.681a2.12,2.12,0,0,1,2.118,2.117l-.1,2.122a1.855,1.855,0,0,1-.1.744l-3.182,7.534a2.1,2.1,0,0,1-1.91,1.273ZM0,21.216V8.486H4.244v12.73Z" transform="translate(108.757 633.659)"/>
+  </g>
+</svg>

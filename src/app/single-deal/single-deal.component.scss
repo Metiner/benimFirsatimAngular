@@ -1,0 +1,36 @@
+//div{
+//  border:1px solid black;
+//}
+.nopadding {
+  padding: 0px;
+}
+
+.writeComment::-webkit-input-placeholder {
+  font-family: "Mark Pro-Italic";
+  color:#234491;
+}
+
+.writeComment:-ms-input-placeholder {
+  font-family: "Mark Pro-Italic";
+  color:#234491;
+}
+
+.writeComment:-moz-placeholder {
+  font-family: "Mark Pro-Italic";
+  color:#234491;
+}
+
+.writeComment::-moz-placeholder {
+  font-family: "Mark Pro-Italic";
+  color:#234491;
+}
+.nowrap{
+  flex-wrap: nowrap;
+}
+.imgClass{
+ width: 30px;
+  margin-right: -20px;
+}
+.lastItemMargin{
+  margin-bottom: 5%;
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="2563 593 61.918 61.918">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7e60f;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.283" y1="0.703" x2="0.767" y2="0.212" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#234491"/>
+      <stop offset="1" stop-color="#2b8b56"/>
+    </linearGradient>
+  </defs>
+  <g id="write_comment_icon" transform="translate(2563 593)">
+    <circle id="Ellipse_5" data-name="Ellipse 5" class="cls-1" cx="30.959" cy="30.959" r="30.959" transform="translate(0)"/>
+    <path id="Union_4" data-name="Union 4" class="cls-2" d="M.02,33.209l1.768-7.93,6.99,6.987-7.8,1.891a.807.807,0,0,1-.186.022A.8.8,0,0,1,.02,33.209ZM3.68,23.39,21.385,5.7l7,6.987L10.67,30.378ZM23.2,3.889,26.189.9a3.107,3.107,0,0,1,4.376,0l3.121,3.118A2.376,2.376,0,0,1,33.68,7.4l-3.486,3.48Z" transform="translate(13.716 13.483)"/>
+  </g>
+</svg>

@@ -14,6 +14,7 @@ export class BenimFirsatimLibrary {
 
   currentCategory = 'hot';
   private _currentPaging = 1;
+  private _currentDeals = [];
 
   constructor(public http: Http ) {
   }
@@ -61,6 +62,26 @@ export class BenimFirsatimLibrary {
 
   set dealAnimationContinues(value: boolean) {
     this._dealAnimationContinues = value;
+  }
+
+
+  get currentDeals(): any[] {
+    return this._currentDeals;
+  }
+
+  set currentDeals(value: any[]) {
+    this._currentDeals = value;
+  }
+
+  getDealById(id:string){
+    for(let i=0;i<this.currentDeals.length;i++){
+      if(this.currentDeals[i].id == id)
+        return this.currentDeals[i];
+    }
+  }
+
+  public getComments(deal_id){
+    return this.http.get(this.api_address + '/deals/'+deal_id+'/comments');
   }
 
 }
