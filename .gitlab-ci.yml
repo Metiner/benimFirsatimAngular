@@ -16,6 +16,7 @@ deploy:
     - apt update -y
     - apt upgrade -y
     - apt install lftp
+    - mkdir ~/.lftp
     - echo "set ssl:verify-certificate no" >> ~/.lftp/rc
     - lftp -e "mirror -R dist /" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
   except:
