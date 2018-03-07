@@ -6,12 +6,15 @@ export const slideInOutAnimation = [
     state('in',style({
       opacity:1,
       transform:'translateY(0)',
-      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
+      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)',
+      visibility:'visible'
+
     })),
     state('out',style({
       opacity:0,
       transform:'translateY(0)',
-      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)'
+      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)',
+      visibility:'hidden'
     })),
     transition('in=>out',[group([
       animate('700ms ease-out',keyframes([
@@ -38,7 +41,8 @@ export const slideInOutAnimation = [
          style({
            opacity:0,
            offset:0,
-           transform:'translateY(2%)'
+           transform:'translateY(2%)',
+           visibility:'hidden'
          }),
          style({
            opacity:0,
@@ -48,7 +52,8 @@ export const slideInOutAnimation = [
          style({
            opacity:1,
            offset:1,
-           transform:'translateY(0)'
+           transform:'translateY(0)',
+           visibility:'visible'
          })
        ]))
      ])
@@ -73,6 +78,35 @@ export const dealStateTrigger = trigger('dealState',[
         opacity:1,
         offset:1,
         transform:'translateY(0)'
+      })
+    ]))
+  ])
+])
+
+export const commentStateTrigger = trigger('commentState',[
+  transition(':enter',[
+    animate('1000ms',keyframes([
+      style({
+        opacity:0,
+        offset:0,
+        transform:'translateY(20%)'
+      }),
+      style({
+        opacity:0,
+        offset:0.5,
+        transform:'translateY(-10%)',
+      }),
+      style({
+        offset:0.6,
+        transform:'scale(1.1)',
+
+      }),
+
+      style({
+        opacity:1,
+        offset:1,
+        transform:'translateY(0)',
+
       })
     ]))
   ])

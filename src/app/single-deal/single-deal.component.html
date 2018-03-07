@@ -177,13 +177,14 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-1 offset-10">
-                  <img style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
+                <div class="col-1 offset-10" (click)="writeToComment(comment)">
+                  <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
                 </div>
                 <div class="col-1 nopadding">
                   <img style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_thumb_up_icon.svg">
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -211,6 +212,16 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="scrollToMe" @commentState *ngIf="comment.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50;margin-top: 2%">
+        <div class="row nowrap">
+          <div class="col">
+            <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
+          </div>
+          <div class="col" style="text-align: right;padding: 0px">
+            <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
           </div>
         </div>
       </div>
