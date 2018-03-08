@@ -1,6 +1,5 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
-import {HeaderComponent} from "../header/header.component";
 import {dealStateTrigger} from "../animations";
 import {AnimationEvent} from "@angular/animations";
 import {Subscription} from "rxjs/Subscription";

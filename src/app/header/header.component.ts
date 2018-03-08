@@ -3,6 +3,7 @@ import {Component, EventEmitter, Injectable, Output} from '@angular/core';
 import {slideInOutAnimation} from '../animations';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subject} from "rxjs/Subject";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,9 +27,13 @@ export class HeaderComponent {
   myProfileAnimation = 'out';
   categories = [];
 
-  constructor(public benimFirsatimLibrary:BenimFirsatimLibrary){
+  isAuth = false;
+
+  constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,
+              public router:Router){
 
     this.initializeAnims();
+    this.checkAuth();
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
 
@@ -36,7 +41,12 @@ export class HeaderComponent {
     });
   }
 
-
+  checkAuth(){
+    this.isAuth = this.benimFirsatimLibrary.isAutho;
+  }
+  goToSignUp(){
+    this.router.navigate(['signUp']);
+  }
   initializeAnims() {
     this.oneCikanlarAnimConf = {
       path: 'assets/animations/one_cikanlar_anim.json',
@@ -59,7 +69,6 @@ export class HeaderComponent {
       loop: true
     };
   }
-
   createAnim(anim,type){
     // type
     // 1- onceCikanlar
@@ -154,14 +163,11 @@ export class HeaderComponent {
   slideMyProfileDiv(state){
     this.myProfileAnimation = state;
   }
-
-
   onCategoryChange(type){
     this.benimFirsatimLibrary.getPage(type,1);
     this.benimFirsatimLibrary.changeCategory(type);
 
   }
-
   getCategoryIcon(categoryId){
     var src = "";
     switch (categoryId){

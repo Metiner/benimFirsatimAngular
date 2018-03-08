@@ -82,19 +82,19 @@
       </div>
     </div>
     <div class="row" style="padding-top: 1%">
-      <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details}}</span>
-    </div>
-    <div class="row" style="padding-top:2%;padding-bottom: 2%">
-      <div class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px">
+      <div class="col-3">
         <div class="row nowrap">
           <div class="col">
-            <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
-          </div>
-          <div class="col" style="text-align: right;padding: 0px">
-            <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
+            <div class="mx-auto" id="forLottie" style="width: 60px;height: 60px;" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
+            </div>
           </div>
         </div>
       </div>
+      <div class="col-9">
+        <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details}}</span>
+      </div>
+    </div>
+    <div class="row" style="padding-top:2%;padding-bottom: 2%">
       <div class="col">
         <div class="row">
           <div class="col" style="text-align: right;padding-bottom: 1%">
@@ -102,26 +102,16 @@
           </div>
         </div>
         <div class="row nowrap">
-          <div class="col">
-            <div class="row nowrap">
-              <div class="col">
-                <img src="assets/svgs/bildirim_al_icon.svg" class="imgClass">
-              </div>
-              <div class="col">
-                <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">BİLDİRİM AL</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="row nowrap">
-              <div class="col">
-                <img src="assets/svgs/kaydet_icon.svg" class="imgClass">
-              </div>
-              <div class="col">
-                <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">KAYDET</span>
-              </div>
-            </div>
-          </div>
+          <!--<div class="col">-->
+            <!--<div class="row nowrap">-->
+              <!--<div class="col">-->
+                <!--<img src="assets/svgs/bildirim_al_icon.svg" class="imgClass">-->
+              <!--</div>-->
+              <!--<div class="col">-->
+                <!--<span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">BİLDİRİM AL</span>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="col">
             <div class="row nowrap">
               <div class="col">
@@ -151,6 +141,16 @@
                 <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">ŞİKAYET ET</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px">
+        <div class="row nowrap">
+          <div class="col">
+            <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
+          </div>
+          <div class="col" style="text-align: right;padding: 0px">
+            <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
           </div>
         </div>
       </div>

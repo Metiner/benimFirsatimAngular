@@ -16,10 +16,13 @@ import {LottieAnimationViewModule} from 'ng-lottie';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import {RouterModule, Routes} from "@angular/router";
 import { SingleDealComponent } from './single-deal/single-deal.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
+  {path : 'signUp' , component:SignUpComponent}
 ]
 
 @NgModule({
@@ -30,7 +33,9 @@ const appRoutes : Routes = [
     PointTableComponent,
     DealComponent,
     FooterComponent,
-    SingleDealComponent
+    SingleDealComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
