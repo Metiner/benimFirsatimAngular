@@ -1,45 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
 html{
   background-image: url('../../assets/imgs/background_pattern@2x.png');
   background-size: cover;
 }
+
 @font-face {
   font-family: "Mark Pro";
   src: url("../../assets/fonts/MarkPro.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Black";
-  src: url("../../assets/fonts/MarkPro-Black.otf") format("otf")
+  src: url("../../assets/fonts/MarkProBlack.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Bold";
-  src: url("../../assets/fonts/MarkPro-Bold.otf") format("otf")
+  src: url("../../assets/fonts/MarkProBold.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Book";
-  src: url("../../assets/fonts/MarkPro-Book.otf") format("otf")
+  src: url("../../assets/fonts/MarkProBook.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-ExtraLight";
-  src: url("../../assets/fonts/MarkPro-ExtraLight.otf") format("otf")
+  src: url("../../assets/fonts/MarkProExtraLight.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Hairline";
-  src: url("../../assets/fonts/MarkPro-Hairline.otf") format("otf")
+  src: url("../../assets/fonts/MarkProHairline.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Heavy";
-  src: url("../../assets/fonts/MarkPro-Heavy.otf") format("otf")
+  src: url("../../assets/fonts/MarkProHeavy.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Medium";
-  src: url("../../assets/fonts/MarkPro-Medium.otf") format("otf")
+  src: url("../../assets/fonts/MarkProMedium.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Light";
-  src: url("../../assets/fonts/MarkPro-Light.otf") format("otf")
+  src: url("../../assets/fonts/MarkProLight.otf") format("otf")
 }
 @font-face {
   font-family: "Mark Pro-Italic";
-  src: url("../../assets/fonts/MarkPro-Italic.otf") format("otf")
+  src: url("../../assets/fonts/MarkProItalic.otf") format("otf")
 }
 
