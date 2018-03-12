@@ -18,11 +18,13 @@ import {RouterModule, Routes} from "@angular/router";
 import { SingleDealComponent } from './single-deal/single-deal.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { CreateNewDealComponent } from './create-new-deal/create-new-deal.component';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
-  {path : 'signUp' , component:SignUpComponent}
+  {path : 'signUp' , component:SignUpComponent},
+  { path : 'createNewDeal', component: CreateNewDealComponent}
 ]
 
 @NgModule({
@@ -35,7 +37,8 @@ const appRoutes : Routes = [
     FooterComponent,
     SingleDealComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    CreateNewDealComponent
   ],
   imports: [
     BrowserModule,

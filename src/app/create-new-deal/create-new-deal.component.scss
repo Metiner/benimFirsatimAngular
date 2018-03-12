@@ -1,0 +1,33 @@
+.urlInput{
+  outline:none;
+  border-radius: 30px;
+  background-color: #f2f2f2;
+  border: 1px solid white;
+  width: inherit;
+  color:#234491;
+  text-indent: 20px;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:#234491;
+  opacity: 1; /* Firefox */
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+  color:#234491;
+}
+
+
+:-ms-input-placeholder { /* Microsoft Edge */
+  color:#234491;
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+}
+.nopadding{
+  padding: 0px;
+}

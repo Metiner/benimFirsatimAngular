@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-9 offset-1">
+    <div class="row">
+      <div class="col">
+        <div class="row" style="margin-top: 2%">
+          <div class="col">
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">YENİ FIRSAT EKLE</span>
+          </div>
+        </div>
+        <div class="row" style="min-height: 88%">
+          <div class="col-6" style="border-radius: 30px;background-color: white;margin-top: 1%">
+            <div class="row" style="padding: 1%">
+              <div class="col">
+                <div class="row align-items-center">
+                  <div class="col-1" style="margin-right: -20px">
+                    <img src="assets/svgs/ilan_linki_icon.svg">
+                  </div>
+                  <div class="col">
+                    <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491">İLAN LİNKİ</span>
+                  </div>
+                </div>
+                <div class="row" style="padding: 1%">
+                  <div class="col nopadding">
+                    <input class="urlInput" placeholder="http://alisverissitem.com/urun.aspx?kod=112">
+                  </div>
+                </div>
+                <div class="row align-items-center" style="margin-top: 1%">
+                  <div class="col-1" style="margin-right: -20px">
+                    <img src="assets/svgs/ilan_detaylari_icon.svg">
+                  </div>
+                  <div class="col">
+                    <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491">İLAN DETAYLARI</span>
+                  </div>
+                </div>
+                <div class="row align-items-center" style="flex-wrap: nowrap">
+                  <div class="col-5 text-center align-items-center" style=";margin-top: 2%;min-height: 150px">
+                    <img  src="http://via.placeholder.com/500x150" style="width: inherit;border-radius: 20px">
+                  </div>
+                  <div class="col-7">
+                    <div class="row"  style="overflow-x: scroll;flex-wrap: nowrap;width: 100%">
+                      <div class="col-5" *ngFor="let dealImage of dealImages">
+                        <img src="{{dealImage}}" style="width: inherit">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

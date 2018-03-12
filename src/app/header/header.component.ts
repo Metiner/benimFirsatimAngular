@@ -234,4 +234,7 @@ export class HeaderComponent {
     }
     return src;
   }
+  onCreateNewDeal(){
+    this.router.navigate(['createNewDeal']);
+  }
 }
