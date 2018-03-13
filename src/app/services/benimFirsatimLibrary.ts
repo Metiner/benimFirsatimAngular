@@ -15,6 +15,7 @@ export class BenimFirsatimLibrary {
   currentCategory = 'hot';
   private _currentPaging = 1;
   private _currentDeals = [];
+  private _categories =[];
 
   private _isAutho = false;
 
@@ -122,5 +123,14 @@ export class BenimFirsatimLibrary {
 
   set isAutho(value: boolean) {
     this._isAutho = value;
+  }
+
+
+  get categories(): any[] {
+    return this._categories;
+  }
+
+  set categories(value: any[]) {
+    this._categories = value;
   }
 }

@@ -36,6 +36,7 @@ export class HeaderComponent {
     this.checkAuth();
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
+      this.benimFirsatimLibrary.categories = response.json();
 
 
     });

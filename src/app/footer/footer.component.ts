@@ -9,9 +9,6 @@ import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 })
 export class FooterComponent implements OnInit {
 
-  public ngxScrollToOffset:number;
-
-
   constructor(private _scrollTo:ScrollToService,
               private benimFirsatimLib: BenimFirsatimLibrary) { }
 
