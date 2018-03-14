@@ -113,3 +113,28 @@ export const commentStateTrigger = trigger('commentState',[
 ])
 
 
+export const showMeTrigger = trigger('showMe',[
+  state('show',style({
+    transform:'scale(1.2)'
+  })),
+  state('notShow',style({
+    transform:'scale(1.0)'
+  })),
+  transition('*<=>*',[
+    animate(500)
+  ])
+])
+
+export const dealAvatarSelectionTrigger = trigger('selectMe',[
+  state('selected',style({
+    border:'3px solid #234491',
+    borderRadius:'30px',
+    borderStyle:'inset'
+  })),
+  state('unSelected',style({
+    borderRadius:'30px'
+  })),
+  transition('*<=>*',[
+    animate(500)
+  ])
+])

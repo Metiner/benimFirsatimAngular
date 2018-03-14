@@ -37,9 +37,9 @@
                     <img  src="http://via.placeholder.com/150x50" style="border-radius: 20px;max-width: 200px;max-height: 200px">
                   </div>
                   <div class="col" style="height: 150px;align-items: center;max-height: 150px;width: 0px">
-                    <div id="scroll" class="row"  style="overflow-x: scroll;overflow-y:hidden;flex-wrap: nowrap">
-                      <div class="col-4" *ngFor="let dealImage of dealImages" style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
-                        <img src="{{dealImage}}" style="max-height:150px;max-width: 150px;border-radius: 20px;margin: auto">
+                    <div #allImages id="scroll" class="row"  style="overflow-x: scroll;overflow-y:hidden;flex-wrap: nowrap">
+                      <div  class="col-4" *ngFor="let dealImage of dealImages" style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
+                        <img [@selectMe]="element.select" #element (click)="selectMe(element)" src="{{dealImage}}" style="max-height:150px;max-width: 150px;border-radius: 30px;margin: auto">
                       </div>
                     </div>
                   </div>
@@ -143,9 +143,9 @@
                   </div>
                   <div class="row">
                     <div class="col">
-                      <ul class="bxslider" style="box-shadow: none">
-                        <li *ngFor="let category of categories">{{category.name}}</li>
-                      </ul>
+                      <div #allCategories class="bxslider" style="box-shadow: none">
+                        <div #element class="text-center" style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap" (click)="showMe(element,others)" [@showMe]="element.show" *ngFor="let category of categories">{{category.name}}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
