@@ -1,10 +1,8 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from "@angular/http";
 import {BenimFirsatimLibrary} from "./services/benimFirsatimLibrary";
@@ -19,6 +17,9 @@ import { SingleDealComponent } from './single-deal/single-deal.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { CreateNewDealComponent } from './create-new-deal/create-new-deal.component';
+import { MaterialModule } from './material.module';
+import './../polyfills';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
@@ -42,14 +43,16 @@ const appRoutes : Routes = [
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     LottieAnimationViewModule.forRoot(),
     ScrollToModule.forRoot(), // scroll to library.
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MaterialModule
   ],
-  providers: [BenimFirsatimLibrary,HeaderComponent],
-  bootstrap: [AppComponent]
+  providers: [BenimFirsatimLibrary,
+              HeaderComponent],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

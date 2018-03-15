@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {dealAvatarSelectionTrigger, showMeTrigger} from '../animations';
+import {MatDatepickerInputEvent} from '@angular/material';
 declare var $:any;
 @Component({
   selector: 'app-create-new-deal',
@@ -72,5 +73,9 @@ export class CreateNewDealComponent implements OnInit {
 
   }
 
+  events: string[] = [];
 
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
+  }
 }

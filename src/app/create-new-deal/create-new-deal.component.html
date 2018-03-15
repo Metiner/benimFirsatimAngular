@@ -149,8 +149,34 @@
                     </div>
                   </div>
                 </div>
-              </div>
+                <div class="row align-items-center" style="flex-wrap: nowrap;padding: 1%">
+                  <div class="col-1" style="padding: 0px">
+                    <img src="assets/svgs/firsat_tarihleri_icon.svg">
+                  </div>
+                  <div class="col-2" style="padding: 0px">
+                    <span style="font-family: 'Mark Pro-Book';font-size: 12px;color:#234491;white-space: nowrap;margin-left: 5%">FIRSAT TARİHLERİ</span>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" [matDatepicker]="picker" placeholder="Baslangıs Tarihi">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <input matInput (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" [matDatepicker]="picker2" placeholder="Bitis Tarihi">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="margin-top: 2%">
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">FIRSAT ÖNİZLEMESİ</span>
           </div>
         </div>
       </div>
