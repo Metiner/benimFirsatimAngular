@@ -7,7 +7,9 @@
   color:#234491;
   text-indent: 20px;
 }
-
+.nopadding {
+  padding: 0px;
+}
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color:#234491;
@@ -33,10 +35,19 @@
 .nopadding{
   padding: 0px;
 }
-//
-//div{
-//  border:1px solid black;
-//}
+
+.dealDetailsSpans{
+  font-family: 'Mark Pro-Book';
+  font-size: 14px;color:#234491;
+  white-space: nowrap;
+}
+.padding{
+  padding :10px;
+}
+
+div{
+  border:1px solid black;
+}
 
 #scroll::-webkit-scrollbar-track
 {
@@ -59,5 +70,3 @@
 .bx-wrapper{
   box-shadow: white !important;
 }
-
-
