@@ -73,6 +73,10 @@ export class BenimFirsatimLibrary {
     }
 
   }
+  //Gets information from given deal link.
+  public getPullMeta(url){
+    return this.http.get(this.api_address + '/deals/pull_meta?target=' + url);
+  }
 
   get currentPaging(): number {
     return this._currentPaging;

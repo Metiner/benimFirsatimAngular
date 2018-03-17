@@ -10,7 +10,8 @@ import {
   MatFormFieldModule,
   MatNativeDateModule,
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressSpinnerModule
 
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,6 +27,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatNativeDateModule,
     MatSelectModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule
   ],
   exports: [
@@ -39,6 +41,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatNativeDateModule,
     MatSelectModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule
   ]
 })

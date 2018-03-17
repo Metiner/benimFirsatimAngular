@@ -5,7 +5,10 @@
   border: 1px solid white;
   width: inherit;
   color:#234491;
-  text-indent: 20px;
+  text-indent: 10px;
+  font-family:"Mark Pro-Medium";
+  font-size: 12px;
+  overflow: scroll;
 }
 .nopadding {
   padding: 0px;
@@ -45,9 +48,9 @@
   padding :10px;
 }
 
-div{
+/*div{
   border:1px solid black;
-}
+}*/
 
 #scroll::-webkit-scrollbar-track
 {
@@ -67,6 +70,7 @@ div{
   border-radius: 20px;
 }
 
-.bx-wrapper{
+/deep/.bx-wrapper{
   box-shadow: white !important;
+  margin:0px !important;
 }

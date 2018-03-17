@@ -132,7 +132,7 @@ export const dealAvatarSelectionTrigger = trigger('selectMe',[
     borderStyle:'inset'
   })),
   state('unSelected',style({
-    borderRadius:'30px'
+    borderRadius:'15px'
   })),
   transition('*<=>*',[
     animate(500)

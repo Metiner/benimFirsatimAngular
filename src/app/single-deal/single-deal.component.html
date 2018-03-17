@@ -1,227 +1,231 @@
-<div class="row" style="min-height: 350px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;padding:1%;align-items: center;justify-content: center;margin-top: 2%">
-  <div class="col">
-    <div class="row">
+<div class="row">
+  <div class="col-10 offset-1">
+    <div class="row" style="min-height: 350px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;padding:1%;align-items: center;justify-content: center;margin-top: 2%">
       <div class="col">
         <div class="row">
-          <div class="col-3" style="text-align: center">
-            <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 200px;max-height: 200px">
+          <div class="col">
+            <div class="row">
+              <div class="col-3" style="text-align: center">
+                <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 200px;max-height: 200px">
+              </div>
+              <div class="col-9">
+                <div class="row title">
+                  <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
+                </div>
+                <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
+                  <div class="col-2">
+                    <div class="row" style="align-items: center;flex-wrap: nowrap;">
+                      <div class="col-3 nopadding">
+                        <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
+                      </div>
+                      <div class="col nopadding" style="margin-left: 15%">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{deal.price}}₺</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">
+                    <div class="row" style="flex-wrap: nowrap;align-items: baseline">
+                      <div class="col-5 nopadding">
+                        <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
+                      </div>
+                      <div class="col nopadding" style="margin-left:20%">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.votes_sum}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">
+                    <div class="row" style="flex-wrap: nowrap;align-items: baseline">
+                      <div class="col-5 offset-1 nopadding">
+                        <img src="../../assets/imgs/comment_button@2x.png" style="
+            width: 250%">
+                      </div>
+                      <div class="col  nopadding" style="margin-left: 20%">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.comments_count}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
+                    <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{deal.vendor.website}}</span>
+                  </div>
+                </div>
+                <div class="row" style="align-items: flex-end">
+                  <div class="col-8">
+                    <div class="row" style="align-items: center;flex-wrap: nowrap">
+                      <div class="col-1" style="padding: 0px;align-self: flex-end">
+                        <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
+                      </div>
+                      <div class="col" style=";align-self: flex-end">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
+                      </div>
+                      <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
+                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;">{{deal.user.score}} görüntülenme</span>
+                      </div>
+                      <div class="col" style=";align-self: flex-end">
+                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{deal.created_at.substr(0,10)}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="row" style="align-items: center">
+                      <div class="col" style="padding: 1px">
+                        <img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">
+                      </div>
+                      <div class="col" style="padding: 1px">
+                        <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">
+                      </div>
+                      <div class="col-9">
+                        <img src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 1%">
+          <div class="col-3">
+            <div class="row nowrap">
+              <div class="col">
+                <div class="mx-auto" id="forLottie" style="width: 60px;height: 60px;" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-9">
-            <div class="row title">
-              <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
-            </div>
-            <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
-              <div class="col-2">
-                <div class="row" style="align-items: center;flex-wrap: nowrap;">
-                  <div class="col-3 nopadding">
-                    <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
-                  </div>
-                  <div class="col nopadding" style="margin-left: 15%">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{deal.price}}₺</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-1">
-                <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                  <div class="col-5 nopadding">
-                    <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
-                  </div>
-                  <div class="col nopadding" style="margin-left:20%">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.votes_sum}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-1">
-                <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                  <div class="col-5 offset-1 nopadding">
-                    <img src="../../assets/imgs/comment_button@2x.png" style="
-            width: 250%">
-                  </div>
-                  <div class="col  nopadding" style="margin-left: 20%">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.comments_count}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
-                <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{deal.vendor.website}}</span>
-              </div>
-            </div>
-            <div class="row" style="align-items: flex-end">
-              <div class="col-8">
-                <div class="row" style="align-items: center;flex-wrap: nowrap">
-                  <div class="col-1" style="padding: 0px;align-self: flex-end">
-                    <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
-                  </div>
-                  <div class="col" style=";align-self: flex-end">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
-                  </div>
-                  <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
-                    <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;">{{deal.user.score}} görüntülenme</span>
-                  </div>
-                  <div class="col" style=";align-self: flex-end">
-                    <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{deal.created_at.substr(0,10)}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="row" style="align-items: center">
-                  <div class="col" style="padding: 1px">
-                    <img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">
-                  </div>
-                  <div class="col" style="padding: 1px">
-                    <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">
-                  </div>
-                  <div class="col-9">
-                    <img src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
-                  </div>
-                </div>
-              </div>
-            </div>
+            <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details}}</span>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row" style="padding-top: 1%">
-      <div class="col-3">
-        <div class="row nowrap">
+        <div class="row" style="padding-top:2%;padding-bottom: 2%">
           <div class="col">
-            <div class="mx-auto" id="forLottie" style="width: 60px;height: 60px;" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
+            <div class="row">
+              <div class="col" style="text-align: right;padding-bottom: 1%">
+                <img src="assets/svgs/problemli_line.svg" style="width: 60%">
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-9">
-        <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details}}</span>
-      </div>
-    </div>
-    <div class="row" style="padding-top:2%;padding-bottom: 2%">
-      <div class="col">
-        <div class="row">
-          <div class="col" style="text-align: right;padding-bottom: 1%">
-            <img src="assets/svgs/problemli_line.svg" style="width: 60%">
-          </div>
-        </div>
-        <div class="row nowrap">
-          <!--<div class="col">-->
-            <!--<div class="row nowrap">-->
+            <div class="row nowrap">
               <!--<div class="col">-->
-                <!--<img src="assets/svgs/bildirim_al_icon.svg" class="imgClass">-->
+              <!--<div class="row nowrap">-->
+              <!--<div class="col">-->
+              <!--<img src="assets/svgs/bildirim_al_icon.svg" class="imgClass">-->
               <!--</div>-->
               <!--<div class="col">-->
-                <!--<span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">BİLDİRİM AL</span>-->
+              <!--<span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">BİLDİRİM AL</span>-->
               <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <div class="col">
-            <div class="row nowrap">
+              <!--</div>-->
+              <!--</div>-->
               <div class="col">
-                <img src="assets/svgs/suresi_dolmus_icon.svg" class="imgClass">
+                <div class="row nowrap">
+                  <div class="col">
+                    <img src="assets/svgs/suresi_dolmus_icon.svg" class="imgClass">
+                  </div>
+                  <div class="col">
+                    <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">SÜRESİ DOLMUŞ</span>
+                  </div>
+                </div>
               </div>
               <div class="col">
-                <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">SÜRESİ DOLMUŞ</span>
+                <div class="row nowrap">
+                  <div class="col">
+                    <img src="assets/svgs/tukenmis_icon.svg" class="imgClass">
+                  </div>
+                  <div class="col">
+                    <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">TÜKENMİŞ</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row nowrap">
+                  <div class="col">
+                    <img src="assets/svgs/sikayet_et_icon.svg" class="imgClass">
+                  </div>
+                  <div class="col">
+                    <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">ŞİKAYET ET</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px">
             <div class="row nowrap">
               <div class="col">
-                <img src="assets/svgs/tukenmis_icon.svg" class="imgClass">
+                <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
               </div>
-              <div class="col">
-                <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">TÜKENMİŞ</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="row nowrap">
-              <div class="col">
-                <img src="assets/svgs/sikayet_et_icon.svg" class="imgClass">
-              </div>
-              <div class="col">
-                <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">ŞİKAYET ET</span>
+              <div class="col" style="text-align: right;padding: 0px">
+                <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px">
-        <div class="row nowrap">
-          <div class="col">
-            <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
-          </div>
-          <div class="col" style="text-align: right;padding: 0px">
-            <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div *ngFor="let comment of comments" [ngClass]="{'lastItemMargin':isItLastItem(comment)}">
-      <div class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%">
-        <div class="col">
-          <div class="row nowrap">
+        <div *ngFor="let comment of comments" [ngClass]="{'lastItemMargin':isItLastItem(comment)}">
+          <div class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%">
             <div class="col">
-              <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
-                <div class="col-1 nopadding">
-                  <img src="{{comment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
-                </div>
+              <div class="row nowrap">
                 <div class="col">
-                  <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;margin-left: -10%;color:#234491">{{comment.user.name}}</span>
-                </div>
-                <div class="col" style="text-align: right">
-                  <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#234491">{{comment.timeCalculation}}</span>
-                </div>
-              </div>
-              <div class="row" style="padding: 1%;padding-left: 4%">
-                <div class="col">
-                  <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment.text}}</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-1 offset-10" (click)="writeToComment(comment)">
-                  <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
-                </div>
-                <div class="col-1 nopadding">
-                  <img style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_thumb_up_icon.svg">
-                </div>
-              </div>
+                  <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
+                    <div class="col-1 nopadding">
+                      <img src="{{comment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+                    </div>
+                    <div class="col">
+                      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;margin-left: -10%;color:#234491">{{comment.user.name}}</span>
+                    </div>
+                    <div class="col" style="text-align: right">
+                      <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#234491">{{comment.timeCalculation}}</span>
+                    </div>
+                  </div>
+                  <div class="row" style="padding: 1%;padding-left: 4%">
+                    <div class="col">
+                      <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment.text}}</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1 offset-10" (click)="writeToComment(comment)">
+                      <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
+                    </div>
+                    <div class="col-1 nopadding">
+                      <img style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_thumb_up_icon.svg">
+                    </div>
+                  </div>
 
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div *ngIf="isHaveSubComment(comment)" style="margin-top: 3%">
-        <div *ngFor="let subComment of comment.comments" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
-          <div class="col">
+          <div *ngIf="isHaveSubComment(comment)" style="margin-top: 3%">
+            <div *ngFor="let subComment of comment.comments" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
+              <div class="col">
+                <div class="row nowrap">
+                  <div class="col">
+                    <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
+                      <div class="col-1 nopadding">
+                        <img src="{{subComment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+                      </div>
+                      <div class="col">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;margin-left: -10%;color:#234491">{{subComment.user.name}}</span>
+                      </div>
+                      <div class="col" style="text-align: right">
+                        <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#234491">{{subComment.timeCalculation}}</span>
+                      </div>
+                    </div>
+                    <div class="row" style="padding: 1%;padding-left: 4%">
+                      <div class="col">
+                        <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment.text}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="scrollToMe" @commentState *ngIf="comment.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50;margin-top: 2%">
             <div class="row nowrap">
               <div class="col">
-                <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
-                  <div class="col-1 nopadding">
-                    <img src="{{subComment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
-                  </div>
-                  <div class="col">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;margin-left: -10%;color:#234491">{{subComment.user.name}}</span>
-                  </div>
-                  <div class="col" style="text-align: right">
-                    <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#234491">{{subComment.timeCalculation}}</span>
-                  </div>
-                </div>
-                <div class="row" style="padding: 1%;padding-left: 4%">
-                  <div class="col">
-                    <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment.text}}</span>
-                  </div>
-                </div>
+                <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
+              </div>
+              <div class="col" style="text-align: right;padding: 0px">
+                <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div id="scrollToMe" @commentState *ngIf="comment.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50;margin-top: 2%">
-        <div class="row nowrap">
-          <div class="col">
-            <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
-          </div>
-          <div class="col" style="text-align: right;padding: 0px">
-            <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
           </div>
         </div>
       </div>
