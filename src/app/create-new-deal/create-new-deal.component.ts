@@ -23,6 +23,7 @@ export class CreateNewDealComponent implements OnInit {
   dealOwnerAvatar:string= "";
   currentDate:string= "";
   images : any[] = [];
+  states=["Yozgat","Yozgat","Yozgat"];
   isLinkEmpty: boolean = true;
   showProgressBar = false;
   selectedImageSrc = "../../assets/imgs/firsat_gorseli_unselected@3x.png";

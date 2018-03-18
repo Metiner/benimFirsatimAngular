@@ -141,7 +141,7 @@
                     <div #allCategories class="bxslider" style="box-shadow: none">
                       <div #element class="text-center"
                            style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap"
-                           (click)="showMe(element,others)" [@showMe]="element.show"
+                           (click)="showMe(element)" [@showMe]="element.show"
                            *ngFor="let category of categories">{{category.name}}
                       </div>
                     </div>

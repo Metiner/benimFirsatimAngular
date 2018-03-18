@@ -32,17 +32,22 @@ export class DealComponent implements OnInit {
   ngOnInit(){
     this.setDeals();
   }
+  ngOnDestroy(){
+    this.mySubscription.unsubscribe();
+  }
 
   setDeals(){
-    this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
-      this.benimFirsatimLib.currentDeals = data.json().entries;
+    this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
+      let responseData = data.json();
       this.displayedDeals = [];
-      this.deals = data.json().entries;
+      this.deals = responseData.entries;
+      this.benimFirsatimLib.currentPaging = responseData.current_page;
+      this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
       if(this.deals.length >= 1){
         this.displayedDeals.push(this.deals[0]);
       }
-    });
 
+    });
   }
 
   onDealAnimated(event:AnimationEvent,lastItemIndex){
@@ -52,6 +57,7 @@ export class DealComponent implements OnInit {
     }
     if(this.deals.length > lastItemIndex + 1){
       this.displayedDeals.push(this.deals[lastItemIndex+1])
+      this.benimFirsatimLib.dealAnimationContinues = true;
     }else{
       this.benimFirsatimLib.dealAnimationContinues = false;
       this.deals = this.displayedDeals;

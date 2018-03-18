@@ -8,11 +8,18 @@ import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  currentPage:number;
+  totalPage:number;
 
   constructor(private _scrollTo:ScrollToService,
               private benimFirsatimLib: BenimFirsatimLibrary) { }
 
   ngOnInit() {
+    setTimeout(()=>{
+      this.currentPage = this.benimFirsatimLib.currentPaging;
+      this.totalPage = this.benimFirsatimLib.totalPage;
+
+    },700)
   }
 
   scrollToTop(){
@@ -26,10 +33,14 @@ export class FooterComponent implements OnInit {
   }
 
   nextPage(){
-      this.benimFirsatimLib.currentPaging++;
+    this.benimFirsatimLib.currentPaging++;
+    this.currentPage = this.benimFirsatimLib.currentPaging;
+    this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
   }
 
   previousPage(){
-      this.benimFirsatimLib.currentPaging--;
+    this.benimFirsatimLib.currentPaging--;
+    this.currentPage = this.benimFirsatimLib.currentPaging;
+    this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
   }
 }

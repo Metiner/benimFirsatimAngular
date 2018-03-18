@@ -14,6 +14,7 @@ export class BenimFirsatimLibrary {
 
   currentCategory = 'hot';
   private _currentPaging = 1;
+  private _totalPage:number;
   private _currentDeals = [];
   private _categories =[];
 
@@ -25,10 +26,7 @@ export class BenimFirsatimLibrary {
   //Page code can be,
   //'hot','rising' or 'newcomers'
   public getPage(page_code,pagination){
-
-    let possible_page_codes = ['hot','rising','newcomers'];
-
-    return this.http.get(this.api_address + '/'+page_code+'.json?page='+pagination+'&per_page=3');
+    return this.http.get(this.api_address + '/'+page_code+'.json?page='+pagination);
   }
 
   public signUp(email,password){
@@ -64,12 +62,12 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/categories');
   }
   public changeCategory(type){
-      this.currentPaging = 1;
+    console.log(this.dealAnimationContinues);
     if(!this.dealAnimationContinues){
-      this.dealAnimationContinues = true;
-      this.currentPaging = 1;
-      this.currentCategory = type;
-      this.categoryChanged.next();
+      if(this.currentPaging <= this.totalPage){
+        this.currentCategory = type;
+        this.categoryChanged.next();
+      }
     }
 
   }
@@ -85,9 +83,7 @@ export class BenimFirsatimLibrary {
   set currentPaging(value: number) {
 
     if(value > 0 && !this.dealAnimationContinues){
-      this.dealAnimationContinues = true;
       this._currentPaging = value;
-      this.categoryChanged.next();
     }
   }
 
@@ -136,5 +132,13 @@ export class BenimFirsatimLibrary {
 
   set categories(value: any[]) {
     this._categories = value;
+  }
+
+  get totalPage(): number {
+    return this._totalPage;
+  }
+
+  set totalPage(value: number) {
+    this._totalPage = value;
   }
 }

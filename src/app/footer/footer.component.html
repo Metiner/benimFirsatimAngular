@@ -7,6 +7,9 @@
         </div>
         <div class="col offset-2" style="align-self: center">
           <div class="row" style="flex-wrap:nowrap;align-items: center">
+            <div class="col" style="padding: 0px">
+              <span style="font-family: 'Mark Pro-Light';font-size: 16px;color: #F7E60f">1</span>
+            </div>
             <div class="col" (click)="previousPage()">
               <svg _ngcontent-c2="" style="width: 50%" viewBox="873.383 1039.63 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
                 <defs _ngcontent-c2="">
@@ -22,7 +25,7 @@
               </svg>
             </div>
             <div class="col">
-              <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color: #F7E60f">1932.SAYFA</span>
+              <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color: #F7E60f">{{currentPage}}.SAYFA</span>
             </div>
             <div class="col" (click)="nextPage()">
               <svg _ngcontent-c2="" style="width: 50%" viewBox="1019.212 1039.63 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
@@ -38,8 +41,8 @@
                 <path _ngcontent-c2="" class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 34" id="Path_34" transform="translate(2375.974 1177.316) rotate(135)"></path>
               </svg>
             </div>
-            <div class="col" style="padding: 0%">
-              <span style="font-family: 'Mark Pro-Light';font-size: 10px;color: #F7E60f">3000</span>
+            <div class="col" style="padding: 0px">
+              <span style="font-family: 'Mark Pro-Light';font-size: 16px;color: #F7E60f">{{totalPage}}</span>
             </div>
           </div>
         </div>

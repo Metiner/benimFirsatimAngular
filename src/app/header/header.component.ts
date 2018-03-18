@@ -165,9 +165,8 @@ export class HeaderComponent {
     this.myProfileAnimation = state;
   }
   onCategoryChange(type){
-    this.benimFirsatimLibrary.getPage(type,1);
+    this.benimFirsatimLibrary.currentPaging = 1;
     this.benimFirsatimLibrary.changeCategory(type);
-
   }
   getCategoryIcon(categoryId){
     var src = "";
