@@ -103,6 +103,10 @@ export class SingleDealComponent implements OnInit {
     }
 
     this._scrollTo.scrollTo(config);
-
   }
+
+  goToLink(link:string){
+    window.open(link, '_blank');
+  }
+
 }

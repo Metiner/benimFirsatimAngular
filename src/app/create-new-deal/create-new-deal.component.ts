@@ -1,14 +1,14 @@
-import {Component, OnInit, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
-import {dealAvatarSelectionTrigger, showMeTrigger} from '../animations';
-import {MatDatepickerInputEvent} from '@angular/material';
+import {dealAvatarSelectionTrigger,loadingBlackDivAnimationTrigger , showMeTrigger} from '../animations';
+import {MatDatepickerInputEvent, MatSnackBar, MatSnackBarConfig} from '@angular/material';
 declare var $:any;
 declare var lottie:any;
 @Component({
   selector: 'app-create-new-deal',
   templateUrl: './create-new-deal.component.html',
   styleUrls: ['./create-new-deal.component.scss'],
-  animations: [showMeTrigger,dealAvatarSelectionTrigger]
+  animations: [showMeTrigger,dealAvatarSelectionTrigger,loadingBlackDivAnimationTrigger]
 })
 export class CreateNewDealComponent implements OnInit {
 
@@ -33,7 +33,8 @@ export class CreateNewDealComponent implements OnInit {
 
 
 
-  constructor(public benimFirsatimlib: BenimFirsatimLibrary) { }
+  constructor(public benimFirsatimlib: BenimFirsatimLibrary,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -130,7 +131,9 @@ export class CreateNewDealComponent implements OnInit {
       this.showProgressBar = true;
 
       this.benimFirsatimlib.getPullMeta(event.target.value).subscribe(response=>{
-        if(!response.json().hasOwnProperty("errors")){
+
+        console.log(response.json());
+        if(!response.json().hasOwnProperty("errors") && response.json().best_image != null && response.json().other_images != []){
           this.images =[];
           this.images.push(response.json().best_image);
           for(var i=0;i<response.json().other_images.length;i++){
@@ -143,8 +146,11 @@ export class CreateNewDealComponent implements OnInit {
           this.showProgressBar = false;
         }else{
           this.showProgressBar = false;
+          this.snackBar.open('Lütfen girdiğiniz linki kontrol edin.','',{duration:3000});
         }
       },error2 => {
+        this.showProgressBar = false;
+        this.snackBar.open('Lütfen girdiğiniz linki kontrol edin.','',{duration:3000});
         console.log(error2.toLocaleString());
       })
     }

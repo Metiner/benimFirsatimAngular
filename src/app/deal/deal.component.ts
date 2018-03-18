@@ -41,6 +41,7 @@ export class DealComponent implements OnInit {
       let responseData = data.json();
       this.displayedDeals = [];
       this.deals = responseData.entries;
+      this.benimFirsatimLib.currentDeals = this.deals;
       this.benimFirsatimLib.currentPaging = responseData.current_page;
       this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
       if(this.deals.length >= 1){
@@ -71,6 +72,9 @@ export class DealComponent implements OnInit {
   isItLastItem(deal){
     if(this.deals[this.deals.length-1].id == deal.id)
       return true;
+  }
+  goToLink(link:string){
+    window.open(link, '_blank');
   }
 
 }

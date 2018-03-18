@@ -47,11 +47,18 @@
 .padding{
   padding :10px;
 }
-
-/*div{
+/*
+div{
   border:1px solid black;
 }*/
 
+.loadingDiv{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 #scroll::-webkit-scrollbar-track
 {
 

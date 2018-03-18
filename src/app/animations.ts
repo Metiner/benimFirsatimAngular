@@ -138,3 +138,14 @@ export const dealAvatarSelectionTrigger = trigger('selectMe',[
     animate(500)
   ])
 ])
+
+export const loadingBlackDivAnimationTrigger = trigger('loadingBlackDiv', [
+  transition(':enter', [   // :enter is alias to 'void => *'
+
+    animate(200, style({opacity:1}))
+  ]),
+  transition(':leave', [   // :leave is alias to '* => void'
+    animate(200, style({opacity:0}))
+  ])
+])
+

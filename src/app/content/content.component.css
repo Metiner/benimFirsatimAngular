@@ -1,0 +1,7 @@
+.background {
+  background-image: url("../../assets/imgs/background_pattern@2x.png");
+  background-size: cover;
+  background-repeat: inherit;
+  background-attachment: fixed; }
+
+/*# sourceMappingURL=content.component.css.map */
