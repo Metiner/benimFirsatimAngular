@@ -144,10 +144,10 @@ export const loadingBlackDivAnimationTrigger = trigger('loadingBlackDiv', [
     style({
       opacity:0
     }),
-    animate(200, style({opacity:1}))
+    animate('600ms ease-in-out', style({opacity:1}))
   ]),
   transition(':leave', [   // :leave is alias to '* => void'
-    animate(200, style({opacity:0}))
+    animate('600ms ease-in-out', style({opacity:0}))
   ])
 ]);
 
@@ -191,7 +191,7 @@ export const signupSigninPopupAnimTrigger = trigger('singinSignupPopup', [
     animate('500ms cubic-bezier(.57,.48,0,.98)',
       style({
         opacity:1,
-        left:'61%'
+        left:'64%'
       }))
   ]),
 
@@ -204,12 +204,11 @@ export const signupSigninPopupAnimTrigger = trigger('singinSignupPopup', [
 
 export const kayitOlAnimTrigger = trigger('kayitOl',[
   state('up',style({
-    marginTop:'-14%',
+
     transform:'scale(1.0)'
   })),
   state('down',style({
-    marginTop:'0px',
-    transform:'scale(0.7)'
+    transform:'scale(0.5)'
   })),
   transition('down <=> up',
     animate('1000ms ease-in-out'))
@@ -222,8 +221,8 @@ export const girisYapAnimTrigger = trigger('girisYap',[
     transform:'scale(1.0)'
   })),
   state('down',style({
-    marginTop:'25%',
-    transform:'scale(0.7)'
+    top:'66%',
+    transform:'scale(0.5)'
   })),
   transition('down <=> up',
     animate('1000ms ease-in-out'))

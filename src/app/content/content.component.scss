@@ -1,7 +1,7 @@
-
-//div{
-//  border:1px solid black;
-//}
+/*
+div{
+  border:1px solid black;
+}*/
 .background{
 //    height: -moz-available;          /* WebKit-based browsers will ignore this. */
 //  height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
@@ -25,8 +25,8 @@
     left: 40%;
     z-index: 20;
     border-radius: 20px;
-    width: 400px;
-    height: 600px;
+    width: 25%;
+    height: 70%;
     transform: translate(-50%,-50%);
     background-color: #24418B;
 }
@@ -34,11 +34,11 @@
 .signup-signin{
   position :fixed;
   top:50%;
-  left: 61%;
+  left: 64%;
   z-index: 19;
   border-radius: 0 20px 20px 0px;
-  width: 400px;
-  height: 550px;
+  width: 25%;
+  height: 66%;
   transform: translate(-50%,-50%);
   background-color: #f2f2f2;
 }
@@ -111,8 +111,18 @@ label.css-label {
 
 .kayit-ol{
   transform: scale(0.7);
+  margin-top: 0px;
+  position: fixed;
+  width: 40%;
+  top: 58%;
+  left: 30%;
 }
 
 .giris-yap{
-
+  margin-top: 0px;
+  position: fixed;
+  transform: scale(1);
+  width: 40%;
+  top: 50%;
+  left: 30%;
 }

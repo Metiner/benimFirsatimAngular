@@ -24,7 +24,7 @@
       <img src="../../assets/imgs/available_on_google@2x.png" style="width: inherit">
     </div>
   </div>
-  <div class="row" style="margin-top: 10%">
+  <div class="row" style="margin-top: 5%">
     <div class="col-10 offset-1">
       <input [ngModel]="email" (input)="onEmailChange($event)" class="urlInput" placeholder="E-MAIL">
     </div>
@@ -34,7 +34,12 @@
       <input [ngModel]="password" (input)="onPasswordChange($event)" class="urlInput" placeholder="PAROLA">
     </div>
   </div>
-  <div class="row">
+  <div *ngIf="kayitOlBool" [@loadingBlackDiv] class="row" style="margin-top: 2%">
+    <div class="col-10 offset-1">
+      <input [ngModel]="password2" (input)="onPasswordChange($event)" class="urlInput" placeholder="TEKRAR">
+    </div>
+  </div>
+  <div class="row" *ngIf="beniHatirlaBool" [@loadingBlackDiv]>
     <div class="col-4 offset-1" style="margin-right: -10px">
         <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
       <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">BENİ HATIRLA</span>
@@ -43,12 +48,11 @@
       <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">PAROLANI MI UNUTTUN?</span>
     </div>
   </div>
-  <div style="margin-top: 1%" [@girisYap]="girisYapState" (click)="changeState('giris')">
-    <img src="../../assets/svgs/giris_yap_button.svg">
-  </div>
-  <div style="margin-top: 1%" [@kayitOl]="kayitOlState" (click)="changeState('kayit')">
-    <img src="../../assets/svgs/kayit_ol_button.svg">
-  </div>
+  <img class="giris-yap" [@girisYap]="girisYapState" (click)="changeState('giris')" src="../../assets/svgs/giris_yap_button.svg">
+  <div class="kayit-ol" [@kayitOl]="kayitOlState" (click)="changeState('kayit')" id="kayitOlAnim"></div>
+  <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;position: fixed;left: 50%;bottom: 12%;transform: translate(-50%,-50%);white-space: nowrap">YADA SOSYAL MEDYA HESAPLARINDAN BİRİNİ SEÇ</span>
+  <img src="../../assets/svgs/FB-Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 40%;transform: translate(-50%,-50%);bottom: -3%;">
+  <img src="../../assets/svgs/G+Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 60%; transform: translate(-50%,-50%);bottom: -3%;">
 </div>
 <div class="row background">
   <div class="col" style="margin-top: 150px;">
