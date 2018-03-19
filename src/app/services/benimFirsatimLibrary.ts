@@ -10,6 +10,7 @@ export class BenimFirsatimLibrary {
 
 
   categoryChanged = new Subject<any>();
+  openSignUpPopUp = new Subject<any>();
   private _dealAnimationContinues = true;
 
   currentCategory = 'hot';
@@ -70,6 +71,9 @@ export class BenimFirsatimLibrary {
       }
     }
 
+  }
+  public openSignUpPopUpFunc(){
+    this.openSignUpPopUp.next();
   }
   //Gets information from given deal link.
   public getPullMeta(url){

@@ -10,3 +10,109 @@
   background-repeat: inherit;
   background-attachment: fixed;
 }
+
+.loadingDiv{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 18;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tutorial{
+    position :fixed;
+    top:50%;
+    left: 40%;
+    z-index: 20;
+    border-radius: 20px;
+    width: 400px;
+    height: 600px;
+    transform: translate(-50%,-50%);
+    background-color: #24418B;
+}
+
+.signup-signin{
+  position :fixed;
+  top:50%;
+  left: 61%;
+  z-index: 19;
+  border-radius: 0 20px 20px 0px;
+  width: 400px;
+  height: 550px;
+  transform: translate(-50%,-50%);
+  background-color: #f2f2f2;
+}
+
+.urlInput{
+  outline:none;
+  border-radius: 30px;
+  background-color: white;
+  border: 1px solid white;
+  width: inherit;
+  color:#234491;
+  text-indent: 10px;
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+  overflow: scroll;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:#234491;
+  opacity: 1; /* Firefox */
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+  color:#234491;
+}
+
+
+:-ms-input-placeholder { /* Microsoft Edge */
+  color:#234491;
+  font-family:"Mark Pro-Medium";
+  font-size: 15px;
+}
+
+input[type=checkbox].css-checkbox {
+  position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left:23px;
+  height:18px;
+  display:inline-block;
+  line-height:18px;
+  background-repeat:no-repeat;
+  background-position: 0 0;
+  font-size:18px;
+  vertical-align:middle;
+  cursor:pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -18px;
+}
+label.css-label {
+  background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_001aa7bf6327f8fac80e0eb160776ef4.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/deep/.mat-radio-label{
+  margin-top:25%;
+}
+
+.kayit-ol{
+  transform: scale(0.7);
+}
+
+.giris-yap{
+
+}

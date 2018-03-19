@@ -19,12 +19,10 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { CreateNewDealComponent } from './create-new-deal/create-new-deal.component';
 import { MaterialModule } from './material.module';
 import './../polyfills';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
-  {path : 'signUp' , component:SignUpComponent},
   { path : 'createNewDeal', component: CreateNewDealComponent}
 ]
 

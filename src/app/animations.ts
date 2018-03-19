@@ -59,7 +59,7 @@ export const slideInOutAnimation = [
      ])
     ])])
 
-]
+];
 
 export const dealStateTrigger = trigger('dealState',[
   transition(':enter',[
@@ -81,7 +81,7 @@ export const dealStateTrigger = trigger('dealState',[
       })
     ]))
   ])
-])
+]);
 
 export const commentStateTrigger = trigger('commentState',[
   transition(':enter',[
@@ -110,7 +110,7 @@ export const commentStateTrigger = trigger('commentState',[
       })
     ]))
   ])
-])
+]);
 
 
 export const showMeTrigger = trigger('showMe',[
@@ -123,7 +123,7 @@ export const showMeTrigger = trigger('showMe',[
   transition('*<=>*',[
     animate(500)
   ])
-])
+]);
 
 export const dealAvatarSelectionTrigger = trigger('selectMe',[
   state('selected',style({
@@ -137,15 +137,94 @@ export const dealAvatarSelectionTrigger = trigger('selectMe',[
   transition('*<=>*',[
     animate(500)
   ])
-])
+]);
 
 export const loadingBlackDivAnimationTrigger = trigger('loadingBlackDiv', [
   transition(':enter', [   // :enter is alias to 'void => *'
-
+    style({
+      opacity:0
+    }),
     animate(200, style({opacity:1}))
   ]),
   transition(':leave', [   // :leave is alias to '* => void'
     animate(200, style({opacity:0}))
   ])
+]);
+
+
+export const tutorialPopupAnimTrigger = trigger('tutorialPopup', [
+  transition(':enter',[
+    style({
+      opacity:0,
+      top:'47%',
+      visibility:'hidden'
+    }),
+    animate(300,
+      style({
+        opacity:1,
+        top:'50%',
+        visibility:'visible'
+      }))
+  ]),
+
+  transition(':leave',[
+    style({
+      opacity:1,
+      visibility:'visible'
+    }),
+    animate(500,
+      style({
+        opacity:0,
+        visibility:'hidden'
+      }))
+  ])
+]);
+
+
+export const signupSigninPopupAnimTrigger = trigger('singinSignupPopup', [
+  transition(':enter',[
+
+    style({
+      opacity:0,
+      left:'40%'
+    }),
+    animate('500ms cubic-bezier(.57,.48,0,.98)',
+      style({
+        opacity:1,
+        left:'61%'
+      }))
+  ]),
+
+  transition(':leave',[
+    style({
+      visibility:'hidden'
+    })
+  ])
+]);
+
+export const kayitOlAnimTrigger = trigger('kayitOl',[
+  state('up',style({
+    marginTop:'-14%',
+    transform:'scale(1.0)'
+  })),
+  state('down',style({
+    marginTop:'0px',
+    transform:'scale(0.7)'
+  })),
+  transition('down <=> up',
+    animate('1000ms ease-in-out'))
 ])
 
+
+export const girisYapAnimTrigger = trigger('girisYap',[
+  state('up',style({
+    marginTop:'0px',
+    transform:'scale(1.0)'
+  })),
+  state('down',style({
+    marginTop:'25%',
+    transform:'scale(0.7)'
+  })),
+  transition('down <=> up',
+    animate('1000ms ease-in-out'))
+])

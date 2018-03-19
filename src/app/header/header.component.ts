@@ -28,6 +28,7 @@ export class HeaderComponent {
   categories = [];
 
   isAuth = false;
+  showSingUpSignInPopUp = false;
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,
               public router:Router){
@@ -45,8 +46,8 @@ export class HeaderComponent {
   checkAuth(){
     this.isAuth = this.benimFirsatimLibrary.isAutho;
   }
-  goToSignUp(){
-    this.router.navigate(['signUp']);
+  goToSignUpAndSignin(){
+    this.benimFirsatimLibrary.openSignUpPopUpFunc();
   }
   initializeAnims() {
     this.oneCikanlarAnimConf = {

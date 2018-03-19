@@ -110,7 +110,7 @@
     </div>
     <div class="col-2" style="margin-left: 103%">
       <div class="myProfile" (mouseleave)="slideMyProfileDiv('out')" [@slideInOut]="myProfileAnimation">
-        <div (click)="goToSignUp()" *ngIf="!isAuth" class="row myProfileItemRow">
+        <div (click)="goToSignUpAndSignin()" *ngIf="!isAuth" class="row myProfileItemRow">
           <div class="col offset-2 myProfileItemCol">
             <span>Giriş yap</span>
           </div>

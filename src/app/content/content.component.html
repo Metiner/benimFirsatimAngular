@@ -1,5 +1,57 @@
+
+<div class="loadingDiv"
+     [@loadingBlackDiv]
+     *ngIf="tutorial">
+</div>
+<div class="tutorial"
+  *ngIf="tutorial"
+  [@tutorialPopup]>
+</div>
+<div class="signup-signin"
+     *ngIf="showSingUpSignInPopUp"
+     [@singinSignupPopup]>
+  <div class="row" style="margin-top: 7%">
+    <div class="col text-center">
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">BENİM FIRSATIM UYGULAMASINI İNDİR,<br>
+                                                                                CEPTEDE FIRSATLARI KOVALA!</span>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%">
+    <div class="col-5 offset-1">
+      <img src="../../assets/imgs/available_on_appstore@2x.png" style="width: inherit">
+    </div>
+    <div class="col-5">
+      <img src="../../assets/imgs/available_on_google@2x.png" style="width: inherit">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10%">
+    <div class="col-10 offset-1">
+      <input [ngModel]="email" (input)="onEmailChange($event)" class="urlInput" placeholder="E-MAIL">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%">
+    <div class="col-10 offset-1">
+      <input [ngModel]="password" (input)="onPasswordChange($event)" class="urlInput" placeholder="PAROLA">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-1" style="margin-right: -10px">
+        <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
+      <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">BENİ HATIRLA</span>
+    </div>
+    <div class="col offset-1" style="margin-top: 1%">
+      <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">PAROLANI MI UNUTTUN?</span>
+    </div>
+  </div>
+  <div style="margin-top: 1%" [@girisYap]="girisYapState" (click)="changeState('giris')">
+    <img src="../../assets/svgs/giris_yap_button.svg">
+  </div>
+  <div style="margin-top: 1%" [@kayitOl]="kayitOlState" (click)="changeState('kayit')">
+    <img src="../../assets/svgs/kayit_ol_button.svg">
+  </div>
+</div>
 <div class="row background">
-  <div class="col" style="margin-top: 5%;">
+  <div class="col" style="margin-top: 150px;">
     <router-outlet></router-outlet>
   </div>
 </div>
