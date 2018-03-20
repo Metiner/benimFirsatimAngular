@@ -5,6 +5,7 @@ import {
   girisYapAnimTrigger, kayitOlAnimTrigger, loadingBlackDivAnimationTrigger, signupSigninPopupAnimTrigger,
   tutorialPopupAnimTrigger
 } from '../animations';
+import {NgForm} from '@angular/forms';
 declare var lottie:any;
 
 @Component({
@@ -19,8 +20,8 @@ declare var lottie:any;
 })
 export class ContentComponent implements OnDestroy,OnInit{
 
-  showSingUpSignInPopUp = true;
-  tutorial = true;
+  showSingUpSignInPopUp = false;
+  tutorial = false;
   mySignUpPopUpSubscription: Subscription;
   email:string;
   password:string;
@@ -33,10 +34,15 @@ export class ContentComponent implements OnDestroy,OnInit{
   beniHatirlaBool = true;
 
   kayitOlAnim:any;
+  tutorialAnim:any;
   constructor(public benimFirsatimLib: BenimFirsatimLibrary) {
 
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
       next =>{
+        setTimeout(()=>{
+          this.loadAnimations();
+
+        },1000)
         this.tutorial = true;
         setTimeout(()=>{
           this.showSingUpSignInPopUp = true;
@@ -47,23 +53,15 @@ export class ContentComponent implements OnDestroy,OnInit{
   }
 
   ngOnInit(){
-    setTimeout(()=>{
-      this.loadAnimations();
 
-    },1000)
   }
   ngOnDestroy() {
     this.mySignUpPopUpSubscription.unsubscribe();
   }
 
-  onEmailChange(event){
-    this.email = event.target.value;
-
+  onsubmit(form:NgForm){
+    console.log(form.value);
   }
-  onPasswordChange(event){
-    this.password = event.target.value;
-  }
-
   changeState(type){
 
     console.log(type);
@@ -109,6 +107,13 @@ export class ContentComponent implements OnDestroy,OnInit{
       loop: false,
       autoplay: false,
       path: 'assets/animations/kayit_ol_tick.json' // the path to the animation json
+    });
+    this.tutorialAnim = lottie.loadAnimation({
+      container: document.getElementById('tutorialAnim'), // the dom element that will contain the animation
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      path: 'assets/animations/signup_panel_info.json' // the path to the animation json
     });
   }
 
