@@ -11,6 +11,7 @@ export class BenimFirsatimLibrary {
 
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
+  successLoginProfileMenuChange = new Subject<any>();
   private _dealAnimationContinues = true;
 
   currentCategory = 'hot';
@@ -20,10 +21,19 @@ export class BenimFirsatimLibrary {
   private _categories =[];
 
   private _isAutho = false;
+  private _currentUser:any;
 
   constructor(public http: Http ) {
+    this.silentLogin();
   }
 
+  silentLogin(){
+    if(localStorage.getItem("user") !== null){
+      let user = JSON.parse(localStorage.getItem("user"));
+      this.currentUser = user;
+      this.isAutho = true;
+    }
+  }
   //Page code can be,
   //'hot','rising' or 'newcomers'
   public getPage(page_code,pagination){
@@ -120,6 +130,12 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/'+deal_id+'/comments');
   }
 
+  public successLogin(data:any){
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user",JSON.stringify(data.user));
+    this.currentUser = data.user;
+    this.successLoginProfileMenuChange.next("success");
+  }
 
   get isAutho(): boolean {
     return this._isAutho;
@@ -144,5 +160,13 @@ export class BenimFirsatimLibrary {
 
   set totalPage(value: number) {
     this._totalPage = value;
+  }
+
+  get currentUser(): any {
+    return this._currentUser;
+  }
+
+  set currentUser(value: any) {
+    this._currentUser = value;
   }
 }

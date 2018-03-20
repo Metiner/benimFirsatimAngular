@@ -24,7 +24,7 @@ div{
   width: 25%;
   height: 70%;
   transform: translate(-50%, -50%);
-  background-color: #24418B; }
+  background-image: linear-gradient(to right bottom, #1f376f, #00548a, #006e8c, #008475, #15964e); }
 
 .signup-signin {
   position: fixed;
@@ -122,5 +122,10 @@ label.css-label {
   width: 40%;
   top: 50%;
   left: 30%; }
+
+.invisible {
+  background: transparent;
+  border: none !important;
+  font-size: 0; }
 
 /*# sourceMappingURL=content.component.css.map */

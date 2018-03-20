@@ -35,6 +35,10 @@ export class ContentComponent implements OnDestroy,OnInit{
 
   kayitOlAnim:any;
   tutorialAnim:any;
+
+  kayitOlButtonClickable = false;
+  girisYapButtonClickable = false;
+
   constructor(public benimFirsatimLib: BenimFirsatimLibrary) {
 
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
@@ -59,14 +63,73 @@ export class ContentComponent implements OnDestroy,OnInit{
     this.mySignUpPopUpSubscription.unsubscribe();
   }
 
-  onsubmit(form:NgForm){
-    console.log(form.value);
+  onGirisButtonClick(form:NgForm) {
+
+    console.log("giris yap" +this.girisYapButtonClickable)
+    if (this.girisYapButtonClickable) {
+      this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
+
+        if (data.json() != null && data.json().success == true) {
+          this.benimFirsatimLib.successLogin(data.json());
+          this.tutorial = false;
+          this.showSingUpSignInPopUp = false;
+
+        }
+      }, error => {
+        console.log(error);
+        //this.benimFirsatimLib.showAlert(" ","Yanlış e-mail veya parola girdiniz.",["Tamam"]);
+      })
+    }
+  }
+  onKayitButtonClick(form:NgForm){
+
+    console.log("kayit ol" +this.kayitOlButtonClickable)
+    if (this.kayitOlButtonClickable) {
+      if (!form.value.password == form.value.password2) {
+        //this.benimFirsatimLib.showToast("Parolalar uyuşmamakta",3000,"bottom");
+      } else {
+        this.benimFirsatimLib.signUp(form.value.email, form.value.password).subscribe(data => {
+          if (data.json != null) {
+            if (data.json() != null && data.json().state.code == 0) {
+              //this.benimFirsatimLib.showToast("Kullanıcı oluşturuldu",3000,"bottom");
+              //this.navCtrl.push(LoginPage);
+            } else if (data.json().state.code == 1) {
+              //this.benimFirsatimLib.showToast(data.json().state.messages[0],3500,"bottom");
+              form.reset();
+            }
+          }
+        }, error => {
+          console.log(error);
+          //this.benimFirsatimLib.showAlert("",error,["Tamam"]);
+          // });
+        });
+      }
+    }
+  }
+
+  makeSignUpButtonClickable(event){
+    if(event.fromState === 'down' && event.toState === 'up' && event.triggerName === 'kayitOl'){
+      this.kayitOlButtonClickable = true;
+
+    }else{
+      this.kayitOlButtonClickable = false;
+    }
+ }
+  makeLoginButtonClickable(event){
+    if(event.fromState === 'down' && event.toState === 'up' && event.triggerName === 'girisYap'){
+    this.girisYapButtonClickable = true;
+
+    }else {
+      this.girisYapButtonClickable = false;
+    }
+    if(event.fromState === 'void' && event.toState === 'up' && event.triggerName === 'girisYap')
+      this.girisYapButtonClickable = true;
+
   }
   changeState(type){
-
-    console.log(type);
     if(this.currentState !== type){
       this.currentState = type;
+
       if(type === 'kayit')
       {
         this.beniHatirlaBool = false;
@@ -95,7 +158,6 @@ export class ContentComponent implements OnDestroy,OnInit{
       }
     }else{
       if(type === 'kayit'){
-        console.log(type)
         this.kayitOlAnim.play();
       }
     }

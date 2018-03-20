@@ -1,9 +1,10 @@
 
-import {Component, EventEmitter, Injectable, Output} from '@angular/core';
+import {Component, EventEmitter, Injectable, OnDestroy, Output} from '@angular/core';
 import {slideInOutAnimation} from '../animations';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subject} from "rxjs/Subject";
 import {Router} from '@angular/router';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss'],
   animations: [slideInOutAnimation]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy{
 
   oneCikanlarAnimConf: Object;
   yukselenlerAnimConf: Object;
@@ -30,6 +31,8 @@ export class HeaderComponent {
   isAuth = false;
   showSingUpSignInPopUp = false;
 
+  autSubscription : Subscription;
+
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,
               public router:Router){
 
@@ -38,11 +41,23 @@ export class HeaderComponent {
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
       this.benimFirsatimLibrary.categories = response.json();
-
-
     });
+    this.autSubscription = this.benimFirsatimLibrary.successLoginProfileMenuChange.subscribe(value=>{
+      if(value === 'success'){
+        this.isAuth = true;
+      }
+    })
   }
 
+  ngOnDestroy(){
+    this.autSubscription.unsubscribe();
+  }
+
+  logout(){
+    this.isAuth = false;
+    localStorage.clear();
+    this.benimFirsatimLibrary.currentUser = {};
+  }
   checkAuth(){
     this.isAuth = this.benimFirsatimLibrary.isAutho;
   }
