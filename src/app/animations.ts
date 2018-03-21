@@ -227,3 +227,25 @@ export const girisYapAnimTrigger = trigger('girisYap',[
   transition('down <=> up',
     animate('1000ms ease-in-out'))
 ])
+
+export const kayitSuccessTrigger = trigger('kayitSuccess',[
+  transition(':enter',[
+    animate('1000ms ease-in-out',keyframes([
+      style({
+        opacity:0,
+        offset:0,
+        transform:'scale(0)'
+      }),
+      style({
+        opacity:1,
+        offset:0.8,
+        transform:'scale(1.3)'
+      }),
+      style({
+        opacity:1,
+        offset:1,
+        transform:'scale(1)'
+      })
+    ]))
+  ])
+]);

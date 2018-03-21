@@ -2,10 +2,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subscription} from 'rxjs/Subscription';
 import {
-  girisYapAnimTrigger, kayitOlAnimTrigger, loadingBlackDivAnimationTrigger, signupSigninPopupAnimTrigger,
+  girisYapAnimTrigger, kayitOlAnimTrigger, kayitSuccessTrigger, loadingBlackDivAnimationTrigger, signupSigninPopupAnimTrigger,
   tutorialPopupAnimTrigger
 } from '../animations';
 import {NgForm} from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
 declare var lottie:any;
 
 @Component({
@@ -16,7 +17,8 @@ declare var lottie:any;
     loadingBlackDivAnimationTrigger,
     tutorialPopupAnimTrigger,
     kayitOlAnimTrigger,
-    girisYapAnimTrigger ]
+    girisYapAnimTrigger,
+    kayitSuccessTrigger]
 })
 export class ContentComponent implements OnDestroy,OnInit{
 
@@ -39,7 +41,10 @@ export class ContentComponent implements OnDestroy,OnInit{
   kayitOlButtonClickable = false;
   girisYapButtonClickable = false;
 
-  constructor(public benimFirsatimLib: BenimFirsatimLibrary) {
+  showForm = true;
+
+  constructor(public benimFirsatimLib: BenimFirsatimLibrary,
+              public snackBar: MatSnackBar) {
 
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
       next =>{
@@ -65,8 +70,8 @@ export class ContentComponent implements OnDestroy,OnInit{
 
   onGirisButtonClick(form:NgForm) {
 
-    console.log("giris yap" +this.girisYapButtonClickable)
     if (this.girisYapButtonClickable) {
+      console.log("giris yap cagırdi")
       this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
 
         if (data.json() != null && data.json().success == true) {
@@ -76,32 +81,33 @@ export class ContentComponent implements OnDestroy,OnInit{
 
         }
       }, error => {
-        console.log(error);
-        //this.benimFirsatimLib.showAlert(" ","Yanlış e-mail veya parola girdiniz.",["Tamam"]);
+        this.snackBar.open('Yanlış e-mail veya parola girdiniz.','',{duration:3000});
       })
     }
   }
   onKayitButtonClick(form:NgForm){
 
-    console.log("kayit ol" +this.kayitOlButtonClickable)
     if (this.kayitOlButtonClickable) {
+      console.log("kayit ol cagırdi")
       if (!form.value.password == form.value.password2) {
-        //this.benimFirsatimLib.showToast("Parolalar uyuşmamakta",3000,"bottom");
+        this.snackBar.open('Parolalar Uyuşmamakta','',{duration:3000});
       } else {
         this.benimFirsatimLib.signUp(form.value.email, form.value.password).subscribe(data => {
-          if (data.json != null) {
-            if (data.json() != null && data.json().state.code == 0) {
-              //this.benimFirsatimLib.showToast("Kullanıcı oluşturuldu",3000,"bottom");
+          if (data != null) {
+            if (data.status == 200 && data.ok) {
+              this.snackBar.open('Kullanıcı Yaratıldı','',{duration:3000});
+              this.showForm = false;
+              this.kayitOlAnim.play();
               //this.navCtrl.push(LoginPage);
             } else if (data.json().state.code == 1) {
-              //this.benimFirsatimLib.showToast(data.json().state.messages[0],3500,"bottom");
+
+              this.snackBar.open(data.json().state.messages[0],'',{duration:3000});
               form.reset();
             }
           }
         }, error => {
           console.log(error);
-          //this.benimFirsatimLib.showAlert("",error,["Tamam"]);
-          // });
+          this.snackBar.open('Yanlış e-mail veya parola girdiniz.','',{duration:3000});
         });
       }
     }
@@ -155,10 +161,6 @@ export class ContentComponent implements OnDestroy,OnInit{
           this.girisYapState = 'up';
           this.kayitOlState = 'down'
         }
-      }
-    }else{
-      if(type === 'kayit'){
-        this.kayitOlAnim.play();
       }
     }
   }

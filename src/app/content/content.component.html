@@ -12,6 +12,10 @@
      *ngIf="showSingUpSignInPopUp"
      [@singinSignupPopup]>
   <div class="row" style="margin-top: 7%">
+    <div class="kayit-success" [@kayitSuccess] *ngIf="!showForm" >
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">KAYIT,<br>
+                                                                                BAŞARILI!</span>
+    </div>
     <div class="col text-center">
       <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">BENİM FIRSATIM UYGULAMASINI İNDİR,<br>
                                                                                 CEPTEDE FIRSATLARI KOVALA!</span>
@@ -26,28 +30,30 @@
     </div>
   </div>
   <form (ngSubmit)="onsubmit(f)" #f="ngForm">
-    <div class="row" style="margin-top: 5%">
-      <div class="col-10 offset-1">
-        <input required ngModel name="email" class="urlInput" type="email" placeholder="E-MAIL">
+    <div *ngIf="showForm" [@tutorialPopup]>
+      <div class="row" style="margin-top: 5%">
+        <div class="col-10 offset-1">
+          <input required ngModel name="email" class="urlInput" type="email" placeholder="E-MAIL">
+        </div>
       </div>
-    </div>
-    <div class="row" style="margin-top: 2%">
-      <div class="col-10 offset-1">
-        <input required ngModel name="password" [minlength]="6" class="urlInput" type="password" placeholder="PAROLA">
+      <div class="row" style="margin-top: 2%">
+        <div class="col-10 offset-1">
+          <input required ngModel name="password" [minlength]="6" class="urlInput" type="password" placeholder="PAROLA">
+        </div>
       </div>
-    </div>
-    <div *ngIf="kayitOlBool" [@loadingBlackDiv] class="row" style="margin-top: 2%">
-      <div class="col-10 offset-1">
-        <input ngModel name="password2" [minlength]="6" class="urlInput" type="password" placeholder="TEKRAR">
+      <div *ngIf="kayitOlBool" [@loadingBlackDiv] class="row" style="margin-top: 2%">
+        <div class="col-10 offset-1">
+          <input ngModel name="password2" [minlength]="6" class="urlInput" type="password" placeholder="TEKRAR">
+        </div>
       </div>
-    </div>
-    <div class="row" *ngIf="beniHatirlaBool" [@loadingBlackDiv]>
-      <div class="col-4 offset-1" style="margin-right: -10px">
+      <div class="row" *ngIf="beniHatirlaBool" [@loadingBlackDiv]>
+        <div class="col-4 offset-1" style="margin-right: -10px">
           <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
-        <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">BENİ HATIRLA</span>
-      </div>
-      <div class="col offset-1" style="margin-top: 1%">
-        <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">PAROLANI MI UNUTTUN?</span>
+          <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">BENİ HATIRLA</span>
+        </div>
+        <div class="col offset-1" style="margin-top: 1%">
+          <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">PAROLANI MI UNUTTUN?</span>
+        </div>
       </div>
     </div>
     <button class="invisible" type="button" (click)="onGirisButtonClick(f)">
