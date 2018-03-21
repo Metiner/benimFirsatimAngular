@@ -211,7 +211,17 @@ export const kayitOlAnimTrigger = trigger('kayitOl',[
     transform:'scale(0.5)'
   })),
   transition('down <=> up',
-    animate('1000ms ease-in-out'))
+    animate('1000ms ease-in-out')),
+  transition(':enter',[
+    style({
+    opacity:0
+  }),
+    animate('300ms ease-in-out',
+
+      style({
+        opacity:1
+      }))
+  ])
 ])
 
 

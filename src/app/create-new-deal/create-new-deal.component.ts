@@ -39,8 +39,6 @@ export class CreateNewDealComponent implements OnInit {
   ngOnInit() {
 
     //this.categories = this.benimFirsatimlib.categories;
-    this.loadAnimations();
-
     $(document).ready(function() {
 
       $('.bxslider').bxSlider({
@@ -56,6 +54,7 @@ export class CreateNewDealComponent implements OnInit {
       });
     });
     this.fillImagesArrayWithDefaultImages();
+
   }
 
 // it fills the array with default images.

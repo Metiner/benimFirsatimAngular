@@ -8,6 +8,13 @@ div{
   background-repeat: inherit;
   background-attachment: fixed; }
 
+.kayit-success {
+  position: fixed;
+  top: 36%;
+  left: 29%;
+  z-index: 18;
+  text-align: center; }
+
 .loadingDiv {
   position: fixed;
   width: 100%;

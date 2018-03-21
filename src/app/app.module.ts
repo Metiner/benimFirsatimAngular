@@ -19,6 +19,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { CreateNewDealComponent } from './create-new-deal/create-new-deal.component';
 import { MaterialModule } from './material.module';
 import './../polyfills';
+import {FacebookModule} from "ngx-facebook";
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
@@ -46,6 +47,7 @@ const appRoutes : Routes = [
     LottieAnimationViewModule.forRoot(),
     ScrollToModule.forRoot(), // scroll to library.
     RouterModule.forRoot(appRoutes),
+    FacebookModule.forRoot(),
     MaterialModule
   ],
   providers: [BenimFirsatimLibrary,
