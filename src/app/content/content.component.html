@@ -1,4 +1,3 @@
-
 <div class="loadingDiv"
      [@loadingBlackDiv]
      (click)="exitFromSignup()"
@@ -14,8 +13,12 @@
      [@singinSignupPopup]
       (@singinSignupPopup.done)="onTutorialAnimFinished()">
   <div class="row" style="margin-top: 7%">
-    <div class="kayit-success" [@kayitSuccess] *ngIf="!showForm" >
+    <div class="kayit-success" [@kayitSuccess] *ngIf="kayitBasariliText">
       <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">KAYIT,<br>
+                                                                                BAŞARILI!</span>
+    </div>
+    <div class="kayit-success" [@kayitSuccess] *ngIf="girisBasariliText">
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">GİRİŞ,<br>
                                                                                 BAŞARILI!</span>
     </div>
     <div class="col text-center">

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
 import {Subject} from "rxjs/Subject";
+import {NgForm} from '@angular/forms';
 
 @Injectable()
 export class BenimFirsatimLibrary {
@@ -89,36 +90,6 @@ export class BenimFirsatimLibrary {
   public getPullMeta(url){
     return this.http.get(this.api_address + '/deals/pull_meta?target=' + url);
   }
-
-  get currentPaging(): number {
-    return this._currentPaging;
-  }
-
-  set currentPaging(value: number) {
-
-    if(value > 0 && !this.dealAnimationContinues){
-      this._currentPaging = value;
-    }
-  }
-
-
-  get dealAnimationContinues(): boolean {
-    return this._dealAnimationContinues;
-  }
-
-  set dealAnimationContinues(value: boolean) {
-    this._dealAnimationContinues = value;
-  }
-
-
-  get currentDeals(): any[] {
-    return this._currentDeals;
-  }
-
-  set currentDeals(value: any[]) {
-    this._currentDeals = value;
-  }
-
   getDealById(id:string){
     for(let i=0;i<this.currentDeals.length;i++){
       if(this.currentDeals[i].id == id)
@@ -133,8 +104,50 @@ export class BenimFirsatimLibrary {
   public successLogin(data:any){
     localStorage.setItem("token", data.token);
     localStorage.setItem("user",JSON.stringify(data.user));
+    this.isAutho = true;
     this.currentUser = data.user;
     this.successLoginProfileMenuChange.next("success");
+  }
+  public createComment(deal_id,parent_comment_id,comment){
+    let opt = this.setHeader();
+    return this.http.post(this.api_address + '/deals/' + deal_id +'/comments.json',{parent_comment_id:parent_comment_id,comment:comment},opt);
+  }
+
+  public createDeal(form:NgForm,selectedImageUrl,imageBase64){
+    let opt = this.setHeader();
+    let categories = '';
+    let body;
+    console.log(form.value);
+    // if(selectedImageUrl == 'photoTaken'){
+    //   body = {starts_at:form.value.deal_date,
+    //     price:form.value.deal_price,
+    //     categories: form.value.selectedCategory[0],
+    //     image_64:imageBase64,
+    //     link:form.value.deal_url,
+    //     title:form.value.deal_title,
+    //     details:form.value.deal_details,
+    //     coupon_code:form.value.deal_coupon_code,
+    //     city:form.value.selectedCity};
+    // }
+    // else{
+      body = {
+        starts_at:form.value.deal_date,
+        price:form.value.dealPrice,
+        categories: form.value.selectedCategory,
+        link:form.value.dealUrl,
+        image_url:selectedImageUrl,
+        title:form.value.dealTitle,
+        details:form.value.dealDetail,
+        coupon_code:form.value.coupon_code,
+        city:form.value.selectedCity};
+
+
+    return this.http.post(this.api_address + '/deals/create.json',body,opt);
+  }
+
+  public commentVote(comment_id){
+    let opt = this.setHeader();
+    return this.http.post(this.api_address + '/comments/'+comment_id+'/vote',{},opt);
   }
 
   get isAutho(): boolean {
@@ -168,5 +181,32 @@ export class BenimFirsatimLibrary {
 
   set currentUser(value: any) {
     this._currentUser = value;
+  }
+
+  get currentPaging(): number {
+    return this._currentPaging;
+  }
+
+  set currentPaging(value: number) {
+
+    if(value > 0 && !this.dealAnimationContinues){
+      this._currentPaging = value;
+    }
+  }
+  get dealAnimationContinues(): boolean {
+    return this._dealAnimationContinues;
+  }
+
+  set dealAnimationContinues(value: boolean) {
+    this._dealAnimationContinues = value;
+  }
+
+
+  get currentDeals(): any[] {
+    return this._currentDeals;
+  }
+
+  set currentDeals(value: any[]) {
+    this._currentDeals = value;
   }
 }

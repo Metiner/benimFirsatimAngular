@@ -1,305 +1,324 @@
-<div class="row">
-  <div class="col-10 offset-1">
-    <div class="row">
-      <div class="col">
-        <div class="row" style="margin-top: 2%">
-          <div class="col">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">YENİ FIRSAT EKLE</span>
+<form #f="ngForm">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <div class="row">
+        <div class="col">
+          <div class="row" style="margin-top: 2%">
+            <div class="col">
+              <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">YENİ FIRSAT EKLE</span>
+            </div>
           </div>
-        </div>
-        <div class="row" style="flex-wrap: nowrap">
-          <div class="col-6" style="border-radius: 30px;background-color: white;margin-top: 1%">
-            <div class="row">
-              <div class="col">
-                <div class="row align-items-center">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/ilan_linki_icon.svg">
+          <div class="row" style="flex-wrap: nowrap">
+            <div class="col-6" style="border-radius: 30px;background-color: white;margin-top: 1%">
+              <div class="row">
+                <div class="col">
+                  <div class="row align-items-center">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/ilan_linki_icon.svg">
+                    </div>
+                    <div class="col nopadding">
+                      <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">İLAN LİNKİ</span>
+                    </div>
                   </div>
-                  <div class="col nopadding">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">İLAN LİNKİ</span>
+                  <div class="row">
+                    <div class="col" style="height: 40px">
+                      <input
+                        #dealUrl
+                             ngModel name="dealUrl" (input)="onUrlChangeWithGivenLink($event)" class="urlInput"
+                             style="height: 40px;padding: 10px"
+                             placeholder="http://alisverissitem.com/urun.aspx?kod=112"
+                      [@highlight]="dealUrl.highlight">
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col" style="height: 40px">
-                    <input (input)="onUrlChangeWithGivenLink($event)" class="urlInput" style="height: 40px;padding: 10px"
-                           placeholder="http://alisverissitem.com/urun.aspx?kod=112">
+                  <div class="row align-items-center">
+                    <div class="col-1 padding" style="margin-right: -10px">
+                      <img src="assets/svgs/ilan_detaylari_icon.svg">
+                    </div>
+                    <div class="col">
+                      <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491">İLAN DETAYLARI</span>
+                    </div>
                   </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-1 padding" style="margin-right: -10px">
-                    <img src="assets/svgs/ilan_detaylari_icon.svg">
-                  </div>
-                  <div class="col">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491">İLAN DETAYLARI</span>
-                  </div>
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap;padding:0 2% 0 2%">
-                  <div class="col" style="height: 150px;align-items: center;max-height: 150px;width: 0px">
-                    <div #allImages id="scroll" class="row"
-                         style="overflow-x: scroll;overflow-y:hidden;flex-wrap: nowrap">
-                      <div class="col-3" *ngFor="let dealImage of images"
-                           style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
-                        <img [@selectMe]="element.select" #element (click)="selectMe(element)" src="{{dealImage}}"
-                             style="max-height:150px;max-width: 150px;border-radius: 15px;margin: auto">
+                  <div class="row align-items-center" style="flex-wrap: nowrap;padding:0 2% 0 2%">
+                    <div class="col" style="height: 150px;align-items: center;max-height: 150px;width: 0px">
+                      <div #allImages id="scroll" class="row"
+                           style="overflow-x: scroll;overflow-y:hidden;flex-wrap: nowrap">
+                        <div class="col-3" *ngFor="let dealImage of images"
+                             style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
+                          <img [@selectMe]="element.select" #element (click)="selectMe(element)" src="{{dealImage}}"
+                               style="max-height:150px;max-width: 150px;border-radius: 15px;margin: auto">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-6" style="margin-left: 1%">
-            <div class="row">
-              <div class="col" style="border-radius: 30px;background-color: white;margin-top: 2%">
-                <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0px">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/fiyat_icon.svg">
-                  </div>
-                  <div class="col-1" style="padding: 0px">
-                    <span class="dealDetailsSpans">FİYAT ₺</span>
-                  </div>
-                  <div class="col-2">
-                    <input class="urlInput" (input)="onPriceChange($event)">
-                  </div>
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/kupon_kodu_icon.svg">
-                  </div>
-                  <div class="col-2" style="padding: 0px">
-                    <span class="dealDetailsSpans">KUPON KODU</span>
-                  </div>
-                  <div class="col">
-                    <input class="urlInput">
-                  </div>
-                </div>
-                <div class="row">
-                  <!--<div class="col" style="line-height: 0.8">
-                    <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491;white-space: nowrap">FIRSATIN KULLANABİLMESİ İÇİN KUPON KODU GEREKİYORSA;</span>
-                  </div>-->
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/baslik_icon.svg">
-                  </div>
-                  <div class="col-1" style="padding: 0px">
-                    <span class="dealDetailsSpans">BAŞLIK</span>
-                  </div>
-
-                  <div class="col">
-                    <div class="row">
-                      <div class="col">
-                        <input [ngModel]="dealTitle" (input)="onTitleChange($event)" class="urlInput" placeholder="Alisverisitem.com'da spor ayakkabılarda %50 indirim!">
-                      </div>
+            <div class="col-6" style="margin-left: 1%">
+              <div class="row">
+                <div class="col" style="border-radius: 30px;background-color: white;margin-top: 2%">
+                  <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0px">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/fiyat_icon.svg">
                     </div>
-                    <!--<div class="row">
-                      <div class="col text-center">
-                        <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491;white-space: nowrap">FIRSATIN KULLANABİLMESİ İÇİN KUPON KODU GEREKİYORSA;</span>
-                      </div>
+                    <div class="col-1" style="padding: 0px">
+                      <span class="dealDetailsSpans">FİYAT ₺</span>
+                    </div>
+                    <div class="col-2">
+                      <input #dealPrice [@highlight]="dealPrice.highlight" class="urlInput" ngModel name="dealPrice" (input)="onPriceChange($event)">
+                    </div>
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/kupon_kodu_icon.svg">
+                    </div>
+                    <div class="col-2" style="padding: 0px">
+                      <span class="dealDetailsSpans">KUPON KODU</span>
+                    </div>
+                    <div class="col">
+                      <input ngModel name="coupon_code" class="urlInput">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <!--<div class="col" style="line-height: 0.8">
+                      <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491;white-space: nowrap">FIRSATIN KULLANABİLMESİ İÇİN KUPON KODU GEREKİYORSA;</span>
                     </div>-->
                   </div>
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/detay_icon.svg">
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/baslik_icon.svg">
+                    </div>
+                    <div class="col-1" style="padding: 0px">
+                      <span class="dealDetailsSpans">BAŞLIK</span>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <input
+                            #dealTitle [@highlight]="dealTitle.highlight"
+                            ngModel name="dealTitle" (input)="onTitleChange($event)" class="urlInput"
+                                 placeholder="Alisverisitem.com'da spor ayakkabılarda %50 indirim!">
+                        </div>
+                      </div>
+                      <!--<div class="row">
+                        <div class="col text-center">
+                          <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491;white-space: nowrap">FIRSATIN KULLANABİLMESİ İÇİN KUPON KODU GEREKİYORSA;</span>
+                        </div>
+                      </div>-->
+                    </div>
                   </div>
-                  <div class="col-1" style="padding: 0px">
-                    <span class="dealDetailsSpans">DETAY</span>
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/detay_icon.svg">
+                    </div>
+                    <div class="col-1" style="padding: 0px">
+                      <span class="dealDetailsSpans">DETAY</span>
+                    </div>
+                    <div class="col">
+                      <textarea
+                        class="urlInput" style="min-height: 100px;padding: 10px"
+                        (input)="onDetailChange($event)"
+                        ngModel name="dealDetail"
+                        #dealDetail [@highlight]="dealDetail.highlight"
+                        placeholder="Ayakkabılar ayağıma cuk oturdu valla."></textarea>
+                    </div>
                   </div>
-                  <div class="col">
-                    <textarea  [ngModel]="dealDetail" class="urlInput" style="min-height: 100px;padding: 10px"
-                           (input)="onDetailChange($event)"
-                              placeholder="Ayakkabılar ayağıma cuk oturdu valla."></textarea>
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
+                    <div class="col">
+                      <span
+                        style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap;margin-left: 5%">
+                        <p>LÜTFEN İLAN İLE İLGİLİ DETAYLARI ELİNİZDEN GELDİĞİNCE YAZIN
+                          <br><b>ÖRNEĞİN;</b>
+                        </p>
+                        <ul>
+                          <li>
+                            BAŞKA YERLERDE GÖRDÜĞÜNÜZ FİYATLARI
+                          </li>
+                          <li>
+                            ÜRÜNÜ KULLANIYORSANIZ MEMNUNİYETİNİZİ
+                          </li>
+                          <li>
+                            ÜRÜNÜN TEKNİK BİLGİLERİ HAKKINDAKİ YORUMLARINIZI VB.
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap">
-                  <div class="col">
-                    <span
-                      style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap;margin-left: 5%">
-                      <p>LÜTFEN İLAN İLE İLGİLİ DETAYLARI ELİNİZDEN GELDİĞİNCE YAZIN
-                        <br><b>ÖRNEĞİN;</b>
-                      </p>
-                      <ul>
-                        <li>
-                          BAŞKA YERLERDE GÖRDÜĞÜNÜZ FİYATLARI
-                        </li>
-                        <li>
-                          ÜRÜNÜ KULLANIYORSANIZ MEMNUNİYETİNİZİ
-                        </li>
-                        <li>
-                          ÜRÜNÜN TEKNİK BİLGİLERİ HAKKINDAKİ YORUMLARINIZI VB.
-                        </li>
-                      </ul>
-                    </span>
-                  </div>
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/kategori_icon.svg">
-                  </div>
-                  <div class="col-2" style="padding: 0px">
-                    <span class="dealDetailsSpans">KATEGORİ</span>
-                  </div>
-                  <div class="col">
-                    <div #allCategories class="bxslider" style="box-shadow: none">
-                      <div #element class="text-center"
-                           style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap"
-                           (click)="showMe(element)" [@showMe]="element.show"
-                           *ngFor="let category of categories">{{category.name}}
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/kategori_icon.svg">
+                    </div>
+                    <div class="col-2" style="padding: 0px">
+                      <span class="dealDetailsSpans">KATEGORİ</span>
+                    </div>
+                    <div class="col" #lsd [@highlight]="lsd.highlight" style="border-radius: 15px">
+                      <div #allCategories
+                           class="bxslider" style="box-shadow: none">
+                        <div #element class="text-center"
+                             style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap"
+                             (click)="showMe(element)" [@showMe]="element.show"
+                             *ngFor="let category of categories">{{category.name}}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/sehir_icon.svg">
-                  </div>
-                  <div class="col-2" style="padding: 0px">
-                    <span class="dealDetailsSpans">ŞEHİR</span>
-                  </div>
-                  <div class="col">
-                    <mat-form-field>
-                      <mat-select placeholder="Şehir">
-                        <mat-option>Lütfen Seçiniz</mat-option>
-                        <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="row align-items-center" style="flex-wrap: nowrap">
-                  <div class="col-1 padding">
-                    <img src="assets/svgs/firsat_tarihleri_icon.svg">
-                  </div>
-                  <div class="col-2" style="padding: 0px">
-                    <span class="dealDetailsSpans">TARİH</span>
-                  </div>
-                  <div class="col-4">
-                    <mat-form-field>
-                      <input matInput (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
-                             [matDatepicker]="picker" placeholder="Başlangıç Tarihi">
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                  </div>
-                  <div class="col">
-                    <mat-form-field>
-                      <input matInput (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
-                             [matDatepicker]="picker2" placeholder="Bitiş Tarihi">
-                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                      <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col" style="margin-top: 2%">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">FIRSAT ÖNİZLEMESİ</span>
-          </div>
-        </div>
-        <div class="row" style="margin-bottom: 75px">
-          <div class="col-8">
-            <div class="row"
-                 style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
-              <div class="col-3" style="text-align: center">
-                <img src="{{selectedImageSrc}}" style="width: inherit;max-height: inherit;border-radius: 15px">
-              </div>
-              <div class="col-9">
-                <div class="row title">
-                  <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{concatGivenString(dealTitle,68)}}</span>
-                </div>
-                <div class="row" style="padding-top: 1%">
-                  <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{concatGivenString(dealDetail,200)}}</span>
-                </div>
-                <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
-                  <div class="col-2">
-                    <div class="row" style="align-items: center;flex-wrap: nowrap;">
-                      <div class="col-3 nopadding">
-                        <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
-                      </div>
-                      <div class="col nopadding" style="margin-left: 15%">
-                        <span
-                          style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{dealPrice}}₺</span>
-                      </div>
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/sehir_icon.svg">
+                    </div>
+                    <div class="col-2" style="padding: 0px">
+                      <span class="dealDetailsSpans">ŞEHİR</span>
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-select placeholder="Şehir" ngModel name="selectedCity">
+                          <mat-option>Lütfen Seçiniz</mat-option>
+                          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                     </div>
                   </div>
-                  <div class="col-1">
-                    <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                      <div class="col-5 nopadding">
-                        <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
-                      </div>
-                      <div class="col nopadding" style="margin-left:20%">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491"></span>
-                      </div>
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/firsat_tarihleri_icon.svg">
                     </div>
-                  </div>
-                  <div class="col-1">
-                    <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                      <div class="col-5 offset-1 nopadding">
-                        <img src="../../assets/imgs/comment_button@2x.png" style="
-        width: 250%">
-                      </div>
-                      <div class="col  nopadding" style="margin-left: 20%">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491"></span>
-                      </div>
+                    <div class="col-2" style="padding: 0px">
+                      <span class="dealDetailsSpans">TARİH</span>
                     </div>
-                  </div>
-                  <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
-                    <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{concatGivenString(dealUrl,40)}}</span>
-                  </div>
-                </div>
-                <div class="row" style="align-items: flex-end">
-                  <div class="col-8">
-                    <div class="row" style="align-items: center;flex-wrap: nowrap">
-                      <div class="col-1" style="padding: 0px;align-self: flex-end">
-                        <img src="{{dealOwnerAvatar}}" style="width: 80%;border-radius: 50%">
-                      </div>
-                      <div class="col" style=";align-self: flex-end">
-                        <span
-                          style="font-family: 'Mark Pro-Heavy',serif;font-size: 20px;color:#234491;white-space: nowrap">{{dealOwner}}</span>
-                      </div>
-                      <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
-                        <span
-                          style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;"></span>
-                      </div>
-                      <div class="col" style=";align-self: flex-end">
-                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{currentDate}}</span>
-                      </div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input
+                          style="border-radius: 15px"
+                          #dealDate [@highlight]="dealDate.highlight"
+                          ngModel name="dealDate"
+                          matInput (dateInput)="addEvent('input', $event)"
+                               (dateChange)="addEvent('change', $event)"
+                               [matDatepicker]="picker" placeholder="Başlangıç Tarihi">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="row" style="align-items: center">
-                      <div class="col" style="padding: 1px">
-                        <!--<img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">-->
-                      </div>
-                      <div class="col" style="padding: 1px"><!--
-                        <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">-->
-                      </div>
-                      <div class="col-9">
-                        <img src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
-                      </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <input matInput (dateInput)="addEvent('input', $event)"
+                               (dateChange)="addEvent('change', $event)"
+                               [matDatepicker]="picker2" placeholder="Bitiş Tarihi">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-2 mx-auto align-self-center">
-            <div id="createDealAnim" (mouseenter)="playAnim()" (mouseleave)="stopAnim()"></div>
+          <div class="row">
+            <div class="col" style="margin-top: 2%">
+              <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">FIRSAT ÖNİZLEMESİ</span>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 75px">
+            <div class="col-8">
+              <div class="row"
+                   style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
+                <div class="col-3" style="text-align: center">
+                  <img src="{{selectedImageSrc}}" style="width: inherit;max-height: inherit;border-radius: 15px">
+                </div>
+                <div class="col-9">
+                  <div class="row title">
+                    <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{concatGivenString(dealTitle,68)}}</span>
+                  </div>
+                  <div class="row" style="padding-top: 1%">
+                    <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{concatGivenString(dealDetail,200)}}</span>
+                  </div>
+                  <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
+                    <div class="col-2">
+                      <div class="row" style="align-items: center;flex-wrap: nowrap;">
+                        <div class="col-3 nopadding">
+                          <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
+                        </div>
+                        <div class="col nopadding" style="margin-left: 15%">
+                          <span
+                            style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{dealPrice}}₺</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="row" style="flex-wrap: nowrap;align-items: baseline">
+                        <div class="col-5 nopadding">
+                          <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
+                        </div>
+                        <div class="col nopadding" style="margin-left:20%">
+                          <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="row" style="flex-wrap: nowrap;align-items: baseline">
+                        <div class="col-5 offset-1 nopadding">
+                          <img src="../../assets/imgs/comment_button@2x.png" style="
+          width: 250%">
+                        </div>
+                        <div class="col  nopadding" style="margin-left: 20%">
+                          <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
+                      <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{concatGivenString(dealUrl,40)}}</span>
+                    </div>
+                  </div>
+                  <div class="row" style="align-items: flex-end">
+                    <div class="col-8">
+                      <div class="row" style="align-items: center;flex-wrap: nowrap">
+                        <div class="col-1" style="padding: 0px;align-self: flex-end">
+                          <img src="{{dealOwnerAvatar}}" style="width: 80%;border-radius: 50%">
+                        </div>
+                        <div class="col" style=";align-self: flex-end">
+                          <span
+                            style="font-family: 'Mark Pro-Heavy',serif;font-size: 20px;color:#234491;white-space: nowrap">{{dealOwner}}</span>
+                        </div>
+                        <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
+                          <span
+                            style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;"></span>
+                        </div>
+                        <div class="col" style=";align-self: flex-end">
+                          <span
+                            style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{currentDate}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row" style="align-items: center">
+                        <div class="col" style="padding: 1px">
+                          <!--<img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">-->
+                        </div>
+                        <div class="col" style="padding: 1px"><!--
+                          <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">-->
+                        </div>
+                        <div class="col-9">
+                          <img src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 mx-auto align-self-center" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,lsd,dealTitle)">
+              <div id="createDealAnim" (mouseenter)="playAnim()" (mouseleave)="stopAnim()"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div *ngIf="showProgressBar" class="loadingDiv" [@loadingBlackDiv]></div>
-  <mat-progress-spinner *ngIf="showProgressBar" style="position: fixed;
-    left: 47%;
-    right: 50%;
-    top: 40%;
-    bottom: 50%;"
-    class="example-margin"
-    mode="indeterminate">
-  </mat-progress-spinner>
-</div>
+    <div  *ngIf="showProgressBar" class="loadingDiv" [@loadingBlackDiv]></div>
+    <mat-progress-spinner *ngIf="showProgressBar" style="position: fixed;
+      left: 47%;
+      right: 50%;
+      top: 40%;
+      bottom: 50%;"
+                          class="example-margin"
+                          mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+</form>
 

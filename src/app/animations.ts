@@ -259,3 +259,14 @@ export const kayitSuccessTrigger = trigger('kayitSuccess',[
     ]))
   ])
 ]);
+export const highlightTrigger = trigger('highlight',[
+  state('highlighted',
+    style(
+      {
+        border:'2px solid red'
+      }
+  )),
+  transition('* <=> highlighted',[
+    animate(1000)
+  ])
+])

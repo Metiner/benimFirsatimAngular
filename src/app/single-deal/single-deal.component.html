@@ -149,9 +149,9 @@
           <div class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px">
             <div class="row nowrap">
               <div class="col">
-                <input type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
+                <textarea rows="2" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;"></textarea>
               </div>
-              <div class="col" style="text-align: right;padding: 0px">
+              <div class="col-1" style="text-align: right;padding: 0px" (click)="sendComment()">
                 <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
               </div>
             </div>
