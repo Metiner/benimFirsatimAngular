@@ -1,6 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FormsModule} from '@angular/forms';
@@ -53,6 +54,9 @@ const appRoutes : Routes = [
   providers: [BenimFirsatimLibrary,
               HeaderComponent],
   bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 
 })
 export class AppModule { }

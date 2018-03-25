@@ -91,24 +91,24 @@
       </div>
     </div>
   </div>
-  <div class="row" style="margin-top: -3px;width: 80%;margin-left: 5%">
-    <div class="col-4 offset-6">
+  <div class="row">
+    <div class="col-3 offset-4" style="margin-left: 47%">
       <div class="categories" (mouseleave)="slideCategoriesDiv('out')" [@slideInOut]="categoriesAnimation">
-        <div class="row" style="align-items: flex-end">
-          <div class="col-6"  *ngFor="let category of categories" style="padding-left: 10%;padding-right: 5%;">
-            <div class="row" style="padding: 10px 0px 10px 0px;flex-wrap: nowrap;padding: 0px">
-              <div class="col-3 text-center" style="padding: 0px">
-                <img src="{{getCategoryIcon(category.id)}}" style="max-width: 80%;max-height: 80%">
+        <div class="row mx-auto" style="align-items: center">
+          <div class="col-5 mx-auto"  *ngFor="let category of categories">
+            <div (click)="onCategoryChange(category.id)" class="row" style="padding: 10px 0 10px 0;flex-wrap: nowrap;align-items: center;border-bottom: 1px solid #f7e60f">
+              <div class="col-3 text-center" style="padding: 0px;max-width: 14%;max-height: 5%">
+                <img src="{{getCategoryIcon(category.id)}}">
               </div>
-              <div class="col" style="padding: 0px">
-                <span style="font-family: 'Mark Pro-Medium';font-size: 12px;color:#F7E60f;white-space: nowrap">{{category.name.toUpperCase()}}</span>
+              <div class="col" style="padding: 0px;padding-left: 5px">
+                <span style="font-family: 'Mark Pro-Medium';font-size: 8px;color:#F7E60f">{{category.name.toUpperCase()}}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-2" style="margin-left: 103%">
+    <div class="col-2 offset-1" style="margin-left: 85%;margin-top:-1%">
       <div class="myProfile" (mouseleave)="slideMyProfileDiv('out')" [@slideInOut]="myProfileAnimation">
         <div (click)="goToSignUpAndSignin()" *ngIf="!isAuth" class="row myProfileItemRow">
           <div class="col offset-2 myProfileItemCol">

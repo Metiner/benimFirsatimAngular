@@ -135,4 +135,11 @@ label.css-label {
   border: none !important;
   font-size: 0; }
 
+.blurheader {
+  background: transparent;
+  overflow: hidden;
+  z-index: 10000;
+  background: #fff;
+  left: 0; }
+
 /*# sourceMappingURL=content.component.css.map */

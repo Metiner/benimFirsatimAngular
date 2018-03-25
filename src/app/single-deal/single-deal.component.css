@@ -20,6 +20,12 @@
   font-family: "Mark Pro-Italic";
   color: #234491; }
 
+.writeComment {
+  font-family: 'Mark Pro-Medium';
+  font-size: 13px;
+  color: #234491;
+  width: inherit; }
+
 .nowrap {
   flex-wrap: nowrap; }
 

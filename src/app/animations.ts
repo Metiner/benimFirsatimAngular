@@ -267,6 +267,6 @@ export const highlightTrigger = trigger('highlight',[
       }
   )),
   transition('* <=> highlighted',[
-    animate(1000)
+    animate(500)
   ])
 ])

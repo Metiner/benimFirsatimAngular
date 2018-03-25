@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, RequestOptions} from '@angular/http';
+import {Http, RequestOptions , Headers} from '@angular/http';
 import {Subject} from "rxjs/Subject";
 import {NgForm} from '@angular/forms';
 
@@ -20,19 +20,23 @@ export class BenimFirsatimLibrary {
   private _totalPage:number;
   private _currentDeals = [];
   private _categories =[];
+  private _justCreatedDeal = {};
 
   private _isAutho = false;
   private _currentUser:any;
+  private token:string;
 
   constructor(public http: Http ) {
     this.silentLogin();
   }
 
   silentLogin(){
-    if(localStorage.getItem("user") !== null){
-      let user = JSON.parse(localStorage.getItem("user"));
+    if(localStorage.getItem("userBenimFirsatim") !== null && localStorage.getItem("tokenBenimFirsatim") !== null){
+      let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
+      let token = localStorage.getItem("tokenBenimFirsatim");
       this.currentUser = user;
       this.isAutho = true;
+      this.token = token;
     }
   }
   //Page code can be,
@@ -51,16 +55,16 @@ export class BenimFirsatimLibrary {
   }
 
   // to set request header for authentication
-  private setHeader():RequestOptions{
+  private setHeader(): RequestOptions{
 
     let opt:RequestOptions;
     let myHeaders: Headers = new Headers;
 
-    // myHeaders.set('Authorization',BenimfirsatimLib.token);
+     myHeaders.set('Authorization',this.token);
 
-    // opt = new RequestOptions({
-    //   headers:myHeaders
-    // });
+     opt = new RequestOptions({
+       headers:myHeaders
+     });
 
     return opt;
   }
@@ -102,9 +106,10 @@ export class BenimFirsatimLibrary {
   }
 
   public successLogin(data:any){
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user",JSON.stringify(data.user));
+    localStorage.setItem("tokenBenimFirsatim", data.token);
+    localStorage.setItem("userBenimFirsatim",JSON.stringify(data.user));
     this.isAutho = true;
+    this.token = data.token;
     this.currentUser = data.user;
     this.successLoginProfileMenuChange.next("success");
   }
@@ -132,14 +137,15 @@ export class BenimFirsatimLibrary {
     // else{
       body = {
         starts_at:form.value.deal_date,
-        price:form.value.dealPrice,
-        categories: form.value.selectedCategory,
-        link:form.value.dealUrl,
+        price:form.value.dealPricePreview,
+        category_id: form.value.selectedCategory,
+        link:form.value.dealUrlPreview,
         image_url:selectedImageUrl,
-        title:form.value.dealTitle,
-        details:form.value.dealDetail,
+        title:form.value.dealTitlePreview,
+        details:form.value.dealDetailPreview,
         coupon_code:form.value.coupon_code,
-        city:form.value.selectedCity};
+        city:form.value.selectedCity
+      };
 
 
     return this.http.post(this.api_address + '/deals/create.json',body,opt);
@@ -148,6 +154,10 @@ export class BenimFirsatimLibrary {
   public commentVote(comment_id){
     let opt = this.setHeader();
     return this.http.post(this.api_address + '/comments/'+comment_id+'/vote',{},opt);
+  }
+
+  public getCategoryDeals(categoryIndex,pagination){
+    return this.http.get(this.api_address+'/categories/'+categoryIndex+'/deals.json?page='+pagination);
   }
 
   get isAutho(): boolean {
@@ -208,5 +218,13 @@ export class BenimFirsatimLibrary {
 
   set currentDeals(value: any[]) {
     this._currentDeals = value;
+  }
+
+  get justCreatedDeal(): {} {
+    return this._justCreatedDeal;
+  }
+
+  set justCreatedDeal(value: {}) {
+    this._justCreatedDeal = value;
   }
 }

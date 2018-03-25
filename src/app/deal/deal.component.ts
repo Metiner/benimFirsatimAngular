@@ -33,18 +33,34 @@ export class DealComponent implements OnInit, OnDestroy {
     this.mySubscription.unsubscribe();
   }
 
+
   setDeals(){
-    this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
-      let responseData = data.json();
-      this.displayedDeals = [];
-      this.deals = responseData.entries;
-      this.benimFirsatimLib.currentDeals = this.deals;
-      this.benimFirsatimLib.currentPaging = responseData.current_page;
-      this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
-      if (this.deals.length >= 1) {
-        this.displayedDeals.push(this.deals[0]);
-      }
-    });
+    if(typeof this.benimFirsatimLib.currentCategory  === "string"){
+      this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
+        let responseData = data.json();
+        this.displayedDeals = [];
+        this.deals = responseData.entries;
+        this.benimFirsatimLib.currentDeals = this.deals;
+        this.benimFirsatimLib.currentPaging = responseData.current_page;
+        this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+        if (this.deals.length >= 1) {
+          this.displayedDeals.push(this.deals[0]);
+        }
+      });
+    }else{
+      this.benimFirsatimLib.getCategoryDeals(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
+        let responseData = data.json();
+        this.displayedDeals = [];
+        this.deals = responseData.entries;
+        this.benimFirsatimLib.currentDeals = this.deals;
+        this.benimFirsatimLib.currentPaging = responseData.current_page;
+        this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+        if (this.deals.length >= 1) {
+          this.displayedDeals.push(this.deals[0]);
+        }
+      });
+    }
+
   }
 
   onDealAnimated(event: AnimationEvent, lastItemIndex){

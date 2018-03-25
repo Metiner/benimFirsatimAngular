@@ -139,3 +139,12 @@ label.css-label {
   font-size:0;
 
 }
+
+.blurheader {
+  background: transparent;
+  overflow: hidden;
+  z-index: 10000;
+  background: #fff;
+  left: 0;
+}
+

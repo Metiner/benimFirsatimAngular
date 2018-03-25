@@ -50,7 +50,6 @@ export class ContentComponent implements OnDestroy,OnInit{
               public snackBar: MatSnackBar,
               private fb: FacebookService ) {
 
-
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
       next =>{
 
@@ -310,5 +309,4 @@ export class ContentComponent implements OnDestroy,OnInit{
   //     console.log('Error logging into Google Plus', e)});
   //
   // }
-
 }

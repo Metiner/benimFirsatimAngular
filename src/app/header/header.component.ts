@@ -5,12 +5,15 @@ import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subject} from "rxjs/Subject";
 import {Router} from '@angular/router';
 import {Subscription} from "rxjs/Subscription";
+declare var $:any;
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: [slideInOutAnimation]
+  animations: [slideInOutAnimation],
+
 })
 export class HeaderComponent implements OnDestroy{
 
@@ -41,6 +44,7 @@ export class HeaderComponent implements OnDestroy{
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
       this.benimFirsatimLibrary.categories = response.json();
+      console.log(response.json());
     });
     this.autSubscription = this.benimFirsatimLibrary.successLoginProfileMenuChange.subscribe(value=>{
       if(value === 'success'){
@@ -53,11 +57,7 @@ export class HeaderComponent implements OnDestroy{
     this.autSubscription.unsubscribe();
   }
 
-  logout(){
-    this.isAuth = false;
-    localStorage.clear();
-    this.benimFirsatimLibrary.currentUser = {};
-  }
+
   checkAuth(){
     this.isAuth = this.benimFirsatimLibrary.isAutho;
   }
@@ -180,7 +180,7 @@ export class HeaderComponent implements OnDestroy{
   slideMyProfileDiv(state){
     this.myProfileAnimation = state;
   }
-  onCategoryChange(type){
+  onCategoryChange(type,spesific){
     this.benimFirsatimLibrary.currentPaging = 1;
     this.benimFirsatimLibrary.changeCategory(type);
   }
@@ -188,69 +188,87 @@ export class HeaderComponent implements OnDestroy{
     var src = "";
     switch (categoryId){
       case 1:
-        src = 'assets/svgs/categoryIconSvgs/mode_tekstil_icon.svg';
+        src = 'assets/svgs/categoryIconSvgs/aile_cocuk_icon.svg';
         break;
       case 12:
-        src = 'assets/svgs/categoryIconSvgs/kisisel_bakim.svg';
+        src = 'assets/svgs/categoryIconSvgs/mobilya_icon.svg';
         break;
       case 18:
-          src = 'assassets/svgs/categoryIconSvgs/cinden_icon.svg';
+          src = 'assets/svgs/categoryIconSvgs/spor_fitness_icon.svg';
         break;
-      case 5:
+      case 21:
           src = 'assets/svgs/categoryIconSvgs/yazilim_icon.svg';
         break;
       case 13:
-        src = 'assets/svgs/categoryIconSvgs/eglence_icon.svg';
+        src = 'assets/svgs/categoryIconSvgs/mode_tekstil_icon.svg';
         break;
       case 3:
-        src = 'assets/svgs/categoryIconSvgs/elektronik_icon.svg';
-        break;
-      case 6:
-        src = 'assets/svgs/categoryIconSvgs/music_icon.svg';
-        break;
-      case 10:
-        src = 'assets/svgs/categoryIconSvgs/beyaz_esya_icon.svg';
-        break;
-      case 15:
-        src = 'assets/svgs/categoryIconSvgs/yeme_icme_icon.svg';
-        break;
-      case 2:
-        src = 'assets/svgs/categoryIconSvgs/aksesuar_icon.svg';
-        break;
-      case 4:
-        src = 'assets/svgs/categoryIconSvgs/mobilya_icon.svg';
-        break;
-      case 14:
         src = 'assets/svgs/categoryIconSvgs/bilgisayar_icon.svg';
         break;
-      case 16:
-        src = 'assets/svgs/categoryIconSvgs/tatil_gezi_icon.svg';
-        break;
-      case 19:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon.svg';
-        break;
-      case 17:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
-        break;
-      case 7:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
-        break;
-      case 8:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
+      case 6:
+        src = 'assets/svgs/categoryIconSvgs/eglence_icon.svg';
         break;
       case 10:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/freebies_icon.svg';
+        break;
+      case 15:
+        src = 'assets/svgs/categoryIconSvgs/ofis_kirtasiye.svg';
+        break;
+      case 2:
+        src = 'assets/svgs/categoryIconSvgs/beyaz_esya_icon.svg';
+        break;
+      case 4:
+        src = 'assets/svgs/categoryIconSvgs/ceptelefonu_icon.svg';
+        break;
+      case 14:
+        src = 'assets/svgs/categoryIconSvgs/music_icon.svg';
+        break;
+      case 16:
+        src = 'assets/svgs/categoryIconSvgs/otomobil_aksesuarlari_icon.svg';
+        break;
+      case 19:
+        src = 'assets/svgs/categoryIconSvgs/taki_aksesuar_icon.svg';
+        break;
+      case 17:
+        src = 'assets/svgs/categoryIconSvgs/saglik_kisisel_bakim_icon.svg';
+        break;
+      case 7:
+        src = 'assets/svgs/categoryIconSvgs/elektronik_icon.svg';
+        break;
+      case 8:
+        src = 'assets/svgs/categoryIconSvgs/ev_bahce.svg';
+        break;
+      case 9:
+        src = 'assets/svgs/categoryIconSvgs/finansal_hizmetler_icon.svg';
         break;
       case 11:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/gida_icon.svg';
         break;
       case 20:
-        src = 'assets/svgs/categoryIconSvgs/freebies_icon@2x.png';
+        src = 'assets/svgs/categoryIconSvgs/tatil_kampcilik_icon.svg';
+        break;
+      case 22:
+        src = 'assets/svgs/categoryIconSvgs/diger_icon.svg';
+        break;
+      case 5:
+        src = 'assets/svgs/categoryIconSvgs/cinden_icon.svg';
         break;
     }
     return src;
   }
   onCreateNewDeal(){
-    this.router.navigate(['createNewDeal']);
+    console.log(this.benimFirsatimLibrary.isAutho)
+    if(this.benimFirsatimLibrary.isAutho){
+      this.router.navigate(['createNewDeal']);
+    }else{
+      this.benimFirsatimLibrary.openSignUpPopUp.next();
+    }
   }
+  logout(){
+    this.isAuth = false;
+    this.benimFirsatimLibrary.isAutho = false;
+    localStorage.clear();
+    this.benimFirsatimLibrary.currentUser = {};
+  }
+
 }
