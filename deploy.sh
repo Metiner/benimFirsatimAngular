@@ -10,6 +10,6 @@ quote USER $USER
 quote PASS $PASSWD
 cd $DIR
 lcd $LOCALPATH
-put $FILE
+mput *
 quit
 exit;
