@@ -19,7 +19,7 @@ deploy:
     - mkdir ~/.lftp
     - echo "set ssl:verify-certificate no" >> ~/.lftp/rc
     - cd dist
-    - lftp -e mirror -R -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
+    - lftp -e "mirror -R . /" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST 
   except:
     - tags
 
