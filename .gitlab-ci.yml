@@ -1,0 +1,20 @@
+image: node:8
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - npm install --unsafe-perm -g @angular/cli 
+    - npm install --unsafe-perm
+    - pwd
+    - ls
+    - echo 'BUILD STARTED'
+    - ng build --prod
+    - echo 'BUILD FINISHED'
+    - sudo apt install ftp
+    - chmod +x deploy.sh
+    - ./deploy.sh
+  except:
+    - tags
+
