@@ -12,7 +12,7 @@ deploy:
     - echo 'BUILD STARTED'
     - ng build --prod
     - echo 'BUILD FINISHED'
-    - ls
+    - sudo apt install ftp
     - chmod +x deploy.sh
     - ./deploy.sh
   except:
