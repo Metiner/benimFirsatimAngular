@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
 declare var lottie: any;
+declare var $:any
 
 @Component({
   selector: 'app-single-deal',
@@ -14,18 +15,20 @@ declare var lottie: any;
 export class SingleDealComponent implements OnInit {
 
   dealId:string = "";
+  newlyAddedComment = "";
+  newlyAddedComments = [];
   comments = [];
-
+  commentIndex = 10;
   animation:any;
 
 
   deal:any;
   constructor(public route:ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
-              private _scrollTo:ScrollToService,) { }
+              private _scrollTo:ScrollToService,
+              private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-
     this.loadAnimations();
     if(this.route.snapshot.params['dealId'] == 0){
       this.deal = this.benimFirsatimLib.justCreatedDeal;
@@ -45,7 +48,22 @@ export class SingleDealComponent implements OnInit {
       })
     }
 
+    // ScrollActivate(this);
+    //
+    //
+    // function ScrollActivate(page) {
+    //
+    //   $(window).on("scroll", function () {
+    //     if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    //       $(window).off("scroll");
+    //       console.log(page.comments);
+    //       page.commentIndex = page.commentIndex + 5;
+    //     }
+    //   });
+    // }
+    // this.ref.detectChanges();
   }
+
   loadAnimations(){
     this.animation = lottie.loadAnimation({
       container: document.getElementById("forLottie"), // the dom element that will contain the animation
@@ -108,11 +126,25 @@ export class SingleDealComponent implements OnInit {
   goToLink(link:string){
     window.open(link, '_blank');
   }
+
   sendComment(){
     if(this.benimFirsatimLib.isAutho){
-
+      var comment:any = {};
+      comment.text = this.newlyAddedComment;
+      comment.user = this.benimFirsatimLib.currentUser;
+      comment.timeCalculation = "";
+      this.newlyAddedComments.push(comment);
     }else{
       this.benimFirsatimLib.openSignUpPopUp.next();
     }
+  }
+
+  loadMoreComment(){
+    if(this.comments.length < this.commentIndex){
+      document.getElementById("loadMoreText").innerText = "HEPSİ BU KADAR :("
+    }else{
+      this.commentIndex = this.commentIndex + 10;
+    }
+
   }
 }

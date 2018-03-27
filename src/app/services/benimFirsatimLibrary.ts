@@ -160,6 +160,7 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address+'/categories/'+categoryIndex+'/deals.json?page='+pagination);
   }
 
+
   get isAutho(): boolean {
     return this._isAutho;
   }
