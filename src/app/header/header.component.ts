@@ -180,7 +180,7 @@ export class HeaderComponent implements OnDestroy{
   slideMyProfileDiv(state){
     this.myProfileAnimation = state;
   }
-  onCategoryChange(type,spesific){
+  onCategoryChange(type){
     this.benimFirsatimLibrary.currentPaging = 1;
     this.benimFirsatimLibrary.changeCategory(type);
   }

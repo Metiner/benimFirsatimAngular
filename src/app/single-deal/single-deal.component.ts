@@ -19,7 +19,7 @@ export class SingleDealComponent implements OnInit {
   animation:any;
 
 
-  deal = {};
+  deal:any;
   constructor(public route:ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
               private _scrollTo:ScrollToService,) { }
