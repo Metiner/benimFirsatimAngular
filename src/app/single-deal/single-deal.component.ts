@@ -17,6 +17,7 @@ export class SingleDealComponent implements OnInit {
   dealId:string = "";
   newlyAddedComment = "";
   newlyAddedComments = [];
+  newlyAddedSubComment = "";
   comments = [];
   commentIndex = 10;
   animation:any;
@@ -134,6 +135,9 @@ export class SingleDealComponent implements OnInit {
       comment.user = this.benimFirsatimLib.currentUser;
       comment.timeCalculation = "";
       this.newlyAddedComments.push(comment);
+      this.benimFirsatimLib.createComment(this.dealId,null,this.newlyAddedComment).subscribe((response)=>{
+        console.log(response);
+      });
     }else{
       this.benimFirsatimLib.openSignUpPopUp.next();
     }
@@ -145,6 +149,17 @@ export class SingleDealComponent implements OnInit {
     }else{
       this.commentIndex = this.commentIndex + 10;
     }
-
   }
+  writeCommentSubcomment(comment){
+    comment.newlyAddedSubComments = [];
+    var newlyAddedSubCommentTemp:any = {};
+    newlyAddedSubCommentTemp.text = this.newlyAddedSubComment;
+    newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
+    newlyAddedSubCommentTemp.timeCalculation = "";
+    comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
+    this.benimFirsatimLib.createComment(this.dealId,comment.id,this.newlyAddedSubComment).subscribe((response)=>{
+      console.log(response);
+    });
+  }
+
 }
