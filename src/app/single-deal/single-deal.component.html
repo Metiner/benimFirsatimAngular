@@ -1,5 +1,5 @@
 <div class="row" id="commentsScroll">
-  <div class="col-10 offset-1">
+  <div class="col-8 offset-1">
     <div class="row" style="min-height: 350px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;padding:1%;align-items: center;justify-content: center;margin-top: 2%">
       <div class="col">
         <div class="row">
@@ -25,7 +25,7 @@
                   </div>
                   <div class="col-1">
                     <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                      <div class="col-5 nopadding">
+                      <div class="col-5 nopadding cursor-pointer">
                         <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
                       </div>
                       <div class="col nopadding" style="margin-left:20%">
@@ -35,7 +35,7 @@
                   </div>
                   <div class="col-1">
                     <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                      <div class="col-5 offset-1 nopadding">
+                      <div class="col-5 offset-1 nopadding cursor-pointer">
                         <img src="../../assets/imgs/comment_button@2x.png" style="
             width: 250%">
                       </div>
@@ -67,13 +67,13 @@
                   </div>
                   <div class="col">
                     <div class="row" style="align-items: center">
-                      <div class="col" style="padding: 1px">
+                      <div class="col cursor-pointer" style="padding: 1px">
                         <img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">
                       </div>
-                      <div class="col" style="padding: 1px">
+                      <div class="col cursor-pointer" style="padding: 1px">
                         <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">
                       </div>
-                      <div class="col-9">
+                      <div class="col-9 cursor-pointer">
                         <img (click)="goToLink(deal.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
                       </div>
                     </div>
@@ -87,7 +87,7 @@
           <div class="col-3">
             <div class="row nowrap">
               <div class="col">
-                <div class="mx-auto" id="forLottie" style="width: 60px;height: 60px;" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
+                <div class="mx-auto cursor-pointer" id="forLottie" style="width: 60px;height: 60px;" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
                 </div>
               </div>
             </div>
@@ -98,8 +98,8 @@
         </div>
         <div class="row" style="padding-top:2%;padding-bottom: 2%">
           <div class="col">
-            <div class="row">
-              <div class="col" style="text-align: right;padding-bottom: 1%">
+            <div class="row" *ngIf="!dealReported">
+              <div class="col cursor-pointer" style="text-align: right;padding-bottom: 1%">
                 <img src="assets/svgs/problemli_line.svg" style="width: 60%">
               </div>
             </div>
@@ -114,33 +114,40 @@
               <!--</div>-->
               <!--</div>-->
               <!--</div>-->
-              <div class="col">
-                <div class="row nowrap align-items-center">
-                  <div class="col-2">
-                    <img src="assets/svgs/suresi_dolmus_icon.svg" class="imgClass">
-                  </div>
-                  <div class="col">
-                    <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">SÜRESİ DOLMUŞ</span>
-                  </div>
-                </div>
+              <div @commentState class="col text-center align-self-center" *ngIf="dealReported">
+                <span style="font-family: 'Mark Pro-Book';font-size: 15px;color:#234491">BİZİ BİLGİLENDİRDİĞİN İÇİN TEŞEKKÜRLER :)</span>
               </div>
-              <div class="col">
-                <div class="row nowrap align-items-center">
-                  <div class="col-2">
-                    <img src="assets/svgs/tukenmis_icon.svg" class="imgClass">
+              <div class="col"  *ngIf="!dealReported">
+                <div class="row nowrap">
+                  <div class="col">
+                    <div class="row nowrap align-items-center">
+                      <div class="col-2">
+                        <img src="assets/svgs/suresi_dolmus_icon.svg" class="imgClass">
+                      </div>
+                      <div class="col cursor-pointer" (click)="deadOnDeadLine()">
+                        <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">SÜRESİ DOLMUŞ</span>
+                      </div>
+                    </div>
                   </div>
                   <div class="col">
-                    <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">TÜKENMİŞ</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="row nowrap align-items-center">
-                  <div class="col-2">
-                    <img src="assets/svgs/sikayet_et_icon.svg" class="imgClass">
+                    <div class="row nowrap align-items-center">
+                      <div class="col-2">
+                        <img src="assets/svgs/tukenmis_icon.svg" class="imgClass">
+                      </div>
+                      <div class="col  cursor-pointer" (click)="dealOutOfStock()">
+                        <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">TÜKENMİŞ</span>
+                      </div>
+                    </div>
                   </div>
                   <div class="col">
-                    <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">ŞİKAYET ET</span>
+                    <div class="row nowrap align-items-center">
+                      <div class="col-2">
+                        <img src="assets/svgs/sikayet_et_icon.svg" class="imgClass">
+                      </div>
+                      <div class="col  cursor-pointer" (click)="onReportDeal()">
+                        <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;white-space: nowrap">ŞİKAYET ET</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -179,7 +186,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-1 offset-10" (click)="writeToComment(comment)">
+                    <div class="col-1 offset-10 cursor-pointer" (click)="writeToComment(comment)">
                       <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
                     </div>
                     <div class="col-1 nopadding">
@@ -214,10 +221,10 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-1 offset-10" (click)="writeToComment(comment)">
+                      <div class="col-1 offset-10 cursor-pointer" (click)="writeToComment(comment)">
                         <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
                       </div>
-                      <div class="col-1 nopadding">
+                      <div class="col-1 nopadding cursor-pointer">
                         <img style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_thumb_up_icon.svg">
                       </div>
                     </div>
@@ -276,7 +283,7 @@
                 <div class="col">
                   <input [(ngModel)]="newlyAddedSubComment" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
                 </div>
-                <div class="col" style="text-align: right;padding: 0px" (click)="writeCommentSubcomment(comment)">
+                <div class="col cursor-pointer" style="text-align: right;padding: 0px" (click)="writeCommentSubcomment(comment)">
                   <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
                 </div>
               </div>
@@ -284,12 +291,15 @@
           </div>
         </div>
         <div class="row" style="margin-top: 30px;margin-bottom: 30px">
-          <div class="col text-center">
+          <div class="col text-center cursor-pointer">
             <span id="loadMoreText" (click)="loadMoreComment()" style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">DAHA FAZLA GETİR</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-3">
+    <app-point-table></app-point-table>
   </div>
 </div>
 

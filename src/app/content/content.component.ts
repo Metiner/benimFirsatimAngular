@@ -53,10 +53,7 @@ export class ContentComponent implements OnDestroy,OnInit{
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
       next =>{
 
-
-        this.tutorial = true;
-        this.showSingUpSignInPopUp = true;
-
+        this.initiliaze();
 
         setTimeout(()=>{
           this.loadAnimations();
@@ -64,8 +61,23 @@ export class ContentComponent implements OnDestroy,OnInit{
         },200)
       }
     );
+
   }
 
+  initiliaze(){
+    this.tutorial = true;
+    this.showSingUpSignInPopUp = true;
+    this.kayitOlState = 'down';
+    this.girisYapState = 'up';
+    this.currentState = 'giris';
+    this.kayitOlBool = false;
+    this.beniHatirlaBool = true;
+    this.kayitOlButtonClickable = false;
+    this.girisYapButtonClickable = false;
+    this.kayitBasariliText = false;
+    this.girisBasariliText = false;
+    this.showForm = true;
+  }
   ngOnInit(){
     // let initParams: InitParams = {
     //   appId: '1234566778',
@@ -81,7 +93,6 @@ export class ContentComponent implements OnDestroy,OnInit{
   onGirisButtonClick(form:NgForm) {
 
     if (this.girisYapButtonClickable) {
-      console.log("giris yap cagırdi")
       this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
 
         if (data.json() != null && data.json().success == true) {
@@ -116,7 +127,6 @@ export class ContentComponent implements OnDestroy,OnInit{
               this.kayitBasariliText = true;
               this.kayitOlAnim.play();
               this.benimFirsatimLib.signIn(form.value.email,form.value.password).subscribe(data=>{
-                console.log(data.json());
                 this.benimFirsatimLib.successLogin(data.json());
                 setTimeout(
                   ()=>{

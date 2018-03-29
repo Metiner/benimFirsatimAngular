@@ -27,27 +27,27 @@
     </div>
   </div>
   <div class="row" style="margin-top: 2%">
-    <div class="col-5 offset-1">
+    <div class="col-5 offset-1  cursor-pointer">
       <img src="../../assets/imgs/available_on_appstore@2x.png" style="width: inherit">
     </div>
-    <div class="col-5">
+    <div class="col-5 cursor-pointer">
       <img src="../../assets/imgs/available_on_google@2x.png" style="width: inherit">
     </div>
   </div>
   <form  #f="ngForm">
     <div *ngIf="showForm" [@tutorialPopup]>
       <div class="row" style="margin-top: 5%">
-        <div class="col-10 offset-1">
+        <div class="col-10 offset-1 cursor-pointer">
           <input required ngModel name="email" class="urlInput" type="email" placeholder="E-MAIL">
         </div>
       </div>
       <div class="row" style="margin-top: 2%">
-        <div class="col-10 offset-1">
+        <div class="col-10 offset-1 cursor-pointer">
           <input required ngModel name="password" [minlength]="6" class="urlInput" type="password" placeholder="PAROLA">
         </div>
       </div>
       <div *ngIf="kayitOlBool" [@loadingBlackDiv] class="row" style="margin-top: 2%">
-        <div class="col-10 offset-1">
+        <div class="col-10 offset-1 cursor-pointer">
           <input ngModel name="password2" [minlength]="6" class="urlInput" type="password" placeholder="TEKRAR">
         </div>
       </div>
@@ -56,22 +56,22 @@
           <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
           <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">BENİ HATIRLA</span>
         </div>
-        <div class="col offset-1" style="margin-top: 1%">
+        <div class="col offset-1 cursor-pointer" style="margin-top: 1%">
           <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">PAROLANI MI UNUTTUN?</span>
         </div>
       </div>
     </div>
-    <button class="invisible" type="button" (click)="onGirisButtonClick(f)">
+    <button class="invisible cursor-pointer" type="button" (click)="onGirisButtonClick(f)">
       <img  style="visibility: visible !important;" class="giris-yap" [@girisYap]="girisYapState" (@girisYap.done)="makeLoginButtonClickable($event)" (click)="changeState('giris')" src="../../assets/svgs/giris_yap_button.svg">
     </button>
 
-    <button class="invisible" type="button" (click)="onKayitButtonClick(f)">
+    <button class="invisible cursor-pointer" type="button" (click)="onKayitButtonClick(f)">
       <div style="visibility: visible !important;"
            class="kayit-ol" [@kayitOl]="kayitOlState" (@kayitOl.done)="makeSignUpButtonClickable($event)" (click)="changeState('kayit')" id="kayitOlAnim"></div>
     </button>
     <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;position: fixed;left: 50%;bottom: 12%;transform: translate(-50%,-50%);white-space: nowrap">YADA SOSYAL MEDYA HESAPLARINDAN BİRİNİ SEÇ</span>
-    <img src="../../assets/svgs/FB-Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 40%;transform: translate(-50%,-50%);bottom: -3%;">
-    <img src="../../assets/svgs/G+Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 60%; transform: translate(-50%,-50%);bottom: -3%;">
+    <img class="cursor-pointer" src="../../assets/svgs/FB-Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 40%;transform: translate(-50%,-50%);bottom: -3%;">
+    <img class="cursor-pointer" src="../../assets/svgs/G+Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 60%; transform: translate(-50%,-50%);bottom: -3%;">
   </form>
 </div>
 

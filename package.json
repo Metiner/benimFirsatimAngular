@@ -33,6 +33,7 @@
     "lottie-web": "^5.1.9",
     "ng-lottie": "^0.3.1",
     "ngx-facebook": "^2.4.0",
+    "ngx-infinite-scroll": "^0.8.3",
     "rxjs": "^5.5.7",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.20"
@@ -56,6 +57,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "2.6.2"
+    "typescript": "^2.6.2"
   }
 }

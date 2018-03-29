@@ -21,6 +21,7 @@ export class SingleDealComponent implements OnInit {
   comments = [];
   commentIndex = 10;
   animation:any;
+  dealReported = false;
 
 
   deal:any;
@@ -111,7 +112,6 @@ export class SingleDealComponent implements OnInit {
       return true;
   }
   writeToComment(comment){
-    console.log(comment);
     comment.writeCommentToComment = true;
     this.scrollToTop();
   }
@@ -158,8 +158,26 @@ export class SingleDealComponent implements OnInit {
     newlyAddedSubCommentTemp.timeCalculation = "";
     comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
     this.benimFirsatimLib.createComment(this.dealId,comment.id,this.newlyAddedSubComment).subscribe((response)=>{
-      console.log(response);
+
     });
   }
 
+  deadOnDeadLine(){
+    this.benimFirsatimLib.ended(this.dealId).subscribe((response)=>{
+      console.log(response);
+    });
+    this.dealReported = true;
+  }
+  dealOutOfStock(){
+    this.benimFirsatimLib.stockFinished(this.dealId).subscribe((response)=>{
+      console.log(response);
+    });
+    this.dealReported = true;
+  }
+  onReportDeal(){
+    this.benimFirsatimLib.report(this.dealId).subscribe((response)=>{
+      console.log(response);
+    });
+    this.dealReported = true;
+  }
 }

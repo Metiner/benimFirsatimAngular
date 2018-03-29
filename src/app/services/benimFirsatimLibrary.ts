@@ -46,7 +46,6 @@ export class BenimFirsatimLibrary {
   }
 
   public signUp(email,password){
-    console.log(email +' '+ password);
     return this.http.post(this.api_address + '/users', {"user":{"email":email,"password":password}});
   }
   public signupOrLogin(email,name,avatar_url,uid,authResponse,provider_name){
@@ -78,7 +77,6 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/categories');
   }
   public changeCategory(type){
-    console.log(this.dealAnimationContinues);
     if(!this.dealAnimationContinues){
       if(this.currentPaging <= this.totalPage){
         this.currentCategory = type;
@@ -160,6 +158,18 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address+'/categories/'+categoryIndex+'/deals.json?page='+pagination);
   }
 
+
+  public stockFinished(dealId){
+    return this.http.get(this.api_address+'/deals/'+dealId+'/stock_finished');
+  }
+
+  public ended(dealId){
+    return this.http.get(this.api_address+'/deals/'+dealId+'/ended');
+  }
+
+  public report(dealId){
+    return this.http.get(this.api_address+'/deals/'+dealId+'/report');
+  }
 
   get isAutho(): boolean {
     return this._isAutho;

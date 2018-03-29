@@ -44,7 +44,6 @@ export class HeaderComponent implements OnDestroy{
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
       this.categories = response.json();
       this.benimFirsatimLibrary.categories = response.json();
-      console.log(response.json());
     });
     this.autSubscription = this.benimFirsatimLibrary.successLoginProfileMenuChange.subscribe(value=>{
       if(value === 'success'){

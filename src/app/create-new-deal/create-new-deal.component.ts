@@ -24,11 +24,21 @@ export class CreateNewDealComponent implements OnInit {
   dealOwner: string = "";
   dealOwnerAvatar: string = "";
 
+
   currentDate: string = "";
+
 
   images: any[] = [];
 
-  states = ["Yozgat", "Yozgat", "Yozgat"];
+  states = ['Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin',
+  'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale',
+  'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir',
+  'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir',
+  'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya',
+  'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya',
+  'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak',
+  'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman', 'Kırıkkale', 'Batman', 'Şırnak',
+  'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'];
 
   isLinkEmpty: boolean = true;
 
@@ -83,7 +93,6 @@ export class CreateNewDealComponent implements OnInit {
     const arr = this.allCategories.nativeElement.children;
     this.selectedCategory = this.getCategoryId(element.innerText);
 
-    console.log(this.selectedCategory)
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] != element)
         arr[i].show = 'notShow';
@@ -161,7 +170,6 @@ export class CreateNewDealComponent implements OnInit {
               this.images.push(response.json().other_images[i][0]);
             }
           }
-          console.log(response.json().title, 68)
           this.dealTitlePreview = this.concatGivenString(response.json().title, 68);
           this.dealDetailPreview = this.concatGivenString(response.json().description, 200);
           this.showProgressBar = false;
@@ -244,7 +252,7 @@ export class CreateNewDealComponent implements OnInit {
       dealCategory.highlight = 'none';
     }
 
-    form.value.deal_date = date;
+    //form.value.deal_date = date;
     // Warn if user doesnt select any image for deal.
     if (this.selectedImageSrc == '../../assets/imgs/firsat_gorseli_unselected@3x.png') {
       dealImageContainer.highlight = 'highlighted';

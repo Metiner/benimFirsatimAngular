@@ -231,7 +231,7 @@ export const girisYapAnimTrigger = trigger('girisYap',[
     transform:'scale(1.0)'
   })),
   state('down',style({
-    top:'66%',
+    top:'68%',
     transform:'scale(0.5)'
   })),
   transition('down <=> up',
