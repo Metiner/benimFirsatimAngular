@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions , Headers} from '@angular/http';
 import {Subject} from "rxjs/Subject";
 import {NgForm} from '@angular/forms';
+import { FacebookService, InitParams} from "ngx-facebook";
 
 @Injectable()
 export class BenimFirsatimLibrary {
@@ -26,7 +27,16 @@ export class BenimFirsatimLibrary {
   private _currentUser:any;
   private token:string;
 
-  constructor(public http: Http ) {
+  constructor(public http: Http ,
+              public fb: FacebookService) {
+
+    let initParams: InitParams = {
+      appId: '113944349294618',
+      xfbml: true,
+      version: 'v2.8'
+    };
+
+    fb.init(initParams);
     this.silentLogin();
   }
 
@@ -83,7 +93,6 @@ export class BenimFirsatimLibrary {
         this.categoryChanged.next();
       }
     }
-
   }
   public openSignUpPopUpFunc(){
     this.openSignUpPopUp.next();

@@ -46,4 +46,8 @@ border:1px solid black;
 .menu_categories {
   width: 80%; }
 
+.click:active {
+  transform: scale(0.9);
+  cursor: pointer; }
+
 /*# sourceMappingURL=header.component.css.map */

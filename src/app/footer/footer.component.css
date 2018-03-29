@@ -1,0 +1,14 @@
+.footerBackground {
+  background-image: url("../../assets/svgs/footer_bg.svg");
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 105%;
+  text-align: center;
+  flex-wrap: nowrap; }
+
+.nextButton:active {
+  transform: scale(0.8); }
+
+/*# sourceMappingURL=footer.component.css.map */

@@ -34,5 +34,7 @@ html {
 @font-face {
   font-family: "Mark Pro-Italic";
   src: url("../../assets/fonts/MarkProItalic.otf") format("otf"); }
+.cursor-pointer:hover {
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */
