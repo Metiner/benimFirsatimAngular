@@ -24,7 +24,7 @@ declare var gapi:any;
     kayitSuccessTrigger]
 })
 export class ContentComponent implements OnDestroy,OnInit{
-
+  public auth2: any;
   showSingUpSignInPopUp = false;
   tutorial = false;
   mySignUpPopUpSubscription: Subscription;
@@ -272,9 +272,24 @@ export class ContentComponent implements OnDestroy,OnInit{
       .catch(e => console.log('Error logging into Facebook', e));
   }
 
-   onGooglePlusLogin(itemone,itemtwo,itemthree,itemfour,itemfive,itemsix,itemseven,itemeight,itemnine,itemten){
+   onGooglePlusLogin(){
+     let googleAuth = gapi.auth2.getAuthInstance();
+     googleAuth.then(() => {
+       googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
 
+         console.log(googleUser);
+         var loginData = {accessToken:googleUser.getAuthResponse().access_token};
+         var email = googleUser.getBasicProfile().U3;
+         var name = googleUser.getBasicProfile().U3.split('@')[0];
+         var picture = googleUser.getBasicProfile().Paa;
+         var id = googleUser.getBasicProfile().Eea;
 
+         this.benimFirsatimLib.signupOrLogin(email,name,picture,id,loginData,"google").subscribe(response=>{
+           console.log(response.json());
+         });
 
+       });
+     });
    }
+
 }
