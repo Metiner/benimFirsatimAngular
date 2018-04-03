@@ -167,6 +167,11 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address+'/categories/'+categoryIndex+'/deals.json?page='+pagination);
   }
 
+  //Gets deals which created by current logged user.
+  public getDealFromUser(pagination){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address+'/user/'+this.currentUser.id+'/deals.json?page='+pagination,opt);
+  }
 
   public stockFinished(dealId){
     return this.http.get(this.api_address+'/deals/'+dealId+'/stock_finished');

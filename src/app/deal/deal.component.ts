@@ -36,17 +36,32 @@ export class DealComponent implements OnInit, OnDestroy {
 
   setDeals(){
     if(typeof this.benimFirsatimLib.currentCategory  === "string"){
-      this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
-        let responseData = data.json();
-        this.displayedDeals = [];
-        this.deals = responseData.entries;
-        this.benimFirsatimLib.currentDeals = this.deals;
-        this.benimFirsatimLib.currentPaging = responseData.current_page;
-        this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
-        if (this.deals.length >= 1) {
-          this.displayedDeals.push(this.deals[0]);
-        }
-      });
+
+      if(this.benimFirsatimLib.currentCategory === 'myDeals'){
+        this.benimFirsatimLib.getDealFromUser(this.benimFirsatimLib.currentPaging).subscribe(data=>{
+          let responseData = data.json();
+          this.displayedDeals = [];
+          this.deals = responseData.entries;
+          this.benimFirsatimLib.currentDeals = this.deals;
+          this.benimFirsatimLib.currentPaging = responseData.current_page;
+          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+          if (this.deals.length >= 1) {
+            this.displayedDeals.push(this.deals[0]);
+          }
+        })
+      }else{
+        this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
+          let responseData = data.json();
+          this.displayedDeals = [];
+          this.deals = responseData.entries;
+          this.benimFirsatimLib.currentDeals = this.deals;
+          this.benimFirsatimLib.currentPaging = responseData.current_page;
+          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+          if (this.deals.length >= 1) {
+            this.displayedDeals.push(this.deals[0]);
+          }
+        });
+      }
     }else{
       this.benimFirsatimLib.getCategoryDeals(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
         let responseData = data.json();

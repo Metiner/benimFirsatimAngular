@@ -269,5 +269,9 @@ export class HeaderComponent implements OnDestroy{
     localStorage.clear();
     this.benimFirsatimLibrary.currentUser = {};
   }
+  onMyDealsPage(){
+    this.benimFirsatimLibrary.currentCategory = 'myDeals';
+    this.router.navigate(['/myDeals']);
+  }
 
 }

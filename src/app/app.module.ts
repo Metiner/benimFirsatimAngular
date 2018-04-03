@@ -25,8 +25,9 @@ import {FacebookModule} from "ngx-facebook";
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
+  { path : 'myDeals', component : DealComponent},
   { path : 'createNewDeal', component: CreateNewDealComponent}
-]
+  ]
 
 @NgModule({
   declarations: [

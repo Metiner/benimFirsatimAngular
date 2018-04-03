@@ -150,16 +150,24 @@
                     <div class="col-2" style="padding: 0px">
                       <span class="dealDetailsSpans">KATEGORİ</span>
                     </div>
-                    <div class="col" #lsd [@highlight]="lsd.highlight" style="border-radius: 15px">
-                      <div #allCategories
-                           class="bxslider cursor-pointer" style="box-shadow: none">
-                        <div #element class="text-center"
-                             style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap"
-                             (click)="showMe(element)" [@showMe]="element.show"
-                             *ngFor="let category of categories">{{category.name}}
-                        </div>
-                      </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-select placeholder="Kategori" ngModel name="selectedCategory">
+                          <mat-option>Lütfen Seçiniz</mat-option>
+                          <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                     </div>
+                    <!--<div class="col" #lsd [@highlight]="lsd.highlight" style="border-radius: 15px">-->
+                      <!--<div #allCategories-->
+                           <!--class="bxslider cursor-pointer" style="box-shadow: none">-->
+                        <!--<div #element class="text-center"-->
+                             <!--style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap"-->
+                             <!--(click)="showMe(element)" [@showMe]="element.show"-->
+                             <!--*ngFor="let category of categories">{{category.name}}-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <!--</div>-->
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
                     <div class="col-1 padding">
