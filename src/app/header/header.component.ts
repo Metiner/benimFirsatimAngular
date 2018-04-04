@@ -270,8 +270,7 @@ export class HeaderComponent implements OnDestroy{
     this.benimFirsatimLibrary.currentUser = {};
   }
   onMyDealsPage(){
-    this.benimFirsatimLibrary.currentCategory = 'myDeals';
-    this.router.navigate(['/myDeals']);
+    this.router.navigate(['/myProfile/myDeals']);
   }
 
 }

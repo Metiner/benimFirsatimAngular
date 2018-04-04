@@ -21,12 +21,14 @@ import { CreateNewDealComponent } from './create-new-deal/create-new-deal.compon
 import { MaterialModule } from './material.module';
 import './../polyfills';
 import {FacebookModule} from "ngx-facebook";
+import {ProfileSettingsComponent} from './profile-settings/profile-settings.component';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
   { path : 'myDeals', component : DealComponent},
-  { path : 'createNewDeal', component: CreateNewDealComponent}
+  { path : 'createNewDeal', component: CreateNewDealComponent},
+  { path : 'myProfile/:type' , component: ProfileSettingsComponent}
   ]
 
 @NgModule({
@@ -40,7 +42,8 @@ const appRoutes : Routes = [
     SingleDealComponent,
     SignUpComponent,
     SignInComponent,
-    CreateNewDealComponent
+    CreateNewDealComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,

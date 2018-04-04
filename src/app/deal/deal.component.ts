@@ -4,6 +4,7 @@ import {dealStateTrigger} from "../animations";
 import {AnimationEvent} from "@angular/animations";
 import {Subscription} from "rxjs/Subscription";
 import {Router} from "@angular/router";
+declare var lottie:any;
 
 @Component({
   selector: 'app-deal',
@@ -16,6 +17,10 @@ export class DealComponent implements OnInit, OnDestroy {
   deals = [];
   displayedDeals = [];
   mySubscription: Subscription;
+  showPointTableSubs: Subscription;
+  likeButtonAnimations = [];
+  commentButtonAnimations = [];
+  showPointTable = true;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router) {
@@ -25,14 +30,21 @@ export class DealComponent implements OnInit, OnDestroy {
         this.setDeals();
       }
     });
+    this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
+      next: ()=>{
+        console.log("lol")
+        this.showPointTable = false;
+      }
+    })
   }
   ngOnInit(){
     this.setDeals();
+
   }
   ngOnDestroy(){
     this.mySubscription.unsubscribe();
+    this.showPointTableSubs.unsubscribe();
   }
-
 
   setDeals(){
     if(typeof this.benimFirsatimLib.currentCategory  === "string"){
@@ -48,6 +60,7 @@ export class DealComponent implements OnInit, OnDestroy {
           if (this.deals.length >= 1) {
             this.displayedDeals.push(this.deals[0]);
           }
+
         })
       }else{
         this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
@@ -60,6 +73,7 @@ export class DealComponent implements OnInit, OnDestroy {
           if (this.deals.length >= 1) {
             this.displayedDeals.push(this.deals[0]);
           }
+
         });
       }
     }else{
@@ -73,13 +87,19 @@ export class DealComponent implements OnInit, OnDestroy {
         if (this.deals.length >= 1) {
           this.displayedDeals.push(this.deals[0]);
         }
+
       });
     }
+
+
+
 
   }
 
   onDealAnimated(event: AnimationEvent, lastItemIndex){
-
+    if(lastItemIndex < 10){
+      this.loadAnimations(lastItemIndex);
+    }
     if (event.fromState !== 'void'){
       return;
     }
@@ -92,6 +112,26 @@ export class DealComponent implements OnInit, OnDestroy {
     }
   }
 
+  loadAnimations(index) {
+
+    var likeButtons = document.getElementsByClassName("lottieLikeButton");
+      this.likeButtonAnimations.push(lottie.loadAnimation({
+        container: likeButtons[index], // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'assets/animations/like_button.json' // the path to the animation json
+      }));
+
+    var commentButtons = document.getElementsByClassName("lottieCommentButton");
+      this.commentButtonAnimations.push(lottie.loadAnimation({
+        container: commentButtons[index], // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'assets/animations/comment_button.json' // the path to the animation json
+      }));
+  }
   goToDeal(dealId){
     this.route.navigate(['/deal/' + dealId]);
   }
@@ -102,6 +142,17 @@ export class DealComponent implements OnInit, OnDestroy {
   }
   goToLink(link: string){
     window.open(link, '_blank');
+  }
+  playAnim(index,type) {
+    if(type === 'like'){
+      this.likeButtonAnimations[index].playSegments(0,100);
+    }
+    else{
+      this.commentButtonAnimations[index].play();
+      }
+    }
+  stopAnim(index) {
+    this.likeButtonAnimations[index].stop();
   }
 
 }

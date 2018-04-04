@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="3245 549 96 107">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7e60f;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.283" y1="0.703" x2="0.767" y2="0.212" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#234491"/>
+      <stop offset="1" stop-color="#2b8b56"/>
+    </linearGradient>
+  </defs>
+  <g id="write_comment_icon" transform="translate(3246 573)">
+    <rect id="Rectangle_55" data-name="Rectangle 55" class="cls-1" width="96" height="107" rx="19" transform="translate(-1 -24)"/>
+    <path id="Union_4" data-name="Union 4" class="cls-2" d="M.022,37.02l1.971-8.839,7.792,7.788L1.094,38.077a.9.9,0,0,1-.207.024A.889.889,0,0,1,.022,37.02ZM4.1,26.074,23.839,6.355l7.8,7.789L11.894,33.864ZM25.861,4.335,29.195,1a3.464,3.464,0,0,1,4.878,0L37.552,4.48a2.648,2.648,0,0,1-.007,3.765l-3.886,3.879Z" transform="translate(28.291 10.575)"/>
+  </g>
+</svg>

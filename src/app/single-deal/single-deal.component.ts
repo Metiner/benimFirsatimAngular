@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
+import set = Reflect.set;
 declare var lottie: any;
 declare var $:any
 
@@ -21,6 +22,9 @@ export class SingleDealComponent implements OnInit {
   comments = [];
   commentIndex = 10;
   animation:any;
+  likeButtonAnimation:any;
+  commentButtonAnimation:any;
+  thumbUpAnimations=[];
   dealReported = false;
 
 
@@ -39,6 +43,7 @@ export class SingleDealComponent implements OnInit {
       this.deal = this.benimFirsatimLib.getDealById(this.dealId);
       this.benimFirsatimLib.getComments(this.dealId).subscribe(comments=>{
         this.comments = comments.json();
+        this.loadThumbsupAnimations();
         for(let i=0;i<this.comments.length;i++){
           this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
           if(this.comments[i].comments.length > 0){
@@ -49,31 +54,61 @@ export class SingleDealComponent implements OnInit {
         }
       })
     }
-
-    // ScrollActivate(this);
-    //
-    //
-    // function ScrollActivate(page) {
-    //
-    //   $(window).on("scroll", function () {
-    //     if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-    //       $(window).off("scroll");
-    //       console.log(page.comments);
-    //       page.commentIndex = page.commentIndex + 5;
-    //     }
-    //   });
-    // }
-    // this.ref.detectChanges();
   }
 
   loadAnimations(){
-    this.animation = lottie.loadAnimation({
-      container: document.getElementById("forLottie"), // the dom element that will contain the animation
-      renderer: 'svg',
-      loop: false,
-      autoplay: false,
-      path: 'assets/animations/kaydet_button.json' // the path to the animation json
-    });
+    $(document).ready(()=>{
+      this.animation = lottie.loadAnimation({
+        container: document.getElementById("forLottie"), // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'assets/animations/kaydet_button.json' // the path to the animation json
+      });
+      this.likeButtonAnimation = lottie.loadAnimation({
+        container: document.getElementById("lottieLikeButton"), // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'assets/animations/like_button.json' // the path to the animation json
+      });
+      this.commentButtonAnimation = lottie.loadAnimation({
+        container: document.getElementById("lottieCommentButton"), // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'assets/animations/comment_button.json' // the path to the animation json
+      });
+    })
+  }
+  loadThumbsupAnimations(){
+
+    $(document).ready(()=>{
+      let animations = document.getElementsByClassName("lottieThumbUpButton");
+      if(animations.length > 0){
+        for(var i=0;i<animations.length;i++){
+          this.thumbUpAnimations.push(
+            lottie.loadAnimation({
+              container:animations[i],
+              renderer:'svg',
+              autoplay: false,
+              loop:false,
+              path:'assets/animations/thumb_up.json'
+            })
+          )
+        }
+      }
+    })
+  }
+  playAnim(index,type) {
+    if(type === 'like'){
+      this.likeButtonAnimation.playSegments(0,100);
+    }else if(type === 'thumbsUp'){
+      this.thumbUpAnimations[index].playSegments(0,100);
+    }else{
+      this.commentButtonAnimation.playSegments(0,100);
+    }
+
   }
   playSegments(from,to){
     this.animation.playSegments([from,to],true);

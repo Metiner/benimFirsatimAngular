@@ -270,3 +270,16 @@ export const highlightTrigger = trigger('highlight',[
     animate(500)
   ])
 ])
+
+export const tabActivationTrigger = trigger('tabActivation',[
+  state('active',
+    style(
+      {
+      'font-size': '20px',
+      'font-weight': 900,
+      'color':'#234491'}
+    )),
+    transition('*<=> active',[
+      animate(500)
+      ])
+])

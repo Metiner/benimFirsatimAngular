@@ -12,11 +12,11 @@
                 <div class="row title">
                   <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
                 </div>
-                <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
+                <div class="row" style="align-items: flex-end;flex-wrap: nowrap;padding-top: 1%">
                   <div class="col-2">
                     <div class="row" style="align-items: center;flex-wrap: nowrap;">
                       <div class="col-3 nopadding">
-                        <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
+                        <img src="../../assets/svgs/price_tag.svg" style="width: 150%">
                       </div>
                       <div class="col nopadding" style="margin-left: 15%">
                         <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{deal.price}}₺</span>
@@ -24,23 +24,18 @@
                     </div>
                   </div>
                   <div class="col-1">
-                    <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                      <div class="col-5 nopadding cursor-pointer">
-                        <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
-                      </div>
-                      <div class="col nopadding" style="margin-left:20%">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.votes_sum}}</span>
+                    <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
+                      <div class="col-12 nopadding">
+                        <div id="lottieLikeButton" (click)="playAnim(0,'like')"></div>
+                        <span class="likeComment-span">{{deal.votes_sum}}</span>
                       </div>
                     </div>
                   </div>
                   <div class="col-1">
-                    <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                      <div class="col-5 offset-1 nopadding cursor-pointer">
-                        <img src="../../assets/imgs/comment_button@2x.png" style="
-            width: 250%">
-                      </div>
-                      <div class="col  nopadding" style="margin-left: 20%">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.comments_count}}</span>
+                    <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
+                      <div class="col-12 nopadding">
+                        <div id="lottieCommentButton" (click)="playAnim(0,'comment')"></div>
+                        <span class="likeComment-span">{{deal.comments_count}}</span>
                       </div>
                     </div>
                   </div>
@@ -224,8 +219,8 @@
                       <div class="col-1 offset-10 cursor-pointer" (click)="writeToComment(comment)">
                         <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
                       </div>
-                      <div class="col-1 nopadding cursor-pointer">
-                        <img style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_thumb_up_icon.svg">
+                      <div class="col-1 cursor-pointer">
+                        <div class="lottieThumbUpButton" (click)="playAnim(i,'thumbsUp')"></div>
                       </div>
                     </div>
                   </div>

@@ -13,6 +13,7 @@ export class BenimFirsatimLibrary {
 
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
+  showPointTable = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   private _dealAnimationContinues = true;
 

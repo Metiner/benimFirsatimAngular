@@ -15,11 +15,11 @@
         <div class="row" style="padding-top: 1%">
           <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{deal.details.slice(0,200).concat('..')}}</span>
         </div>
-        <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
+        <div class="row" style="align-items: flex-end;flex-wrap: nowrap;padding-top: 1%">
           <div class="col-2">
             <div class="row" style="align-items: center;flex-wrap: nowrap;">
               <div class="col-3 nopadding">
-                <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
+                <img src="../../assets/svgs/price_tag.svg" style="width: 150%">
               </div>
               <div class="col nopadding" style="margin-left: 15%">
                 <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{deal.price}}₺</span>
@@ -27,23 +27,18 @@
             </div>
           </div>
           <div class="col-1">
-            <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-              <div class="col-5 nopadding">
-                <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
-              </div>
-              <div class="col nopadding" style="margin-left:20%">
-                <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.votes_sum}}</span>
+            <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
+              <div class="col-12 nopadding">
+                <div class="lottieLikeButton" (click)="playAnim(i,'like')"></div>
+                <span class="likeComment-span">{{deal.votes_sum}}</span>
               </div>
             </div>
           </div>
           <div class="col-1">
-            <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-              <div class="col-5 offset-1 nopadding">
-                <img src="../../assets/imgs/comment_button@2x.png" style="
-            width: 250%">
-              </div>
-              <div class="col  nopadding" style="margin-left: 20%">
-                <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491">{{deal.comments_count}}</span>
+            <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
+              <div class="col-12 nopadding">
+                <div class="lottieCommentButton" (click)="playAnim(i,'comment')"></div>
+                <span class="likeComment-span">{{deal.comments_count}}</span>
               </div>
             </div>
           </div>
@@ -85,9 +80,11 @@
       </div>
     </div>
   </div>
-  <div class="col-3">
+
+  <div class="col-3" *ngIf="showPointTable | async">
     <app-point-table></app-point-table>
   </div>
+
 </div>
 <app-footer></app-footer>
 

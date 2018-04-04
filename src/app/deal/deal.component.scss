@@ -7,8 +7,15 @@
 .nopadding {
   padding: 0px;
 }
-
 .title span:hover {
   text-decoration: underline;
   cursor:pointer;
+}
+.likeComment-span{
+  font-family: 'Mark Pro-Heavy';
+  font-size: 12px;
+  color:#234491;
+  position: absolute;
+  top: 33%;
+  right: 35%;
 }
