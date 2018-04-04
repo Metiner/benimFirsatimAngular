@@ -49,3 +49,10 @@ html{
 .cursor-pointer:hover {
   cursor: pointer;
 }
+.row {
+  display: -ms-flexbox !important;  /* TWEENER - IE 10 */
+  display: -webkit-box ;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -webkit-flex !important; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;
+}
+
