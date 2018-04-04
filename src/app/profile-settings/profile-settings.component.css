@@ -1,65 +1,66 @@
-.tab{
+.tab {
   font-family: 'Mark Pro-Book';
   font-size: 17px;
-  color:#234491;
-}
-.nopadding{
-  padding: 0px;
-}
+  color: #234491; }
+
+.nopadding {
+  padding: 0px; }
+
 /*div{
   border:1px solid black;
 }*/
-.my-profile{
+.my-profile {
   height: 800px;
   background-color: white;
   border-radius: 40px;
   padding: 0px;
-  margin-right: 1%;
-}
-.point-table{
+  margin-right: 1%; }
+
+.point-table {
   font-family: 'Mark Pro-Light';
   font-size: 13px;
   color: #F7E60f;
   position: absolute;
   top: 18px;
   left: 50%;
-  transform: translate(-50%,-50%);
-  white-space: nowrap;
-}
-.avatar{
+  transform: translate(-50%, -50%);
+  white-space: nowrap; }
+
+.avatar {
   position: absolute;
   top: 23%;
   left: 50%;
   width: 200px;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-.change-photo{
+  transform: translate(-50%, -50%); }
+
+.change-photo {
   width: 50px;
   position: absolute;
   top: 26%;
-  left: 18%;
-}
-.user-name{
+  left: 18%; }
+
+.user-name {
   font-family: 'Mark Pro-Heavy';
   font-size: 28px;
   position: absolute;
   color: #234491;
   top: 37%;
   left: 50%;
-  transform: translate(-50%);
-}
-.user-email{
+  transform: translate(-50%); }
+
+.user-email {
   font-family: 'Mark Pro-Book';
   font-size: 20px;
   position: absolute;
   color: #234491;
   top: 41%;
   left: 50%;
-  transform: translate(-50%);
-}
-.user-info{
+  transform: translate(-50%); }
+
+.user-info {
   position: absolute;
   top: 50%;
-  left: 5%;
-}
+  left: 5%; }
+
+/*# sourceMappingURL=profile-settings.component.css.map */

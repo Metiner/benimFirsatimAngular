@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,eAAe;EACb,aAAa,EAAE,GAAG;;AAEpB,UAAW;EACT,OAAO,EAAE,GAAG;;AAEd,iBAAkB;EAChB,eAAe,EAAE,SAAS;EAC1B,MAAM,EAAC,OAAO;;AAEhB,iBAAiB;EACf,WAAW,EAAE,gBAAgB;EAC7B,SAAS,EAAE,IAAI;EACf,KAAK,EAAC,OAAO;EACb,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,GAAG;EACR,KAAK,EAAE,GAAG",
+"sources": ["deal.component.scss"],
+"names": [],
+"file": "deal.component.css"
+}

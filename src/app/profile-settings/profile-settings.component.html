@@ -1,4 +1,4 @@
-<div class="row" style="margin-top: 2%" >
+<div class="row" style="margin-top: 1%" >
   <div class="col-10 offset-1" style="background-color: white;border-radius: 30px;padding: 10px">
     <div class="row align-items-center">
       <div class="col-2">
@@ -24,11 +24,58 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-2 offset-1" style="height: 100px">
+<div class="row" style="margin-top: 1%">
+  <div class="col-10 offset-1">
+    <div class="row">
+      <div class="col-3 my-profile">
+        <img src="../../assets/svgs/genel_bakis/user_panel_bg.svg">
+        <span class="point-table">PUAN TABLOSUNDA <span style="font-family: 'Mark Pro-Black;font-size: 13px;color: #F7E60f'">232323</span>.SIRADA</span>
+        <div class="avatar">
+          <img style="border-radius: 100px;height: inherit;width: inherit;border: 3px solid #F7E60f" src="{{currentUser.avatar_url}}">
+        </div>
+        <img class="change-photo" src="../../assets/svgs/genel_bakis/change_photo_icon.svg">
+        <span class="user-name">{{currentUser.name}}</span>
+        <span class="user-email">{{currentUser.email}}</span>
+        <div class="user-info">
+          <div class="row">
+            <div class="col">
+              <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
+              <span class="tab">FIRSATLAR</span>
+            </div>
+          </div>
+          <div class="row">
+            <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator_line.svg">
+          </div>
+          <div class="row">
+            <div class="col">
+              <img  style="height: 20px" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">
+              <span class="tab">YORUMLAR</span>
+            </div>
+          </div>
+          <div class="row">
+            <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator_line.svg">
+          </div>
+          <div class="row">
+            <div class="col">
+              <img style="height: 20px" src="../../assets/svgs/genel_bakis/begeni_icon.svg">
+              <span class="tab">KAZANILAN BEĞENİ</span>
+            </div>
+          </div>
+          <div class="row">
+            <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator_line.svg">
+          </div>
+          <div class="row">
+            <div class="col">
+              <img style="height: 20px" src="../../assets/svgs/genel_bakis/follower_icon.svg">
+              <span class="tab">TAKİPÇİ SAYISI</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  </div>
-  <div class="col">
-    <app-deal id="firsatlarim" *ngIf="firsatlar.active == 'active'"></app-deal>
+      <div class="col">
+        <app-deal id="firsatlarim" *ngIf="firsatlar.active == 'active'"></app-deal>
+      </div>
+    </div>
   </div>
 </div>

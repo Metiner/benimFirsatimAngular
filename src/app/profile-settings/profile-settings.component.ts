@@ -23,23 +23,32 @@ export class ProfileSettingsComponent implements OnInit {
   firsatlar = {active:'void'};
   ayarlar = {active:'void'};
 
+  currentUser;any={};
+
   ngOnInit() {
 
+    this.currentUser = this.benimFirsatimLibrary.currentUser;
 
     if (this.activatedRoute.snapshot.params['type'] === 'myDeals') {
       this.benimFirsatimLibrary.currentCategory = 'myDeals';
       this.activeAnim("firsatlar");
+      this.formatDeals();
 
-      $(document).ready(()=>{
-        var firsatlarim = document.getElementById("firsatlarim");
-        firsatlarim.children[0].children[0].classList.remove("col-8");
-        firsatlarim.children[0].children[0].classList.remove("offset-1");
-        firsatlarim.children[0].children[0].classList.add("col-10");
-
-      })
       // disables points table
       this.benimFirsatimLibrary.showPointTable.next();
     }
+  }
+
+  formatDeals(){
+
+    $(document).ready(()=>{
+      var firsatlarim = document.getElementById("firsatlarim");
+      firsatlarim.children[0].children[0].classList.remove("col-8");
+      firsatlarim.children[0].children[0].classList.remove("offset-1");
+      firsatlarim.children[0].children[0].classList.add("col");
+      firsatlarim.children[0].children[0].children[0].removeAttribute("margin-top");
+
+    })
   }
 
   activeAnim(element){
@@ -56,6 +65,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.kaydedilenler.active = 'void';
       this.firsatlar.active = 'active';
       this.ayarlar.active = 'void';
+      this.formatDeals();
     }
     if(element === 'yorumlar'){
       this.genelBakis.active = 'void';

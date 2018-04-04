@@ -209,7 +209,7 @@ export class CreateNewDealComponent implements OnInit {
     this.dealDetailPreview = event.target.value;
   }
 
-  onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealCategory, dealTitle, dealImageContainer) {
+  onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealTitle, dealImageContainer) {
     this.dealReadytoPublish = true;
 
     if (form.value.dealUrlPreview === "") {
@@ -245,13 +245,13 @@ export class CreateNewDealComponent implements OnInit {
       dealTitle.highlight = 'none';
     }
 
-    if (this.selectedCategory == 0) {
+    /*if (this.selectedCategory == 0) {
       dealCategory.highlight = 'highlighted';
       this.dealReadytoPublish = false;
     } else {
       dealCategory.highlight = 'none';
     }
-
+*/
     //form.value.deal_date = date;
     // Warn if user doesnt select any image for deal.
     if (this.selectedImageSrc == '../../assets/imgs/firsat_gorseli_unselected@3x.png') {
