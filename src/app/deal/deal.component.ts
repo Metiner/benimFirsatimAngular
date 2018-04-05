@@ -20,7 +20,7 @@ export class DealComponent implements OnInit, OnDestroy {
   showPointTableSubs: Subscription;
   likeButtonAnimations = [];
   commentButtonAnimations = [];
-  showPointTable = true;
+  showPointTable=true;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router) {
@@ -32,7 +32,6 @@ export class DealComponent implements OnInit, OnDestroy {
     });
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
       next: ()=>{
-        console.log("lol")
         this.showPointTable = false;
       }
     })

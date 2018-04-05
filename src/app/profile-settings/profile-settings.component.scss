@@ -10,7 +10,7 @@
   border:1px solid black;
 }*/
 .my-profile{
-  height: 800px;
+  height: 750px;
   background-color: white;
   border-radius: 40px;
   padding: 0px;
@@ -27,39 +27,68 @@
   white-space: nowrap;
 }
 .avatar{
-  position: absolute;
-  top: 23%;
-  left: 50%;
   width: 200px;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 .change-photo{
   width: 50px;
   position: absolute;
-  top: 26%;
-  left: 18%;
+  top:65%;
+
+}
+.photo-div{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
 }
 .user-name{
   font-family: 'Mark Pro-Heavy';
   font-size: 28px;
-  position: absolute;
   color: #234491;
-  top: 37%;
-  left: 50%;
-  transform: translate(-50%);
 }
 .user-email{
   font-family: 'Mark Pro-Book';
   font-size: 20px;
-  position: absolute;
   color: #234491;
-  top: 41%;
+}
+.username-email{
+  position: absolute;
   left: 50%;
+  text-align: center;
+  top: 40%;
   transform: translate(-50%);
 }
 .user-info{
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 5%;
+}
+.update-profile{
+  position: absolute;
+  top: 54%;
+  left: 9%;
+}
+
+.form-element-span{
+  font-family: 'Mark Pro-Book';
+  color:#234491;
+  font-size: 17px;
+  margin-bottom: 3%;
+}
+.form-element-text-input{
+  border-bottom: 1px solid #234491;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  color: #234491;
+  width: inherit;
+  margin-bottom: 10%;
+}
+.are-you-sure{
+  position: absolute;
+  top: 75%;
+  left: 35%;
+  width: 60%;
 }

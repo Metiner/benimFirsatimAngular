@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {tabActivationTrigger} from '../animations';
+import {NgForm} from "@angular/forms";
 declare var $:any;
 
 @Component({
@@ -24,6 +25,9 @@ export class ProfileSettingsComponent implements OnInit {
   ayarlar = {active:'void'};
 
   currentUser;any={};
+  showUserInfoSection = true;
+  showUpdateProfile = false;
+  showAreYouSure = false;
 
   ngOnInit() {
 
@@ -33,26 +37,28 @@ export class ProfileSettingsComponent implements OnInit {
       this.benimFirsatimLibrary.currentCategory = 'myDeals';
       this.activeAnim("firsatlar");
       this.formatDeals();
-
+/*
       // disables points table
-      this.benimFirsatimLibrary.showPointTable.next();
+      this.benimFirsatimLibrary.showPointTable.next();*/
     }
   }
 
   formatDeals(){
 
     $(document).ready(()=>{
+      $("app-point-table").remove();
       var firsatlarim = document.getElementById("firsatlarim");
       firsatlarim.children[0].children[0].classList.remove("col-8");
       firsatlarim.children[0].children[0].classList.remove("offset-1");
-      firsatlarim.children[0].children[0].classList.add("col");
-      firsatlarim.children[0].children[0].children[0].removeAttribute("margin-top");
-
+      firsatlarim.children[0].children[0].classList.add("col-12");
     })
+
   }
 
   activeAnim(element){
     if(element === 'genelBakis'){
+      this.showUserInfoSection = true;
+      this.showUpdateProfile = false;
       this.genelBakis.active = 'active';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'void';
@@ -60,6 +66,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.ayarlar.active = 'void';
     }
     if(element === 'firsatlar'){
+      this.showUserInfoSection = true;
+      this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'void';
@@ -68,6 +76,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.formatDeals();
     }
     if(element === 'yorumlar'){
+      this.showUserInfoSection = true;
+      this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'active';
       this.kaydedilenler.active = 'void';
@@ -75,6 +85,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.ayarlar.active = 'void';
     }
     if(element === 'kaydedilenler'){
+      this.showUserInfoSection = true;
+      this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'active';
@@ -82,6 +94,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.ayarlar.active = 'void';
     }
     if(element === 'ayarlar'){
+      this.showUpdateProfile = true;
+      this.showUserInfoSection = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'void';
@@ -89,4 +103,13 @@ export class ProfileSettingsComponent implements OnInit {
       this.ayarlar.active = 'active';
     }
   }
+  onProfileUpdateSubmit(form:NgForm){
+    console.log(form.value);
+  }
+  onDeleteProfile(){
+    this.showAreYouSure = !this.showAreYouSure;
+
+  }
+
+
 }

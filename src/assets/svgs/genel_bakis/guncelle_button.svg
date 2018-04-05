@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2254.68 3280.527 144 50.008">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7e60f;
+      }
+
+      .cls-2 {
+        fill: #234491;
+        font-size: 18px;
+        font-family: MarkPro-Black, Mark Pro;
+        font-weight: 800;
+        letter-spacing: 0.004em;
+      }
+    </style>
+  </defs>
+  <g id="guncelle_button" transform="translate(2254.68 3280.527)">
+    <rect id="Rectangle_16" data-name="Rectangle 16" class="cls-1" width="143.64" height="50.008" rx="24" transform="translate(0 0)"/>
+    <text id="GÜNCELLE" class="cls-2" transform="translate(0 12.768)"><tspan x="22.797" y="18">GÜNCELLE</tspan></text>
+  </g>
+</svg>

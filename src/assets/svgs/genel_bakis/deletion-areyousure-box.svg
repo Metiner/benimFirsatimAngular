@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2238 3143 271 143.807">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d72e2e;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-size: 18px;
+        font-family: MarkPro-Heavy, Mark Pro;
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <g id="deletion" transform="translate(1990 2340)">
+    <path id="Union_7" data-name="Union 7" class="cls-1" d="M-1794.558-3348H-1967a23,23,0,0,1-23-23v-77a23,23,0,0,1,23-23h225a23,23,0,0,1,23,23v77a23,23,0,0,1-23,23h-31.751v20.806Z" transform="translate(2238 4274)"/>
+    <text id="HESABINIZI_SİLMEK_İSTEDİĞİNİZE_EMİNSENİZ_LÜTFEN_İŞARETE_BİR_KERE_DAHA_TIKLAYIN" data-name="HESABINIZI SİLMEK İSTEDİĞİNİZE EMİNSENİZ, LÜTFEN İŞARETE BİR KERE DAHA TIKLAYIN" class="cls-2" transform="translate(264 818)"><tspan x="31.314" y="18">HESABINIZI SİLMEK </tspan><tspan x="3.994" y="41">İSTEDİĞİNİZE EMİNSENİZ, </tspan><tspan x="0.723" y="64">LÜTFEN İŞARETE BİR KERE </tspan><tspan x="49.71" y="87">DAHA TIKLAYIN</tspan></text>
+  </g>
+</svg>

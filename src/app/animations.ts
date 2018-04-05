@@ -275,10 +275,10 @@ export const tabActivationTrigger = trigger('tabActivation',[
   state('active',
     style(
       {
-      'font-size': '20px',
-      'color':'#234491'}
+      'font-family': 'Mark Pro-Black',
+      }
     )),
     transition('*<=> active',[
-      animate(500)
+      animate(0)
       ])
 ])

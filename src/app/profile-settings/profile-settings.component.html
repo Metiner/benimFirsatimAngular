@@ -24,19 +24,73 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-top: 1%">
+<div class="row" style="margin-top: 1%;margin-bottom: 10%">
   <div class="col-10 offset-1">
     <div class="row">
       <div class="col-3 my-profile">
         <img src="../../assets/svgs/genel_bakis/user_panel_bg.svg">
         <span class="point-table">PUAN TABLOSUNDA <span style="font-family: 'Mark Pro-Black;font-size: 13px;color: #F7E60f'">232323</span>.SIRADA</span>
-        <div class="avatar">
-          <img style="border-radius: 100px;height: inherit;width: inherit;border: 3px solid #F7E60f" src="{{currentUser.avatar_url}}">
+        <div class="photo-div">
+          <div class="avatar">
+            <img style="border-radius: 100px;height: inherit;width: inherit;border: 3px solid #F7E60f" src="{{currentUser.avatar_url}}">
+          </div>
+          <img class="change-photo" src="../../assets/svgs/genel_bakis/change_photo_icon.svg">
         </div>
-        <img class="change-photo" src="../../assets/svgs/genel_bakis/change_photo_icon.svg">
-        <span class="user-name">{{currentUser.name}}</span>
-        <span class="user-email">{{currentUser.email}}</span>
-        <div class="user-info">
+        <div class="username-email">
+          <span class="user-name">{{currentUser.name}}</span>
+          <span class="user-email">{{currentUser.email}}</span>
+        </div>
+        <div class="update-profile" *ngIf="showUpdateProfile">
+          <form #f="ngForm">
+            <div class="row">
+              <div class="col">
+                <span class="form-element-span">YENİ EMAİL</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input ngModel name="email" class="form-element-text-input">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="form-element-span">YENİ PAROLA</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input ngModel name="password" class="form-element-text-input">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="form-element-span">YENİ PAROLA (TEKRAR)</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input ngModel name="rePassword" class="form-element-text-input">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="form-element-span">KULLANICI ADI</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input ngModel name="username" class="form-element-text-input" placeholder="(6 AYDA BİR DEĞİŞTİRİLEBİLİR)">
+              </div>
+            </div>
+            <div class="row" style="text-align: center">
+              <div class="col" (click)="onProfileUpdateSubmit(f)">
+                <img style="width: 45%;margin-left: -10%" src="../../assets/svgs/genel_bakis/guncelle_button.svg">
+                <img (click)="onDeleteProfile()" style="width: 15%;position:absolute;right: 3%" src="../../assets/svgs/genel_bakis/hesabi_sil_icon.svg">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="user-info" *ngIf="showUserInfoSection">
           <div class="row">
             <div class="col">
               <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
@@ -70,6 +124,9 @@
               <span class="tab">TAKİPÇİ SAYISI</span>
             </div>
           </div>
+        </div>
+        <div class="are-you-sure" *ngIf="showAreYouSure">
+          <img src="../../assets/svgs/genel_bakis/deletion-areyousure-box.svg">
         </div>
       </div>
 
