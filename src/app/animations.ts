@@ -263,11 +263,11 @@ export const highlightTrigger = trigger('highlight',[
   state('highlighted',
     style(
       {
-        border:'2px solid red'
+        color:'red'
       }
   )),
   transition('* <=> highlighted',[
-    animate(500)
+    animate(250)
   ])
 ])
 

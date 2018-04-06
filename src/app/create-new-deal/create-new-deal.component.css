@@ -71,4 +71,7 @@ div{
   box-shadow: white !important;
   margin: 0px !important; }
 
+/deep/ .mat-form-field-infix {
+  width: 150px !important; }
+
 /*# sourceMappingURL=create-new-deal.component.css.map */

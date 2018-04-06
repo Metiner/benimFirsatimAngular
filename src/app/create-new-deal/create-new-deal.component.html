@@ -3,7 +3,7 @@
     <div class="col-10 offset-1">
       <div class="row">
         <div class="col">
-          <div class="row" style="margin-top: 2%">
+          <div class="row">
             <div class="col">
               <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">YENİ FIRSAT EKLE</span>
             </div>
@@ -17,17 +17,15 @@
                       <img src="assets/svgs/ilan_linki_icon.svg">
                     </div>
                     <div class="col nopadding">
-                      <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">İLAN LİNKİ</span>
+                      <span #dealUrl [@highlight]="dealUrl.highlight" style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">İLAN LİNKİ</span>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col" style="height: 40px">
                       <input
-                        #dealUrl
                              ngModel name="dealUrlPreview" (input)="onUrlChangeWithGivenLink($event)" class="urlInput  cursor-pointer"
                              style="height: 40px;padding: 10px"
-                             placeholder="http://alisverissitem.com/urun.aspx?kod=112"
-                      [@highlight]="dealUrl.highlight">
+                             placeholder="http://alisverissitem.com/urun.aspx?kod=112">
                     </div>
                   </div>
                   <div class="row align-items-center">
@@ -35,10 +33,10 @@
                       <img src="assets/svgs/ilan_detaylari_icon.svg">
                     </div>
                     <div class="col">
-                      <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491">İLAN DETAYLARI</span>
+                      <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491" #dealImageContainer [@highlight]="dealImageContainer.highlight">İLAN DETAYLARI</span>
                     </div>
                   </div>
-                  <div class="row align-items-center" style="flex-wrap: nowrap;padding:0 2% 0 2%;border-radius: 15px" #dealImageContainer [@highlight]="dealImageContainer.highlight">
+                  <div class="row align-items-center" style="flex-wrap: nowrap;padding:0 2% 0 2%;border-radius: 15px">
                     <div class="col" style="height: 150px;align-items: center;max-height: 150px;width: 0px">
                       <div #allImages id="scroll" class="row"
                            style="overflow-x: scroll;overflow-y:hidden;flex-wrap: nowrap">
@@ -48,6 +46,35 @@
                                style="max-height:150px;max-width: 150px;border-radius: 15px;margin: auto">
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="row align-items-center" style="flex-wrap: nowrap;margin-top: 7%">
+                    <div class="col-1 padding">
+                      <img src="assets/svgs/firsat_tarihleri_icon.svg">
+                    </div>
+                    <div class="col-1" style="padding: 0px;margin-right: 3%">
+                      <span #dealDate [@highlight]="dealDate.highlight" class="dealDetailsSpans">TARİH</span>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input
+                          style="border-radius: 15px"
+                          ngModel name="dealDate"
+                          matInput (dateInput)="addEvent('input', $event)"
+                          (dateChange)="addEvent('change', $event)"
+                          [matDatepicker]="picker" placeholder="Başlangıç Tarihi">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <input matInput (dateInput)="addEvent('input', $event)"
+                               (dateChange)="addEvent('change', $event)"
+                               [matDatepicker]="picker2" placeholder="Bitiş Tarihi">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
                     </div>
                   </div>
                 </div>
@@ -61,10 +88,10 @@
                       <img src="assets/svgs/fiyat_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
-                      <span class="dealDetailsSpans">FİYAT ₺</span>
+                      <span #dealPrice [@highlight]="dealPrice.highlight" class="dealDetailsSpans">FİYAT ₺</span>
                     </div>
                     <div class="col-2 cursor-pointer">
-                      <input #dealPrice [@highlight]="dealPrice.highlight" class="urlInput" ngModel name="dealPricePreview" (input)="onPriceChange($event)">
+                      <input  class="urlInput" ngModel name="dealPricePreview" (input)="onPriceChange($event)">
                     </div>
                     <div class="col-1 padding">
                       <img src="assets/svgs/kupon_kodu_icon.svg">
@@ -86,14 +113,13 @@
                       <img src="assets/svgs/baslik_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
-                      <span class="dealDetailsSpans">BAŞLIK</span>
+                      <span #dealTitle [@highlight]="dealTitle.highlight" class="dealDetailsSpans">BAŞLIK</span>
                     </div>
                     <div class="col">
                       <div class="row">
                         <div class="col">
                           <input
                             [ngModel]="dealTitlePreview"
-                            #dealTitle [@highlight]="dealTitle.highlight"
                             ngModel name="dealTitlePreview" (input)="onTitleChange($event)" class="urlInput cursor-pointer"
                                  placeholder="Alisverisitem.com'da spor ayakkabılarda %50 indirim!">
                         </div>
@@ -110,15 +136,14 @@
                       <img src="assets/svgs/detay_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
-                      <span class="dealDetailsSpans">DETAY</span>
+                      <span #dealDetail [@highlight]="dealDetail.highlight" class="dealDetailsSpans">DETAY</span>
                     </div>
                     <div class="col">
                       <textarea
-                        class="urlInput cursor-pointer" style="min-height: 100px;padding: 10px 0 10px 0px"
+                        class="urlInput cursor-pointer" style="min-height: 100px;padding: 10px 0 10px 0px;resize:none"
                         (input)="onDetailChange($event)"
                         ngModel name="dealDetailPreview"
                         [ngModel]="dealDetailPreview"
-                        #dealDetail [@highlight]="dealDetail.highlight"
                         placeholder="Ayakkabılar ayağıma cuk oturdu valla."></textarea>
                     </div>
                   </div>
@@ -147,8 +172,8 @@
                     <div class="col-1 padding">
                       <img src="assets/svgs/kategori_icon.svg">
                     </div>
-                    <div class="col-2" style="padding: 0px">
-                      <span class="dealDetailsSpans">KATEGORİ</span>
+                    <div class="col-1" style="padding: 0px;margin-right: 3%">
+                      <span #lsd [@highlight]="lsd.highlight" class="dealDetailsSpans">KATEGORİ</span>
                     </div>
                     <div class="col">
                       <mat-form-field>
@@ -158,22 +183,10 @@
                         </mat-select>
                       </mat-form-field>
                     </div>
-                    <!--<div class="col" #lsd [@highlight]="lsd.highlight" style="border-radius: 15px">-->
-                      <!--<div #allCategories-->
-                           <!--class="bxslider cursor-pointer" style="box-shadow: none">-->
-                        <!--<div #element class="text-center"-->
-                             <!--style="font-family: 'Mark Pro-Heavy';color:#234491;white-space: nowrap"-->
-                             <!--(click)="showMe(element)" [@showMe]="element.show"-->
-                             <!--*ngFor="let category of categories">{{category.name}}-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  </div>
-                  <div class="row align-items-center" style="flex-wrap: nowrap">
                     <div class="col-1 padding">
                       <img src="assets/svgs/sehir_icon.svg">
                     </div>
-                    <div class="col-2" style="padding: 0px">
+                    <div class="col-1" style="padding: 0px">
                       <span class="dealDetailsSpans">ŞEHİR</span>
                     </div>
                     <div class="col">
@@ -185,49 +198,19 @@
                       </mat-form-field>
                     </div>
                   </div>
-                  <div class="row align-items-center" style="flex-wrap: nowrap">
-                    <div class="col-1 padding">
-                      <img src="assets/svgs/firsat_tarihleri_icon.svg">
-                    </div>
-                    <div class="col-2" style="padding: 0px">
-                      <span class="dealDetailsSpans">TARİH</span>
-                    </div>
-                    <div class="col-4">
-                      <mat-form-field>
-                        <input
-                          style="border-radius: 15px"
-                          #dealDate [@highlight]="dealDate.highlight"
-                          ngModel name="dealDate"
-                          matInput (dateInput)="addEvent('input', $event)"
-                               (dateChange)="addEvent('change', $event)"
-                               [matDatepicker]="picker" placeholder="Başlangıç Tarihi">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                    </div>
-                    <div class="col">
-                      <mat-form-field>
-                        <input matInput (dateInput)="addEvent('input', $event)"
-                               (dateChange)="addEvent('change', $event)"
-                               [matDatepicker]="picker2" placeholder="Bitiş Tarihi">
-                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                      </mat-form-field>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col" style="margin-top: 2%">
+            <div class="col" style="margin-top: 1%">
               <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">FIRSAT ÖNİZLEMESİ</span>
             </div>
           </div>
           <div class="row" style="margin-bottom: 75px">
             <div class="col-8">
               <div class="row"
-                   style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 2%">
+                   style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 1%">
                 <div class="col-3" style="text-align: center">
                   <img src="{{selectedImageSrc}}" style="width: inherit;max-height: inherit;border-radius: 15px">
                 </div>

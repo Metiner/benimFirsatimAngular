@@ -10,19 +10,20 @@
 .col.search{
 }
 .search{
-  padding: 0px;
+  padding: 4px;
   outline: none;
+  position: absolute;
+  left: 3px;
   background-color: unset;
   color: #F7E60f;
   border: 0px solid;
-  border-radius: 15px;
-  width: 60%;
-  height: auto;
 }
 .searchBackground{
   background-image: url("../../assets/svgs/search_box.svg");
-  margin-left: 3%;
+  margin-left: 1%;
   background-repeat: no-repeat;
+  min-width: 100px;
+  min-height: 25px;
 }
 /*div{
 border:1px solid black;
@@ -60,5 +61,8 @@ border:1px solid black;
 }
 .scale{
   transform: scale(0.8);
+}
+.click{
+  transform: scale(0.6);
 }
 
