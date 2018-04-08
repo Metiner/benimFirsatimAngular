@@ -5,7 +5,7 @@ import {AnimationEvent} from "@angular/animations";
 import {Subscription} from "rxjs/Subscription";
 import {Router} from "@angular/router";
 declare var lottie:any;
-
+declare var $:any;
 @Component({
   selector: 'app-deal',
   templateUrl: './deal.component.html',
@@ -20,6 +20,8 @@ export class DealComponent implements OnInit, OnDestroy {
   showPointTableSubs: Subscription;
   likeButtonAnimations = [];
   commentButtonAnimations = [];
+  likeButtons:any = [];
+  commentButtons:any = [];
   showPointTable=true;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
@@ -37,6 +39,7 @@ export class DealComponent implements OnInit, OnDestroy {
     })
   }
   ngOnInit(){
+
     this.setDeals();
 
   }
@@ -46,6 +49,11 @@ export class DealComponent implements OnInit, OnDestroy {
   }
 
   setDeals(){
+    this.deals = [];
+    this.displayedDeals = [];
+    this.route.navigate(['']);
+
+    console.log(this.benimFirsatimLib.currentCategory);
     if(typeof this.benimFirsatimLib.currentCategory  === "string"){
 
       if(this.benimFirsatimLib.currentCategory === 'myDeals'){
@@ -95,9 +103,9 @@ export class DealComponent implements OnInit, OnDestroy {
 
   }
 
-  onDealAnimated(event: AnimationEvent, lastItemIndex){
+  onDealAnimated(event: AnimationEvent, lastItemIndex,likeContainer,commentContainer){
     if(lastItemIndex < 10){
-      this.loadAnimations(lastItemIndex);
+        this.loadAnimations(lastItemIndex,likeContainer,commentContainer);
     }
     if (event.fromState !== 'void'){
       return;
@@ -111,25 +119,31 @@ export class DealComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadAnimations(index) {
+  loadAnimations(index,likeContainer,commentContainer) {
 
-    var likeButtons = document.getElementsByClassName("lottieLikeButton");
+    if(this.likeButtonAnimations.length > 9){
+      this.likeButtonAnimations.length = 0;
+    }
       this.likeButtonAnimations.push(lottie.loadAnimation({
-        container: likeButtons[index], // the dom element that will contain the animation
+        container: likeContainer, // the dom element that will contain the animation
         renderer: 'svg',
         loop: false,
         autoplay: false,
         path: 'assets/animations/like_button.json' // the path to the animation json
       }));
 
-    var commentButtons = document.getElementsByClassName("lottieCommentButton");
       this.commentButtonAnimations.push(lottie.loadAnimation({
-        container: commentButtons[index], // the dom element that will contain the animation
+        container: commentContainer, // the dom element that will contain the animation
         renderer: 'svg',
-        loop: false,
+        loop: true,
         autoplay: false,
         path: 'assets/animations/comment_button.json' // the path to the animation json
       }));
+
+
+
+
+
   }
   goToDeal(dealId){
     this.route.navigate(['/deal/' + dealId]);
@@ -144,14 +158,23 @@ export class DealComponent implements OnInit, OnDestroy {
   }
   playAnim(index,type) {
     if(type === 'like'){
-      this.likeButtonAnimations[index].playSegments(0,100);
+      this.likeButtonAnimations[index].play();
+      if(this.likeButtonAnimations[index].liked){
+
+        this.likeButtonAnimations[index].setDirection(-1);
+        this.likeButtonAnimations[index].liked = false;
+
+      }else{
+        this.likeButtonAnimations[index].setDirection(1);
+        this.likeButtonAnimations[index].liked = true;
+      }
     }
     else{
       this.commentButtonAnimations[index].play();
       }
     }
   stopAnim(index) {
-    this.likeButtonAnimations[index].stop();
+    this.commentButtonAnimations[index].stop();
   }
 
 }

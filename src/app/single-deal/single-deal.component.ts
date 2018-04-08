@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
-import set = Reflect.set;
 declare var lottie: any;
 declare var $:any
 
@@ -28,31 +27,43 @@ export class SingleDealComponent implements OnInit {
   dealReported = false;
 
 
-  deal:any;
-  constructor(public route:ActivatedRoute,
+  deal:any = {};
+  constructor(public route: ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
               private _scrollTo:ScrollToService,
-              private ref: ChangeDetectorRef) { }
+              private ref: ChangeDetectorRef) {
+    }
 
   ngOnInit() {
+
     this.loadAnimations();
-    if(this.route.snapshot.params['dealId'] == 0){
+    if (this.route.snapshot.params['dealId'] == 0) {
       this.deal = this.benimFirsatimLib.justCreatedDeal;
-    }else{
-      this.dealId = this.route.snapshot.params['dealId'];
-      this.deal = this.benimFirsatimLib.getDealById(this.dealId);
-      this.benimFirsatimLib.getComments(this.dealId).subscribe(comments=>{
-        this.comments = comments.json();
-        this.loadThumbsupAnimations();
-        for(let i=0;i<this.comments.length;i++){
-          this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
-          if(this.comments[i].comments.length > 0){
-            for(let j=0;j<this.comments[i].comments.length;j++){
-              this.comments[i].comments[j].timeCalculation = this.timeCalculation(this.comments[i].comments[j]);
+      this.dealId = this.benimFirsatimLib.justCreatedDeal.id;
+    } else {
+
+      this.benimFirsatimLib.getDeal(this.route.snapshot.params['dealId']).subscribe(response => {
+
+
+        console.log(response);
+      });
+      /*else
+        {
+          this.dealId = this.route.snapshot.params['dealId'];
+          this.deal = this.benimFirsatimLib.getDealById(this.dealId);
+          this.benimFirsatimLib.getComments(this.dealId).subscribe(comments => {
+            this.comments = comments.json();
+            this.loadThumbsupAnimations();
+            for (let i = 0; i < this.comments.length; i++) {
+              this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
+              if (this.comments[i].comments.length > 0) {
+                for (let j = 0; j < this.comments[i].comments.length; j++) {
+                  this.comments[i].comments[j].timeCalculation = this.timeCalculation(this.comments[i].comments[j]);
+                }
+              }
             }
-          }
-        }
-      })
+          })
+        }*/
     }
   }
 
@@ -75,14 +86,14 @@ export class SingleDealComponent implements OnInit {
       this.commentButtonAnimation = lottie.loadAnimation({
         container: document.getElementById("lottieCommentButton"), // the dom element that will contain the animation
         renderer: 'svg',
-        loop: false,
+        loop: true,
         autoplay: false,
         path: 'assets/animations/comment_button.json' // the path to the animation json
       });
     })
   }
-  loadThumbsupAnimations(){
 
+  loadThumbsupAnimations(){
     $(document).ready(()=>{
       let animations = document.getElementsByClassName("lottieThumbUpButton");
       if(animations.length > 0){
@@ -102,13 +113,25 @@ export class SingleDealComponent implements OnInit {
   }
   playAnim(index,type) {
     if(type === 'like'){
-      this.likeButtonAnimation.playSegments(0,100);
+      this.likeButtonAnimation.play();
+      if(this.likeButtonAnimation.liked){
+        this.likeButtonAnimation.setDirection(-1);
+        this.likeButtonAnimation.liked = false;
+
+      }else{
+        this.likeButtonAnimation.setDirection(1);
+        this.likeButtonAnimation.liked = true;
+      }
     }else if(type === 'thumbsUp'){
-      this.thumbUpAnimations[index].playSegments(0,100);
+      this.thumbUpAnimations[index].play();
     }else{
-      this.commentButtonAnimation.playSegments(0,100);
+      this.commentButtonAnimation.play();
     }
 
+  }
+
+  stopAnim(index) {
+    this.commentButtonAnimation.stop();
   }
   playSegments(from,to){
     this.animation.playSegments([from,to],true);
@@ -171,7 +194,6 @@ export class SingleDealComponent implements OnInit {
       comment.timeCalculation = "";
       this.newlyAddedComments.push(comment);
       this.benimFirsatimLib.createComment(this.dealId,null,this.newlyAddedComment).subscribe((response)=>{
-        console.log(response);
       });
     }else{
       this.benimFirsatimLib.openSignUpPopUp.next();
@@ -199,19 +221,16 @@ export class SingleDealComponent implements OnInit {
 
   deadOnDeadLine(){
     this.benimFirsatimLib.ended(this.dealId).subscribe((response)=>{
-      console.log(response);
     });
     this.dealReported = true;
   }
   dealOutOfStock(){
     this.benimFirsatimLib.stockFinished(this.dealId).subscribe((response)=>{
-      console.log(response);
     });
     this.dealReported = true;
   }
   onReportDeal(){
     this.benimFirsatimLib.report(this.dealId).subscribe((response)=>{
-      console.log(response);
     });
     this.dealReported = true;
   }

@@ -28,6 +28,9 @@
                              placeholder="http://alisverissitem.com/urun.aspx?kod=112">
                     </div>
                   </div>
+                  <mat-progress-bar style="padding: 5px"
+                    *ngIf="showProgressBar"
+                    mode="indeterminate"></mat-progress-bar>
                   <div class="row align-items-center">
                     <div class="col-1 padding" style="margin-right: -10px">
                       <img src="assets/svgs/ilan_detaylari_icon.svg">
@@ -36,19 +39,14 @@
                       <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491" #dealImageContainer [@highlight]="dealImageContainer.highlight">İLAN DETAYLARI</span>
                     </div>
                   </div>
-                  <div class="row align-items-center" style="flex-wrap: nowrap;padding:0 2% 0 2%;border-radius: 15px">
-                    <div class="col" style="height: 150px;align-items: center;max-height: 150px;width: 0px">
-                      <div #allImages id="scroll" class="row"
-                           style="overflow-x: scroll;overflow-y:hidden;flex-wrap: nowrap">
-                        <div class="col-3" *ngFor="let dealImage of images"
-                             style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
-                          <img class="cursor-pointer" [@selectMe]="element.select" #element (click)="selectMe(element)" src="{{dealImage}}"
-                               style="max-height:150px;max-width: 150px;border-radius: 15px;margin: auto">
-                        </div>
-                      </div>
+                  <div #allImages class="row scroll align-items-center" style="flex-wrap: nowrap;padding:20px 2% 0 2%;border-radius: 15px;overflow-x: scroll;overflow-y: hidden">
+                    <div class="col-3" *ngFor="let dealImage of images"
+                         style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
+                      <img class="cursor-pointer" [@selectMe]="element.select" #element (click)="selectMe(element)" src="{{dealImage}}"
+                           style="max-height:150px;max-width: 150px;border-radius: 15px;margin: auto">
                     </div>
                   </div>
-                  <div class="row align-items-center" style="flex-wrap: nowrap;margin-top: 7%">
+                  <div class="row align-items-center" style="flex-wrap: nowrap">
                     <div class="col-1 padding">
                       <img src="assets/svgs/firsat_tarihleri_icon.svg">
                     </div>
@@ -80,9 +78,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-6" style="margin-left: 1%">
+            <div class="col-6" style="margin-left: 1%;border-radius: 30px;background-color: white;margin-top: 1%;">
               <div class="row">
-                <div class="col" style="border-radius: 30px;background-color: white;margin-top: 2%">
+                <div class="col">
                   <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0px">
                     <div class="col-1 padding">
                       <img src="assets/svgs/fiyat_icon.svg">
@@ -177,7 +175,7 @@
                     </div>
                     <div class="col">
                       <mat-form-field>
-                        <mat-select placeholder="Kategori" ngModel name="selectedCategory">
+                        <mat-select placeholder="Kategori" [(value)]="selectedCategory">
                           <mat-option>Lütfen Seçiniz</mat-option>
                           <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
                         </mat-select>
@@ -191,7 +189,7 @@
                     </div>
                     <div class="col">
                       <mat-form-field>
-                        <mat-select placeholder="Şehir" ngModel name="selectedCity">
+                        <mat-select placeholder="Şehir" [(value)]="selectedCity">
                           <mat-option>Lütfen Seçiniz</mat-option>
                           <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
                         </mat-select>
@@ -211,8 +209,8 @@
             <div class="col-8">
               <div class="row"
                    style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 1%">
-                <div class="col-3" style="text-align: center">
-                  <img src="{{selectedImageSrc}}" style="width: inherit;max-height: inherit;border-radius: 15px">
+                <div class="col-3" style="text-align: center;max-height: 230px;max-width: 230px">
+                  <img src="{{selectedImageSrc}}" style="max-width: 200px;max-height: 200px;border-radius: 15px">
                 </div>
                 <div class="col-9">
                   <div class="row title">
@@ -295,7 +293,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-2 mx-auto align-self-center cursor-pointer" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,dealTitle,dealImageContainer)">
+            <div class="col-2 mx-auto align-self-center cursor-pointer" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,dealTitle,dealImageContainer,lsd)">
               <div id="createDealAnim" (mouseenter)="playAnim()" (mouseleave)="stopAnim()"></div>
             </div>
           </div>
@@ -303,15 +301,16 @@
       </div>
     </div>
 
-    <div  *ngIf="showProgressBar" class="loadingDiv" [@loadingBlackDiv]></div>
-    <mat-progress-spinner *ngIf="showProgressBar" style="position: fixed;
+    <!--<div  *ngIf="showProgressBar" class="loadingDiv" [@loadingBlackDiv]></div>-->
+    <!--<mat-progress-spinner  style="position: fixed;
       left: 47%;
       right: 50%;
       top: 40%;
       bottom: 50%;"
                           class="example-margin"
                           mode="indeterminate">
-    </mat-progress-spinner>
+    </mat-progress-spinner>-->
+
 
   </div>
 </form>

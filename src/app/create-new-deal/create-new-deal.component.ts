@@ -29,6 +29,7 @@ export class CreateNewDealComponent implements OnInit {
 
 
   images: any[] = [];
+  selectedCity:any;
 
   states = ['Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin',
   'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale',
@@ -50,7 +51,7 @@ export class CreateNewDealComponent implements OnInit {
 
   dealReadytoPublish: boolean;
 
-  selectedCategory: number = 0;
+  selectedCategory: number = -1;
   categories = [];
 
 
@@ -161,7 +162,6 @@ export class CreateNewDealComponent implements OnInit {
 
       this.benimFirsatimlib.getPullMeta(event.target.value).subscribe(response => {
 
-        console.log(response.json());
         if (!response.json().hasOwnProperty("errors") && response.json().best_image != null && response.json().other_images != []) {
           this.images = [];
           this.images.push(response.json().best_image);
@@ -180,7 +180,6 @@ export class CreateNewDealComponent implements OnInit {
       }, error2 => {
         this.showProgressBar = false;
         this.snackBar.open('Lütfen girdiğiniz linki kontrol edin.', '', {duration: 3000});
-        console.log(error2.toLocaleString());
       })
     }
     if (event.target.value == '') {
@@ -209,8 +208,16 @@ export class CreateNewDealComponent implements OnInit {
     this.dealDetailPreview = event.target.value;
   }
 
-  onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealTitle, dealImageContainer) {
+  onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealTitle, dealImageContainer,lsd) {
+    console.log(this.selectedCategory);
     this.dealReadytoPublish = true;
+
+    if(this.selectedCategory === undefined || this.selectedCategory === -1){
+      lsd.highlight = 'highlighted';
+      this.dealReadytoPublish = false;
+    }else{
+      lsd.highlight = 'none';
+    }
 
     if (form.value.dealUrlPreview === "") {
       dealUrl.highlight = 'highlighted';

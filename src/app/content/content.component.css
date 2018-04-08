@@ -11,9 +11,9 @@ div{
 .kayit-success {
   position: fixed;
   top: 36%;
-  left: 29%;
   z-index: 18;
-  text-align: center; }
+  text-align: center;
+  margin-left: 18px; }
 
 .loadingDiv {
   position: fixed;

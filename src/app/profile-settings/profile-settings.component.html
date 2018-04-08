@@ -42,7 +42,7 @@
         </div>
         <div class="update-profile" *ngIf="showUpdateProfile">
           <form #f="ngForm">
-            <div class="row">
+            <!--<div class="row">
               <div class="col">
                 <span class="form-element-span">YENİ EMAİL</span>
               </div>
@@ -51,10 +51,10 @@
               <div class="col">
                 <input ngModel name="email" class="form-element-text-input">
               </div>
-            </div>
+            </div>-->
             <div class="row">
               <div class="col">
-                <span class="form-element-span">YENİ PAROLA</span>
+                <span #password class="form-element-span">YENİ PAROLA</span>
               </div>
             </div>
             <div class="row">

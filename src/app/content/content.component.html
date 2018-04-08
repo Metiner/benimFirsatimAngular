@@ -13,17 +13,14 @@
      [@singinSignupPopup]
       (@singinSignupPopup.done)="onTutorialAnimFinished()">
   <div class="row" style="margin-top: 7%">
-    <div class="kayit-success" [@kayitSuccess] *ngIf="kayitBasariliText">
-      <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">KAYIT,<br>
-                                                                                BAŞARILI!</span>
-    </div>
-    <div class="kayit-success" [@kayitSuccess] *ngIf="girisBasariliText">
-      <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">GİRİŞ,<br>
-                                                                                BAŞARILI!</span>
+    <div class="col kayit-success" [@kayitSuccess] *ngIf="kayitBasariliText">
+        <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">KAYIT,<br>BAŞARILI!</span>
+     </div>
+    <div class="col kayit-success"[@kayitSuccess] *ngIf="girisBasariliText">
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">GİRİŞ,<br>BAŞARILI!</span>
     </div>
     <div class="col text-center">
-      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">BENİM FIRSATIM UYGULAMASINI İNDİR,<br>
-                                                                                CEPTEDE FIRSATLARI KOVALA!</span>
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">BENİM FIRSATIM UYGULAMASINI İNDİR,<br>CEPTEDE FIRSATLARI KOVALA!</span>
     </div>
   </div>
   <div class="row" style="margin-top: 2%">
@@ -53,11 +50,21 @@
       </div>
       <div class="row" *ngIf="beniHatirlaBool" [@loadingBlackDiv]>
         <div class="col-4 offset-1" style="margin-right: -10px">
-          <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
-          <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">BENİ HATIRLA</span>
+          <div class="row" style="flex-wrap: nowrap;align-items: center">
+            <div class="col" style="padding: 0px;text-align: right">
+              <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
+
+            </div>
+            <div class="col" style="padding: 0px">
+              <span style="font-family: 'Mark Pro-Book';font-size: 10px;white-space: nowrap;color:#234491">BENİ HATIRLA</span>
+
+            </div>
+          </div>
         </div>
-        <div class="col offset-1 cursor-pointer" style="margin-top: 1%">
-          <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491">PAROLANI MI UNUTTUN?</span>
+        <div class="row" style="align-items: center">
+          <div class="col offset-1 cursor-pointer" style="text-align: center;white-space: nowrap">
+            <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;margin-left: 30px">PAROLANI MI UNUTTUN?</span>
+          </div>
         </div>
       </div>
     </div>

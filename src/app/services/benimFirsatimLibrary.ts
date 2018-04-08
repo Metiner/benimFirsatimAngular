@@ -3,6 +3,7 @@ import {Http, RequestOptions , Headers} from '@angular/http';
 import {Subject} from "rxjs/Subject";
 import {NgForm} from '@angular/forms';
 import { FacebookService, InitParams} from "ngx-facebook";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class BenimFirsatimLibrary {
@@ -22,14 +23,15 @@ export class BenimFirsatimLibrary {
   private _totalPage:number;
   private _currentDeals = [];
   private _categories =[];
-  private _justCreatedDeal = {};
+  private _justCreatedDeal: any;
 
   private _isAutho = false;
   private _currentUser:any;
   private token:string;
 
   constructor(public http: Http ,
-              public fb: FacebookService) {
+              public fb: FacebookService,
+              private route:Router) {
 
     let initParams: InitParams = {
       appId: '113944349294618',
@@ -54,6 +56,10 @@ export class BenimFirsatimLibrary {
   //'hot','rising' or 'newcomers'
   public getPage(page_code,pagination){
     return this.http.get(this.api_address + '/'+page_code+'.json?page='+pagination);
+  }
+  public getDeal(deal_id){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address + '/deals/0/'+deal_id,opt);
   }
 
   public signUp(email,password){
@@ -80,7 +86,6 @@ export class BenimFirsatimLibrary {
   }
 
   public signIn(email,password){
-    console.log(email,password);
     return this.http.post(this.api_address + '/users/sign_in.json',{"user":{"email":email,"password":password}});
   }
 
@@ -88,6 +93,8 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/categories');
   }
   public changeCategory(type){
+
+    this.route.navigate(['']);
     if(!this.dealAnimationContinues){
       if(this.currentPaging <= this.totalPage){
         this.currentCategory = type;
@@ -107,6 +114,11 @@ export class BenimFirsatimLibrary {
       if(this.currentDeals[i].id == id)
         return this.currentDeals[i];
     }
+  }
+
+  public updateUser(nickname,password){
+    let opt = this.setHeader();
+    return this.http.put(this.api_address + '/users.json',{"name":nickname,"password":password},opt);
   }
 
   public getComments(deal_id){
@@ -130,7 +142,6 @@ export class BenimFirsatimLibrary {
     let opt = this.setHeader();
     let categories = '';
     let body;
-    console.log(form.value);
     // if(selectedImageUrl == 'photoTaken'){
     //   body = {starts_at:form.value.deal_date,
     //     price:form.value.deal_price,
@@ -146,7 +157,7 @@ export class BenimFirsatimLibrary {
       body = {
         starts_at:form.value.deal_date,
         price:form.value.dealPricePreview,
-        category_id: form.value.selectedCategory,
+        category_id: form.value.selectedCategory.id,
         link:form.value.dealUrlPreview,
         image_url:selectedImageUrl,
         title:form.value.dealTitlePreview,
@@ -184,6 +195,11 @@ export class BenimFirsatimLibrary {
 
   public report(dealId){
     return this.http.get(this.api_address+'/deals/'+dealId+'/report');
+  }
+
+  public favDeal(dealId){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address+'/deals/'+dealId+'/bookmark',opt);
   }
 
   get isAutho(): boolean {
@@ -246,11 +262,11 @@ export class BenimFirsatimLibrary {
     this._currentDeals = value;
   }
 
-  get justCreatedDeal(): {} {
+  get justCreatedDeal():any  {
     return this._justCreatedDeal;
   }
 
-  set justCreatedDeal(value: {}) {
+  set justCreatedDeal(value:any) {
     this._justCreatedDeal = value;
   }
 }

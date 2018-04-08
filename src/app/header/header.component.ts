@@ -272,5 +272,7 @@ export class HeaderComponent implements OnDestroy{
   onMyDealsPage(){
     this.router.navigate(['/myProfile/myDeals']);
   }
-
+  onSettingsPage(){
+    this.router.navigate(['/myProfile/settings']);
+  }
 }

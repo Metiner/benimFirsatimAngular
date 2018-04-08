@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {tabActivationTrigger} from '../animations';
@@ -13,10 +13,13 @@ declare var $:any;
 })
 export class ProfileSettingsComponent implements OnInit {
 
+  @ViewChild('password') password:HTMLElement;
+
   constructor(private activatedRoute: ActivatedRoute,
               private benimFirsatimLibrary: BenimFirsatimLibrary,
               private route: Router) {
   }
+
 
   genelBakis = {active:'void'};
   yorumlar = {active:'void'};
@@ -37,9 +40,9 @@ export class ProfileSettingsComponent implements OnInit {
       this.benimFirsatimLibrary.currentCategory = 'myDeals';
       this.activeAnim("firsatlar");
       this.formatDeals();
-/*
-      // disables points table
-      this.benimFirsatimLibrary.showPointTable.next();*/
+    }
+    if(this.activatedRoute.snapshot.params['type'] === 'settings'){
+      this.activeAnim("ayarlar");
     }
   }
 
@@ -104,7 +107,15 @@ export class ProfileSettingsComponent implements OnInit {
     }
   }
   onProfileUpdateSubmit(form:NgForm){
-    console.log(form.value);
+    if(form.value.password === '' && form.value.rePassword === '' && form.value.username.length > 6){
+      if(form.value.password === form.value.rePassword){
+        this.benimFirsatimLibrary.updateUser(form.value.username,form.value.password).subscribe(response=>{
+          //nativeElement.style.color
+        })
+      }
+    }
+
+    //this.benimFirsatimLibrary.updateUser()
   }
   onDeleteProfile(){
     this.showAreYouSure = !this.showAreYouSure;

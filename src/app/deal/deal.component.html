@@ -3,10 +3,10 @@
     <div *ngFor="let deal of displayedDeals;let i = index" class="row"
          [ngClass]="{'lastItemMargin':isItLastItem(deal)}"
          @dealState
-         (@dealState.done)="onDealAnimated($event,i)"
+         (@dealState.done)="onDealAnimated($event,i,likeContainer,commentContainer)"
          style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-bottom: 2%">
       <div class="col-3" style="text-align: center">
-        <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 200px;max-height: 200px">
+        <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 230px;max-height: 230px">
       </div>
       <div class="col-9">
         <div class="row title">
@@ -29,7 +29,7 @@
           <div class="col-1">
             <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
               <div class="col-12 nopadding">
-                <div class="lottieLikeButton" (click)="playAnim(i,'like')"></div>
+                <div  #likeContainer class="lottieLikeButton" (click)="playAnim(i,'like')"></div>
                 <span class="likeComment-span">{{deal.votes_sum}}</span>
               </div>
             </div>
@@ -37,7 +37,7 @@
           <div class="col-1">
             <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
               <div class="col-12 nopadding">
-                <div class="lottieCommentButton" (click)="playAnim(i,'comment')"></div>
+                <div #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div>
                 <span class="likeComment-span">{{deal.comments_count}}</span>
               </div>
             </div>
@@ -71,7 +71,7 @@
               <div class="col" style="padding: 1px">
                 <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">
               </div>
-              <div class="col-9">
+              <div class="col-9 cursor-pointer">
                 <img (click)="goToLink(deal.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
               </div>
             </div>
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <div class="col-3" *ngIf="showPointTable">
+  <div class="col-2" *ngIf="showPointTable">
     <app-point-table></app-point-table>
   </div>
 

@@ -8,10 +8,11 @@ import {
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {FacebookService} from "ngx-facebook";
+import {Router} from "@angular/router";
 declare var lottie:any;
 declare var fb:any;
 declare var gapi:any;
-
+declare var $:any;
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -51,7 +52,6 @@ export class ContentComponent implements OnDestroy,OnInit{
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public snackBar: MatSnackBar,
               public fb: FacebookService) {
-
 
     gapi.load('auth2', function() {
       const googleAut = gapi.auth2.init({client_id :'57374298212-94cgvbkf14685g846vcq95trf50qt69v.apps.googleusercontent.com'});
@@ -123,7 +123,6 @@ export class ContentComponent implements OnDestroy,OnInit{
   onKayitButtonClick(form:NgForm){
 
     if (this.kayitOlButtonClickable) {
-      console.log("kayit ol cagırdi")
       if (!form.value.password == form.value.password2) {
         this.snackBar.open('Parolalar Uyuşmamakta','',{duration:3000});
       } else {

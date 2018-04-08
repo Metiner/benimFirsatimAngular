@@ -1,98 +1,115 @@
 <div id="top" style="position: fixed;z-index: 1;width: 100%">
   <div class="row align-items-center headerBackground" style="flex-wrap: nowrap">
-    <div class="col  offset-1" routerLink="/" style="outline:0;align-self: start;outline: 0;min-width: 200px;margin-right: -30px"  >
-      <img src="../../assets/svgs/main_logo.svg" style="max-width: 80%;margin-bottom: 5px">
+    <div class="cursor-pointer col-1  offset-1" routerLink="/" style="outline:0;align-self: start;outline: 0">
+      <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
     </div>
-    <div class="col text-center scale"  routerLink="/" style="outline:0">
-      <div class="row" (click)="onCategoryChange('hot')">
-        <div class="col click cursor-pointer" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
-          <lottie-animation-view
-            [options]="oneCikanlarAnimConf"
-            [width]="50"
-            [height]="50"
-            (animCreated)="createAnim($event,1)">
-          </lottie-animation-view>
-        </div>
-      </div>
+    <div class="col-5">
       <div class="row">
-        <div class="col">
-          <span style="font-family: 'Mark Pro-Bold';font-size: 15px;color:#f7e60f;white-space: nowrap">ÖNE ÇIKANLAR</span>
+        <div class="col-3 text-center scale"  routerLink="/" style="outline:0">
+          <div class="row" (click)="onCategoryChange('hot')">
+            <div class="col click cursor-pointer" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
+              <lottie-animation-view
+                [options]="oneCikanlarAnimConf"
+                [width]="50"
+                [height]="50"
+                (animCreated)="createAnim($event,1)">
+              </lottie-animation-view>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="cursor-pointer" style="font-family: 'Mark Pro-Bold';font-size: 17px;color:#f7e60f;white-space: nowrap">ÖNE ÇIKANLAR</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col text-center scale" routerLink="/" style="outline:0">
-      <div class="row" (click)="onCategoryChange('rising')">
-        <div class="col click cursor-pointer" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
-          <lottie-animation-view
-            [options]="yukselenlerAnimConf"
-            [width]="50"
-            [height]="50"
-            (animCreated)="createAnim($event,2)">
-          </lottie-animation-view>
+        <div class="col-3 text-center scale" routerLink="/" style="outline:0">
+          <div class="row" (click)="onCategoryChange('rising')">
+            <div class="col click cursor-pointer" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
+              <lottie-animation-view
+                [options]="yukselenlerAnimConf"
+                [width]="50"
+                [height]="50"
+                (animCreated)="createAnim($event,2)">
+              </lottie-animation-view>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="cursor-pointer" style="font-family: 'Mark Pro-Bold';font-size: 17px;color:#f7e60f">YÜKSELENLER</span>
+            </div>
+          </div>
         </div>
-       </div>
-      <div class="row">
-        <div class="col">
-          <span style="font-family: 'Mark Pro-Bold';font-size: 15px;color:#f7e60f">YÜKSELENLER</span>
+        <div class="col-3 text-center scale" routerLink="/" style="outline:0">
+          <div class="row" (click)="onCategoryChange('newcomers')">
+            <div class="col cursor-pointer" (mouseenter)="playAnim(3)" style="  transform: scale(0.8)" (mouseleave)="stopAnim(3)">
+              <lottie-animation-view
+                [options]="yenilerAnimConf"
+                [width]="50"
+                [height]="50"
+                (animCreated)="createAnim($event,3)">
+              </lottie-animation-view></div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="cursor-pointer" style="font-family: 'Mark Pro-Bold';font-size: 17px;color:#f7e60f">YENİLER</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col text-center scale" routerLink="/" style="outline:0">
-      <div class="row" (click)="onCategoryChange('newcomers')">
-        <div class="col click cursor-pointer" (mouseenter)="playAnim(3)" (mouseleave)="stopAnim(3)">
-          <lottie-animation-view
-            [options]="yenilerAnimConf"
-            [width]="50"
-            [height]="50"
-            (animCreated)="createAnim($event,3)">
-          </lottie-animation-view></div>
-        </div>
-      <div class="row">
-        <div class="col">
-          <span style="font-family: 'Mark Pro-Bold';font-size: 15px;color:#f7e60f">YENİLER</span>
-        </div>
-      </div>
-    </div>
-    <div class="col text-center scale">
-      <div class="row">
-        <div class="col" (mouseenter)="slideCategoriesDiv('in')">
-          <div class="col click cursor-pointer" (mouseenter)="playAnim(4)" (mouseleave)="stopAnim(4)">
-            <lottie-animation-view
-              [options]="categoriesAnimConf"
-              [width]="50"
-              [height]="50"
-              (animCreated)="createAnim($event,4)">
-            </lottie-animation-view>
+        <div class="col-3 text-center scale">
+          <div class="row">
+            <div class="col" (mouseenter)="slideCategoriesDiv('in')">
+              <div class="col click cursor-pointer" (mouseenter)="playAnim(4)" (mouseleave)="stopAnim(4)">
+                <lottie-animation-view
+                  [options]="categoriesAnimConf"
+                  [width]="50"
+                  [height]="50"
+                  (animCreated)="createAnim($event,4)">
+                </lottie-animation-view>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col scale">
+              <span class="cursor-pointer" style="font-family: 'Mark Pro-Bold';font-size: 20px;color:#f7e60f;margin-top: 15px">KATEGORİLER</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="col-2" (click)="onCreateNewDeal()">
+      <img style="height: 50px" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
+    </div>
+    <div class="col-1 cursor-pointer searchBackground">
+      <input class="search" type="text">
+    </div>
+    <div *ngIf="!isAuth" class="col-1 text-center" (click)="goToSignUpAndSignin()">
       <div class="row">
-        <div class="col scale">
-          <span style="font-family: 'Mark Pro-Bold';font-size: 18px;color:#f7e60f;margin-top: 15px">KATEGORİLER<span style="font-family: 'Wingdings 3'"></span></span>
+        <div class="col click cursor-pointer" style="min-width: 140px;padding: 0px" >
+          <img style="width:50px ;" src="../../assets/svgs/genel_bakis/login_icon.svg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span class="cursor-pointer" style="font-family: 'Mark Pro-Bold';font-size: 13px;color:#f7e60f">GİRİŞ YAP</span>
         </div>
       </div>
     </div>
-    <div class="col" (click)="onCreateNewDeal()">
-      <img style="min-width: 200px;max-width: 230px;" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
-    </div>
-    <div class="col cursor-pointer searchBackground">
-      <input class="search" type="text">
-    </div>
-    <div class="col text-center">
+    <div *ngIf="isAuth" class="col-1 text-center">
       <div class="row">
-        <div (mouseenter)="slideMyProfileDiv('in')" class="col click cursor-pointer" style="min-width: 140px;padding: 0px">
+        <div (mouseenter)="slideMyProfileDiv('in')" class="col cursor-pointer" style="padding: 0px">
           <svg _ngcontent-c0="" class="ng-tns-c0-0" style="width: 20%" viewBox="0 0 35.56 35.56" xmlns="http://www.w3.org/2000/svg"><title _ngcontent-c0="" class="ng-tns-c0-0">location_iconAsset 1</title><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="Layer 2" id="Layer_2"><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="profilim icon" id="profilim_icon"><path _ngcontent-c0="" class="ng-tns-c0-0" d="M17.78,0A17.78,17.78,0,1,0,35.56,17.78,17.81,17.81,0,0,0,17.78,0Zm6.69,14.06V11.18a5.18,5.18,0,0,0-1.16-3.66c-1.17-1.32-3-1.94-5.53-1.94a7.3,7.3,0,0,0-5.52,1.94,5.14,5.14,0,0,0-1.17,3.66v2.88a2,2,0,0,0-.54,1.48v2.17a2.3,2.3,0,0,0,.85,1.79,10.68,10.68,0,0,0,1.95,4v1.79a1.51,1.51,0,0,1-.7,1.25l-5,2.72a1.38,1.38,0,0,0-.47.31A15.91,15.91,0,1,1,33.65,17.46v.25a15.7,15.7,0,0,1-5.36,11.83,2,2,0,0,0-.55-.31l-5.29-2.65a1.37,1.37,0,0,1-.78-1.24V23.47a3.36,3.36,0,0,0,.39-.54,11.32,11.32,0,0,0,1.63-3.19,2.34,2.34,0,0,0,1.33-2V15.54A2.5,2.5,0,0,0,24.47,14.06Z" style="fill:#f7e60f"></path></g></g></svg>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <span style="font-family: 'Mark Pro-Bold';font-size: 13px;color:#f7e60f;margin-left: -12px;"> <span style="font-family: 'Wingdings 3'"></span> PROFİLİM</span>
+          <span class="cursor-pointer" style="font-family: 'Mark Pro-Bold';font-size: 13px;color:#f7e60f;white-space: nowrap;">PROFİLİM</span>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-3 offset-4" style="margin-left: 47%">
+    <div class="col-3 offset-4" style="margin-left: 41%">
       <div class="categories" (mouseleave)="slideCategoriesDiv('out')" [@slideInOut]="categoriesAnimation">
         <div class="row mx-auto" style="align-items: center">
           <div class="col-5 mx-auto cursor-pointer"  *ngFor="let category of categories">
@@ -108,13 +125,8 @@
         </div>
       </div>
     </div>
-    <div class="col-2 offset-1" style="margin-left: 85%;margin-top:-1%">
+    <div class="col-2" style="margin-left: 80%;margin-top:-1%">
       <div class="myProfile" (mouseleave)="slideMyProfileDiv('out')" [@slideInOut]="myProfileAnimation">
-        <div (click)="goToSignUpAndSignin()" *ngIf="!isAuth" class="row myProfileItemRow">
-          <div class="col offset-2 myProfileItemCol cursor-pointer">
-            <span>Giriş yap</span>
-          </div>
-        </div>
         <div *ngIf="isAuth" class="row myProfileItemRow">
           <div class="col offset-2 myProfileItemCol cursor-pointer">
             <img src="../../assets/imgs/bildirimler@2x.png" style="max-width: 100%;max-height: 100%">
@@ -126,7 +138,7 @@
           </div>
         </div>
         <div *ngIf="isAuth" class="row myProfileItemRow">
-          <div class="col offset-2 myProfileItemCol cursor-pointer">
+          <div class="col offset-2 myProfileItemCol cursor-pointer" (click)="onSettingsPage()">
             <img src="../../assets/imgs/ayarlar@2x_18pt_mark_bold.png" style="max-width: 80%;max-height: 100%;">
           </div>
         </div>

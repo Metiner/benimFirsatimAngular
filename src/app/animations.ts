@@ -127,12 +127,10 @@ export const showMeTrigger = trigger('showMe',[
 
 export const dealAvatarSelectionTrigger = trigger('selectMe',[
   state('selected',style({
-    border:'3px solid #234491',
-    borderRadius:'30px',
-    borderStyle:'inset'
+    opacity : 1
   })),
   state('unSelected',style({
-    borderRadius:'15px'
+    opacity : 0.50
   })),
   transition('*<=>*',[
     animate(500)
@@ -208,7 +206,7 @@ export const kayitOlAnimTrigger = trigger('kayitOl',[
     transform:'scale(1.0)'
   })),
   state('down',style({
-    transform:'scale(0.5)'
+    transform:'scale(0.7)'
   })),
   transition('down <=> up',
     animate('1000ms ease-in-out')),
@@ -244,7 +242,8 @@ export const kayitSuccessTrigger = trigger('kayitSuccess',[
       style({
         opacity:0,
         offset:0,
-        transform:'scale(0)'
+        transform:'scale(0)',
+        textAlign: 'text-center'
       }),
       style({
         opacity:1,

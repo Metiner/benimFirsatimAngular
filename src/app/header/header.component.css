@@ -7,23 +7,17 @@
   z-index: 2; }
 
 .search {
-  padding: 4px;
   outline: none;
-  position: absolute;
-  left: 3px;
   background-color: unset;
   color: #F7E60f;
   border: 0px solid; }
 
 .searchBackground {
   background-image: url("../../assets/svgs/search_box.svg");
-  margin-left: 1%;
-  background-repeat: no-repeat;
-  min-width: 100px;
-  min-height: 25px; }
+  background-repeat: no-repeat; }
 
 /*div{
-border:1px solid black;
+  border:1px solid black;
 }*/
 .categories {
   background-image: url("../../assets/imgs/kategoriler_bg@2x.png");

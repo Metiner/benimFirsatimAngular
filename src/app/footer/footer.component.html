@@ -1,70 +1,68 @@
-<div style="position:fixed;z-index: 1">
-  <div class="row align-items-center footerBackground">
-    <div class="col">
-      <div class="row">
-        <div class="col" style="align-self: center;" >
-          <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#F7E60f">TAM BAĞIMSIZ FIRSAT SİTESİ!</span>
-        </div>
-        <div class="col offset-2" style="align-self: center">
-          <div class="row" style="flex-wrap:nowrap;align-items: center">
-            <div class="col" style="padding: 0px">
-              <span style="font-family: 'Mark Pro-Light';font-size: 16px;color: #F7E60f">1</span>
-            </div>
-            <div class="col nextButton cursor-pointer" (click)="previousPage()">
-              <svg _ngcontent-c2="" style="width: 50%" viewBox="873.383 1039.63 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
-                <defs _ngcontent-c2="">
-                  <style _ngcontent-c2="">
-                    .cls-1 {
-                      fill: none;
-                      stroke: #f7e60f;
-                      stroke-width: 4px;
-                    }
-                  </style>
-                </defs>
-                <path _ngcontent-c2="" class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 33" id="Path_33" transform="translate(-460.286 925.036) rotate(-45)"></path>
-              </svg>
-            </div>
-            <div class="col">
-              <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color: #F7E60f">{{currentPage}}.SAYFA</span>
-            </div>
-            <div class="col nextButton cursor-pointer" (click)="nextPage()">
-              <svg _ngcontent-c2="" style="width: 50%" viewBox="1019.212 1039.63 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
-                <defs _ngcontent-c2="">
-                  <style _ngcontent-c2="">
-                    .cls-1 {
-                      fill: none;
-                      stroke: #f7e60f;
-                      stroke-width: 4px;
-                    }
-                  </style>
-                </defs>
-                <path _ngcontent-c2="" class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 34" id="Path_34" transform="translate(2375.974 1177.316) rotate(135)"></path>
-              </svg>
-            </div>
-            <div class="col" style="padding: 0px">
-              <span style="font-family: 'Mark Pro-Light';font-size: 16px;color: #F7E60f">{{totalPage}}</span>
-            </div>
+<div class="row align-items-center footerBackground"  style="position:fixed;z-index: 1;margin: 0px">
+  <div class="col">
+    <div class="row" style="margin: 0px">
+      <div class="col" style="align-self: center;" >
+        <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#F7E60f">TAM BAĞIMSIZ FIRSAT SİTESİ!</span>
+      </div>
+      <div class="col offset-2" style="align-self: center">
+        <div class="row" style="flex-wrap:nowrap;align-items: center">
+          <div class="col" style="padding: 0px">
+            <span style="font-family: 'Mark Pro-Light';font-size: 16px;color: #F7E60f">1</span>
+          </div>
+          <div class="col nextButton cursor-pointer" (click)="previousPage()">
+            <svg _ngcontent-c2="" style="width: 50%" viewBox="873.383 1039.63 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
+              <defs _ngcontent-c2="">
+                <style _ngcontent-c2="">
+                  .cls-1 {
+                    fill: none;
+                    stroke: #f7e60f;
+                    stroke-width: 4px;
+                  }
+                </style>
+              </defs>
+              <path _ngcontent-c2="" class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 33" id="Path_33" transform="translate(-460.286 925.036) rotate(-45)"></path>
+            </svg>
+          </div>
+          <div class="col">
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color: #F7E60f">{{currentPage}}.SAYFA</span>
+          </div>
+          <div class="col nextButton cursor-pointer" (click)="nextPage()">
+            <svg _ngcontent-c2="" style="width: 50%" viewBox="1019.212 1039.63 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
+              <defs _ngcontent-c2="">
+                <style _ngcontent-c2="">
+                  .cls-1 {
+                    fill: none;
+                    stroke: #f7e60f;
+                    stroke-width: 4px;
+                  }
+                </style>
+              </defs>
+              <path _ngcontent-c2="" class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 34" id="Path_34" transform="translate(2375.974 1177.316) rotate(135)"></path>
+            </svg>
+          </div>
+          <div class="col" style="padding: 0px">
+            <span style="font-family: 'Mark Pro-Light';font-size: 16px;color: #F7E60f">{{totalPage}}</span>
           </div>
         </div>
-        <div (click)="scrollToTop()" class="col offset-2" style="align-self: center">
-          <div class="row align-items-center">
-            <div  class="col  nextButton cursor-pointer" style="max-width: 15%" >
-              <svg  style="margin-top: 50%" viewBox="1376.798 1044.216 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <style >
-                    .cls-1 {
-                      fill: none;
-                      stroke: #f7e60f;
-                      stroke-width: 4px;
-                    }
-                  </style>
-                </defs>
-                <path class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 35" id="Path_35" transform="translate(1514.484 -289.454) rotate(45)"></path>
-              </svg>
-            </div>
-            <div class="col text-left">
-              <span  style="font-family: 'Mark Pro-Bold';font-size: 15px;color: #F7E60f">EN ÜSTE DÖN</span>
-            </div>
+      </div>
+      <div (click)="scrollToTop()" class="col offset-2" style="align-self: center">
+        <div class="row align-items-center">
+          <div  class="col  nextButton cursor-pointer" style="max-width: 15%" >
+            <svg  style="margin-top: 50%" viewBox="1376.798 1044.216 23.092 23.092" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <style >
+                  .cls-1 {
+                    fill: none;
+                    stroke: #f7e60f;
+                    stroke-width: 4px;
+                  }
+                </style>
+              </defs>
+              <path class="cls-1" d="M870.181,1034.242H855.853v14.329" data-name="Path 35" id="Path_35" transform="translate(1514.484 -289.454) rotate(45)"></path>
+            </svg>
+          </div>
+          <div class="col text-left">
+            <span  style="font-family: 'Mark Pro-Bold';font-size: 15px;color: #F7E60f">EN ÜSTE DÖN</span>
           </div>
         </div>
       </div>
