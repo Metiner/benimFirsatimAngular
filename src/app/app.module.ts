@@ -26,9 +26,8 @@ import {ProfileSettingsComponent} from './profile-settings/profile-settings.comp
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
   { path : '' , component:DealComponent},
-  { path : 'myDeals', component : DealComponent},
-  { path : 'createNewDeal', component: CreateNewDealComponent},
-  { path : 'myProfile/:type' , component: ProfileSettingsComponent}
+  { path : 'myProfile/:type', component : ProfileSettingsComponent},
+  { path : 'createNewDeal', component: CreateNewDealComponent}
   ]
 
 @NgModule({

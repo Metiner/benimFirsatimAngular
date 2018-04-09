@@ -45,25 +45,22 @@ export class SingleDealComponent implements OnInit {
       this.benimFirsatimLib.getDeal(this.route.snapshot.params['dealId']).subscribe(response => {
 
 
-        console.log(response);
-      });
-      /*else
-        {
-          this.dealId = this.route.snapshot.params['dealId'];
-          this.deal = this.benimFirsatimLib.getDealById(this.dealId);
-          this.benimFirsatimLib.getComments(this.dealId).subscribe(comments => {
-            this.comments = comments.json();
-            this.loadThumbsupAnimations();
-            for (let i = 0; i < this.comments.length; i++) {
-              this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
-              if (this.comments[i].comments.length > 0) {
-                for (let j = 0; j < this.comments[i].comments.length; j++) {
-                  this.comments[i].comments[j].timeCalculation = this.timeCalculation(this.comments[i].comments[j]);
-                }
+        this.deal = response.json();
+        this.benimFirsatimLib.getComments(this.route.snapshot.params['dealId']).subscribe(comments => {
+          this.comments = comments.json();
+          this.loadThumbsupAnimations();
+          for (let i = 0; i < this.comments.length; i++) {
+            this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
+            if (this.comments[i].comments.length > 0) {
+              for (let j = 0; j < this.comments[i].comments.length; j++) {
+                this.comments[i].comments[j].timeCalculation = this.timeCalculation(this.comments[i].comments[j]);
               }
             }
-          })
-        }*/
+          }
+        })
+      });
+
+
     }
   }
 

@@ -51,9 +51,7 @@ export class DealComponent implements OnInit, OnDestroy {
   setDeals(){
     this.deals = [];
     this.displayedDeals = [];
-    this.route.navigate(['']);
 
-    console.log(this.benimFirsatimLib.currentCategory);
     if(typeof this.benimFirsatimLib.currentCategory  === "string"){
 
       if(this.benimFirsatimLib.currentCategory === 'myDeals'){

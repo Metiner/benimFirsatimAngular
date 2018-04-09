@@ -12,7 +12,7 @@ export class AppComponent {
       var ua = navigator.userAgent;
 
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
-      window.location.href= 'https://benimfirsatim.com/mobile';
+      window.location.href= 'https://mobile.benimfirsatim.com';
       }
 
       else if(/Chrome/i.test(ua)){

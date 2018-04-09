@@ -24,7 +24,7 @@ export class ProfileSettingsComponent implements OnInit {
   genelBakis = {active:'void'};
   yorumlar = {active:'void'};
   kaydedilenler = {active:'void'};
-  firsatlar = {active:'void'};
+  firsatlar = {active:'active'};
   ayarlar = {active:'void'};
 
   currentUser;any={};
@@ -35,11 +35,9 @@ export class ProfileSettingsComponent implements OnInit {
   ngOnInit() {
 
     this.currentUser = this.benimFirsatimLibrary.currentUser;
-
     if (this.activatedRoute.snapshot.params['type'] === 'myDeals') {
-      this.benimFirsatimLibrary.currentCategory = 'myDeals';
       this.activeAnim("firsatlar");
-      this.formatDeals();
+      this.benimFirsatimLibrary.currentCategory = 'myDeals';
     }
     if(this.activatedRoute.snapshot.params['type'] === 'settings'){
       this.activeAnim("ayarlar");
@@ -47,7 +45,6 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   formatDeals(){
-
     $(document).ready(()=>{
       $("app-point-table").remove();
       var firsatlarim = document.getElementById("firsatlarim");
@@ -59,7 +56,7 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   activeAnim(element){
-    if(element === 'genelBakis'){
+    if (element === 'genelBakis') {
       this.showUserInfoSection = true;
       this.showUpdateProfile = false;
       this.genelBakis.active = 'active';
@@ -68,17 +65,17 @@ export class ProfileSettingsComponent implements OnInit {
       this.firsatlar.active = 'void';
       this.ayarlar.active = 'void';
     }
-    if(element === 'firsatlar'){
+    if (element === 'firsatlar') {
+      this.firsatlar.active = 'active';
       this.showUserInfoSection = true;
       this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'void';
-      this.firsatlar.active = 'active';
       this.ayarlar.active = 'void';
       this.formatDeals();
     }
-    if(element === 'yorumlar'){
+    if (element === 'yorumlar') {
       this.showUserInfoSection = true;
       this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
@@ -87,7 +84,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.firsatlar.active = 'void';
       this.ayarlar.active = 'void';
     }
-    if(element === 'kaydedilenler'){
+    if (element === 'kaydedilenler') {
       this.showUserInfoSection = true;
       this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
@@ -96,7 +93,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.firsatlar.active = 'void';
       this.ayarlar.active = 'void';
     }
-    if(element === 'ayarlar'){
+    if (element === 'ayarlar') {
       this.showUpdateProfile = true;
       this.showUserInfoSection = false;
       this.genelBakis.active = 'void';
