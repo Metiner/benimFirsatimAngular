@@ -27,6 +27,7 @@ export class CreateNewDealComponent implements OnInit {
 
   currentDate: string = "";
 
+  createButtonActivated = false;
 
   images: any[] = [];
   selectedCity:any;
@@ -61,6 +62,8 @@ export class CreateNewDealComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.createButtonActivated = false;
 
     this.loadAnimations();
     this.categories = this.benimFirsatimlib.categories;
@@ -209,7 +212,6 @@ export class CreateNewDealComponent implements OnInit {
   }
 
   onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealTitle, dealImageContainer,lsd) {
-    console.log(this.selectedCategory);
     this.dealReadytoPublish = true;
 
     if(this.selectedCategory === undefined || this.selectedCategory === -1){
@@ -268,6 +270,7 @@ export class CreateNewDealComponent implements OnInit {
       dealImageContainer.highlight = 'none';
     }
     if (this.dealReadytoPublish) {
+      this.createButtonActivated = true;
       form.value.selectedCategory = this.selectedCategory;
       this.benimFirsatimlib.createDeal(form, this.selectedImageSrc, "").subscribe(response => {
 

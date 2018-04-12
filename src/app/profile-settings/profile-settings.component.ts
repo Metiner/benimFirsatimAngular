@@ -44,10 +44,10 @@ export class ProfileSettingsComponent implements OnInit {
     }
   }
 
-  formatDeals(){
+  formatDeals(type){
     $(document).ready(()=>{
       $("app-point-table").remove();
-      var firsatlarim = document.getElementById("firsatlarim");
+      var firsatlarim = document.getElementById(type);
       firsatlarim.children[0].children[0].classList.remove("col-8");
       firsatlarim.children[0].children[0].classList.remove("offset-1");
       firsatlarim.children[0].children[0].classList.add("col-12");
@@ -64,16 +64,18 @@ export class ProfileSettingsComponent implements OnInit {
       this.kaydedilenler.active = 'void';
       this.firsatlar.active = 'void';
       this.ayarlar.active = 'void';
+      this.getActivity();
     }
     if (element === 'firsatlar') {
+      this.benimFirsatimLibrary.currentCategory = 'myDeals';
+      this.kaydedilenler.active = 'void';
       this.firsatlar.active = 'active';
       this.showUserInfoSection = true;
       this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
-      this.kaydedilenler.active = 'void';
       this.ayarlar.active = 'void';
-      this.formatDeals();
+      this.formatDeals("firsatlarim");
     }
     if (element === 'yorumlar') {
       this.showUserInfoSection = true;
@@ -85,13 +87,15 @@ export class ProfileSettingsComponent implements OnInit {
       this.ayarlar.active = 'void';
     }
     if (element === 'kaydedilenler') {
+      this.benimFirsatimLibrary.currentCategory = 'myFavs';
+      this.firsatlar.active = 'void';
+      this.kaydedilenler.active = 'active';
       this.showUserInfoSection = true;
       this.showUpdateProfile = false;
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
-      this.kaydedilenler.active = 'active';
-      this.firsatlar.active = 'void';
       this.ayarlar.active = 'void';
+      this.formatDeals("favs");
     }
     if (element === 'ayarlar') {
       this.showUpdateProfile = true;
@@ -118,6 +122,19 @@ export class ProfileSettingsComponent implements OnInit {
     this.showAreYouSure = !this.showAreYouSure;
 
   }
-
+  getActivity(){
+    this.benimFirsatimLibrary.getMyComments().subscribe(response=>{
+      console.log("Yaptıgım Yorumlar");
+      console.log(response.json());
+    });
+    this.benimFirsatimLibrary.getCommentsThatIliked().subscribe(response=>{
+      console.log("Begendiğim Yorumlar");
+      console.log(response.json());
+    })
+    this.benimFirsatimLibrary.getMyReplies().subscribe(response=>{
+      console.log("Yaptıgım Cevaplar");
+      console.log(response.json());
+    })
+  }
 
 }

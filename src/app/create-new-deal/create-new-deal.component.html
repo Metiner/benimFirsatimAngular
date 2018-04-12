@@ -293,9 +293,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-2 mx-auto align-self-center cursor-pointer" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,dealTitle,dealImageContainer,lsd)">
+            <button [disabled]="createButtonActivated" class="col-2 mx-auto align-self-center cursor-pointer clearButton" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,dealTitle,dealImageContainer,lsd)">
               <div id="createDealAnim" (mouseenter)="playAnim()" (mouseleave)="stopAnim()"></div>
-            </div>
+            </button>
           </div>
         </div>
       </div>

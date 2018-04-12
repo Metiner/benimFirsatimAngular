@@ -82,7 +82,7 @@
           <div class="col-3">
             <div class="row nowrap">
               <div class="col">
-                <div class="mx-auto cursor-pointer" id="forLottie" style="width: 60px;height: 60px;" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
+                <div class="mx-auto cursor-pointer" id="forLottie" style="width: 60px;height: 60px;" (click)="favDeal()" (mouseenter)="playSegments(0,50)" (mouseleave)="playSegments(50,120)">
                 </div>
               </div>
             </div>
@@ -153,9 +153,11 @@
               <div class="col">
                 <textarea [(ngModel)]="newlyAddedComment" rows="2" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;"></textarea>
               </div>
-              <div class="col-2" style="text-align: right;padding: 0px" (click)="sendComment()">
-                <img style="height: 100px" src="assets/svgs/write_comment_icon.svg">
-              </div>
+              <button [disabled]="sendCommentButtonActivated" (click)="sendComment()">
+                <div class="col-2" style="text-align: right;padding: 0px">
+                  <img style="height: 100px" src="assets/svgs/write_comment_icon.svg">
+                </div>
+              </button>
             </div>
           </div>
         </div>
@@ -220,7 +222,8 @@
                         <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
                       </div>
                       <div class="col-1 cursor-pointer">
-                        <div class="lottieThumbUpButton" (click)="playAnim(i,'thumbsUp')"></div>
+                        <div class="lottieThumbUpButton" (click)="playAnim(i,'thumbsUp',comment)"></div>
+                        <span class="likeComment-span">{{comment.comment_votes_count}}</span>
                       </div>
                     </div>
                   </div>
@@ -248,27 +251,34 @@
               </div>
             </div>
             <div *ngIf="isHaveSubComment(comment)" style="margin-top: 3%">
-              <div *ngFor="let subComment of comment.comments;let j = index" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
-                <div *ngIf="j < 2" class="col">
-                  <div class="row nowrap">
-                    <div class="col">
-                      <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
-                        <div class="col-1 nopadding">
-                          <img src="{{subComment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+              <div *ngFor="let subComment of comment.comments;let j = index">
+                <div *ngIf="j < comment.showUntil" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
+                  <div  class="col">
+                    <div class="row nowrap">
+                      <div class="col">
+                        <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
+                          <div class="col-1 nopadding">
+                            <img src="{{subComment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+                          </div>
+                          <div class="col">
+                            <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;margin-left: -10%;color:#234491">{{subComment.user.name}}</span>
+                          </div>
+                          <div class="col" style="text-align: right">
+                            <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#234491">{{subComment.timeCalculation}}</span>
+                          </div>
                         </div>
-                        <div class="col">
-                          <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;margin-left: -10%;color:#234491">{{subComment.user.name}}</span>
-                        </div>
-                        <div class="col" style="text-align: right">
-                          <span style="font-family: 'Mark Pro-Italic';font-size: 15px;color:#234491">{{subComment.timeCalculation}}</span>
-                        </div>
-                      </div>
-                      <div class="row" style="padding: 1%;padding-left: 4%">
-                        <div class="col">
-                          <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment.text}}</span>
+                        <div class="row" style="padding: 1%;padding-left: 4%">
+                          <div class="col">
+                            <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment.text}}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="j === comment.comments.length-1" style="margin-top: 2%">
+                  <div class="col text-center cursor-pointer" (click)="addSubcommentIndex(comment,j)">
+                    <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment.dahaFazlaGetirText}}</span>
                   </div>
                 </div>
               </div>

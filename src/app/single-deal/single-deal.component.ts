@@ -25,7 +25,10 @@ export class SingleDealComponent implements OnInit {
   commentButtonAnimation:any;
   thumbUpAnimations=[];
   dealReported = false;
-
+  sendCommentButtonActivated = false;
+  animations:any;
+  thereAreMoreCommentsHigherTen = false;
+  commentCount=0;
 
   deal:any = {};
   constructor(public route: ActivatedRoute,
@@ -51,6 +54,8 @@ export class SingleDealComponent implements OnInit {
           this.loadThumbsupAnimations();
           for (let i = 0; i < this.comments.length; i++) {
             this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
+            this.comments[i].showUntil = 2;
+            this.comments[i].dahaFazlaGetirText = 'DAHA FAZLA GETİR';
             if (this.comments[i].comments.length > 0) {
               for (let j = 0; j < this.comments[i].comments.length; j++) {
                 this.comments[i].comments[j].timeCalculation = this.timeCalculation(this.comments[i].comments[j]);
@@ -92,12 +97,13 @@ export class SingleDealComponent implements OnInit {
 
   loadThumbsupAnimations(){
     $(document).ready(()=>{
-      let animations = document.getElementsByClassName("lottieThumbUpButton");
-      if(animations.length > 0){
-        for(var i=0;i<animations.length;i++){
+      this.animations = document.getElementsByClassName("lottieThumbUpButton");
+      if(this.animations.length > 0){
+        for(var i=this.commentIndex-10;i<this.animations.length;i++){
+          console.log ( i);
           this.thumbUpAnimations.push(
             lottie.loadAnimation({
-              container:animations[i],
+              container:this.animations[i],
               renderer:'svg',
               autoplay: false,
               loop:false,
@@ -108,7 +114,7 @@ export class SingleDealComponent implements OnInit {
       }
     })
   }
-  playAnim(index,type) {
+  playAnim(index,type,comment) {
     if(type === 'like'){
       this.likeButtonAnimation.play();
       if(this.likeButtonAnimation.liked){
@@ -120,7 +126,18 @@ export class SingleDealComponent implements OnInit {
         this.likeButtonAnimation.liked = true;
       }
     }else if(type === 'thumbsUp'){
+
       this.thumbUpAnimations[index].play();
+      this.benimFirsatimLib.commentVote(comment.id).subscribe(response =>{
+        comment.comment_votes_count = response.json().vote_count;
+      })
+      if(this.thumbUpAnimations[index].liked){
+        this.thumbUpAnimations[index].setDirection(-1);
+        this.thumbUpAnimations[index].liked = false;
+      }else{
+        this.thumbUpAnimations[index].setDirection(1);
+        this.thumbUpAnimations[index].liked = true;
+      }
     }else{
       this.commentButtonAnimation.play();
     }
@@ -185,12 +202,14 @@ export class SingleDealComponent implements OnInit {
 
   sendComment(){
     if(this.benimFirsatimLib.isAutho){
+      this.sendCommentButtonActivated = true;
       var comment:any = {};
       comment.text = this.newlyAddedComment;
       comment.user = this.benimFirsatimLib.currentUser;
       comment.timeCalculation = "";
       this.newlyAddedComments.push(comment);
-      this.benimFirsatimLib.createComment(this.dealId,null,this.newlyAddedComment).subscribe((response)=>{
+      this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],null,this.newlyAddedComment).subscribe((response)=>{
+        this.sendCommentButtonActivated = false;
       });
     }else{
       this.benimFirsatimLib.openSignUpPopUp.next();
@@ -202,6 +221,8 @@ export class SingleDealComponent implements OnInit {
       document.getElementById("loadMoreText").innerText = "HEPSİ BU KADAR :("
     }else{
       this.commentIndex = this.commentIndex + 10;
+      this.thereAreMoreCommentsHigherTen = true;
+      this.loadThumbsupAnimations();
     }
   }
   writeCommentSubcomment(comment){
@@ -211,24 +232,37 @@ export class SingleDealComponent implements OnInit {
     newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
     newlyAddedSubCommentTemp.timeCalculation = "";
     comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
-    this.benimFirsatimLib.createComment(this.dealId,comment.id,this.newlyAddedSubComment).subscribe((response)=>{
+    this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],comment.id,this.newlyAddedSubComment).subscribe((response)=>{
 
     });
   }
 
   deadOnDeadLine(){
-    this.benimFirsatimLib.ended(this.dealId).subscribe((response)=>{
+    this.benimFirsatimLib.ended(this.route.snapshot.params['dealId']).subscribe((response)=>{
     });
     this.dealReported = true;
   }
   dealOutOfStock(){
-    this.benimFirsatimLib.stockFinished(this.dealId).subscribe((response)=>{
+    this.benimFirsatimLib.stockFinished(this.route.snapshot.params['dealId']).subscribe((response)=>{
     });
     this.dealReported = true;
   }
   onReportDeal(){
-    this.benimFirsatimLib.report(this.dealId).subscribe((response)=>{
+    this.benimFirsatimLib.report(this.route.snapshot.params['dealId']).subscribe((response)=>{
     });
     this.dealReported = true;
+  }
+
+  favDeal(){
+    this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{
+      console.log(response.json());
+    })
+  }
+  addSubcommentIndex(comment,index){
+    console.log(comment.comments.length + " " + index);
+    if(index  === comment.comments.length ){
+      comment.dahaFazlaGetirText = "HEPSİ BU KADAR :(";
+    }
+    comment.showUntil += 3;
   }
 }

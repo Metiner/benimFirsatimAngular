@@ -172,7 +172,7 @@ export class BenimFirsatimLibrary {
 
   public commentVote(comment_id){
     let opt = this.setHeader();
-    return this.http.post(this.api_address + '/comments/'+comment_id+'/vote',{},opt);
+    return this.http.get(this.api_address + '/comments/'+comment_id+'/vote',opt);
   }
 
   public getCategoryDeals(categoryIndex,pagination){
@@ -200,6 +200,22 @@ export class BenimFirsatimLibrary {
   public favDeal(dealId){
     let opt = this.setHeader();
     return this.http.get(this.api_address+'/deals/'+dealId+'/bookmark',opt);
+  }
+  public getFavDeal(){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address + '/me/bookmarks',opt);
+  }
+  public getMyComments(){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address + '/me/comments',opt);
+  }
+  public getCommentsThatIliked(){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address + '/me/comments/liked ',opt);
+  }
+  public getMyReplies(){
+    let opt = this.setHeader();
+    return this.http.get(this.api_address + '/me/comments/replied',opt);
   }
 
   get isAutho(): boolean {

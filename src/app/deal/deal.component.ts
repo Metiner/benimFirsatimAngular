@@ -1,16 +1,18 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
-import {dealStateTrigger} from "../animations";
-import {AnimationEvent} from "@angular/animations";
-import {Subscription} from "rxjs/Subscription";
-import {Router} from "@angular/router";
-declare var lottie:any;
-declare var $:any;
+import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
+import {dealStateTrigger} from '../animations';
+import {AnimationEvent} from '@angular/animations';
+import {Subscription} from 'rxjs/Subscription';
+import {Router} from '@angular/router';
+
+declare var lottie: any;
+declare var $: any;
+
 @Component({
   selector: 'app-deal',
   templateUrl: './deal.component.html',
   styleUrls: ['./deal.component.scss'],
-  animations:[dealStateTrigger]
+  animations: [dealStateTrigger]
 })
 export class DealComponent implements OnInit, OnDestroy {
 
@@ -20,9 +22,9 @@ export class DealComponent implements OnInit, OnDestroy {
   showPointTableSubs: Subscription;
   likeButtonAnimations = [];
   commentButtonAnimations = [];
-  likeButtons:any = [];
-  commentButtons:any = [];
-  showPointTable=true;
+  likeButtons: any = [];
+  commentButtons: any = [];
+  showPointTable = true;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router) {
@@ -33,82 +35,90 @@ export class DealComponent implements OnInit, OnDestroy {
       }
     });
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
-      next: ()=>{
+      next: () => {
         this.showPointTable = false;
       }
-    })
+    });
   }
-  ngOnInit(){
+
+  ngOnInit() {
 
     this.setDeals();
 
   }
-  ngOnDestroy(){
+
+  ngOnDestroy() {
     this.mySubscription.unsubscribe();
     this.showPointTableSubs.unsubscribe();
   }
 
-  setDeals(){
+  setDeals() {
     this.deals = [];
     this.displayedDeals = [];
 
-    if(typeof this.benimFirsatimLib.currentCategory  === "string"){
+    if (typeof this.benimFirsatimLib.currentCategory === 'string') {
 
-      if(this.benimFirsatimLib.currentCategory === 'myDeals'){
-        this.benimFirsatimLib.getDealFromUser(this.benimFirsatimLib.currentPaging).subscribe(data=>{
+      if (this.benimFirsatimLib.currentCategory === 'myDeals') {
+        this.benimFirsatimLib.getDealFromUser(this.benimFirsatimLib.currentPaging).subscribe(data => {
           let responseData = data.json();
           this.displayedDeals = [];
           this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;
           this.benimFirsatimLib.currentPaging = responseData.current_page;
-          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10) + 1;
           if (this.deals.length >= 1) {
             this.displayedDeals.push(this.deals[0]);
           }
-
-        })
-      }else{
-        this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
+        });
+      } else if (this.benimFirsatimLib.currentCategory === 'myFavs') {
+        this.benimFirsatimLib.getFavDeal().subscribe(data => {
+          let responseData = data.json();
+          this.displayedDeals = [];
+          this.deals = responseData;
+          this.benimFirsatimLib.currentDeals = this.deals;
+          this.benimFirsatimLib.currentPaging = responseData.current_page;
+          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10) + 1;
+          if (this.deals.length >= 1) {
+            this.displayedDeals.push(this.deals[0]);
+          }
+        });
+      } else {
+        this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
           let responseData = data.json();
           this.displayedDeals = [];
           this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;
           this.benimFirsatimLib.currentPaging = responseData.current_page;
-          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+          this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10) + 1;
           if (this.deals.length >= 1) {
             this.displayedDeals.push(this.deals[0]);
           }
 
         });
       }
-    }else{
-      this.benimFirsatimLib.getCategoryDeals(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe( (data) => {
+    } else {
+      this.benimFirsatimLib.getCategoryDeals(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
         let responseData = data.json();
         this.displayedDeals = [];
         this.deals = responseData.entries;
         this.benimFirsatimLib.currentDeals = this.deals;
         this.benimFirsatimLib.currentPaging = responseData.current_page;
-        this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10)+1;
+        this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10) + 1;
         if (this.deals.length >= 1) {
           this.displayedDeals.push(this.deals[0]);
         }
-
       });
     }
-
-
-
-
   }
 
-  onDealAnimated(event: AnimationEvent, lastItemIndex,likeContainer,commentContainer){
-    if(lastItemIndex < 10){
-        this.loadAnimations(lastItemIndex,likeContainer,commentContainer);
+  onDealAnimated(event: AnimationEvent, lastItemIndex, likeContainer, commentContainer) {
+    if (lastItemIndex < 10) {
+      this.loadAnimations(lastItemIndex, likeContainer, commentContainer);
     }
-    if (event.fromState !== 'void'){
+    if (event.fromState !== 'void') {
       return;
     }
-    if(this.deals.length > lastItemIndex + 1){
+    if (this.deals.length > lastItemIndex + 1) {
       this.displayedDeals.push(this.deals[lastItemIndex + 1]);
       this.benimFirsatimLib.dealAnimationContinues = true;
     } else {
@@ -117,60 +127,61 @@ export class DealComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadAnimations(index,likeContainer,commentContainer) {
+  loadAnimations(index, likeContainer, commentContainer) {
 
-    if(this.likeButtonAnimations.length > 9){
+    if (this.likeButtonAnimations.length > 9) {
       this.likeButtonAnimations.length = 0;
     }
-      this.likeButtonAnimations.push(lottie.loadAnimation({
-        container: likeContainer, // the dom element that will contain the animation
-        renderer: 'svg',
-        loop: false,
-        autoplay: false,
-        path: 'assets/animations/like_button.json' // the path to the animation json
-      }));
+    this.likeButtonAnimations.push(lottie.loadAnimation({
+      container: likeContainer, // the dom element that will contain the animation
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: 'assets/animations/like_button.json' // the path to the animation json
+    }));
 
-      this.commentButtonAnimations.push(lottie.loadAnimation({
-        container: commentContainer, // the dom element that will contain the animation
-        renderer: 'svg',
-        loop: true,
-        autoplay: false,
-        path: 'assets/animations/comment_button.json' // the path to the animation json
-      }));
-
-
-
+    this.commentButtonAnimations.push(lottie.loadAnimation({
+      container: commentContainer, // the dom element that will contain the animation
+      renderer: 'svg',
+      loop: true,
+      autoplay: false,
+      path: 'assets/animations/comment_button.json' // the path to the animation json
+    }));
 
 
   }
-  goToDeal(dealId){
+
+  goToDeal(dealId) {
     this.route.navigate(['/deal/' + dealId]);
   }
 
-  isItLastItem(deal){
-    if(this.deals[this.deals.length - 1].id === deal.id)
+  isItLastItem(deal) {
+    if (this.deals[this.deals.length - 1].id === deal.id)
       return true;
   }
-  goToLink(link: string){
+
+  goToLink(link: string) {
     window.open(link, '_blank');
   }
-  playAnim(index,type) {
-    if(type === 'like'){
+
+  playAnim(index, type) {
+    if (type === 'like') {
       this.likeButtonAnimations[index].play();
-      if(this.likeButtonAnimations[index].liked){
+      if (this.likeButtonAnimations[index].liked) {
 
         this.likeButtonAnimations[index].setDirection(-1);
         this.likeButtonAnimations[index].liked = false;
 
-      }else{
+      } else {
         this.likeButtonAnimations[index].setDirection(1);
         this.likeButtonAnimations[index].liked = true;
       }
     }
-    else{
+    else {
       this.commentButtonAnimations[index].play();
-      }
     }
+  }
+
   stopAnim(index) {
     this.commentButtonAnimations[index].stop();
   }

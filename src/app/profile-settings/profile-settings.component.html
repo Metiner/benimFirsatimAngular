@@ -13,10 +13,10 @@
         <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
         <span (click)="activeAnim('firsatlar')" class="tab cursor-pointer" [@tabActivation]="firsatlar.active">FIRSATLAR</span>
       </div>
-      <div class="col-2">
-        <img  style="height: 20px" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">
-        <span (click)="activeAnim('yorumlar')" class="tab cursor-pointer" [@tabActivation]="yorumlar.active">YORUMLAR</span>
-      </div>
+      <!--<div class="col-2">-->
+        <!--<img  style="height: 20px" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">-->
+        <!--<span (click)="activeAnim('yorumlar')" class="tab cursor-pointer" [@tabActivation]="yorumlar.active">YORUMLAR</span>-->
+      <!--</div>-->
       <div class="col-2" style="white-space: nowrap">
         <img style="height: 20px" src="../../assets/svgs/genel_bakis/kaydedilenler_icon.svg">
         <span (click)="activeAnim('kaydedilenler')" class="tab cursor-pointer" [@tabActivation]="kaydedilenler.active">KAYDEDİLENLER</span>
@@ -129,9 +129,14 @@
           <img src="../../assets/svgs/genel_bakis/deletion-areyousure-box.svg">
         </div>
       </div>
-
       <div class="col">
         <app-deal id="firsatlarim" *ngIf="firsatlar.active == 'active'"></app-deal>
+        <app-deal id="favs" *ngIf="kaydedilenler.active == 'active'"></app-deal>
+        <div class="row">
+          <div class="col">
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
