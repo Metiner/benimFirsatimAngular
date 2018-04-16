@@ -222,8 +222,9 @@
                         <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
                       </div>
                       <div class="col-1 cursor-pointer">
-                        <div class="lottieThumbUpButton" (click)="playAnim(i,'thumbsUp',comment)"></div>
-                        <span class="likeComment-span">{{comment.comment_votes_count}}</span>
+                        <div class="lottieThumbUpButton" (click)="playAnim(i,'thumbsUp',comment)">
+                          <span class="likeComment-span">{{comment.comment_votes_count}}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
