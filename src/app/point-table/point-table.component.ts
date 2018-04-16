@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 
 @Component({
   selector: 'app-point-table',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PointTableComponent implements OnInit {
 
-  constructor() { }
+  users= [];
+
+  constructor(private benimFirsatimLib: BenimFirsatimLibrary) { }
 
   ngOnInit() {
+
+    this.benimFirsatimLib.getUsersTop().subscribe(response=>{
+      for(let i = 0 ;i<response.json().length;i++){
+        this.users.push(response.json()[i][0]);
+      }
+    })
   }
 
 }

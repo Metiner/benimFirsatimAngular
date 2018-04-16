@@ -8,11 +8,8 @@ import {
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {FacebookService} from "ngx-facebook";
-import {Router} from "@angular/router";
 declare var lottie:any;
-declare var fb:any;
 declare var gapi:any;
-declare var $:any;
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -123,7 +120,7 @@ export class ContentComponent implements OnDestroy,OnInit{
   onKayitButtonClick(form:NgForm){
 
     if (this.kayitOlButtonClickable) {
-      if (!form.value.password == form.value.password2) {
+      if (form.value.password !== form.value.password2) {
         this.snackBar.open('Parolalar Uyuşmamakta','',{duration:3000});
       } else {
         this.benimFirsatimLib.signUp(form.value.email, form.value.password).subscribe(data => {
@@ -235,11 +232,10 @@ export class ContentComponent implements OnDestroy,OnInit{
 
   fbLogin(){
 
-     this.fb.login()
+     this.fb.login({scope:'email'})
        .then(res =>{
 
-           console.log(res);
-           var fbValues = "&fields=id,name,location,website,picture,email";
+           var fbValues = "fields=id,name,picture,email";
            var fbPermission = ["public_profile"];
            var authResponse= res.authResponse;
 
@@ -253,17 +249,23 @@ export class ContentComponent implements OnDestroy,OnInit{
                 console.log(response);
                // It means, email is already being used by another user.
                if(!response.json().success){
-                 //this.benimFirsatimLib.showToast(response.json().message,3000,"bottom");
+                 this.snackBar.open('Bir sıkıntı oldu :(','',{duration:3000});
 
                }
                if(response.json() != null && response.json().success == true ) {
 
+                 this.benimFirsatimLib.successLogin(response.json());
+                 setTimeout(
+                   ()=>{
+                     this.tutorial = false;
+                     this.showSingUpSignInPopUp = false;
+                     this.showForm = true;
+                   },1500);
 
               }
             }, error=>{
-              //this.benimFirsatimLib.showToast("Bir hata oluştu",1500,"bottom");
-              console.log(error.toLocaleString());
-            })
+               this.snackBar.open(error.toLocaleString(),'',{duration:3000});
+             })
           });
         },
 
@@ -284,7 +286,14 @@ export class ContentComponent implements OnDestroy,OnInit{
          var id = googleUser.getBasicProfile().Eea;
 
          this.benimFirsatimLib.signupOrLogin(email,name,picture,id,loginData,"google").subscribe(response=>{
-           console.log(response.json());
+           console.log(response.json())
+           this.benimFirsatimLib.successLogin(response.json());
+           setTimeout(
+             ()=>{
+               this.tutorial = false;
+               this.showSingUpSignInPopUp = false;
+               this.showForm = true;
+             },1500);
          });
 
        });

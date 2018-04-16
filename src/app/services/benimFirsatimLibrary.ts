@@ -218,6 +218,9 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/me/comments/replied',opt);
   }
 
+  public getUsersTop(){
+    return this.http.get(this.api_address + '/users/top');
+  }
   get isAutho(): boolean {
     return this._isAutho;
   }

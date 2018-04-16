@@ -46,4 +46,9 @@ html {
   /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
   display: flex; }
 
+.clearButton {
+  background: none;
+  outline: none;
+  border: none; }
+
 /*# sourceMappingURL=main.css.map */
