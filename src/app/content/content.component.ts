@@ -236,7 +236,6 @@ export class ContentComponent implements OnDestroy,OnInit{
        .then(res =>{
 
            var fbValues = "fields=id,name,picture,email";
-           var fbPermission = ["public_profile"];
            var authResponse= res.authResponse;
 
            this.fb.api("me?"+ fbValues).then(response=>{

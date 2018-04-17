@@ -221,6 +221,9 @@ export class BenimFirsatimLibrary {
   public getUsersTop(){
     return this.http.get(this.api_address + '/users/top');
   }
+  public search(searchParam){
+    return this.http.get(this.api_address + '/search?searchparam=' + searchParam);
+  }
   get isAutho(): boolean {
     return this._isAutho;
   }

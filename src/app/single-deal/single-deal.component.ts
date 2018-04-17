@@ -265,4 +265,11 @@ export class SingleDealComponent implements OnInit {
     }
     comment.showUntil += 3;
   }
+  whatIsPrice(deal){
+    if(deal.price.indexOf(".0") === -1){
+      return deal.price ? (deal.price + '₺') : '';
+    }else{
+      return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
+    }
+  }
 }

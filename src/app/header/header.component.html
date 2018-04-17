@@ -81,7 +81,7 @@
       <img style="height: 50px" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
     </div>
     <div class="col-1 cursor-pointer searchBackground">
-      <input class="search" type="text">
+      <input (keyup)="onSearchEvent($event)" class="search" type="text">
     </div>
     <div *ngIf="!isAuth" class="col-1 text-center" (click)="goToSignUpAndSignin()">
       <div class="row">
@@ -121,6 +121,15 @@
                 <span style="font-family: 'Mark Pro-Medium';font-size: 8px;color:#F7E60f">{{category.name.toUpperCase()}}</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 offset-4" style="margin-left: 41%">
+      <div class="search-div-animation" [@slideInOut]="searchDivAnimation">
+        <div class="row mx-auto" style="align-items: center">
+          <div class="col-5 mx-auto cursor-pointer"  *ngFor="let element of searchResponse">
+
           </div>
         </div>
       </div>

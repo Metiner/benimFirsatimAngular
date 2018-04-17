@@ -29,12 +29,16 @@ export class HeaderComponent implements OnDestroy{
 
   categoriesAnimation = 'out';
   myProfileAnimation = 'out';
+  searchDivAnimation = 'out';
   categories = [];
 
   isAuth = false;
   showSingUpSignInPopUp = false;
 
   autSubscription : Subscription;
+  searchResponse:any;
+
+  searchParam = "";
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,
               public router:Router){
@@ -274,5 +278,17 @@ export class HeaderComponent implements OnDestroy{
   }
   onSettingsPage(){
     this.router.navigate(['/myProfile/settings']);
+  }
+
+  onSearchEvent(event){
+    this.searchParam += event.key;
+    if(event.key.length < 2){
+      if(this.searchParam.length > 2){
+        this.benimFirsatimLibrary.search(this.searchParam).subscribe(response=>{
+          console.log(response.json());
+        })
+      }
+    }
+
   }
 }

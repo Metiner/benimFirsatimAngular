@@ -186,4 +186,12 @@ export class DealComponent implements OnInit, OnDestroy {
     this.commentButtonAnimations[index].stop();
   }
 
+  whatIsPrice(deal){
+    if(deal.price.indexOf(".0") === -1){
+      return deal.price ? (deal.price + '₺') : '';
+    }else{
+      return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
+    }
+  }
+
 }
