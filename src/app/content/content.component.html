@@ -68,14 +68,10 @@
         </div>
       </div>
     </div>
-    <button class="invisible cursor-pointer" type="button" (click)="onGirisButtonClick(f)">
-      <img  style="visibility: visible !important;" class="giris-yap" [@girisYap]="girisYapState" (@girisYap.done)="makeLoginButtonClickable($event)" (click)="changeState('giris')" src="../../assets/svgs/giris_yap_button.svg">
-    </button>
-
-    <button class="invisible cursor-pointer" type="button" (click)="onKayitButtonClick(f)">
-      <div style="visibility: visible !important;"
-           class="kayit-ol" [@kayitOl]="kayitOlState" (@kayitOl.done)="makeSignUpButtonClickable($event)" (click)="changeState('kayit')" id="kayitOlAnim"></div>
-    </button>
+    
+    <img style="visibility: visible !important;" class="giris-yap cursor-pointer" [@girisYap]="girisYapState" (@girisYap.done)="makeLoginButtonClickable($event)" (click)="onGirisButtonClick(f);" src="../../assets/svgs/giris_yap_button.svg">
+    <img style="visibility: visible !important;" class="kayit-ol cursor-pointer" [@kayitOl]="kayitOlState" (@kayitOl.done)="makeSignUpButtonClickable($event)" (click)="onKayitButtonClick(f)" id="kayitOlAnim">
+    
     <span style="font-family: 'Mark Pro-Book';font-size: 10px;color:#234491;position: fixed;left: 50%;bottom: 12%;transform: translate(-50%,-50%);white-space: nowrap">YADA SOSYAL MEDYA HESAPLARINDAN BİRİNİ SEÇ</span>
     <img (click)="fbLogin()" class="cursor-pointer" src="../../assets/svgs/FB-Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 40%;transform: translate(-50%,-50%);bottom: -3%;">
     <img (click)="onGooglePlusLogin()" class="cursor-pointer" src="../../assets/svgs/G+Icon.svg" style="margin-top: 1%;height: 10%;position: fixed;left: 60%; transform: translate(-50%,-50%);bottom: -3%;">
