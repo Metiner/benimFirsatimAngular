@@ -184,7 +184,13 @@ export class HeaderComponent implements OnDestroy{
     this.myProfileAnimation = state;
   }
   onCategoryChange(type){
+    var x = 0.52;
+    for(var i = 0;i<60;i++){
+      x += (x * 3)/100;
+    }
+    console.log(x);
     this.benimFirsatimLibrary.currentPaging = 1;
+    this.benimFirsatimLibrary.totalPage = 2;
     this.benimFirsatimLibrary.changeCategory(type);
   }
   getCategoryIcon(categoryId){
@@ -281,8 +287,8 @@ export class HeaderComponent implements OnDestroy{
   }
 
   onSearchEvent(event){
-    this.searchParam += event.key;
     if(event.key.length < 2){
+      this.searchParam += event.key;
       if(this.searchParam.length > 2){
         this.benimFirsatimLibrary.search(this.searchParam).subscribe(response=>{
           console.log(response.json());
