@@ -85,6 +85,7 @@ export class DealComponent implements OnInit, OnDestroy {
       } else {
         this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
           let responseData = data.json();
+          console.log(data.json());
           this.displayedDeals = [];
           this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;

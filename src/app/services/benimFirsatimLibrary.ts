@@ -15,6 +15,7 @@ export class BenimFirsatimLibrary {
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
   showPointTable = new Subject<any>();
+  resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   private _dealAnimationContinues = true;
 
@@ -261,6 +262,7 @@ export class BenimFirsatimLibrary {
 
   set totalPage(value: number) {
     this._totalPage = value;
+    this.resetFooter.next();
   }
 
   get currentUser(): any {
