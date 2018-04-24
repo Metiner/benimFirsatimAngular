@@ -36,6 +36,14 @@
   width: 80%;
   padding-top: 5%; }
 
+.search-div-animation {
+  background-image: url("../../assets/imgs/profilim_bg@2x.png");
+  border-radius: 0px 0px 40px 40px;
+  position: absolute;
+  z-index: 1;
+  width: 80%;
+  padding-top: 5%; }
+
 .row.myProfileItemRow {
   margin: 6%;
   align-items: right; }

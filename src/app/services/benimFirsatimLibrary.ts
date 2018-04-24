@@ -224,6 +224,7 @@ export class BenimFirsatimLibrary {
   public search(searchParam){
     return this.http.get(this.api_address + '/search?searchparam=' + searchParam);
   }
+
   get isAutho(): boolean {
     return this._isAutho;
   }

@@ -4,6 +4,7 @@ import {dealStateTrigger} from '../animations';
 import {AnimationEvent} from '@angular/animations';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
+import {FacebookService} from "ngx-facebook";
 
 declare var lottie: any;
 declare var $: any;
@@ -27,7 +28,8 @@ export class DealComponent implements OnInit, OnDestroy {
   showPointTable = true;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
-              public route: Router) {
+              public route: Router,
+              public fb: FacebookService) {
 
     this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({
       next: () => {
@@ -192,6 +194,19 @@ export class DealComponent implements OnInit, OnDestroy {
     }else{
       return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
     }
+  }
+
+  shareDeal(deal){
+    this.fb.ui(
+      {
+        method: 'feed',
+        name: deal.title,
+        link: 'benimfirsatim.com/deal/' + deal.id,
+        picture: "benimfirsatim.com" + deal.image_url,
+        caption: 'Top 3 reasons why you should care about your finance',
+        description: "What happens when you don't take care of your finances? Just look at our country -- you spend irresponsibly, get in debt up to your eyeballs, and stress about how you're going to make ends meet. The difference is that you don't have a glut of taxpayers…",
+        message: ""
+      });
   }
 
 }
