@@ -2,17 +2,17 @@
   <div class="col-8 offset-1">
     <div class="row" style="min-height: 350px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;padding:1%;align-items: center;justify-content: center">
       <div class="col">
-        <div class="row">
+        <div class="row" style="padding-top: 30px">
           <div class="col">
             <div class="row">
               <div class="col-3" style="text-align: center">
-                <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 200px;max-height: 200px">
+                <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 180px;max-height: 180px">
               </div>
               <div class="col-9">
                 <div class="row title">
-                  <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
+                  <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
                 </div>
-                <div class="row" style="align-items: flex-end;flex-wrap: nowrap;padding-top: 1%">
+                <div class="row" style="align-items: center;flex-wrap: nowrap;padding-top: 1%">
                   <div class="col-2">
                     <div class="row" style="align-items: center;flex-wrap: nowrap;">
                       <div class="col-3 nopadding">
@@ -40,22 +40,22 @@
                     </div>
                   </div>
                   <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
-                    <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{deal.vendor.website}}</span>
+                    <span style="font-family: 'Mark Pro-Italic';font-size: 16px;color:#234491;">{{deal.vendor.website}}</span>
                   </div>
                 </div>
                 <div class="row" style="align-items: flex-end">
                   <div class="col-8">
                     <div class="row" style="align-items: center;flex-wrap: nowrap">
-                      <div class="col-1" style="padding: 0px;align-self: flex-end">
+                      <div class="col-1" style="padding: 0px">
                         <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
                       </div>
-                      <div class="col" style=";align-self: flex-end">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
+                      <div class="col-2" style="padding-left: 0px">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
                       </div>
-                      <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
-                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;">{{deal.user.score}} görüntülenme</span>
+                      <div class="col-4" style="text-overflow: ellipsis;overflow: hidden;">
+                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;white-space: nowrap">{{deal.view_count}} görüntülenme</span>
                       </div>
-                      <div class="col" style=";align-self: flex-end">
+                      <div class="col">
                         <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{deal.created_at.substr(0,10)}}</span>
                       </div>
                     </div>
@@ -113,7 +113,7 @@
                 <span style="font-family: 'Mark Pro-Book';font-size: 15px;color:#234491">BİZİ BİLGİLENDİRDİĞİN İÇİN TEŞEKKÜRLER :)</span>
               </div>
               <div class="col"  *ngIf="!dealReported">
-                <div class="row nowrap">
+                <div class="row nowrap" style="padding-top: 10px;">
                   <div class="col">
                     <div class="row nowrap align-items-center">
                       <div class="col-2">
@@ -148,16 +148,14 @@
               </div>
             </div>
           </div>
-          <div class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 100px">
+          <div class="col" style="background-color: #f2f2f2;border-radius: 20px;max-height: 100px;align-self: center">
             <div class="row nowrap">
               <div class="col">
-                <textarea [(ngModel)]="newlyAddedComment" rows="2" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;"></textarea>
+                <textarea [(ngModel)]="newlyAddedComment" rows="2" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;margin-top: 10px;"></textarea>
               </div>
-              <button [disabled]="sendCommentButtonActivated" (click)="sendComment()">
-                <div class="col-2" style="text-align: right;padding: 0px">
-                  <img style="height: 100px" src="assets/svgs/write_comment_icon.svg">
-                </div>
-              </button>
+              <div class="col-2" (click)="sendComment()" style="text-align: right;padding: 0px">
+                  <img style="max-height: 100px;align-self: auto;padding: 0px;"  src="assets/svgs/write_comment_icon.svg">
+              </div>
             </div>
           </div>
         </div>
@@ -218,12 +216,16 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-1 offset-10 cursor-pointer" (click)="writeToComment(comment)">
-                        <img  style="height: 50px;margin-bottom: -20%;width: inherit" src="assets/svgs/comments_reply_icon.svg">
-                      </div>
-                      <div class="col-1 cursor-pointer">
-                        <div class="lottieThumbUpButton" (click)="playAnim(i,'thumbsUp',comment)">
-                          <span class="likeComment-span">{{comment.comment_votes_count}}</span>
+                      <div class="col" style="margin-bottom: -2%">
+                        <div class="row">
+                          <div class="col-1 offset-10 cursor-pointer" style="padding: 0px" (click)="writeToComment(comment)">
+                            <img  style="    max-height: 50px;max-width: 50px;margin-left: 50%;" src="assets/svgs/comments_reply_icon.svg">
+                          </div>
+                          <div class="col-1 cursor-pointer" style="padding: 0px">
+                            <div class="lottieThumbUpButton" style="max-width: 80px;max-height: 50px" (click)="playAnim(i,'thumbsUp',comment)">
+                              <span class="likeComment-span">{{comment.comment_votes_count}}</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

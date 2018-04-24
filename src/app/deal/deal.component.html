@@ -6,7 +6,7 @@
          (@dealState.done)="onDealAnimated($event,i,likeContainer,commentContainer)"
          style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-bottom: 2%">
       <div class="col-3" style="text-align: center">
-        <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 230px;max-height: 230px">
+        <img src="http://benimfirsatim.cleverapps.io{{deal.image_url}}" style="max-width: 200px;max-height: 200px">
       </div>
       <div class="col-9">
         <div class="row title">
@@ -49,16 +49,16 @@
         <div class="row" style="align-items: flex-end">
           <div class="col-8">
             <div class="row" style="align-items: center;flex-wrap: nowrap">
-              <div class="col-1" style="padding: 0px;align-self: flex-end">
+              <div class="col-1" style="padding: 0px">
                 <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
               </div>
-              <div class="col" style=";align-self: flex-end">
-                <span style="font-family: 'Mark Pro-Heavy',serif;font-size: 20px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
+              <div class="col-2" style="padding-left: 0px">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
               </div>
-              <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
-                <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;">{{deal.view_count}} görüntülenme</span>
+              <div class="col-4" style="text-overflow: ellipsis;overflow: hidden;">
+                <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;white-space: nowrap">{{deal.view_count}} görüntülenme</span>
               </div>
-              <div class="col" style=";align-self: flex-end">
+              <div class="col">
                 <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{deal.created_at.substr(0,10)}}</span>
               </div>
             </div>
@@ -89,5 +89,4 @@
   </div>
 
 </div>
-<app-footer></app-footer>
 

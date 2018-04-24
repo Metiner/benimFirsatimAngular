@@ -87,6 +87,7 @@ export class DealComponent implements OnInit, OnDestroy {
       } else {
         this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
           let responseData = data.json();
+          console.log(data.json());
           this.displayedDeals = [];
           this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;
@@ -189,10 +190,16 @@ export class DealComponent implements OnInit, OnDestroy {
   }
 
   whatIsPrice(deal){
-    if(deal.price.indexOf(".0") === -1){
-      return deal.price ? (deal.price + '₺') : '';
-    }else{
-      return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
+    try {
+
+      if(deal.price.indexOf(".0") === -1){
+        return deal.price ? (deal.price + '₺') : '';
+      }else{
+        return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
+      }
+    }catch (e)
+    {
+
     }
   }
 

@@ -1,6 +1,6 @@
 
 import {Component, EventEmitter, Injectable, OnDestroy, Output} from '@angular/core';
-import {slideInOutAnimation} from '../animations';
+import {slideInOutAnimation, slideInOutAnimationSearch} from '../animations';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subject} from "rxjs/Subject";
 import {Router} from '@angular/router';
@@ -12,7 +12,7 @@ declare var $:any;
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: [slideInOutAnimation],
+  animations: [slideInOutAnimation,slideInOutAnimationSearch],
 
 })
 export class HeaderComponent implements OnDestroy{
@@ -185,6 +185,7 @@ export class HeaderComponent implements OnDestroy{
   }
   onCategoryChange(type){
     this.benimFirsatimLibrary.currentPaging = 1;
+    this.benimFirsatimLibrary.totalPage = 2;
     this.benimFirsatimLibrary.changeCategory(type);
   }
   getCategoryIcon(categoryId){
@@ -281,14 +282,42 @@ export class HeaderComponent implements OnDestroy{
   }
 
   onSearchEvent(event){
-    this.searchParam += event.key;
+
+    if(event.key === 'Backspace'){
+      this.searchParam = this.searchParam.slice(0,-1);
+      if(event.srcElement.value.length === 0){
+        this.searchParam = "";
+        this.searchDivAnimation = 'out';
+      }
+    }
     if(event.key.length < 2){
-      if(this.searchParam.length > 2){
+      this.searchParam += event.key;
+      if(this.searchParam.length > 2 && this.searchParam.length % 2 == 0){
+        this.searchDivAnimation = 'in';
         this.benimFirsatimLibrary.search(this.searchParam).subscribe(response=>{
-          console.log(response.json());
+          this.searchResponse = response.json().entries;
         })
       }
     }
-
   }
+  goToDeal(dealId) {
+    var searchInput:any = document.getElementsByClassName("search");
+    searchInput[0].value = "";
+    this.searchDivAnimation = 'out';
+    this.router.navigate(['/deal/' + dealId]);
+  }
+  whatIsPrice(deal){
+    try {
+
+      if(deal.price.indexOf(".0") === -1){
+        return deal.price ? (deal.price + '₺') : '';
+      }else{
+        return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
+      }
+    }catch (e)
+    {
+
+    }
+  }
+
 }

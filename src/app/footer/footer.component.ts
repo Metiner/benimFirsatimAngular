@@ -20,7 +20,12 @@ export class FooterComponent implements OnInit {
       this.totalPage = this.benimFirsatimLib.totalPage;
 
     },700)
+
+    this.benimFirsatimLib.resetFooter.subscribe(()=>{
+      this.resetFooter();
+    })
   }
+
 
   scrollToTop(){
 
@@ -42,5 +47,9 @@ export class FooterComponent implements OnInit {
     this.benimFirsatimLib.currentPaging--;
     this.currentPage = this.benimFirsatimLib.currentPaging;
     this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
+  }
+  resetFooter(){
+    this.currentPage = this.benimFirsatimLib.currentPaging;
+    this.totalPage = this.benimFirsatimLib.totalPage;
   }
 }

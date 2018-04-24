@@ -37,10 +37,12 @@
 
 .likeComment-span {
   font-family: 'Mark Pro-Heavy';
-  font-size: 12px;
+  font-size: 10px;
   color: #234491;
   position: absolute;
-  top: 29%;
-  right: 35%; }
+  top: 50%;
+  left: 50%;
+  transform: translate(50%,-60%);
+}
 
 /*# sourceMappingURL=single-deal.component.css.map */

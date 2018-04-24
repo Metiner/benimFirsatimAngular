@@ -60,6 +60,70 @@ export const slideInOutAnimation = [
     ])])
 
 ];
+export const slideInOutAnimationSearch = [
+  trigger('slideInOutSearch',[
+    state('in',style({
+      opacity:1,
+      transform:'translateY(0)',
+      width:'320px',
+      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)',
+      visibility:'visible'
+
+    })),
+    state('out',style({
+      opacity:0,
+      width:'320px',
+      transform:'translateY(0)',
+      'box-shadow': '6px 11px 48px -2px rgba(0,0,0,0.58)',
+      visibility:'hidden'
+    })),
+    transition('in=>out',[group([
+      animate('700ms ease-out',keyframes([
+        style({
+          opacity:1,
+          offset:0,
+          width:'320px',
+          transform:'translateY(0)'
+        }),
+        style({
+          opacity:0,
+          offset:0.4,
+          width:'320px',
+          transform:'translateY(-2%)',
+        }),
+        style({
+          opacity:0,
+          offset:1,
+          width:'320px',
+          transform:'translateY(2%)'
+        })
+      ]))
+    ])]),
+    transition('out=>in',[group([
+
+      animate('700ms ease-out',keyframes([
+        style({
+          opacity:0,
+          offset:0,
+          transform:'translateY(2%)',
+          visibility:'hidden'
+        }),
+        style({
+          opacity:0,
+          offset:0.4,
+          transform:'translateY(-2%)',
+        }),
+        style({
+          opacity:1,
+          offset:1,
+          transform:'translateY(0)',
+          visibility:'visible'
+        })
+      ]))
+    ])
+    ])])
+
+];
 
 export const dealStateTrigger = trigger('dealState',[
   transition(':enter',[

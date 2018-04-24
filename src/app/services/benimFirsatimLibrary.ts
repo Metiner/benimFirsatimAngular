@@ -15,6 +15,7 @@ export class BenimFirsatimLibrary {
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
   showPointTable = new Subject<any>();
+  resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   private _dealAnimationContinues = true;
 
@@ -24,6 +25,7 @@ export class BenimFirsatimLibrary {
   private _currentDeals = [];
   private _categories =[];
   private _justCreatedDeal: any;
+  onTheLastPage = false;
 
   private _isAutho = false;
   private _currentUser:any;
@@ -38,8 +40,11 @@ export class BenimFirsatimLibrary {
       xfbml: true,
       version: 'v2.8'
     };
-
-    fb.init(initParams);
+    try{
+      fb.init(initParams);
+    }catch (e){
+      console.log(e);
+    }
     this.silentLogin();
   }
 
@@ -95,10 +100,20 @@ export class BenimFirsatimLibrary {
   public changeCategory(type){
 
     this.route.navigate(['']);
+    console.log(this.totalPage);
+    console.log(this.currentPaging);
     if(!this.dealAnimationContinues){
-      if(this.currentPaging <= this.totalPage){
-        this.currentCategory = type;
-        this.categoryChanged.next();
+      if(this.currentPaging < this.totalPage + 1){
+        if(this.currentPaging == this.totalPage){
+          this.onTheLastPage = true;
+        }else{
+          this.onTheLastPage = false;
+        }
+        if(!this.onTheLastPage){
+          this.currentCategory = type;
+          this.categoryChanged.next();
+        }
+
       }
     }
   }
@@ -222,7 +237,7 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/users/top');
   }
   public search(searchParam){
-    return this.http.get(this.api_address + '/search?searchparam=' + searchParam);
+    return this.http.get(this.api_address + '/search?searchparam=' + searchParam );
   }
 
   get isAutho(): boolean {
@@ -248,6 +263,7 @@ export class BenimFirsatimLibrary {
 
   set totalPage(value: number) {
     this._totalPage = value;
+    this.resetFooter.next();
   }
 
   get currentUser(): any {
@@ -264,7 +280,7 @@ export class BenimFirsatimLibrary {
 
   set currentPaging(value: number) {
 
-    if(value > 0 && !this.dealAnimationContinues){
+    if(value > 0 && !this.dealAnimationContinues && value <= this.totalPage){
       this._currentPaging = value;
     }
   }
