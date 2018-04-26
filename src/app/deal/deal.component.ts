@@ -5,7 +5,6 @@ import {AnimationEvent} from '@angular/animations';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {FacebookService} from "ngx-facebook";
-import {FacebookService} from "ngx-facebook";
 import {NgForm} from '@angular/forms';
 
 declare var lottie: any;
@@ -218,18 +217,6 @@ export class DealComponent implements OnInit, OnDestroy {
       });
   }
 
-  shareDeal(deal){
-    this.fb.ui(
-      {
-        method: 'feed',
-        name: deal.title,
-        link: 'benimfirsatim.com/deal/' + deal.id,
-        picture: "benimfirsatim.com" + deal.image_url,
-        caption: 'Top 3 reasons why you should care about your finance',
-        description: "What happens when you don't take care of your finances? Just look at our country -- you spend irresponsibly, get in debt up to your eyeballs, and stress about how you're going to make ends meet. The difference is that you don't have a glut of taxpayers…",
-        message: ""
-      });
-  }
 
   onFeedbackSubmit(f:NgForm){
     console.log(f.value);
