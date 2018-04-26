@@ -4,6 +4,7 @@ import {dealStateTrigger} from '../animations';
 import {AnimationEvent} from '@angular/animations';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 declare var lottie: any;
 declare var $: any;
@@ -199,6 +200,10 @@ export class DealComponent implements OnInit, OnDestroy {
     {
 
     }
+  }
+
+  onFeedbackSubmit(f:NgForm){
+    console.log(f.value);
   }
 
 }

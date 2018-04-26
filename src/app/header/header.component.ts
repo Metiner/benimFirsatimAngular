@@ -320,4 +320,7 @@ export class HeaderComponent implements OnDestroy{
     }
   }
 
+  onFeedback(){
+    this.router.navigate(["feedback"]);
+  }
 }

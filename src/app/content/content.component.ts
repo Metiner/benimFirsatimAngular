@@ -25,7 +25,10 @@ export class ContentComponent implements OnDestroy,OnInit{
   public auth2: any;
   showSingUpSignInPopUp = false;
   tutorial = false;
+  blackDiv = false;
+  feedbackDivOpen = false;
   mySignUpPopUpSubscription: Subscription;
+  myFeedbackPopUpSubscription: Subscription;
   email:string;
   password:string;
   password2:string;
@@ -55,6 +58,10 @@ export class ContentComponent implements OnDestroy,OnInit{
 
       console.log(googleAut);
     });
+    this.myFeedbackPopUpSubscription = this.benimFirsatimLib.openFeedbackPopUp.subscribe(()=>{
+      this.blackDiv = true;
+      this.feedbackDivOpen = true;
+    })
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
       next =>{
 
@@ -71,6 +78,7 @@ export class ContentComponent implements OnDestroy,OnInit{
 
   initiliaze(){
     this.tutorial = true;
+    this.blackDiv = true;
     this.showSingUpSignInPopUp = true;
     this.kayitOlState = 'down';
     this.girisYapState = 'up';
@@ -225,6 +233,7 @@ export class ContentComponent implements OnDestroy,OnInit{
   exitFromSignup(){
     this.showSingUpSignInPopUp = false;
     this.tutorial = false;
+    this.blackDiv = false;
   }
   onTutorialAnimFinished(){
   }

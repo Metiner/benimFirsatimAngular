@@ -1,13 +1,37 @@
 <div class="loadingDiv"
      [@loadingBlackDiv]
      (click)="exitFromSignup()"
-     *ngIf="tutorial">
+     *ngIf="blackDiv">
 </div>
 <div class="tutorial"
   *ngIf="tutorial"
    id="tutorialAnim"
   [@tutorialPopup]>
 </div>
+
+
+<div *ngIf="feedbackDivOpen" class="feedbackDiv">
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col" text-center col-12 style="margin-top: 5px">
+        <span style="font-family: MarkPro-Black;color:#234491"> FİKRİNİ SÖYLE!</span>
+      </div>
+      <div class="col">
+        <img src="../../assets/imgs/seperator_line@3x.png" style="vertical-align: text-top">
+      </div>
+    </div>
+
+    <span style="font-family: MarkPro-Black;color:#234491"> DETAYLAR</span>
+    <div class="row" style="margin-top: 15px">
+      <div class="col" style="text-align: center" (click) = onFeedbackSubmit(f)>
+        <img src="../../assets/svgs/fikirini_yolla_icon.svg" style="height: 35px;width: 35px">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
 <div class="signup-signin"
      *ngIf="showSingUpSignInPopUp"
      [@singinSignupPopup]

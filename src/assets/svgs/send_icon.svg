@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="943.554 3051 62 62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7e60f;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#234491"/>
+      <stop offset="1" stop-color="#2b8b56"/>
+    </linearGradient>
+  </defs>
+  <g id="send_icon" transform="translate(943.554 3051)">
+    <circle id="Ellipse_24" data-name="Ellipse 24" class="cls-1" cx="31" cy="31" r="31"/>
+    <path id="Path_72" data-name="Path 72" class="cls-2" d="M37.031.1a.546.546,0,0,0-.6-.093L.323,17.535A.574.574,0,0,0,0,18.058a.585.585,0,0,0,.312.523l8.9,4.509a.55.55,0,0,0,.579-.058L26.371,11.178,13.241,24.392a.594.594,0,0,0-.156.453l.779,10.564a.6.6,0,0,0,.378.511.443.443,0,0,0,.178.023.564.564,0,0,0,.423-.2l5.419-6.566,6.71,3.347a.548.548,0,0,0,.467.012.614.614,0,0,0,.312-.36L37.209.731A.644.644,0,0,0,37.031.1Z" transform="translate(10.662 13.399)"/>
+  </g>
+</svg>

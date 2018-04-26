@@ -14,6 +14,7 @@ export class BenimFirsatimLibrary {
 
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
+  openFeedbackPopUp = new Subject<any>();
   showPointTable = new Subject<any>();
   resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
@@ -119,6 +120,9 @@ export class BenimFirsatimLibrary {
   }
   public openSignUpPopUpFunc(){
     this.openSignUpPopUp.next();
+  }
+  public openFeedbackPopUpFunc(){
+    this.openFeedbackPopUp.next();
   }
   //Gets information from given deal link.
   public getPullMeta(url){
