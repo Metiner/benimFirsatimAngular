@@ -26,7 +26,7 @@
                   <div class="col-1">
                     <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
                       <div class="col-12 nopadding">
-                        <div id="lottieLikeButton" (click)="playAnim(0,'like')"></div>
+                        <div id="lottieLikeButton" (click)="playAnim(0,'like','comment')"></div>
                         <span class="likeComment-span">{{deal.votes_sum}}</span>
                       </div>
                     </div>
@@ -34,7 +34,7 @@
                   <div class="col-1">
                     <div class="row" style="flex-wrap: nowrap;align-items: flex-end">
                       <div class="col-12 nopadding">
-                        <div id="lottieCommentButton" (mouseenter)="playAnim(0,'comment')" (mouseleave)="stopAnim(0)"></div>
+                        <div id="lottieCommentButton" (mouseenter)="playAnim(0,'comment','comment')" (mouseleave)="stopAnim(0)"></div>
                         <span class="likeComment-span">{{deal.comments_count}}</span>
                       </div>
                     </div>

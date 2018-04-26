@@ -66,9 +66,12 @@
           <div class="col">
             <div class="row" style="align-items: center">
               <div class="col" style="padding: 1px">
-                <img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">
+                <img (click)="shareDeal(deal)" src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">
+
+                <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal.image_url}}&description={{deal.title}}" target="_blank">
+                </a>
               </div>
-              <div class="col" style="padding: 1px">
+              <div class="col cursor-pointer" style="padding: 1px">
                 <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">
               </div>
               <div class="col-9 cursor-pointer">
