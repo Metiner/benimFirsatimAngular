@@ -51,4 +51,7 @@ html {
   outline: none;
   border: none; }
 
+.nopadding {
+  padding: 0px !important; }
+
 /*# sourceMappingURL=main.css.map */

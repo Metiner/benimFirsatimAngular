@@ -218,8 +218,4 @@ export class DealComponent implements OnInit, OnDestroy {
   }
 
 
-  onFeedbackSubmit(f:NgForm){
-    console.log(f.value);
-  }
-
 }

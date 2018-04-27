@@ -33,6 +33,10 @@ export class ContentComponent implements OnDestroy,OnInit{
   password:string;
   password2:string;
 
+  tur:any;
+
+  turs = [{id:1,name:'Şikayet'},{id:2,name:'Öneri'},{id:3,name:'İstek'}];
+
   kayitOlState = 'down';
   girisYapState = 'up';
   currentState = 'giris';
@@ -307,5 +311,10 @@ export class ContentComponent implements OnDestroy,OnInit{
        });
      });
    }
+
+
+  onFeedbackSubmit(f:NgForm){
+    console.log(f.value);
+  }
 
 }

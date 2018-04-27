@@ -13,18 +13,40 @@
 <div *ngIf="feedbackDivOpen" class="feedbackDiv">
   <form #f="ngForm">
     <div class="row">
-      <div class="col" text-center col-12 style="margin-top: 5px">
-        <span style="font-family: MarkPro-Black;color:#234491"> FİKRİNİ SÖYLE!</span>
+      <div class="col-12" style="margin-top: 5px;text-align: center">
+        <span style="font-family: MarkPro-Black;color:#234491;font-size: 20px"> FİKRİNİ SÖYLE!</span>
       </div>
-      <div class="col">
-        <img src="../../assets/imgs/seperator_line@3x.png" style="vertical-align: text-top">
+      <div class="col" style="text-align: center">
+        <img src="../../assets/imgs/seperator_line@2x.png" style="vertical-align: text-top;width: 500px">
       </div>
     </div>
-
-    <span style="font-family: MarkPro-Black;color:#234491"> DETAYLAR</span>
+    <div class="row">
+      <div class="col-2 offset-1 align-self-center">
+        <span style="font-family: MarkPro-Black;color:#234491"> KONU</span>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-select placeholder="Lütfen Seçiniz" [(value)]="tur">
+            <mat-option>Lütfen Seçiniz</mat-option>
+            <mat-option *ngFor="let tur of turs" [value]="tur.id">{{tur.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-1">
+        <span style="font-family: MarkPro-Black;color:#234491"> DETAYLAR</span>
+      </div>
+      <div class="col">
+        <textarea
+          class="urlInput cursor-pointer" style="min-height: 300px;width: 400px;padding: 10px 0 10px 0px;resize:none"
+          ngModel name="dealDetailPreview"
+          ></textarea>
+      </div>
+    </div>
     <div class="row" style="margin-top: 15px">
       <div class="col" style="text-align: center" (click) = onFeedbackSubmit(f)>
-        <img src="../../assets/svgs/fikirini_yolla_icon.svg" style="height: 35px;width: 35px">
+        <img src="../../assets/svgs/send_icon.svg" style="height: 60px;width: 60px">
       </div>
     </div>
   </form>
