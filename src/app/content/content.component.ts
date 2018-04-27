@@ -121,6 +121,7 @@ export class ContentComponent implements OnDestroy,OnInit{
           setTimeout(
             ()=>{
               this.tutorial = false;
+              this.blackDiv = false;
               this.showSingUpSignInPopUp = false;
             },1500);
         }
@@ -149,6 +150,8 @@ export class ContentComponent implements OnDestroy,OnInit{
                     this.tutorial = false;
                     this.showSingUpSignInPopUp = false;
                     this.showForm = true;
+                    this.blackDiv = false;
+
                   },1500);
               });
             } else if (data.json().state.code == 1) {
@@ -238,6 +241,7 @@ export class ContentComponent implements OnDestroy,OnInit{
     this.showSingUpSignInPopUp = false;
     this.tutorial = false;
     this.blackDiv = false;
+    this.feedbackDivOpen = false;
   }
   onTutorialAnimFinished(){
   }
@@ -272,6 +276,8 @@ export class ContentComponent implements OnDestroy,OnInit{
                      this.tutorial = false;
                      this.showSingUpSignInPopUp = false;
                      this.showForm = true;
+                     this.blackDiv = false;
+
                    },1500);
 
               }
@@ -305,6 +311,8 @@ export class ContentComponent implements OnDestroy,OnInit{
                this.tutorial = false;
                this.showSingUpSignInPopUp = false;
                this.showForm = true;
+               this.blackDiv = false;
+
              },1500);
          });
 
@@ -314,6 +322,9 @@ export class ContentComponent implements OnDestroy,OnInit{
 
 
   onFeedbackSubmit(f:NgForm){
+    this.blackDiv = false;
+    this.feedbackDivOpen = false;
+    console.log(this.tur);
     console.log(f.value);
   }
 
