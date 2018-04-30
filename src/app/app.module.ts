@@ -23,6 +23,7 @@ import './../polyfills';
 import {FacebookModule} from "ngx-facebook";
 import {ProfileSettingsComponent} from './profile-settings/profile-settings.component';
 import {FeedbackComponent} from './feedback/feedback.component';
+import {AdsenseModule} from 'ng2-adsense';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
@@ -55,7 +56,10 @@ const appRoutes : Routes = [
     ScrollToModule.forRoot(), // scroll to library.
     RouterModule.forRoot(appRoutes),
     FacebookModule.forRoot(),
-    MaterialModule
+    MaterialModule,
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-8354755629319310'
+    }),
   ],
   providers: [BenimFirsatimLibrary,
               HeaderComponent],

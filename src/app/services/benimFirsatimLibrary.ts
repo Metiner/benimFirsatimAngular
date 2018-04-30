@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 export class BenimFirsatimLibrary {
   //api_address = "https://benimfirsatim.com";
   //api_address = "http://localhost:3000";
-  api_address = "https://app-b7b3c182-2419-47ad-a597-caf24ce3f70c.cleverapps.io";
+  api_address = "https://api.benimfirsatim.com";
 
 
   categoryChanged = new Subject<any>();
