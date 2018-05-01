@@ -9,6 +9,6 @@ deploy:
     - npm install --unsafe-perm -g @angular/cli@1.7.0
     - npm install --unsafe-perm
     - ng build --prod
-    - lftp -u $FTP_CONN_STRING -e "mirror -R -p dist/ / ; quit;"
+    - lftp $FTP_CONN_STRING -e "mirror -R -p dist/ / ; quit"
   except:
     - tags
