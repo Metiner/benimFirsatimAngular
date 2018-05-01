@@ -9,6 +9,8 @@ deploy:
     - npm install --unsafe-perm -g @angular/cli@1.7.0
     - npm install --unsafe-perm
     - ng build --prod
+    - mkdir ~/.lftp/
+    - echo "set ssl:verify-certificate no" >> ~/.lftp/rc
     - lftp $FTP_CONN_STRING -e "mirror -R -p dist/ / ; quit"
   except:
     - tags
