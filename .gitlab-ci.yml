@@ -11,6 +11,6 @@ deploy:
     - ng build --prod
     - mkdir ~/.lftp/
     - echo "set ssl:verify-certificate no" >> ~/.lftp/rc
-    - lftp $FTP_CONN_STRING -e "mirror -R -p dist/ / ; quit"
+    - lftp $FTP_CONN_STRING -d -e "mirror -R -p dist/ / ; quit"
   except:
     - tags
