@@ -17,6 +17,6 @@ deploy:
     - git config git-ftp.password $FTP_PASSWORD
     - git config git-ftp.user $FTP_USER
     - git ftp init
-    #- git ftp push  -m "Add new content"
+    - git ftp push  -m "Deploy new version."
   except:
     - tags
