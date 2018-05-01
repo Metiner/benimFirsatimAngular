@@ -5,11 +5,9 @@ stages:
 deploy:
   stage: deploy
   script:
-    - apt-get update && apt-get install -y git-ftp
+    - apt-get update && apt-get install -y lftp
     - npm install --unsafe-perm -g @angular/cli@1.7.0
     - npm install --unsafe-perm
-    - pwd
-    - ls
     - echo 'BUILD STARTED'
     - ng build --prod
     - echo 'BUILD FINISHED'
@@ -17,6 +15,6 @@ deploy:
     - git config git-ftp.password $FTP_PASSWORD
     - git config git-ftp.user $FTP_USER
     - git ftp init
-    - git ftp push  -m "Deploy new version."
+    - lftp -u $FTP_USER,$FTP_PASSWORD fto.benimfirsatim.com -e "mirror -R -p dist/ / ; quit"
   except:
     - tags
