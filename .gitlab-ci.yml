@@ -5,6 +5,7 @@ stages:
 deploy:
   stage: deploy
   script:
+    - apt-get update && apt-get install -y git-ftp
     - npm install --unsafe-perm -g @angular/cli@1.7.0
     - npm install --unsafe-perm
     - pwd
@@ -12,9 +13,10 @@ deploy:
     - echo 'BUILD STARTED'
     - ng build --prod
     - echo 'BUILD FINISHED'
-    - sudo apt install ftp
-    - chmod +x deploy.sh
-    - ./deploy.sh
+    - git config git-ftp.url $FTP_HOST
+    - git config git-ftp.password $FTP_PASSWORD
+    - git config git-ftp.user $FTP_USER
+    - git ftp init
+    #- git ftp push  -m "Add new content"
   except:
     - tags
-
