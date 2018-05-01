@@ -11,10 +11,6 @@ deploy:
     - echo 'BUILD STARTED'
     - ng build --prod
     - echo 'BUILD FINISHED'
-    - git config git-ftp.url $FTP_HOST
-    - git config git-ftp.password $FTP_PASSWORD
-    - git config git-ftp.user $FTP_USER
-    - git ftp init
     - lftp -u $FTP_USER,$FTP_PASSWORD fto.benimfirsatim.com -e "mirror -R -p dist/ / ; quit"
   except:
     - tags
