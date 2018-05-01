@@ -8,9 +8,7 @@ deploy:
     - apt-get update && apt-get install -y lftp
     - npm install --unsafe-perm -g @angular/cli@1.7.0
     - npm install --unsafe-perm
-    - echo 'BUILD STARTED'
     - ng build --prod
-    - echo 'BUILD FINISHED'
     - lftp -u $FTP_USER,$FTP_PASSWORD fto.benimfirsatim.com -e "mirror -R -p dist/ / ; quit"
   except:
     - tags
