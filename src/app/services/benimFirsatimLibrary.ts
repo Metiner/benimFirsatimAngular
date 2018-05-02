@@ -50,7 +50,7 @@ export class BenimFirsatimLibrary {
   }
 
   silentLogin(){
-    if(localStorage.getItem("userBenimFirsatim") !== null && localStorage.getItem("tokenBenimFirsatim") !== null){
+    if(localStorage.getItem("userBenimFirsatim") !== null && localStorage.getItem("tokenBenimFirsatim") !== null && localStorage.getItem("userBenimFirsatim") !== 'undefined' && localStorage.getItem("tokenBenimFirsatim") !== 'undefined'){
       let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
       let token = localStorage.getItem("tokenBenimFirsatim");
       this.currentUser = user;
