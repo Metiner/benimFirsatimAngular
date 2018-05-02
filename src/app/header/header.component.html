@@ -5,9 +5,9 @@
     </div>
     <div class="col-5">
       <div class="row">
-        <div class="col-3 text-center scale"  routerLink="/" style="outline:0">
+        <div class="col-3 cursor-pointer text-center scale"  routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('hot')">
-            <div class="col click cursor-pointer" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
+            <div class="col click" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
               <lottie-animation-view
                 [options]="oneCikanlarAnimConf"
                 [width]="50"
@@ -22,9 +22,9 @@
             </div>
           </div>
         </div>
-        <div class="col-3 text-center scale" routerLink="/" style="outline:0">
+        <div class="col-3 cursor-pointer text-center scale" routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('rising')">
-            <div class="col click cursor-pointer" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
+            <div class="col click" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
               <lottie-animation-view
                 [options]="yukselenlerAnimConf"
                 [width]="50"
@@ -39,9 +39,9 @@
             </div>
           </div>
         </div>
-        <div class="col-3 text-center scale" routerLink="/" style="outline:0">
+        <div class="col-3 text-center scale cursor-pointer" routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('newcomers')">
-            <div class="col cursor-pointer" (mouseenter)="playAnim(3)" style="  transform: scale(0.8)" (mouseleave)="stopAnim(3)">
+            <div class="col" (mouseenter)="playAnim(3)" style="  transform: scale(0.8)" (mouseleave)="stopAnim(3)">
               <lottie-animation-view
                 [options]="yenilerAnimConf"
                 [width]="50"
@@ -55,10 +55,10 @@
             </div>
           </div>
         </div>
-        <div class="col-3 text-center scale">
+        <div class="col-3 text-center scale cursor-pointer">
           <div class="row">
             <div class="col" (mouseenter)="slideCategoriesDiv('in')">
-              <div class="col click cursor-pointer" (mouseenter)="playAnim(4)" (mouseleave)="stopAnim(4)">
+              <div class="col click" (mouseenter)="playAnim(4)" (mouseleave)="stopAnim(4)">
                 <lottie-animation-view
                   [options]="categoriesAnimConf"
                   [width]="50"
