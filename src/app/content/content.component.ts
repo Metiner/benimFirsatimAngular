@@ -111,7 +111,8 @@ export class ContentComponent implements OnDestroy,OnInit{
     if (this.girisYapButtonClickable) {
       this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
 
-        if (data.json() != null && data.json().success == true) {
+        console.log(data);
+        if (data.json() != null && data.ok == true) {
           this.benimFirsatimLib.successLogin(data.json());
           this.girisBasariliText = true;
           this.showForm = false;
@@ -122,6 +123,7 @@ export class ContentComponent implements OnDestroy,OnInit{
               this.tutorial = false;
               this.blackDiv = false;
               this.showSingUpSignInPopUp = false;
+              this.benimFirsatimLib.silentLogin();
             },1500);
         }
       }, error => {
@@ -294,6 +296,7 @@ export class ContentComponent implements OnDestroy,OnInit{
      googleAuth.then(() => {
        googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
 
+         console.log(googleUser);
          var loginData = {accessToken:googleUser.getAuthResponse().access_token};
          var email = googleUser.getBasicProfile().U3;
          var name = googleUser.getBasicProfile().U3.split('@')[0];
@@ -321,6 +324,8 @@ export class ContentComponent implements OnDestroy,OnInit{
   onFeedbackSubmit(f:NgForm){
     this.blackDiv = false;
     this.feedbackDivOpen = false;
+    console.log(this.tur);
+    console.log(f.value);
   }
 
 }

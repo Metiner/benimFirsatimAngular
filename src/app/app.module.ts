@@ -24,6 +24,7 @@ import {FacebookModule} from "ngx-facebook";
 import {ProfileSettingsComponent} from './profile-settings/profile-settings.component';
 import {FeedbackComponent} from './feedback/feedback.component';
 import {AdsenseModule} from 'ng2-adsense';
+import {A2tUiModule, Angular2TokenService} from 'angular2-token';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
@@ -60,9 +61,11 @@ const appRoutes : Routes = [
     AdsenseModule.forRoot({
       adClient: 'ca-pub-8354755629319310'
     }),
+    A2tUiModule
   ],
   providers: [BenimFirsatimLibrary,
-              HeaderComponent],
+              HeaderComponent,
+              Angular2TokenService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

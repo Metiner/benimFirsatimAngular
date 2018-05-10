@@ -4,6 +4,7 @@ import {Subject} from "rxjs/Subject";
 import {NgForm} from '@angular/forms';
 import { FacebookService, InitParams} from "ngx-facebook";
 import {Router} from "@angular/router";
+import {Angular2TokenService} from 'angular2-token';
 
 @Injectable()
 export class BenimFirsatimLibrary {
@@ -34,7 +35,8 @@ export class BenimFirsatimLibrary {
 
   constructor(public http: Http ,
               public fb: FacebookService,
-              private route:Router) {
+              private route:Router,
+              private _tokenService: Angular2TokenService) {
 
     let initParams: InitParams = {
       appId: '113944349294618',
@@ -46,17 +48,20 @@ export class BenimFirsatimLibrary {
     }catch (e){
       console.log(e);
     }
-    this.silentLogin();
+
   }
 
   silentLogin(){
-    if(localStorage.getItem("userBenimFirsatim") !== null && localStorage.getItem("tokenBenimFirsatim") !== null && localStorage.getItem("userBenimFirsatim") !== 'undefined' && localStorage.getItem("tokenBenimFirsatim") !== 'undefined'){
-      let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
-      let token = localStorage.getItem("tokenBenimFirsatim");
-      this.currentUser = user;
-      this.isAutho = true;
-      this.token = token;
-    }
+
+    console.log(this._tokenService.userSignedIn());
+
+    // if(localStorage.getItem("userBenimFirsatim") !== null && localStorage.getItem("tokenBenimFirsatim") !== null && localStorage.getItem("userBenimFirsatim") !== 'undefined' && localStorage.getItem("tokenBenimFirsatim") !== 'undefined'){
+    //   let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
+    //   let token = localStorage.getItem("tokenBenimFirsatim");
+    //   this.currentUser = user;
+    //   this.isAutho = true;
+    //   this.token = token;
+    // }
   }
   //Page code can be,
   //'hot','rising' or 'newcomers'
@@ -69,7 +74,12 @@ export class BenimFirsatimLibrary {
   }
 
   public signUp(email,password){
-    return this.http.post(this.api_address + '/users', {"user":{"email":email,"password":password}});
+    return this._tokenService.registerAccount({
+      email:                email,
+      password:             password,
+      passwordConfirmation: password
+    })
+    //return this.http.post(this.api_address + '/users', {"user":{"email":email,"password":password}});
   }
   public signupOrLogin(email,name,avatar_url,uid,authResponse,provider_name){
     let opt = this.setHeader();
@@ -92,7 +102,13 @@ export class BenimFirsatimLibrary {
   }
 
   public signIn(email,password){
-    return this.http.post(this.api_address + '/users/sign_in.json',{"user":{"email":email,"password":password}});
+    //return this.http.post(this.api_address + '/users/sign_in.json',{"user":{"email":email,"password":password}});
+    return this._tokenService.signIn({
+      email:    email,
+      password: password
+    })
+
+
   }
 
   public getCategories(){
@@ -143,11 +159,11 @@ export class BenimFirsatimLibrary {
   }
 
   public successLogin(data:any){
-    localStorage.setItem("tokenBenimFirsatim", data.token);
-    localStorage.setItem("userBenimFirsatim",JSON.stringify(data.user));
+    //localStorage.setItem("tokenBenimFirsatim", data.token);
+    localStorage.setItem("userBenimFirsatim",JSON.stringify(data.data));
     this.isAutho = true;
-    this.token = data.token;
-    this.currentUser = data.user;
+    //this.token = data.token;
+    this.currentUser =data.data;
     this.successLoginProfileMenuChange.next("success");
   }
   public createComment(deal_id,parent_comment_id,comment){

@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "5.2.8",
     "@angular/router": "5.2.8",
     "@nicky-lenaers/ngx-scroll-to": "^0.6.0",
+    "angular2-token": "^0.2.0-beta.14",
     "bootstrap": "^4.0.0",
     "bxslider": "^4.2.13",
     "core-js": "^2.4.1",
