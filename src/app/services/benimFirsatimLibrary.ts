@@ -8,10 +8,8 @@ import {Angular2TokenService} from 'angular2-token';
 
 @Injectable()
 export class BenimFirsatimLibrary {
-  //api_address = "https://benimfirsatim.com";
-  //api_address = "http://localhost:3000";
-  api_address = "https://api.benimfirsatim.com";
 
+  api_address = "https://api.benimfirsatim.com";
 
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
@@ -48,20 +46,16 @@ export class BenimFirsatimLibrary {
     }catch (e){
       console.log(e);
     }
-
+    this.silentLogin();
   }
 
   silentLogin(){
 
-    console.log(this._tokenService.userSignedIn());
-
-    // if(localStorage.getItem("userBenimFirsatim") !== null && localStorage.getItem("tokenBenimFirsatim") !== null && localStorage.getItem("userBenimFirsatim") !== 'undefined' && localStorage.getItem("tokenBenimFirsatim") !== 'undefined'){
-    //   let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
-    //   let token = localStorage.getItem("tokenBenimFirsatim");
-    //   this.currentUser = user;
-    //   this.isAutho = true;
-    //   this.token = token;
-    // }
+    if(this._tokenService.userSignedIn()){
+      let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
+      this.currentUser = user;
+      this.isAutho = true;
+    }
   }
   //Page code can be,
   //'hot','rising' or 'newcomers'
@@ -69,8 +63,7 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/'+page_code+'.json?page='+pagination);
   }
   public getDeal(deal_id){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address + '/deals/0/'+deal_id,opt);
+    return this._tokenService.get('deals/0/'+deal_id);
   }
 
   public signUp(email,password){
@@ -82,8 +75,7 @@ export class BenimFirsatimLibrary {
     //return this.http.post(this.api_address + '/users', {"user":{"email":email,"password":password}});
   }
   public signupOrLogin(email,name,avatar_url,uid,authResponse,provider_name){
-    let opt = this.setHeader();
-    return this.http.post(this.api_address+'/users/auto_oauth',{"email":email,"name":name,"avatar_url":avatar_url,"uid":uid,"provider":provider_name,login_data:authResponse},opt);
+    return this._tokenService.post('users/auto_oauth',{"email":email,"name":name,"avatar_url":avatar_url,"uid":uid,"provider":provider_name,login_data:authResponse});
   }
 
   // to set request header for authentication
@@ -150,8 +142,7 @@ export class BenimFirsatimLibrary {
   }
 
   public updateUser(nickname,password){
-    let opt = this.setHeader();
-    return this.http.put(this.api_address + '/users.json',{"name":nickname,"password":password},opt);
+    return this._tokenService.put('users.json',{"name":nickname,"password":password});
   }
 
   public getComments(deal_id){
@@ -159,20 +150,16 @@ export class BenimFirsatimLibrary {
   }
 
   public successLogin(data:any){
-    //localStorage.setItem("tokenBenimFirsatim", data.token);
     localStorage.setItem("userBenimFirsatim",JSON.stringify(data.data));
     this.isAutho = true;
-    //this.token = data.token;
     this.currentUser =data.data;
     this.successLoginProfileMenuChange.next("success");
   }
   public createComment(deal_id,parent_comment_id,comment){
-    let opt = this.setHeader();
-    return this.http.post(this.api_address + '/deals/' + deal_id +'/comments.json',{parent_comment_id:parent_comment_id,comment:comment},opt);
+    return this._tokenService.post( 'deals/' + deal_id +'/comments.json',{parent_comment_id:parent_comment_id,comment:comment});
   }
 
   public createDeal(form:NgForm,selectedImageUrl,imageBase64){
-    let opt = this.setHeader();
     let categories = '';
     let body;
     // if(selectedImageUrl == 'photoTaken'){
@@ -199,13 +186,11 @@ export class BenimFirsatimLibrary {
         city:form.value.selectedCity
       };
 
-
-    return this.http.post(this.api_address + '/deals/create.json',body,opt);
+    return this._tokenService.post('deals/create.json',body);
   }
 
   public commentVote(comment_id){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address + '/comments/'+comment_id+'/vote',opt);
+    return this._tokenService.get('comments/'+comment_id+'/vote');
   }
 
   public getCategoryDeals(categoryIndex,pagination){
@@ -214,8 +199,7 @@ export class BenimFirsatimLibrary {
 
   //Gets deals which created by current logged user.
   public getDealFromUser(pagination){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address+'/user/'+this.currentUser.id+'/deals.json?page='+pagination,opt);
+    return this._tokenService.get('/user/'+this.currentUser.id+'/deals.json?page='+pagination);
   }
 
   public stockFinished(dealId){
@@ -231,24 +215,19 @@ export class BenimFirsatimLibrary {
   }
 
   public favDeal(dealId){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address+'/deals/'+dealId+'/bookmark',opt);
+    return this._tokenService.get('deals/'+dealId+'/bookmark');
   }
   public getFavDeal(){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address + '/me/bookmarks',opt);
+    return this._tokenService.get('me/bookmarks');
   }
   public getMyComments(){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address + '/me/comments',opt);
+    return this._tokenService.get('me/comments');
   }
   public getCommentsThatIliked(){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address + '/me/comments/liked ',opt);
+    return this._tokenService.get('me/comments/liked ');
   }
   public getMyReplies(){
-    let opt = this.setHeader();
-    return this.http.get(this.api_address + '/me/comments/replied',opt);
+    return this._tokenService.get('me/comments/replied');
   }
 
   public getUsersTop(){
