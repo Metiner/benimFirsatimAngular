@@ -261,7 +261,6 @@ export class HeaderComponent implements OnDestroy{
     return src;
   }
   onCreateNewDeal(){
-    console.log(this.benimFirsatimLibrary.isAutho)
     if(this.benimFirsatimLibrary.isAutho){
       this.router.navigate(['createNewDeal']);
     }else{

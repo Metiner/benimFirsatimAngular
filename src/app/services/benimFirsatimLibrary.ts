@@ -101,8 +101,6 @@ export class BenimFirsatimLibrary {
   public changeCategory(type){
 
     this.route.navigate(['']);
-    console.log(this.totalPage);
-    console.log(this.currentPaging);
     if(!this.dealAnimationContinues){
       if(this.currentPaging < this.totalPage + 1){
         if(this.currentPaging == this.totalPage){

@@ -124,16 +124,10 @@ export class ProfileSettingsComponent implements OnInit {
   }
   getActivity(){
     this.benimFirsatimLibrary.getMyComments().subscribe(response=>{
-      console.log("Yaptıgım Yorumlar");
-      console.log(response.json());
     });
     this.benimFirsatimLibrary.getCommentsThatIliked().subscribe(response=>{
-      console.log("Begendiğim Yorumlar");
-      console.log(response.json());
     })
     this.benimFirsatimLibrary.getMyReplies().subscribe(response=>{
-      console.log("Yaptıgım Cevaplar");
-      console.log(response.json());
     })
   }
 

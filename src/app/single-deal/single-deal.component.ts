@@ -100,7 +100,6 @@ export class SingleDealComponent implements OnInit {
       this.animations = document.getElementsByClassName("lottieThumbUpButton");
       if(this.animations.length > 0){
         for(var i=this.commentIndex-10;i<this.animations.length;i++){
-          console.log ( i);
           this.thumbUpAnimations.push(
             lottie.loadAnimation({
               container:this.animations[i],
@@ -259,7 +258,6 @@ export class SingleDealComponent implements OnInit {
     })
   }
   addSubcommentIndex(comment,index){
-    console.log(comment.comments.length + " " + index);
     if(index  === comment.comments.length ){
       comment.dahaFazlaGetirText = "HEPSİ BU KADAR :(";
     }

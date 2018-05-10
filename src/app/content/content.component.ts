@@ -60,7 +60,6 @@ export class ContentComponent implements OnDestroy,OnInit{
     gapi.load('auth2', function() {
       const googleAut = gapi.auth2.init({client_id :'57374298212-94cgvbkf14685g846vcq95trf50qt69v.apps.googleusercontent.com'});
 
-      console.log(googleAut);
     });
     this.myFeedbackPopUpSubscription = this.benimFirsatimLib.openFeedbackPopUp.subscribe(()=>{
       this.blackDiv = true;
@@ -256,7 +255,6 @@ export class ContentComponent implements OnDestroy,OnInit{
            var authResponse= res.authResponse;
 
            this.fb.api("me?"+ fbValues).then(response=>{
-             console.log(response);
              let email = response.email
              let name = response.name;
              let id = response.id;
@@ -296,7 +294,6 @@ export class ContentComponent implements OnDestroy,OnInit{
      googleAuth.then(() => {
        googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
 
-         console.log(googleUser);
          var loginData = {accessToken:googleUser.getAuthResponse().access_token};
          var email = googleUser.getBasicProfile().U3;
          var name = googleUser.getBasicProfile().U3.split('@')[0];
@@ -324,8 +321,6 @@ export class ContentComponent implements OnDestroy,OnInit{
   onFeedbackSubmit(f:NgForm){
     this.blackDiv = false;
     this.feedbackDivOpen = false;
-    console.log(this.tur);
-    console.log(f.value);
   }
 
 }
