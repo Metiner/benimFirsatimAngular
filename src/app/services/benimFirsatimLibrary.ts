@@ -237,6 +237,10 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/search?searchparam=' + searchParam );
   }
 
+  public oAuth(){
+    return this._tokenService.signInOAuth("github");
+  }
+
   get isAutho(): boolean {
     return this._isAutho;
   }

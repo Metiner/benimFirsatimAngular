@@ -292,32 +292,36 @@ export class ContentComponent implements OnDestroy,OnInit{
   }
 
    onGooglePlusLogin(){
-     let googleAuth = gapi.auth2.getAuthInstance();
-     googleAuth.then(() => {
-       googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
-
-         console.log(googleUser);
-         var loginData = {accessToken:googleUser.getAuthResponse().access_token};
-         var email = googleUser.getBasicProfile().U3;
-         var name = googleUser.getBasicProfile().U3.split('@')[0];
-         var picture = googleUser.getBasicProfile().Paa;
-         var id = googleUser.getBasicProfile().Eea;
-
-         this.benimFirsatimLib.signupOrLogin(email,name,picture,id,loginData,"google").subscribe(response=>{
-           console.log(response.json())
-           this.benimFirsatimLib.successLogin(response.json());
-           setTimeout(
-             ()=>{
-               this.tutorial = false;
-               this.showSingUpSignInPopUp = false;
-               this.showForm = true;
-               this.blackDiv = false;
-
-             },1500);
-         });
-
-       });
-     });
+     // let googleAuth = gapi.auth2.getAuthInstance();
+     // googleAuth.then(() => {
+     //   googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
+     //
+     //     console.log(googleUser);
+     //     var loginData = {accessToken:googleUser.getAuthResponse().access_token};
+     //     var email = googleUser.getBasicProfile().U3;
+     //     var name = googleUser.getBasicProfile().U3.split('@')[0];
+     //     var picture = googleUser.getBasicProfile().Paa;
+     //     var id = googleUser.getBasicProfile().Eea;
+     //
+     //     this.benimFirsatimLib.signupOrLogin(email,name,picture,id,loginData,"google").subscribe(response=>{
+     //       console.log(response.json())
+     //       this.benimFirsatimLib.successLogin(response.json());
+     //       setTimeout(
+     //         ()=>{
+     //           this.tutorial = false;
+     //           this.showSingUpSignInPopUp = false;
+     //           this.showForm = true;
+     //           this.blackDiv = false;
+     //
+     //         },1500);
+     //     });
+     //
+     //   });
+     // });
+     this.benimFirsatimLib.oAuth().subscribe(
+       res =>      console.log(res),
+       error =>    console.log(error)
+     );
    }
 
 
