@@ -238,7 +238,7 @@ export class BenimFirsatimLibrary {
   }
 
   public oAuth(){
-    return this._tokenService.signInOAuth("github");
+    return this._tokenService.signInOAuth("facebook");
   }
 
   get isAutho(): boolean {

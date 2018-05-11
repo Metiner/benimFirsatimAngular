@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Angular2TokenService} from 'angular2-token';
+import {Angular2TokenService} from "angular2-token";
 declare var $:any;
 @Component({
   selector: 'app-root',
@@ -33,7 +33,10 @@ export class AppComponent {
 
       oAuthBase:                  window.location.origin,
       oAuthPaths: {
-        github:                 'auth/github'
+        github:                 'auth/github',
+        google:                 'auth/google',
+        facebook:               'auth/facebook'
+
       },
       oAuthCallbackPath:          'oauth_callback',
       oAuthWindowType:            'newWindow',
