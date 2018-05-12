@@ -9,7 +9,7 @@ import {Angular2TokenService} from 'angular2-token';
 @Injectable()
 export class BenimFirsatimLibrary {
 
-  api_address = "https://api.benimfirsatim.com";
+  api_address = "localhost:3000";
 
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
@@ -35,6 +35,12 @@ export class BenimFirsatimLibrary {
               public fb: FacebookService,
               private route:Router,
               private _tokenService: Angular2TokenService) {
+
+    this._tokenService.init({
+      apiBase: 'http://localhost:3000',
+      oAuthBase: 'http://localhost:3000'
+    });
+
 
     let initParams: InitParams = {
       appId: '113944349294618',
@@ -239,6 +245,10 @@ export class BenimFirsatimLibrary {
 
   public oAuth(){
     return this._tokenService.signInOAuth("facebook");
+  }
+
+  public TokenService(){
+    return this._tokenService;
   }
 
   get isAutho(): boolean {
