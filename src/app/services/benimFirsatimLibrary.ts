@@ -149,11 +149,20 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/deals/'+deal_id+'/comments');
   }
 
-  public successLogin(data:any){
-    localStorage.setItem("userBenimFirsatim",JSON.stringify(data.data));
-    this.isAutho = true;
-    this.currentUser =data.data;
-    this.successLoginProfileMenuChange.next("success");
+  public successLogin(data:any,type:number){
+    // 2- auto auth
+    if(type === 2){
+      localStorage.setItem("userBenimFirsatim",JSON.stringify(data));
+      this.isAutho = true;
+      this.currentUser =data;
+      this.successLoginProfileMenuChange.next("success");
+    }else{
+      localStorage.setItem("userBenimFirsatim",JSON.stringify(data.data));
+      this.isAutho = true;
+      this.currentUser =data.data;
+      this.successLoginProfileMenuChange.next("success");
+    }
+
   }
   public createComment(deal_id,parent_comment_id,comment){
     return this._tokenService.post( 'deals/' + deal_id +'/comments.json',{parent_comment_id:parent_comment_id,comment:comment});
@@ -237,8 +246,13 @@ export class BenimFirsatimLibrary {
     return this.http.get(this.api_address + '/search?searchparam=' + searchParam );
   }
 
-  public oAuth(){
-    return this._tokenService.signInOAuth("facebook");
+  public oAuth(type: number){
+    if(type === 1){
+      return this._tokenService.signInOAuth("facebook");
+    }else
+      {
+      return this._tokenService.signInOAuth("google_oauth2");
+    }
   }
 
   get isAutho(): boolean {

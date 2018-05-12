@@ -31,16 +31,9 @@ export class AppComponent {
       resetPasswordPath:          'auth/password',
       resetPasswordCallback:      window.location.href,
 
-      oAuthBase:                  window.location.origin,
-      oAuthPaths: {
-        github:                 'auth/github',
-        google:                 'auth/google',
-        facebook:               'auth/facebook'
+      oAuthBase:                  'https://api.benimfirsatim.com',
 
-      },
-      oAuthCallbackPath:          'oauth_callback',
-      oAuthWindowType:            'newWindow',
-      oAuthWindowOptions:         null,
+
 
       userTypes:                  null,
 

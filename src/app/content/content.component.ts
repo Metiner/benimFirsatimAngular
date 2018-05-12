@@ -113,7 +113,7 @@ export class ContentComponent implements OnDestroy,OnInit{
 
         console.log(data);
         if (data.json() != null && data.ok == true) {
-          this.benimFirsatimLib.successLogin(data.json());
+          this.benimFirsatimLib.successLogin(data.json(),1);
           this.girisBasariliText = true;
           this.showForm = false;
           this.girisYapState = 'down';
@@ -145,7 +145,7 @@ export class ContentComponent implements OnDestroy,OnInit{
               this.kayitBasariliText = true;
               this.kayitOlAnim.play();
               this.benimFirsatimLib.signIn(form.value.email,form.value.password).subscribe(data=>{
-                this.benimFirsatimLib.successLogin(data.json());
+                this.benimFirsatimLib.successLogin(data.json(),1);
                 setTimeout(
                   ()=>{
                     this.tutorial = false;
@@ -250,79 +250,35 @@ export class ContentComponent implements OnDestroy,OnInit{
 
   fbLogin(){
 
-     this.fb.login({scope:'email'})
-       .then(res =>{
+    this.benimFirsatimLib.oAuth(1).subscribe(response=>{
 
-           var fbValues = "fields=id,name,picture,email";
-           var authResponse= res.authResponse;
+      this.benimFirsatimLib.successLogin(response,2);
+      setTimeout(
+        ()=>{
+          this.tutorial = false;
+          this.showSingUpSignInPopUp = false;
+          this.showForm = true;
+          this.blackDiv = false;
 
-           this.fb.api("me?"+ fbValues).then(response=>{
-             let email = response.email
-             let name = response.name;
-             let id = response.id;
-             let picture = response.picture.data.url;
-             this.benimFirsatimLib.signupOrLogin(email,name,picture,id,authResponse,"facebook").subscribe(response=>{
-                console.log(response);
-               // It means, email is already being used by another user.
-               if(!response.json().success){
-                 this.snackBar.open('Bir sıkıntı oldu :(','',{duration:3000});
-
-               }
-               if(response.json() != null && response.json().success == true ) {
-
-                 this.benimFirsatimLib.successLogin(response.json());
-                 setTimeout(
-                   ()=>{
-                     this.tutorial = false;
-                     this.showSingUpSignInPopUp = false;
-                     this.showForm = true;
-                     this.blackDiv = false;
-
-                   },1500);
-
-              }
-            }, error=>{
-               this.snackBar.open(error.toLocaleString(),'',{duration:3000});
-             })
-          });
-        },
-
-      )
-      .catch(e => console.log('Error logging into Facebook', e));
+        },1500);
+    });
   }
 
    onGooglePlusLogin(){
-     // let googleAuth = gapi.auth2.getAuthInstance();
-     // googleAuth.then(() => {
-     //   googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
-     //
-     //     console.log(googleUser);
-     //     var loginData = {accessToken:googleUser.getAuthResponse().access_token};
-     //     var email = googleUser.getBasicProfile().U3;
-     //     var name = googleUser.getBasicProfile().U3.split('@')[0];
-     //     var picture = googleUser.getBasicProfile().Paa;
-     //     var id = googleUser.getBasicProfile().Eea;
-     //
-     //     this.benimFirsatimLib.signupOrLogin(email,name,picture,id,loginData,"google").subscribe(response=>{
-     //       console.log(response.json())
-     //       this.benimFirsatimLib.successLogin(response.json());
-     //       setTimeout(
-     //         ()=>{
-     //           this.tutorial = false;
-     //           this.showSingUpSignInPopUp = false;
-     //           this.showForm = true;
-     //           this.blackDiv = false;
-     //
-     //         },1500);
-     //     });
-     //
-     //   });
-     // });
-     this.benimFirsatimLib.oAuth().subscribe(
-       res =>      console.log(res),
-       error =>    console.log(error)
-     );
-   }
+
+     this.benimFirsatimLib.oAuth(2).subscribe(response=>{
+
+      this.benimFirsatimLib.successLogin(response,2);
+      setTimeout(
+        ()=>{
+          this.tutorial = false;
+          this.showSingUpSignInPopUp = false;
+          this.showForm = true;
+          this.blackDiv = false;
+
+        },1500);
+    });
+  }
 
 
   onFeedbackSubmit(f:NgForm){
