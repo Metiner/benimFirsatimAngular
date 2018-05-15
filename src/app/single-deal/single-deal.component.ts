@@ -49,7 +49,6 @@ export class SingleDealComponent implements OnInit {
 
 
         this.deal = response.json();
-        console.log(this.deal);
         this.benimFirsatimLib.getComments(this.route.snapshot.params['dealId']).subscribe(comments => {
           this.comments = comments.json();
           this.loadThumbsupAnimations();
@@ -121,10 +120,18 @@ export class SingleDealComponent implements OnInit {
       if(this.likeButtonAnimation.liked){
         this.likeButtonAnimation.setDirection(-1);
         this.likeButtonAnimation.liked = false;
+        this.benimFirsatimLib.upVoteDeal(this.deal.id).subscribe(response=>{
+          this.deal.votes_sum = response.json().deal_score;
+          console.log(response.json());
+        });
 
       }else{
         this.likeButtonAnimation.setDirection(1);
         this.likeButtonAnimation.liked = true;
+        this.benimFirsatimLib.downVoteDeal(this.deal.id).subscribe(response=>{
+          this.deal.votes_sum = response.json().deal_score;
+          console.log(response.json());
+        });
       }
     }else if(type === 'thumbsUp'){
 
