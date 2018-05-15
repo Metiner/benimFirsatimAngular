@@ -146,7 +146,7 @@ export class BenimFirsatimLibrary {
   }
 
   public getComments(deal_id){
-    return this.http.get(this.api_address + '/deals/'+deal_id+'/comments');
+    return this._tokenService.get('deals/'+deal_id+'/comments');
   }
 
   public successLogin(data:any,type:number){
@@ -199,6 +199,7 @@ export class BenimFirsatimLibrary {
   }
 
   public commentVote(comment_id){
+    console.log(comment_id);
     return this._tokenService.get('comments/'+comment_id+'/vote');
   }
 
