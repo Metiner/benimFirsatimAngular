@@ -11,11 +11,11 @@
     <div class="row" style="background-color: white;border-color: #234491;border-radius: 0px 0px 29px 29px;">
       <div class="col">
         <div class="row nowrap" *ngFor="let user of users;let i=index" style="margin-top: 5%">
-          <div class="col-2">
+          <div class="col-1">
             <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{i+1}}</span>
           </div>
           <div class="col text-center">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{user.name}}</span>
+            <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{user.name.slice(0,15).concat('..')}}</span>
           </div>
         <!--  <div class="col-2 text-center" style="align-self: center">
             <img  src="../../assets/imgs/dropdown_blue@2x.png" style="width: 100%">

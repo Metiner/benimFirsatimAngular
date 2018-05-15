@@ -198,6 +198,10 @@ export class BenimFirsatimLibrary {
     return this._tokenService.post('deals/create.json',body);
   }
 
+  public upVoteDeal(){
+    return this._tokenService
+  }
+
   public commentVote(comment_id){
     console.log(comment_id);
     return this._tokenService.get('comments/'+comment_id+'/vote');

@@ -49,8 +49,8 @@
                       <div class="col-1" style="padding: 0px">
                         <img src="{{deal.user.avatar_url}}" style="width: 80%;border-radius: 50%">
                       </div>
-                      <div class="col-2" style="padding-left: 0px">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap">{{deal.user.name}}</span>
+                      <div class="col-3" style="padding-left: 0px">
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap">{{deal.user.name.slice(0,15).concat('..')}}</span>
                       </div>
                       <div class="col-4" style="text-overflow: ellipsis;overflow: hidden;">
                         <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;white-space: nowrap">{{deal.view_count}} görüntülenme</span>

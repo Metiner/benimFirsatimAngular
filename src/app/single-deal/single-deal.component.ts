@@ -49,6 +49,7 @@ export class SingleDealComponent implements OnInit {
 
 
         this.deal = response.json();
+        console.log(this.deal);
         this.benimFirsatimLib.getComments(this.route.snapshot.params['dealId']).subscribe(comments => {
           this.comments = comments.json();
           this.loadThumbsupAnimations();
@@ -114,6 +115,7 @@ export class SingleDealComponent implements OnInit {
     })
   }
   playAnim(index,type,comment) {
+
     if(type === 'like'){
       this.likeButtonAnimation.play();
       if(this.likeButtonAnimation.liked){
