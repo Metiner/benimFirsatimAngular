@@ -39,6 +39,7 @@ export class HeaderComponent implements OnDestroy{
   searchResponse:any;
 
   searchParam = "";
+  initializeSearchDiv: boolean;
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,
               public router:Router){
@@ -283,20 +284,22 @@ export class HeaderComponent implements OnDestroy{
 
   onSearchEvent(event){
 
-    if(event.key === 'Backspace'){
-      this.searchParam = this.searchParam.slice(0,-1);
-      if(event.srcElement.value.length === 0){
-        this.searchParam = "";
-        this.searchDivAnimation = 'out';
+    if(event.key === 'Enter'){
+      if(event.key === 'Backspace'){
+        this.searchParam = this.searchParam.slice(0,-1);
+        if(event.srcElement.value.length === 0){
+          this.searchParam = "";
+          this.searchDivAnimation = 'out';
+        }
       }
-    }
-    if(event.key.length < 2){
-      this.searchParam += event.key;
-      if(this.searchParam.length > 2 && this.searchParam.length % 2 == 0){
-        this.searchDivAnimation = 'in';
-        this.benimFirsatimLibrary.search(this.searchParam).subscribe(response=>{
-          this.searchResponse = response.json().entries;
-        })
+      if(event.key.length < 2){
+        this.searchParam += event.key;
+        if(this.searchParam.length > 2 && this.searchParam.length % 2 == 0){
+          this.searchDivAnimation = 'in';
+          this.benimFirsatimLibrary.search(this.searchParam).subscribe(response=>{
+            this.searchResponse = response.json().entries;
+          })
+        }
       }
     }
   }
@@ -322,5 +325,9 @@ export class HeaderComponent implements OnDestroy{
 
   onFeedback(){
     this.router.navigate(["feedback"]);
+  }
+
+  onSearchIcon(){
+    this.initializeSearchDiv = true;
   }
 }

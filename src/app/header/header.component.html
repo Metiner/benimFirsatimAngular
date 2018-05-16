@@ -82,8 +82,8 @@
     </div>
     <div class="col cursor-pointer">
       <div style="position: absolute;bottom: 13px">
-        <img src="../../assets/svgs/search_box.svg" style="position: absolute;height: 25px">
-        <input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">
+        <img src="../../assets/svgs/search_icon.svg" style="position: absolute;height: 25px" (click)="onSearchIcon()">
+        <!--<input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">-->
       </div>
     </div>
     <div *ngIf="!isAuth" class="col-1 text-center" style="margin-right: 30px" (click)="goToSignUpAndSignin()">
@@ -165,5 +165,12 @@
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="initializeSearchDiv">
+    <div class="searchDiv">
+    </div>
+    <input  (keyup)="onSearchEvent($event)" class="search" type="text"  autofocus>
+    <span class="searchSpan">Aramak istediğini yazdıktan sonra,enter tuşuna basabilirsin :) yarram</span>
+
   </div>
 </div>

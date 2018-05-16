@@ -12,8 +12,8 @@ export class AppComponent {
 
 
     this._tokenService.init({
-      apiBase:                    null,
-      apiPath:                    'https://api.benimfirsatim.com',
+      apiBase:                    'https://api.benimfirsatim.com',
+      apiPath:                    null,
 
       signInPath:                 'auth/sign_in',
       signInRedirect:             null,

@@ -10,7 +10,8 @@
   outline: none;
   background-color: unset;
   color: #F7E60f;
-  border: 0px solid; }
+  border: 0px solid;
+}
 
 .searchBackground {
   background-image: url("../../assets/svgs/search_box.svg");
