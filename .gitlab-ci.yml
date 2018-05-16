@@ -12,6 +12,6 @@ deploy:
     - ng build —prod —aot=false —build-optimizer=false
     - mkdir ~/.lftp/
     - echo "set ssl:verify-certificate no" >> ~/.lftp/rc
-    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev dist/* ./*  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev dist/ ./  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
   except:
     - tags
