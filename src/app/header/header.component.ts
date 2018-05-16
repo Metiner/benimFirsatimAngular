@@ -285,7 +285,12 @@ export class HeaderComponent implements OnDestroy{
   onSearchEvent(event){
 
     if(event.key === 'Enter'){
-      if(event.key === 'Backspace'){
+
+      this.searchDivAnimation = 'in';
+      this.benimFirsatimLibrary.search(event.path[0].value).subscribe(response => {
+        this.searchResponse = response.json().entries;
+      });
+      /*if(event.key === 'Backspace'){
         this.searchParam = this.searchParam.slice(0,-1);
         if(event.srcElement.value.length === 0){
           this.searchParam = "";
@@ -294,13 +299,9 @@ export class HeaderComponent implements OnDestroy{
       }
       if(event.key.length < 2){
         this.searchParam += event.key;
-        if(this.searchParam.length > 2 && this.searchParam.length % 2 == 0){
-          this.searchDivAnimation = 'in';
-          this.benimFirsatimLibrary.search(this.searchParam).subscribe(response=>{
-            this.searchResponse = response.json().entries;
-          })
+
         }
-      }
+      }*/
     }
   }
   goToDeal(dealId) {
@@ -329,5 +330,6 @@ export class HeaderComponent implements OnDestroy{
 
   onSearchIcon(){
     this.initializeSearchDiv = true;
+  this.benimFirsatimLibrary.isAutho;
   }
 }

@@ -3,7 +3,7 @@
     <div class="cursor-pointer col-1  offset-1" routerLink="/" style="outline:0;align-self: start;outline: 0">
       <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
     </div>
-    <div class="col-5">
+    <div class="col-6">
       <div class="row">
         <div class="col-3 cursor-pointer text-center scale"  routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('hot')">
@@ -77,14 +77,12 @@
       </div>
     </div>
 
-    <div class="col-2" (click)="onCreateNewDeal()">
+    <div class="col-2" style="text-align: center" (click)="onCreateNewDeal()" >
       <img style="height: 50px" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
     </div>
-    <div class="col cursor-pointer">
-      <div style="position: absolute;bottom: 13px">
-        <img src="../../assets/svgs/search_icon.svg" style="position: absolute;height: 25px" (click)="onSearchIcon()">
-        <!--<input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">-->
-      </div>
+    <div class="col cursor-pointer" style="text-align: center">
+      <img src="../../assets/svgs/search_icon.svg" style="height: 25px" (click)="onSearchIcon()">
+      <!--<input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">-->
     </div>
     <div *ngIf="!isAuth" class="col-1 text-center" style="margin-right: 30px" (click)="goToSignUpAndSignin()">
       <div class="row">

@@ -36,6 +36,8 @@
   position: fixed;
   z-index: 1000;
   opacity: .75;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .searchBackground{
   background-image: url("../../assets/svgs/search_box.svg");
