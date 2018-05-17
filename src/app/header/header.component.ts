@@ -305,6 +305,9 @@ export class HeaderComponent implements OnDestroy{
         }
       }*/
     }
+    if(event.key === 'Escape'){
+      this.initializeSearchDiv = false;
+    }
   }
   goToDeal(dealId) {
     var searchInput:any = document.getElementsByClassName("search");
