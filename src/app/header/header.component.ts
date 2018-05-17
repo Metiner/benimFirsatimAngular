@@ -335,5 +335,9 @@ export class HeaderComponent implements OnDestroy{
 
   onSearchIcon(){
     this.initializeSearchDiv = true;
+
+    setTimeout(()=>{
+      document.getElementById("myInput").focus();
+    },500)
   }
 }
