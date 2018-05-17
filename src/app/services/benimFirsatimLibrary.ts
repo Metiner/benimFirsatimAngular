@@ -65,7 +65,7 @@ export class BenimFirsatimLibrary {
 
     OneSignal.push(function () {
       if (self.isAutho) {
-        OneSignal.sendTag('user_id', self.benimFirsatimLibrary.currentUser['id']);
+        OneSignal.sendTag('user_id', self.currentUser['id']);
       }
     });
   }
