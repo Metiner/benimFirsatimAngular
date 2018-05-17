@@ -139,7 +139,7 @@
         </div>
       </div>
     </div>
-    <div class="col-2" style="margin-left: 85%;margin-top:-1%">
+    <div class="col-2" style="margin-left: 80%;margin-top:-1%">
       <div class="myProfile" (mouseleave)="slideMyProfileDiv('out')" [@slideInOut]="myProfileAnimation">
         <div *ngIf="isAuth" class="row myProfileItemRow">
           <div class="col offset-2 myProfileItemCol cursor-pointer">
@@ -167,8 +167,17 @@
   <div *ngIf="initializeSearchDiv">
     <div class="searchDiv">
     </div>
-    <input  (keyup)="onSearchEvent($event)" class="search" type="text"  autofocus>
-    <span class="searchSpan">Aramak istediğini yazdıktan sonra, enter tuşuna basabilirsin.</span>
-
+    <div style="z-index: 1000;position: fixed;transform: translate(-50%,-50%);top:46%;left: 50%;text-align: center;">
+      <div class="row">
+        <div class="col">
+          <input  (keyup)="onSearchEvent($event)" class="search" type="text"  autofocus>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <span class="searchSpan">ARAMAK İSTEDİĞİNİ YAZDIKTAN SONRA, ENTER TUŞUNA BASABİLİRSİN</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
