@@ -18,6 +18,7 @@ export class BenimFirsatimLibrary {
   resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   private _dealAnimationContinues = true;
+  searchResult:any = {};
 
   currentCategory = 'hot';
   private _currentPaging = 1;

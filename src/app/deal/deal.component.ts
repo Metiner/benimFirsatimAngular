@@ -24,9 +24,9 @@ export class DealComponent implements OnInit, OnDestroy {
   showPointTableSubs: Subscription;
   likeButtonAnimations = [];
   commentButtonAnimations = [];
-  likeButtons: any = [];
-  commentButtons: any = [];
   showPointTable = true;
+  resultText = "";
+  showResultText = false;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router,
@@ -85,9 +85,25 @@ export class DealComponent implements OnInit, OnDestroy {
             this.displayedDeals.push(this.deals[0]);
           }
         });
+      } else if(this.benimFirsatimLib.currentCategory === 'search'){
+          if(this.benimFirsatimLib.searchResult.entries.length === 0 ){
+            this.resultText = 'Ooops, sanırım böyle bir şey yok :(';
+            this.showResultText = true;
+          }else{
+            this.showResultText = false;
+            this.displayedDeals = [];
+            this.deals = this.benimFirsatimLib.searchResult.entries;
+            this.benimFirsatimLib.currentDeals = this.deals;
+            this.benimFirsatimLib.currentPaging = this.benimFirsatimLib.searchResult.current_page;
+            this.benimFirsatimLib.totalPage = Math.floor(this.benimFirsatimLib.searchResult.total_entries / 10) + 1;
+            if (this.deals.length >= 1) {
+              this.displayedDeals.push(this.deals[0]);
+            }
+          }
       } else {
         this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
           let responseData = data.json();
+          console.log(responseData);
           this.displayedDeals = [];
           this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;

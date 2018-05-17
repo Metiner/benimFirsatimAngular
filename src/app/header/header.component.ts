@@ -286,9 +286,11 @@ export class HeaderComponent implements OnDestroy{
 
     if(event.key === 'Enter'){
 
-      this.searchDivAnimation = 'in';
       this.benimFirsatimLibrary.search(event.path[0].value).subscribe(response => {
-        this.searchResponse = response.json().entries;
+        this.benimFirsatimLibrary.searchResult = response.json();
+        this.initializeSearchDiv = false;
+        this.onCategoryChange('search');
+
       });
       /*if(event.key === 'Backspace'){
         this.searchParam = this.searchParam.slice(0,-1);
@@ -330,6 +332,5 @@ export class HeaderComponent implements OnDestroy{
 
   onSearchIcon(){
     this.initializeSearchDiv = true;
-  this.benimFirsatimLibrary.isAutho;
   }
 }

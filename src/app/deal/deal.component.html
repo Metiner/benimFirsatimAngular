@@ -6,6 +6,11 @@
 
 <div class="row">
   <div class="col-8 offset-1">
+    <div class="row" *ngIf="showResultText" style="margin-top: 50px">
+      <div class="col">
+        <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">{{resultText}}</span>
+      </div>
+    </div>
     <div *ngFor="let deal of displayedDeals;let i = index" class="row"
          [ngClass]="{'lastItemMargin':isItLastItem(deal)}"
          @dealState
