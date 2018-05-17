@@ -63,6 +63,7 @@ export class DealComponent implements OnInit, OnDestroy {
 
       if (this.benimFirsatimLib.currentCategory === 'myDeals') {
         this.benimFirsatimLib.getDealFromUser(this.benimFirsatimLib.currentPaging).subscribe(data => {
+          this.showResultText = false;
           let responseData = data.json();
           this.displayedDeals = [];
           this.deals = responseData.entries;
@@ -74,6 +75,7 @@ export class DealComponent implements OnInit, OnDestroy {
           }
         });
       } else if (this.benimFirsatimLib.currentCategory === 'myFavs') {
+        this.showResultText = false;
         this.benimFirsatimLib.getFavDeal().subscribe(data => {
           let responseData = data.json();
           this.displayedDeals = [];
@@ -103,7 +105,7 @@ export class DealComponent implements OnInit, OnDestroy {
       } else {
         this.benimFirsatimLib.getPage(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
           let responseData = data.json();
-          console.log(responseData);
+          this.showResultText = false;
           this.displayedDeals = [];
           this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;
@@ -118,6 +120,7 @@ export class DealComponent implements OnInit, OnDestroy {
     } else {
       this.benimFirsatimLib.getCategoryDeals(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
         let responseData = data.json();
+        this.showResultText = false;
         this.displayedDeals = [];
         this.deals = responseData.entries;
         this.benimFirsatimLib.currentDeals = this.deals;
