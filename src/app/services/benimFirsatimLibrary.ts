@@ -47,8 +47,8 @@ export class BenimFirsatimLibrary {
     }catch (e){
       console.log(e);
     }
-    this.registerOneSignal();
     this.silentLogin();
+    this.registerOneSignal();
   }
 
   registerOneSignal(): void {
@@ -64,7 +64,8 @@ export class BenimFirsatimLibrary {
       }
     }]);
 
-    OneSignal.push(function () {
+    OneSignal.push(()=> {
+
       if (self.isAutho) {
         OneSignal.sendTag('user_id', self.currentUser['id']);
       }
