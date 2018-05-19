@@ -32,6 +32,7 @@ export class ContentComponent implements OnDestroy,OnInit{
   email:string;
   password:string;
   password2:string;
+  feedBackType = {};
 
   tur:any;
 
@@ -284,8 +285,6 @@ export class ContentComponent implements OnDestroy,OnInit{
   onFeedbackSubmit(f:NgForm){
     this.blackDiv = false;
     this.feedbackDivOpen = false;
-    console.log(this.tur);
-    console.log(f.value);
   }
 
 }

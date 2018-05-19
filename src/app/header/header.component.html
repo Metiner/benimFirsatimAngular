@@ -165,7 +165,7 @@
     </div>
   </div>
   <div *ngIf="initializeSearchDiv">
-    <div class="searchDiv">
+    <div class="searchDiv" (click)="initializeSearchDiv = !initializeSearchDiv">
     </div>
     <div style="z-index: 1000;position: fixed;transform: translate(-50%,-50%);top:46%;left: 50%;text-align: center;width: 90%;">
       <div class="row">

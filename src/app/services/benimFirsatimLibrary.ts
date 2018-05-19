@@ -230,7 +230,6 @@ export class BenimFirsatimLibrary {
   }
 
   public commentVote(comment_id){
-    console.log(comment_id);
     return this._tokenService.get('comments/'+comment_id+'/vote');
   }
 
