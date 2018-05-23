@@ -64,9 +64,13 @@ export class BenimFirsatimLibrary {
       }
     }]);
 
+    console.log("pushladı babo");
     OneSignal.push(()=> {
+
+      console.log("girdiİPush");
       if (self.isAutho) {
-        OneSignal.sendTag('user_id', self.currentUser['id'],(response)=>{
+        console.log("girdiİsauto");
+        OneSignal.sendTag('user_id', self.currentUser['id']).then((response)=>{
           console.log(response);
         });
       }
