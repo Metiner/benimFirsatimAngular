@@ -52,22 +52,23 @@ export class BenimFirsatimLibrary {
   }
 
   registerOneSignal(): void {
-    const self = this;
-    const OneSignal = window['OneSignal'] || [];
+    var self = this;
+    var OneSignal = window['OneSignal'] || [];
     OneSignal.push(['init', {
       subdomainName: 'benimfirsatim.os.tc',
       appId: 'e3b6a1f6-1826-4015-a0c5-99665f5a9589',
       autoRegister: true,
       allowLocalhostAsSecureOrigin: true,
       notifyButton: {
-        enable: true
+        enable: false
       }
     }]);
 
     OneSignal.push(()=> {
-
       if (self.isAutho) {
-        OneSignal.sendTag('user_id', self.currentUser['id']);
+        OneSignal.sendTag('user_id', self.currentUser['id'],(response)=>{
+          console.log(response);
+        });
       }
     });
   }
