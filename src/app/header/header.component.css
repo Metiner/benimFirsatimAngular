@@ -87,4 +87,13 @@
 .click {
   transform: scale(0.6); }
 
+.font-class {
+  font-family: 'Mark Pro-Bold';
+  font-size: 17px;
+  color: #f7e60f;
+  white-space: nowrap; }
+
+.font-size {
+  font-size: 12px !important; }
+
 /*# sourceMappingURL=header.component.css.map */

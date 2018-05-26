@@ -32,6 +32,8 @@ export class HeaderComponent implements OnDestroy{
   searchDivAnimation = 'out';
   categories = [];
 
+  firsatEkleKucult = false;
+
   isAuth = false;
   showSingUpSignInPopUp = false;
 
@@ -55,6 +57,19 @@ export class HeaderComponent implements OnDestroy{
         this.isAuth = true;
       }
     })
+
+
+    window.onresize = (event:any)=>{
+      if(event.srcElement.window.innerWidth < 1180){
+        this.firsatEkleKucult = true;
+        $('.font-class').addClass('font-size');
+
+      }else{
+        this.firsatEkleKucult = false;
+        $('.font-class').removeClass('font-size');
+
+      }
+    }
   }
 
   ngOnDestroy(){
