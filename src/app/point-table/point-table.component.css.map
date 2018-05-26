@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;GAEG;AACH,UAAU;EACR,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,GAAG;EACR,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,IAAI",
+"sources": ["point-table.component.scss"],
+"names": [],
+"file": "point-table.component.css"
+}

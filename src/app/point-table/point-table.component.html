@@ -1,38 +1,40 @@
-<div class="row" style="margin-left: 5px;">
-  <div class="col" style="background: url('../../assets/imgs/puan_tablosu_box@2x.png');background-repeat: no-repeat;position:fixed;width: 15%;background-size: contain">
-    <div class="row">
-      <div class="col-5" style="align-self: center">
-        <span style="font-family: 'Mark Pro-Book';font-size: 12px;color:#F7E60f;white-space: nowrap">AYIN KULLANICILARI</span>
-      </div>
-      <div class="col-3 offset-4" style="margin-top: 2%;margin-bottom: 2%">
-        <img class="fullwidth" src="../../assets/imgs/puan_tablosu_icon@2x.png">
-      </div>
+<div style="position: fixed;max-width: 250px">
+  <div class="row">
+    <div class="col">
+      <img src="../../assets/imgs/puan_tablosu_box@2x.png" style="max-width: 250px">
+      <span style="font-family: 'Mark Pro-Book';font-size: 12px;color:#F7E60f;white-space: nowrap;position: absolute;top: 10px;left: 30px">AYIN KULLANICILARI</span>
+      <img class="fullwidth" src="../../assets/imgs/puan_tablosu_icon@2x.png">
     </div>
-    <div class="row" style="background-color: white;border-color: #234491;border-radius: 0px 0px 29px 29px;">
-      <div class="col">
-        <div class="row nowrap" *ngFor="let user of users;let i=index" style="margin-top: 5%">
-          <div class="col-1">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{i+1}}</span>
+  </div>
+  <div class="row" style="margin-left: 0px;margin-right: 0px;">
+    <div class="col" style="background-color: white;border-color: #234491;border-radius: 0px 0px 29px 29px;">
+      <div class="row" >
+        <div class="col">
+          <div class="row nowrap" *ngFor="let user of users;let i=index" style="margin-top: 5%">
+            <div class="col-1">
+              <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{i+1}}</span>
+            </div>
+            <div class="col text-center">
+              <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{user.name.slice(0,15).concat('..')}}</span>
+            </div>
+            <!--  <div class="col-2 text-center" style="align-self: center">
+                <img  src="../../assets/imgs/dropdown_blue@2x.png" style="width: 100%">
+              </div>-->
           </div>
-          <div class="col text-center">
-            <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{user.name.slice(0,15).concat('..')}}</span>
-          </div>
-        <!--  <div class="col-2 text-center" style="align-self: center">
-            <img  src="../../assets/imgs/dropdown_blue@2x.png" style="width: 100%">
-          </div>-->
+          <div class="row" style="border-radius:20px;height: 20px"></div>
         </div>
-        <div class="row" style="border-radius:20px;height: 20px"></div>
       </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col" style="border-radius: 30px;background-color: #F7E60F;position: fixed;top:28%;text-align: center;width: 15%;margin-left:20px;padding:5px" (click)="openFeedbackDiv()">
-    <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">FİKRİNİ SÖYLE!</span><br>
-    <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491">SİZLERE DAHA KALİTELİ HİZMETLER SUNABİLMEK İÇİN,</span><br>
-    <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491">FİKİRLERİNİZ BİZLER İÇİN ÇOK ÖNEMLİ</span>
+  <div class="row" style="    margin: 10px 0 0 0;">
+    <div class="col" style="border-radius: 30px;background-color: #F7E60F;text-align: center;padding:5px" (click)="openFeedbackDiv()">
+      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">FİKRİNİ SÖYLE!</span><br>
+      <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491">SİZLERE DAHA KALİTELİ HİZMETLER SUNABİLMEK İÇİN,</span><br>
+      <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491">FİKİRLERİNİZ BİZLER İÇİN ÇOK ÖNEMLİ</span>
+    </div>
   </div>
 </div>
+
 
 
 
