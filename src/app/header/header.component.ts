@@ -63,11 +63,12 @@ export class HeaderComponent implements OnDestroy{
       if(event.srcElement.window.innerWidth < 1180){
         this.firsatEkleKucult = true;
         $('.font-class').addClass('font-size');
+        $('.logo').addClass('logo-for-margin');
 
       }else{
         this.firsatEkleKucult = false;
         $('.font-class').removeClass('font-size');
-
+        $('.logo').removeClass('logo-for-margin');
       }
     }
   }
