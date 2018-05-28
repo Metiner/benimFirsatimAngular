@@ -8,8 +8,8 @@
               <span style="font-family: 'Mark Pro-Heavy';font-size: 23px;color:#234491">YENİ FIRSAT EKLE</span>
             </div>
           </div>
-          <div class="row" style="flex-wrap: nowrap">
-            <div class="col-6" style="border-radius: 30px;background-color: white;margin-top: 1%">
+          <div class="row">
+            <div class="col" style="margin-left: 1%;border-radius: 30px;background-color: white;margin-top: 1%">
               <div class="row">
                 <div class="col">
                   <div class="row align-items-center">
@@ -78,7 +78,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-6" style="margin-left: 1%;border-radius: 30px;background-color: white;margin-top: 1%;">
+            <div class="col" style="margin-left: 1%;border-radius: 30px;background-color: white;margin-top: 1%;">
               <div class="row">
                 <div class="col">
                   <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0px">
@@ -206,112 +206,84 @@
             </div>
           </div>
           <div class="row" style="margin-bottom: 75px">
-            <div class="col-8">
+            <div class="col" style="margin-left: 1%">
               <div class="row"
-                   style="max-height: 250px;min-height: 250px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-top: 1%;flex-wrap: nowrap;">
-                <div class="col-3" style="text-align: center;max-height: 230px;max-width: 230px">
-                  <img src="{{selectedImageSrc}}" style="max-width: 200px;max-height: 200px;border-radius: 15px">
+                   style="max-height: 210px;min-height: 210px;border-radius: 30px;background-color: white;align-items: center;margin-top: 1%;flex-wrap: nowrap;">
+                <div class="col-auto">
+                  <img src="{{selectedImageSrc}}" style="max-width: 180px;min-width: 180px;border-radius: 15px">
                 </div>
                 <div class="col-9">
                   <div class="row title">
                     <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{concatGivenString(dealTitlePreview,68)}}</span>
                   </div>
-                  <div class="row" style="padding-top: 1%">
-                    <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{concatGivenString(dealDetailPreview,200)}}</span>
-                  </div>
-                  <div class="row" style="align-items: baseline;flex-wrap: nowrap;padding-top: 1%">
-                    <div class="col-2">
-                      <div class="row" style="align-items: center;flex-wrap: nowrap;">
-                        <div class="col-3 nopadding">
-                          <img src="../../assets/imgs/price_tag@2x.png" style="width: 150%">
-                        </div>
-                        <div class="col nopadding" style="margin-left: 15%">
-                          <span
-                            style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;">{{dealPricePreview}}₺</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-1">
-                      <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                        <div class="col-5 nopadding">
-                          <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="width: 250%">
-                        </div>
-                        <div class="col nopadding" style="margin-left:20%">
-                          <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-1">
-                      <div class="row" style="flex-wrap: nowrap;align-items: baseline">
-                        <div class="col-5 offset-1 nopadding">
-                          <img src="../../assets/imgs/comment_button@2x.png" style="
-          width: 250%">
-                        </div>
-                        <div class="col  nopadding" style="margin-left: 20%">
-                          <span style="font-family: 'Mark Pro-Heavy';font-size: 12px;color:#234491"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col offset-1" style="text-overflow: ellipsis;overflow: hidden;">
-                      <span style="font-family: 'Mark Pro-Italic';font-size: 20px;color:#234491;">{{concatGivenString(dealUrlPreview,40)}}</span>
-                    </div>
-                  </div>
-                  <div class="row" style="align-items: flex-end">
-                    <div class="col-8">
+                  <div class="row">
+                    <div class="col">
                       <div class="row" style="align-items: center;flex-wrap: nowrap">
-                        <div class="col-1" style="padding: 0px;align-self: flex-end">
-                          <img src="{{dealOwnerAvatar}}" style="width: 80%;border-radius: 50%">
+
+                        <div class="col" style="padding-left: 0px;display: contents">
+                          <img src="{{dealOwnerAvatar}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
+
+                          <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{dealOwner.slice(0,15).concat('..')}}&nbsp;</span>
+
+                          <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| 0 görüntülenme |</span>
+
+                          <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{currentDate.substr(0,10)}} |</span>
+
+                          <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;firsatsitesi.com</span>
                         </div>
-                        <div class="col" style=";align-self: flex-end">
-                          <span
-                            style="font-family: 'Mark Pro-Heavy',serif;font-size: 20px;color:#234491;white-space: nowrap">{{dealOwner}}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="align-items: flex-end;padding-top: 1%;flex-wrap: nowrap">
+                    <div class="col-auto">
+                      <div class="row" style="align-items: center;flex-wrap: nowrap">
+                        <div class="col nopadding">
+                          <img src="../../assets/svgs/price_tag.svg" style="min-width: 50px;max-width: 50px">
                         </div>
-                        <div class="col" style=";align-self: flex-end;text-overflow: ellipsis;overflow: hidden;">
-                          <span
-                            style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;overflow: hidden;"></span>
-                        </div>
-                        <div class="col" style=";align-self: flex-end">
-                          <span
-                            style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491">{{currentDate}}</span>
+                        <div class="col-9 nopadding">
+                          <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;padding: 10px">{{dealPricePreview}}</span>
                         </div>
                       </div>
                     </div>
                     <div class="col">
-                      <div class="row" style="align-items: center">
-                        <div class="col" style="padding: 1px">
-                          <!--<img src="../../assets/imgs/FB-Icon@2x.png" style="width: 100%">-->
+                      <div class="row" style="align-items: flex-end;flex-wrap: nowrap">
+                        <div class="col-auto offset-2 nopadding">
+                          <img src="../../assets/imgs/like_button@2x_22pt_mark_heavy.png" style="max-width: 75px;min-width: 75px;">
                         </div>
-                        <div class="col" style="padding: 1px"><!--
-                          <img src="../../assets/imgs/TW-Icon@2x.png" style="width: 100%">-->
+                        <div class="col nopadding">
+                          <img src="../../assets/imgs/comment_button@2x.png" style="max-width: 75px;min-width: 75px;">
                         </div>
-                        <div class="col-9">
-                          <img src="../../assets/imgs/firsata_git_button@2x.png" style="width: 100%">
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="row" style="align-items: center;flex-wrap: nowrap">
+                        <div class="col-auto" style="padding: 0px">
+                          <img  src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 40px;min-width: 40px;">
+                        </div>
+                        <div class="col-auto cursor-pointer" style="padding: 0px">
+                          <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 40px;">
+                        </div>
+                        <div class="col cursor-pointer">
+                          <img  src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
                         </div>
                       </div>
                     </div>
                   </div>
+                  <div class="row" style="padding-top: 1%">
+                    <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491">{{concatGivenString(dealDetailPreview,200)}}</span>
+                  </div>
                 </div>
               </div>
             </div>
-            <button [disabled]="createButtonActivated" class="col-2 mx-auto align-self-center cursor-pointer clearButton" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,dealTitle,dealImageContainer,lsd)">
-              <div id="createDealAnim" (mouseenter)="playAnim()" (mouseleave)="stopAnim()"></div>
-            </button>
+            <div class="col-auto mx-auto align-self-center cursor-pointer clearButton" style="max-width: 210px;min-width: 210px;">
+              <button [disabled]="createButtonActivated" class=" align-self-center cursor-pointer clearButton" (click)="onSubmit(f,dealUrl,dealDetail,dealPrice,dealDate,dealTitle,dealImageContainer,lsd)">
+                <div id="createDealAnim" (mouseenter)="playAnim()" (mouseleave)="stopAnim()"></div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!--<div  *ngIf="showProgressBar" class="loadingDiv" [@loadingBlackDiv]></div>-->
-    <!--<mat-progress-spinner  style="position: fixed;
-      left: 47%;
-      right: 50%;
-      top: 40%;
-      bottom: 50%;"
-                          class="example-margin"
-                          mode="indeterminate">
-    </mat-progress-spinner>-->
-
-
   </div>
 </form>
 
