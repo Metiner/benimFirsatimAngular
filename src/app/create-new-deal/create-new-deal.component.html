@@ -13,11 +13,11 @@
               <div class="row">
                 <div class="col">
                   <div class="row align-items-center">
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/ilan_linki_icon.svg">
                     </div>
                     <div class="col nopadding">
-                      <span #dealUrl [@highlight]="dealUrl.highlight" style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">İLAN LİNKİ</span>
+                      <span #dealUrl [@highlight]="dealUrl.highlight" style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491">İLAN LİNKİ</span>
                     </div>
                   </div>
                   <div class="row">
@@ -32,10 +32,10 @@
                     *ngIf="showProgressBar"
                     mode="indeterminate"></mat-progress-bar>
                   <div class="row align-items-center">
-                    <div class="col-1 padding" style="margin-right: -10px">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/ilan_detaylari_icon.svg">
                     </div>
-                    <div class="col">
+                    <div class="col nopadding">
                       <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491" #dealImageContainer [@highlight]="dealImageContainer.highlight">İLAN DETAYLARI</span>
                     </div>
                   </div>
@@ -47,7 +47,7 @@
                     </div>
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/firsat_tarihleri_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px;margin-right: 3%">
@@ -82,7 +82,7 @@
               <div class="row">
                 <div class="col">
                   <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0px">
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/fiyat_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
@@ -91,7 +91,7 @@
                     <div class="col-2 cursor-pointer">
                       <input  class="urlInput" ngModel name="dealPricePreview" (input)="onPriceChange($event)">
                     </div>
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/kupon_kodu_icon.svg">
                     </div>
                     <div class="col-2" style="padding: 0px">
@@ -107,7 +107,7 @@
                     </div>-->
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/baslik_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
@@ -130,7 +130,7 @@
                     </div>
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/detay_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
@@ -167,7 +167,7 @@
                     </div>
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/kategori_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px;margin-right: 3%">
@@ -181,7 +181,7 @@
                         </mat-select>
                       </mat-form-field>
                     </div>
-                    <div class="col-1 padding">
+                    <div class="col-1 padding max-width">
                       <img src="assets/svgs/sehir_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0px">
@@ -219,16 +219,11 @@
                   <div class="row">
                     <div class="col">
                       <div class="row" style="align-items: center;flex-wrap: nowrap">
-
                         <div class="col" style="padding-left: 0px;display: contents">
                           <img src="{{dealOwnerAvatar}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
-
                           <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{dealOwner.slice(0,15).concat('..')}}&nbsp;</span>
-
                           <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| 0 görüntülenme |</span>
-
                           <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{currentDate.substr(0,10)}} |</span>
-
                           <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;firsatsitesi.com</span>
                         </div>
                       </div>
@@ -237,7 +232,7 @@
                   <div class="row" style="align-items: flex-end;padding-top: 1%;flex-wrap: nowrap">
                     <div class="col-auto">
                       <div class="row" style="align-items: center;flex-wrap: nowrap">
-                        <div class="col nopadding">
+                        <div class="col nopadding max-width">
                           <img src="../../assets/svgs/price_tag.svg" style="min-width: 50px;max-width: 50px">
                         </div>
                         <div class="col-9 nopadding">
