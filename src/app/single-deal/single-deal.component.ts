@@ -64,8 +64,6 @@ export class SingleDealComponent implements OnInit {
           }
         })
       });
-
-
     }
   }
 

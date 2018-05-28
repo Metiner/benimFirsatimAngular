@@ -64,11 +64,15 @@ export class HeaderComponent implements OnDestroy{
         this.firsatEkleKucult = true;
         $('.font-class').addClass('font-size');
         $('.logo').addClass('logo-for-margin');
+        $('.dealTitleAndUserRow').addClass('text-center');
+
 
       }else{
         this.firsatEkleKucult = false;
         $('.font-class').removeClass('font-size');
         $('.logo').removeClass('logo-for-margin');
+        $('.dealTitleAndUserRow').removeClass('text-center');
+
       }
     }
   }

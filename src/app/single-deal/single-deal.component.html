@@ -24,7 +24,7 @@
               </div>
               <div class="col" style="padding: 0px 30px 0px 30px">
                 <div class="row title">
-                  <div class="col nopadding">
+                  <div class="col nopadding dealTitleAndUserRow">
                     <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
                   </div>
                 </div>
@@ -32,16 +32,16 @@
                   <div class="col">
                     <div class="row" style="align-items: center;flex-wrap: nowrap">
 
-                      <div class="col" style="padding-left: 0px;display: contents">
+                      <div class="col dealTitleAndUserRow" style="padding-left: 0px">
                         <img src="{{deal.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
 
-                        <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">  {{deal.user.name.slice(0,15).concat('..')}} </span>
+                        <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal.user.name.slice(0,15).concat('..')}}&nbsp;</span>
 
                         <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| {{deal.view_count}} görüntülenme |</span>
 
-                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">{{deal.created_at.substr(0,10)}} |</span>
+                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal.created_at.substr(0,10)}} |</span>
 
-                        <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">{{deal.vendor.website}}</span>
+                        <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span>
                       </div>
                     </div>
                   </div>
@@ -95,8 +95,8 @@
         <div class="row" style="padding:20px">
           <div class="col">
             <div class="row" *ngIf="!dealReported">
-              <div class="col cursor-pointer" style="text-align: right;padding-bottom: 1%">
-                <img src="assets/svgs/problemli_line.svg" style="width: 60%">
+              <div class="col cursor-pointer" style="text-align: center;padding-bottom: 1%">
+                <img src="assets/svgs/problemlibirfirsatmi.svg" style="width: 60%">
               </div>
             </div>
             <div class="row nowrap">
@@ -142,9 +142,9 @@
           <div class="col" style="background-color: #f2f2f2;border-radius: 20px;max-height: 100px;align-self: center;margin-top: 20px;">
             <div class="row nowrap">
               <div class="col">
-                <textarea [(ngModel)]="newlyAddedComment" rows="2" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;min-width: 200px"></textarea>
+                <textarea [(ngModel)]="newlyAddedComment" rows="2" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;min-width: 200px;resize: none;"></textarea>
               </div>
-              <div class="col" (click)="sendComment()" style="text-align: right;padding:0px">
+              <div class="col-auto" (click)="sendComment()" style="text-align: right;padding:0px">
                   <img style="max-width: 60px;min-width: 60px"  src="assets/svgs/write_comment_icon.svg">
               </div>
             </div>

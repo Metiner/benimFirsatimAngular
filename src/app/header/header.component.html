@@ -98,13 +98,14 @@
         <div class="col">
           <img src="../../assets/svgs/search_icon.svg" style="height: 33px" (click)="onSearchIcon()">
         </div>
+      </div>
+      <div class="row">
         <div class="col" style="margin-top: 9px">
           <span class="cursor-pointer font-class">ARAMA</span>
         </div>
       </div>
       <!--<input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">-->
     </div>
-
     <div *ngIf="!isAuth" class="col-1 text-center scale" style="margin-right: 100px" (click)="goToSignUpAndSignin()">
       <div class="row" style="    padding-left: 5px">
         <div class="col click cursor-pointer">
@@ -117,10 +118,10 @@
         </div>
       </div>
     </div>
-    <div *ngIf="isAuth" class="col-1 text-center" style="margin-right: 100px">
+    <div *ngIf="isAuth" class="col-1 text-center scale" style="margin-right: 100px;margin-top: 8px">
       <div class="row">
         <div (mouseenter)="slideMyProfileDiv('in')" class="col cursor-pointer" style="padding: 0px">
-          <svg _ngcontent-c0="" class="ng-tns-c0-0" style="width: 20%" viewBox="0 0 35.56 35.56" xmlns="http://www.w3.org/2000/svg"><title _ngcontent-c0="" class="ng-tns-c0-0">location_iconAsset 1</title><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="Layer 2" id="Layer_2"><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="profilim icon" id="profilim_icon"><path _ngcontent-c0="" class="ng-tns-c0-0" d="M17.78,0A17.78,17.78,0,1,0,35.56,17.78,17.81,17.81,0,0,0,17.78,0Zm6.69,14.06V11.18a5.18,5.18,0,0,0-1.16-3.66c-1.17-1.32-3-1.94-5.53-1.94a7.3,7.3,0,0,0-5.52,1.94,5.14,5.14,0,0,0-1.17,3.66v2.88a2,2,0,0,0-.54,1.48v2.17a2.3,2.3,0,0,0,.85,1.79,10.68,10.68,0,0,0,1.95,4v1.79a1.51,1.51,0,0,1-.7,1.25l-5,2.72a1.38,1.38,0,0,0-.47.31A15.91,15.91,0,1,1,33.65,17.46v.25a15.7,15.7,0,0,1-5.36,11.83,2,2,0,0,0-.55-.31l-5.29-2.65a1.37,1.37,0,0,1-.78-1.24V23.47a3.36,3.36,0,0,0,.39-.54,11.32,11.32,0,0,0,1.63-3.19,2.34,2.34,0,0,0,1.33-2V15.54A2.5,2.5,0,0,0,24.47,14.06Z" style="fill:#f7e60f"></path></g></g></svg>
+          <svg _ngcontent-c0="" class="ng-tns-c0-0" style="max-width: 40px" viewBox="0 0 35.56 35.56" xmlns="http://www.w3.org/2000/svg"><title _ngcontent-c0="" class="ng-tns-c0-0">location_iconAsset 1</title><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="Layer 2" id="Layer_2"><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="profilim icon" id="profilim_icon"><path _ngcontent-c0="" class="ng-tns-c0-0" d="M17.78,0A17.78,17.78,0,1,0,35.56,17.78,17.81,17.81,0,0,0,17.78,0Zm6.69,14.06V11.18a5.18,5.18,0,0,0-1.16-3.66c-1.17-1.32-3-1.94-5.53-1.94a7.3,7.3,0,0,0-5.52,1.94,5.14,5.14,0,0,0-1.17,3.66v2.88a2,2,0,0,0-.54,1.48v2.17a2.3,2.3,0,0,0,.85,1.79,10.68,10.68,0,0,0,1.95,4v1.79a1.51,1.51,0,0,1-.7,1.25l-5,2.72a1.38,1.38,0,0,0-.47.31A15.91,15.91,0,1,1,33.65,17.46v.25a15.7,15.7,0,0,1-5.36,11.83,2,2,0,0,0-.55-.31l-5.29-2.65a1.37,1.37,0,0,1-.78-1.24V23.47a3.36,3.36,0,0,0,.39-.54,11.32,11.32,0,0,0,1.63-3.19,2.34,2.34,0,0,0,1.33-2V15.54A2.5,2.5,0,0,0,24.47,14.06Z" style="fill:#f7e60f"></path></g></g></svg>
         </div>
       </div>
       <div class="row">
