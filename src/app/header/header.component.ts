@@ -66,12 +66,15 @@ export class HeaderComponent implements OnDestroy{
         $('.logo').addClass('logo-for-margin');
         $('.dealTitleAndUserRow').addClass('text-center');
 
+        this.benimFirsatimLibrary.showPointTable.next();
 
       }else{
         this.firsatEkleKucult = false;
         $('.font-class').removeClass('font-size');
         $('.logo').removeClass('logo-for-margin');
         $('.dealTitleAndUserRow').removeClass('text-center');
+        this.benimFirsatimLibrary.showPointTable.next();
+
 
       }
     }

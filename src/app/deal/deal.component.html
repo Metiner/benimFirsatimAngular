@@ -23,23 +23,8 @@
         <div class="row title">
           <span (click)="goToDeal(deal.id)" style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="row" style="align-items: center;flex-wrap: nowrap">
-
-              <div class="col" style="padding-left: 0px;display: contents">
-                <img src="{{deal.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
-
-                <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal.user.name.slice(0,15).concat('..')}}&nbsp;</span>
-
-                <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| {{deal.view_count}} görüntülenme |</span>
-
-                <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal.created_at.substr(0,10)}} |</span>
-
-                <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span>
-              </div>
-            </div>
-          </div>
+        <div class="row" style="padding-top: 1%">
+          <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491;line-height: 1.2;">{{deal.details.slice(0,304).concat('..')}}</span>
         </div>
         <div class="row" style="align-items: flex-end;padding-top: 1%;flex-wrap: nowrap">
           <div class="col-auto">
@@ -80,8 +65,23 @@
             </div>
           </div>
         </div>
-        <div class="row" style="padding-top: 1%">
-          <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491;line-height: 1.2;">{{deal.details.slice(0,304).concat('..')}}</span>
+        <div class="row">
+          <div class="col">
+            <div class="row" style="align-items: center;flex-wrap: nowrap">
+
+              <div class="col" style="padding-left: 0px;display: contents">
+                <img src="{{deal.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
+
+                <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal.user.name.slice(0,15).concat('..')}}&nbsp;</span>
+
+                <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| {{deal.view_count}} görüntülenme |</span>
+
+                <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal.created_at.substr(0,10)}} |</span>
+
+                <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
