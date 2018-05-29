@@ -45,8 +45,8 @@ export class SingleDealComponent implements OnInit {
   ngOnInit() {
 
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
-      next: () => {
-        this.showPointTable = !this.showPointTable;
+      next: (data) => {
+        this.showPointTable = data;
       }
     });
 

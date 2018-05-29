@@ -38,8 +38,8 @@ export class DealComponent implements OnInit, OnDestroy {
       }
     });
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
-      next: () => {
-        this.showPointTable = !this.showPointTable;
+      next: (data) => {
+        this.showPointTable = data;
       }
     });
   }

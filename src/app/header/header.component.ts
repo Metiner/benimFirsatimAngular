@@ -61,43 +61,76 @@ export class HeaderComponent implements OnDestroy{
     })
 
 
+    $(document).ready(()=>{
+      var event = {};
+      this.responsiveDesign(event)
+
+    })
     window.onresize = (event:any)=>{
-      if(event.srcElement.window.innerWidth < 1180){
-        this.firsatEkleKucult = true;
-        $('.font-class').addClass('font-size');
-        $('.logo').addClass('logo-for-margin');
-        $('.dealTitleAndUserRow').addClass('text-center');
-
-        if(!this.onResizeEventFlag){
-          $('#for-responsiveness').addClass('col');
-          $('#for-responsiveness').addClass('for-responsiveness-margin-left-right');
-          $('#for-responsiveness').removeClass('col-8');
-          $('#for-responsiveness').removeClass('offset-1');
-
-          this.onResizeEventFlag = true;
-          this.benimFirsatimLibrary.showPointTable.next();
-        }
-      }else{
-        if(this.onResizeEventFlag){
-          $('#for-responsiveness').removeClass('col');
-          $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
-          $('#for-responsiveness').addClass('col-8');
-          $('#for-responsiveness').addClass('offset-1');
-          this.onResizeEventFlag = false;
-          this.benimFirsatimLibrary.showPointTable.next();
-        }
-        this.firsatEkleKucult = false;
-        $('.font-class').removeClass('font-size');
-        $('.logo').removeClass('logo-for-margin');
-        $('.dealTitleAndUserRow').removeClass('text-center');
-      }
+      this.responsiveDesign(event);
     }
+
+
   }
 
   ngOnDestroy(){
     this.autSubscription.unsubscribe();
   }
 
+  responsiveDesign(event){
+    var innerWidthToCheck;
+
+    if(event.srcElement === undefined){
+      innerWidthToCheck = innerHeight;
+
+
+    }else{
+      innerWidthToCheck = event.srcElement.window.innerWidth;
+    }
+    if(innerWidthToCheck < 1180){
+
+      this.firsatEkleKucult = true;
+      $('.font-class').addClass('font-size');
+      $('.logo').addClass('logo-for-margin');
+      $('.dealTitleAndUserRow').addClass('text-center');
+
+      if(!this.onResizeEventFlag){
+
+        $('#for-responsiveness').addClass('col');
+        $('#for-responsiveness').addClass('for-responsiveness-margin-left-right');
+        $('#for-responsiveness').removeClass('col-8');
+        $('#for-responsiveness').removeClass('offset-1');
+
+        $('#for-responsiveness-singleDeal').addClass('for-responsiveness-margin-left-right');
+        $('#for-responsiveness-singleDeal').addClass('col');
+        $('#for-responsiveness-singleDeal').removeClass('offset-1');
+        $('#for-responsiveness-singleDeal').removeClass('col-8');
+
+
+        this.onResizeEventFlag = true;
+        this.benimFirsatimLibrary.showPointTable.next(false);
+      }
+    }else{
+      if(this.onResizeEventFlag){
+        $('#for-responsiveness').removeClass('col');
+        $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
+        $('#for-responsiveness').addClass('col-8');
+        $('#for-responsiveness').addClass('offset-1');
+
+
+        $('#for-responsiveness-singleDeal').addClass('offset-1');
+        $('#for-responsiveness-singleDeal').addClass('col-8');
+        $('#for-responsiveness-singleDeal').removeClass('col');
+        $('#for-responsiveness-singleDeal').removeClass('for-responsiveness-margin-left-right');
+        this.onResizeEventFlag = false;
+        this.benimFirsatimLibrary.showPointTable.next(true);
+      }
+      this.firsatEkleKucult = false;
+      $('.font-class').removeClass('font-size');
+      $('.logo').removeClass('logo-for-margin');
+      $('.dealTitleAndUserRow').removeClass('text-center');
+    }
+  }
 
   checkAuth(){
     this.isAuth = this.benimFirsatimLibrary.isAutho;
