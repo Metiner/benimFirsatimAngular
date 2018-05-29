@@ -62,6 +62,12 @@ export class HeaderComponent implements OnDestroy{
 
 
     $(document).ready(()=>{
+      if(innerWidth < 1180)
+      {
+        this.onResizeEventFlag = false;
+      }else{
+        this.onResizeEventFlag = true;
+      }
       var event = {};
       this.responsiveDesign(event)
 
@@ -81,12 +87,13 @@ export class HeaderComponent implements OnDestroy{
     var innerWidthToCheck;
 
     if(event.srcElement === undefined){
-      innerWidthToCheck = innerHeight;
+      innerWidthToCheck = innerWidth;
 
 
     }else{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
+
     if(innerWidthToCheck < 1180){
 
       this.firsatEkleKucult = true;
@@ -111,7 +118,15 @@ export class HeaderComponent implements OnDestroy{
         this.benimFirsatimLibrary.showPointTable.next(false);
       }
     }else{
+
+
+      $('.font-class').removeClass('font-size');
+      $('.logo').removeClass('logo-for-margin');
+      $('.dealTitleAndUserRow').removeClass('text-center');
+
+      this.firsatEkleKucult = false;
       if(this.onResizeEventFlag){
+
         $('#for-responsiveness').removeClass('col');
         $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness').addClass('col-8');
@@ -125,10 +140,6 @@ export class HeaderComponent implements OnDestroy{
         this.onResizeEventFlag = false;
         this.benimFirsatimLibrary.showPointTable.next(true);
       }
-      this.firsatEkleKucult = false;
-      $('.font-class').removeClass('font-size');
-      $('.logo').removeClass('logo-for-margin');
-      $('.dealTitleAndUserRow').removeClass('text-center');
     }
   }
 
