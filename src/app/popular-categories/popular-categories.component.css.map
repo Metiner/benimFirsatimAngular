@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAU;EACR,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,GAAG;EACR,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,IAAI",
+"sources": ["popular-categories.component.scss"],
+"names": [],
+"file": "popular-categories.component.css"
+}

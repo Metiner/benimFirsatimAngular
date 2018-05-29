@@ -62,8 +62,14 @@ export class HeaderComponent implements OnDestroy{
 
 
     $(document).ready(()=>{
+      if(innerWidth < 1180){
+        this.onResizeEventFlag = false;
+      }else{
+        this.onResizeEventFlag = true;
+      }
       var event = {};
       this.responsiveDesign(event)
+
 
     })
     window.onresize = (event:any)=>{
@@ -81,7 +87,7 @@ export class HeaderComponent implements OnDestroy{
     var innerWidthToCheck;
 
     if(event.srcElement === undefined){
-      innerWidthToCheck = innerHeight;
+      innerWidthToCheck = innerWidth;
 
 
     }else{

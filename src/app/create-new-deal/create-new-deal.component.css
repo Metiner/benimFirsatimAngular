@@ -74,4 +74,7 @@ div{
 /deep/ .mat-form-field-infix {
   width: 150px !important; }
 
+.max-width {
+  max-width: 60px; }
+
 /*# sourceMappingURL=create-new-deal.component.css.map */
