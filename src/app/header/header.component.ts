@@ -34,7 +34,7 @@ export class HeaderComponent implements OnDestroy{
 
   firsatEkleKucult = false;
 
-  onResizeEventFlag = false;
+  public _onResizeEventFlag = false;
 
   isAuth = false;
   showSingUpSignInPopUp = false;
@@ -61,17 +61,7 @@ export class HeaderComponent implements OnDestroy{
     })
 
 
-    $(document).ready(()=>{
-      if(innerWidth < 1180){
-        this.onResizeEventFlag = false;
-      }else{
-        this.onResizeEventFlag = true;
-      }
-      var event = {};
-      this.responsiveDesign(event)
 
-
-    })
     window.onresize = (event:any)=>{
       this.responsiveDesign(event);
     }
@@ -100,7 +90,7 @@ export class HeaderComponent implements OnDestroy{
       $('.logo').addClass('logo-for-margin');
       $('.dealTitleAndUserRow').addClass('text-center');
 
-      if(!this.onResizeEventFlag){
+      if(!this._onResizeEventFlag){
 
         $('#for-responsiveness').addClass('col');
         $('#for-responsiveness').addClass('for-responsiveness-margin-left-right');
@@ -113,11 +103,11 @@ export class HeaderComponent implements OnDestroy{
         $('#for-responsiveness-singleDeal').removeClass('col-8');
 
 
-        this.onResizeEventFlag = true;
+        this._onResizeEventFlag = true;
         this.benimFirsatimLibrary.showPointTable.next(false);
       }
     }else{
-      if(this.onResizeEventFlag){
+      if(this._onResizeEventFlag){
         $('#for-responsiveness').removeClass('col');
         $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness').addClass('col-8');
@@ -128,7 +118,7 @@ export class HeaderComponent implements OnDestroy{
         $('#for-responsiveness-singleDeal').addClass('col-8');
         $('#for-responsiveness-singleDeal').removeClass('col');
         $('#for-responsiveness-singleDeal').removeClass('for-responsiveness-margin-left-right');
-        this.onResizeEventFlag = false;
+        this._onResizeEventFlag = false;
         this.benimFirsatimLibrary.showPointTable.next(true);
       }
       this.firsatEkleKucult = false;
@@ -416,4 +406,6 @@ export class HeaderComponent implements OnDestroy{
       document.getElementById("myInput").focus();
     },500)
   }
+
+
 }

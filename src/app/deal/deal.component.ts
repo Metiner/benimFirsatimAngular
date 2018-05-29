@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {FacebookService} from "ngx-facebook";
 import {NgForm} from '@angular/forms';
+import {HeaderComponent} from "../header/header.component";
 
 declare var lottie: any;
 declare var $: any;
@@ -30,7 +31,21 @@ export class DealComponent implements OnInit, OnDestroy {
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router,
-              public fb: FacebookService) {
+              public fb: FacebookService,
+              private headerComponent:HeaderComponent) {
+
+    $(document).ready(()=>{
+      console.log("girdi");
+      if(innerWidth < 1180){
+        this.headerComponent._onResizeEventFlag = false;
+      }else{
+        this.headerComponent._onResizeEventFlag = true;
+      }
+      var event = {};
+      this.headerComponent.responsiveDesign(event);
+
+
+    })
 
     this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({
       next: () => {

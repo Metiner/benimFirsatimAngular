@@ -4,6 +4,7 @@ import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
 import {Subscription} from 'rxjs/Subscription';
+import {HeaderComponent} from "../header/header.component";
 declare var lottie: any;
 declare var $:any
 
@@ -39,10 +40,24 @@ export class SingleDealComponent implements OnInit {
   constructor(public route: ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
               private _scrollTo:ScrollToService,
-              private ref: ChangeDetectorRef) {
+              private ref: ChangeDetectorRef,
+              private headerComponent:HeaderComponent) {
     }
 
   ngOnInit() {
+
+    $(document).ready(()=>{
+      console.log("girdi");
+      if(innerWidth < 1180){
+        this.headerComponent._onResizeEventFlag = false;
+      }else{
+        this.headerComponent._onResizeEventFlag = true;
+      }
+      var event = {};
+      this.headerComponent.responsiveDesign(event);
+
+
+    })
 
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
       next: (data) => {
