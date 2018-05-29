@@ -25,6 +25,8 @@ import {ProfileSettingsComponent} from './profile-settings/profile-settings.comp
 import {FeedbackComponent} from './feedback/feedback.component';
 import {AdsenseModule} from 'ng2-adsense';
 import {A2tUiModule, Angular2TokenService} from 'angular2-token';
+import {UpperPointTableComponent} from './upper-point-table/upper-point-table.component';
+import {PopularCategoriesComponent} from './popular-categories/popular-categories.component';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
@@ -47,7 +49,9 @@ const appRoutes : Routes = [
     SignInComponent,
     CreateNewDealComponent,
     ProfileSettingsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    UpperPointTableComponent,
+    PopularCategoriesComponent
   ],
   imports: [
     BrowserModule,

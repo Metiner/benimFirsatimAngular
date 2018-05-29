@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
+import {Subscription} from 'rxjs/Subscription';
 declare var lottie: any;
 declare var $:any
 
@@ -20,6 +21,10 @@ export class SingleDealComponent implements OnInit {
   newlyAddedSubComment = "";
   comments = [];
   commentIndex = 10;
+  showPointTableSubs: Subscription;
+  showPointTable = true;
+
+
   animation:any;
   likeButtonAnimation:any;
   commentButtonAnimation:any;
@@ -38,6 +43,12 @@ export class SingleDealComponent implements OnInit {
     }
 
   ngOnInit() {
+
+    this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
+      next: () => {
+        this.showPointTable = !this.showPointTable;
+      }
+    });
 
     this.loadAnimations();
     if (this.route.snapshot.params['dealId'] == 0) {

@@ -22,9 +22,9 @@ export class DealComponent implements OnInit, OnDestroy {
   displayedDeals = [];
   mySubscription: Subscription;
   showPointTableSubs: Subscription;
+  showPointTable = true;
   likeButtonAnimations = [];
   commentButtonAnimations = [];
-  showPointTable = true;
   resultText = "";
   showResultText = false;
 

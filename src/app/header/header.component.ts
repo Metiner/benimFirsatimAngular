@@ -34,6 +34,8 @@ export class HeaderComponent implements OnDestroy{
 
   firsatEkleKucult = false;
 
+  onResizeEventFlag = false;
+
   isAuth = false;
   showSingUpSignInPopUp = false;
 
@@ -66,16 +68,28 @@ export class HeaderComponent implements OnDestroy{
         $('.logo').addClass('logo-for-margin');
         $('.dealTitleAndUserRow').addClass('text-center');
 
-        this.benimFirsatimLibrary.showPointTable.next();
+        if(!this.onResizeEventFlag){
+          $('#for-responsiveness').addClass('col');
+          $('#for-responsiveness').addClass('for-responsiveness-margin-left-right');
+          $('#for-responsiveness').removeClass('col-8');
+          $('#for-responsiveness').removeClass('offset-1');
 
+          this.onResizeEventFlag = true;
+          this.benimFirsatimLibrary.showPointTable.next();
+        }
       }else{
+        if(this.onResizeEventFlag){
+          $('#for-responsiveness').removeClass('col');
+          $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
+          $('#for-responsiveness').addClass('col-8');
+          $('#for-responsiveness').addClass('offset-1');
+          this.onResizeEventFlag = false;
+          this.benimFirsatimLibrary.showPointTable.next();
+        }
         this.firsatEkleKucult = false;
         $('.font-class').removeClass('font-size');
         $('.logo').removeClass('logo-for-margin');
         $('.dealTitleAndUserRow').removeClass('text-center');
-        this.benimFirsatimLibrary.showPointTable.next();
-
-
       }
     }
   }

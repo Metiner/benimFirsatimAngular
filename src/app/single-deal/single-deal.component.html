@@ -1,5 +1,5 @@
 <div class="row" id="commentsScroll">
-  <div class="col-8 offset-1">
+  <div class="col-8 offset-1" id="for-responsiveness">
     <div class="row" style="min-height: 350px;border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1;margin-top: 10px;align-items: center;justify-content: center">
       <div class="col">
         <div class="row">
@@ -295,7 +295,7 @@
       </div>
     </div>
   </div>
-  <div class="col-3">
+  <div class="col-3" *ngIf="showPointTable">
     <app-point-table></app-point-table>
   </div>
 </div>
