@@ -19,36 +19,44 @@
          @dealState
          (@dealState.done)="onDealAnimated($event,i,likeContainer,commentContainer)"
          style=";border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-bottom: 2%">
-      <div class="col-auto mx-auto" style="text-align: center;align-self: center;margin-top: 25px;">
+      <div class="col-auto mx-auto" style="text-align: center;align-self: center;margin-top: 25px;margin-bottom: 25px">
         <img src="{{deal.image_url}}" style="max-width: 180px;min-width: 180px;">
       </div>
       <div class="col" style="padding: 0px 30px 0px 30px;">
-        <div class="row title">
-          <span (click)="goToDeal(deal.id)" style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491">{{deal.title.slice(0,200).concat('..')}}</span>
+        <div class="row title dealTitleAndUserRow">
+          <div class="col">
+            <span (click)="goToDeal(deal.id)" style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.title.slice(0,200).concat('..')}}</span>
+          </div>
         </div>
-        <div class="row" style="padding-top: 1%">
-          <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491;line-height: 1.2;">{{deal.details.slice(0,304).concat('..')}}</span>
+        <div class="row dealTitleAndUserRow" style="padding-top: 1%">
+          <div class="col">
+            <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491;line-height: 1.2;">{{deal.details.slice(0,304).concat('..')}}</span>
+          </div>
         </div>
-        <div class="row" style="align-items: flex-end;padding-top: 1%;flex-wrap: nowrap">
+        <div class="row" style="padding-top: 1%;flex-wrap: nowrap">
           <div class="col-auto">
             <div class="row" style="align-items: center;flex-wrap: nowrap">
-              <div class="col nopadding">
+              <div class="col" style="padding-right: 0px">
                 <img src="../../assets/svgs/price_tag.svg" style="min-width: 50px;max-width: 50px">
               </div>
-              <div class="col-9 nopadding">
+              <div class="col-9" style="padding-left: 0px;">
                 <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;padding: 10px">{{whatIsPrice(deal)}}</span>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="row" style="align-items: flex-end;flex-wrap: nowrap">
-              <div class="col-12 nopadding" style="min-width: 80px;max-width: 80px">
+            <div class="row" style="align-items: center;flex-wrap: nowrap">
+              <div class="col nopadding" style="min-width: 50px;max-width: 50px">
                 <div  #likeContainer class="lottieLikeButton" (click)="playAnim(i,'like')"></div>
-                <span class="likeComment-span">{{deal.votes_sum}}</span>
               </div>
-              <div class="col-12 nopadding" style="min-width: 80px;max-width: 80px">
+              <div class="col-auto nopadding">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;padding: 0px 10px 0px 2px">{{deal.votes_sum}}</span>
+              </div>
+              <div class="col nopadding" style="min-width: 50px;max-width: 50px">
                 <div #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div>
-                <span class="likeComment-span">{{deal.comments_count}}</span>
+              </div>
+              <div class="col-auto nopadding">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color: #234491;padding: 0px 10px 0px 2px">{{deal.comments_count}}</span>
               </div>
             </div>
           </div>
@@ -70,9 +78,9 @@
         </div>
         <div class="row">
           <div class="col">
-            <div class="row" style="align-items: center;flex-wrap: nowrap">
+            <div class="row" style="align-items: center;flex-wrap: nowrap;margin-left: 3px">
 
-              <div class="col" style="padding-left: 0px;display: contents">
+              <div class="col" style="display: contents">
                 <img src="{{deal.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
 
                 <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal.user.name.slice(0,15).concat('..')}}&nbsp;</span>

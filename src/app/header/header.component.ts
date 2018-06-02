@@ -103,7 +103,10 @@ export class HeaderComponent implements OnDestroy{
       this.firsatEkleKucult = true;
       $('.font-class').addClass('font-size');
       $('.logo').addClass('logo-for-margin');
-      $('.dealTitleAndUserRow').addClass('text-center');
+
+      if(innerWidthToCheck < 960){
+        $('.dealTitleAndUserRow').addClass('text-center');
+      }
 
       if(!this._onResizeEventFlag){
 
@@ -140,7 +143,10 @@ export class HeaderComponent implements OnDestroy{
       }
       $('.font-class').removeClass('font-size');
       $('.logo').removeClass('logo-for-margin');
-      $('.dealTitleAndUserRow').removeClass('text-center');
+
+      if(innerWidthToCheck > 960){
+        $('.dealTitleAndUserRow').removeClass('text-center');
+      }
     }
   }
 

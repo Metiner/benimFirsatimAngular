@@ -97,14 +97,14 @@ export class SingleDealComponent implements OnInit {
         renderer: 'svg',
         loop: false,
         autoplay: false,
-        path: 'assets/animations/like_button.json' // the path to the animation json
+        path: 'assets/animations/like_icon_round.json' // the path to the animation json
       });
       this.commentButtonAnimation = lottie.loadAnimation({
         container: document.getElementById("lottieCommentButton"), // the dom element that will contain the animation
         renderer: 'svg',
         loop: true,
         autoplay: false,
-        path: 'assets/animations/comment_button.json' // the path to the animation json
+        path: 'assets/animations/comment_icon_round.json' // the path to the animation json
       });
     })
   }
@@ -120,7 +120,7 @@ export class SingleDealComponent implements OnInit {
               renderer:'svg',
               autoplay: false,
               loop:false,
-              path:'assets/animations/thumb_up.json'
+              path:'assets/animations/thumb_up_icon_round.json'
             })
           )
         }

@@ -167,7 +167,7 @@ export class DealComponent implements OnInit, OnDestroy {
       renderer: 'svg',
       loop: false,
       autoplay: false,
-      path: 'assets/animations/like_button.json' // the path to the animation json
+      path: 'assets/animations/like_icon_round.json' // the path to the animation json
     }));
 
     this.commentButtonAnimations.push(lottie.loadAnimation({
@@ -175,7 +175,7 @@ export class DealComponent implements OnInit, OnDestroy {
       renderer: 'svg',
       loop: true,
       autoplay: false,
-      path: 'assets/animations/comment_button.json' // the path to the animation json
+      path: 'assets/animations/comment_icon_round.json' // the path to the animation json
     }));
 
 
