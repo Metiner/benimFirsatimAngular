@@ -46,6 +46,7 @@ export class SingleDealComponent implements OnInit {
   ngOnInit() {
 
     $(document).ready(()=>{
+
       this.benimFirsatimLib.responsiveDesignFunc();
     })
 

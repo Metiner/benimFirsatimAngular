@@ -1,11 +1,11 @@
 <div id="top" style="position: fixed;z-index: 1;width: 100%">
   <div class="row align-items-center headerBackground" style="flex-wrap: nowrap">
-    <div class="cursor-pointer col-1  offset-1 logo" routerLink="/" style="outline:0;align-self: start;outline: 0">
+    <div class="cursor-pointer col-auto  offset-1 logo" routerLink="/" style="outline:0;align-self: start;outline: 0">
       <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
     </div>
     <div class="col">
       <div class="row" style="flex-wrap: nowrap">
-        <div class="col cursor-pointer text-center scale"  routerLink="/" style="outline:0;margin-left: 60px">
+        <div class="col cursor-pointer text-center scale"  routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('hot')">
             <div class="col click" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
               <lottie-animation-view

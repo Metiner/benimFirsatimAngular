@@ -64,7 +64,7 @@ export class HeaderComponent implements OnDestroy{
 
     this.responsiveDesignSubscription = this.benimFirsatimLibrary.responsiveDesign.subscribe(value=>{
 
-      if(innerWidth < 1180){
+      if(innerWidth < 1275){
         this._onResizeEventFlag = false;
       }else{
         this._onResizeEventFlag = true;
@@ -96,15 +96,17 @@ export class HeaderComponent implements OnDestroy{
     }else{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
-    if(innerWidthToCheck < 1180){
+    if(innerWidthToCheck < 1275){
 
 
 
       this.firsatEkleKucult = true;
       $('.font-class').addClass('font-size');
       $('.logo').addClass('logo-for-margin');
+      $('.footer-col').addClass('mx-auto');
 
-      if(innerWidthToCheck < 960){
+
+      if(innerWidthToCheck < 1000){
         $('.dealTitleAndUserRow').addClass('text-center');
       }
 
@@ -138,13 +140,17 @@ export class HeaderComponent implements OnDestroy{
         $('#for-responsiveness-singleDeal').addClass('col-8');
         $('#for-responsiveness-singleDeal').removeClass('col');
         $('#for-responsiveness-singleDeal').removeClass('for-responsiveness-margin-left-right');
+
+
         this._onResizeEventFlag = false;
         this.benimFirsatimLibrary.showPointTable.next(true);
       }
       $('.font-class').removeClass('font-size');
       $('.logo').removeClass('logo-for-margin');
+      $('.footer-col').removeClass('mx-auto');
 
-      if(innerWidthToCheck > 960){
+
+      if(innerWidthToCheck > 1000){
         $('.dealTitleAndUserRow').removeClass('text-center');
       }
     }
