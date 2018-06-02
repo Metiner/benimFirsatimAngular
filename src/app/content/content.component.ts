@@ -22,34 +22,29 @@ declare var gapi:any;
     kayitSuccessTrigger]
 })
 export class ContentComponent implements OnDestroy,OnInit{
-  public auth2: any;
-  showSingUpSignInPopUp = false;
-  tutorial = false;
-  blackDiv = false;
-  feedbackDivOpen = false;
+
   mySignUpPopUpSubscription: Subscription;
   myFeedbackPopUpSubscription: Subscription;
+
+
+  auth2: any;
   email:string;
-  password:string;
   password2:string;
-  feedBackType = {};
-
-  tur:any;
-
-  turs = [{id:1,name:'Şikayet'},{id:2,name:'Öneri'},{id:3,name:'İstek'}];
+  kayitOlAnim:any;
+  tutorialAnim:any;
 
   kayitOlState = 'down';
   girisYapState = 'up';
   currentState = 'giris';
+
+  showSingUpSignInPopUp = false;
+  tutorial = false;
+  blackDiv = false;
+  feedbackDivOpen = false;
   kayitOlBool = false;
   beniHatirlaBool = true;
-
-  kayitOlAnim:any;
-  tutorialAnim:any;
-
   kayitOlButtonClickable = false;
   girisYapButtonClickable = false;
-
   showForm = true;
   kayitBasariliText = false;
   girisBasariliText = false;

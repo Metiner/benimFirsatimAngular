@@ -40,23 +40,13 @@ export class SingleDealComponent implements OnInit {
   constructor(public route: ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
               private _scrollTo:ScrollToService,
-              private ref: ChangeDetectorRef,
-              private headerComponent:HeaderComponent) {
+              private ref: ChangeDetectorRef) {
     }
 
   ngOnInit() {
 
     $(document).ready(()=>{
-      console.log("girdi");
-      if(innerWidth < 1180){
-        this.headerComponent._onResizeEventFlag = false;
-      }else{
-        this.headerComponent._onResizeEventFlag = true;
-      }
-      var event = {};
-      this.headerComponent.responsiveDesign(event);
-
-
+      this.benimFirsatimLib.responsiveDesignFunc();
     })
 
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
@@ -146,7 +136,6 @@ export class SingleDealComponent implements OnInit {
         this.likeButtonAnimation.liked = false;
         this.benimFirsatimLib.upVoteDeal(this.deal.id).subscribe(response=>{
           this.deal.votes_sum = response.json().deal_score;
-          console.log(response.json());
         });
 
       }else{
@@ -154,7 +143,6 @@ export class SingleDealComponent implements OnInit {
         this.likeButtonAnimation.liked = true;
         this.benimFirsatimLib.downVoteDeal(this.deal.id).subscribe(response=>{
           this.deal.votes_sum = response.json().deal_score;
-          console.log(response.json());
         });
       }
     }else if(type === 'thumbsUp'){
@@ -287,7 +275,6 @@ export class SingleDealComponent implements OnInit {
 
   favDeal(){
     this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{
-      console.log(response.json());
     })
   }
   addSubcommentIndex(comment,index){

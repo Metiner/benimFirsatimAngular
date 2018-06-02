@@ -68,7 +68,6 @@ const appRoutes : Routes = [
     A2tUiModule
   ],
   providers: [BenimFirsatimLibrary,
-              HeaderComponent,
               Angular2TokenService],
   bootstrap: [AppComponent],
   schemas: [

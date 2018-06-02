@@ -164,6 +164,7 @@ export class CreateNewDealComponent implements OnInit {
       this.showProgressBar = true;
 
       this.benimFirsatimlib.getPullMeta(event.target.value).subscribe(response => {
+        console.log(response);
 
         if (!response.json().hasOwnProperty("errors") && response.json().best_image != null && response.json().other_images != []) {
           this.images = [];

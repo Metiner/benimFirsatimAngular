@@ -19,32 +19,25 @@ declare var $: any;
 })
 export class DealComponent implements OnInit, OnDestroy {
 
-  deals = [];
-  displayedDeals = [];
   mySubscription: Subscription;
   showPointTableSubs: Subscription;
-  showPointTable = true;
+
+  deals = [];
+  displayedDeals = [];
   likeButtonAnimations = [];
   commentButtonAnimations = [];
+
   resultText = "";
+
+  showPointTable = true;
   showResultText = false;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router,
-              public fb: FacebookService,
-              private headerComponent:HeaderComponent) {
+              public fb: FacebookService) {
 
     $(document).ready(()=>{
-      console.log("girdi");
-      if(innerWidth < 1180){
-        this.headerComponent._onResizeEventFlag = false;
-      }else{
-        this.headerComponent._onResizeEventFlag = true;
-      }
-      var event = {};
-      this.headerComponent.responsiveDesign(event);
-
-
+      this.benimFirsatimLib.responsiveDesignFunc();
     })
 
     this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({

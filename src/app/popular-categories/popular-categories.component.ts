@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
 
 @Component({
   selector: 'app-popular-categories',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopularCategoriesComponent implements OnInit {
 
-  popularCategories = [1,2,3];
+  categories = [];
 
-  constructor() { }
+  constructor(public benimFirsatimLibrary: BenimFirsatimLibrary) {
+    this.benimFirsatimLibrary.getTopCategories().subscribe((topCategories)=>{
+
+      this.categories = topCategories.json().sort((a, b) => {
+        return b.deals_count - a.deals_count;
+      });
+
+      this.categories = this.categories.slice(0,3);
+    });
+  }
 
   ngOnInit() {
   }
+
 
 }

@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {Subscription} from "rxjs/Subscription";
 declare var $:any;
 
-
+@Injectable()
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnDestroy{
   searchDivAnimation = 'out';
   categories = [];
 
-  firsatEkleKucult = false;
+  public firsatEkleKucult = false;
 
   public _onResizeEventFlag = false;
 
@@ -40,6 +40,7 @@ export class HeaderComponent implements OnDestroy{
   showSingUpSignInPopUp = false;
 
   autSubscription : Subscription;
+  responsiveDesignSubscription : Subscription;
   searchResponse:any;
 
   searchParam = "";
@@ -58,7 +59,21 @@ export class HeaderComponent implements OnDestroy{
       if(value === 'success'){
         this.isAuth = true;
       }
-    })
+    });
+
+
+    this.responsiveDesignSubscription = this.benimFirsatimLibrary.responsiveDesign.subscribe(value=>{
+
+      if(innerWidth < 1180){
+        this._onResizeEventFlag = false;
+      }else{
+        this._onResizeEventFlag = true;
+      }
+
+      var event = {};
+      this.responsiveDesign(event);
+
+    });
 
 
 
@@ -74,16 +89,16 @@ export class HeaderComponent implements OnDestroy{
   }
 
   responsiveDesign(event){
-    var innerWidthToCheck;
+    let innerWidthToCheck;
 
     if(event.srcElement === undefined){
       innerWidthToCheck = innerWidth;
-
-
     }else{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
     if(innerWidthToCheck < 1180){
+
+
 
       this.firsatEkleKucult = true;
       $('.font-class').addClass('font-size');
@@ -107,6 +122,8 @@ export class HeaderComponent implements OnDestroy{
         this.benimFirsatimLibrary.showPointTable.next(false);
       }
     }else{
+      this.firsatEkleKucult = false;
+
       if(this._onResizeEventFlag){
         $('#for-responsiveness').removeClass('col');
         $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
@@ -121,7 +138,6 @@ export class HeaderComponent implements OnDestroy{
         this._onResizeEventFlag = false;
         this.benimFirsatimLibrary.showPointTable.next(true);
       }
-      this.firsatEkleKucult = false;
       $('.font-class').removeClass('font-size');
       $('.logo').removeClass('logo-for-margin');
       $('.dealTitleAndUserRow').removeClass('text-center');
