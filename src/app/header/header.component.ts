@@ -96,6 +96,17 @@ export class HeaderComponent implements OnDestroy{
     }else{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
+
+    if(innerWidthToCheck <1475){
+
+      $('.col-to-1').removeClass('col-2');
+      $('.col-to-1').addClass('col-auto');
+
+    }else{
+      $('.col-to-1').removeClass('col-auto');
+      $('.col-to-1').addClass('col-2');
+    }
+
     if(innerWidthToCheck < 1275){
 
 

@@ -34,55 +34,47 @@
           </div>
         </div>
         <div class="row" style="padding-top: 1%;flex-wrap: nowrap">
-          <div class="col-auto">
+          <div class="col-auto" style="margin-right: auto">
             <div class="row" style="align-items: center;flex-wrap: nowrap">
               <div class="col" style="padding-right: 0px">
                 <img src="../../assets/svgs/price_tag.svg" style="min-width: 50px;max-width: 50px">
               </div>
-              <div class="col-9" style="padding-left: 0px;">
-                <span style="font-family: 'Mark Pro-Heavy';font-size: 25px;color: #234491;padding: 10px">{{whatIsPrice(deal)}}</span>
+              <div class="col-9" style="padding-left: 0px">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 25px;color: #234491;padding: 0 0 0 8px">{{whatIsPrice(deal)}}</span>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="row" style="align-items: center;flex-wrap: nowrap">
-              <div class="col-auto mx-auto">
-                <div class="row" style="align-items: center">
-                  <div class="col nopadding" style="min-width: 50px;max-width: 50px">
-                    <div style="max-height: 50px" #likeContainer class="lottieLikeButton" (click)="playAnim(i,'like')"></div>
-                  </div>
-                  <div class="col-auto nopadding">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal.votes_sum}}</span>
-                  </div>
-                </div>
+          <div class="col-auto" style="padding-left: 0px;">
+            <div class="row" style="align-items: center">
+              <div class="col" style="padding-right: 0px">
+                <div style="max-height: 50px;max-width: 50px;min-width: 50px;" #likeContainer class="lottieLikeButton" (click)="playAnim(i,'like')"></div>
               </div>
-              <div class="col-auto mx-auto">
-                <div class="row" style="align-items: center">
-                  <div class="col nopadding" style="min-width: 50px;max-width: 50px">
-                    <div style="max-height: 50px" #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div>
-                  </div>
-                  <div class="col-auto nopadding">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal.comments_count}}</span>
-                  </div>
-                </div>
+              <div class="col-auto" style="padding-left: 0px;">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 0px 0px 2px">{{deal.votes_sum}}</span>
               </div>
             </div>
           </div>
-          <div class="col-2"></div>
-          <div class="col-auto">
-            <div class="row" style="align-items: center;flex-wrap: nowrap">
-              <div class="col-auto mx-auto nopadding">
-                <img (click)="shareDeal(deal)" src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 40px;min-width: 40px;">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal.image_url}}&description={{deal.title}}" target="_blank">
-                </a>
+          <div class="col-auto mx-auto" style="padding-left: 0px;">
+            <div class="row" style="align-items: center">
+              <div class="col" style="padding-right: 0px">
+                <div style="max-height: 50px;min-width: 50px;max-width: 50px" #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div>
               </div>
-              <div class="col-auto mx-auto cursor-pointer" >
-                <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 40px;">
-              </div>
-              <div class="col cursor-pointer">
-                <img (click)="goToLink(deal.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
+              <div class="col-auto nopadding">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal.comments_count}}</span>
               </div>
             </div>
+          </div>
+          <div class="col-2 col-to-1"></div>
+          <div class="col-auto nopadding" style="    align-self: center">
+            <img (click)="shareDeal(deal)" src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 30px;min-width: 30px;transform: translate(15px)">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal.image_url}}&description={{deal.title}}" target="_blank">
+            </a>
+          </div>
+          <div class="col-auto  nopadding cursor-pointer" style="align-self: center;margin-left: 15px;transform: translate(15px)">
+            <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
+          </div>
+          <div class="col-auto cursor-pointer"   style="margin-left: 15px">
+            <img (click)="goToLink(deal.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
           </div>
         </div>
         <div class="row" style="margin-top: 10px">

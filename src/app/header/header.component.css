@@ -1,3 +1,6 @@
+/**{
+  padding:0px !important;
+}*/
 .headerBackground {
   background-image: url("../../assets/svgs/nav_bar.svg");
   background-size: cover;
@@ -6,6 +9,12 @@
   position: relative;
   z-index: 2; }
 
+.category-items {
+  min-width: 80px; }
+
+/*.row{
+  margin: 0px !important;
+}*/
 .search {
   font-family: "Mark Pro-Heavy";
   color: #234491;
@@ -38,9 +47,6 @@
   background-image: url("../../assets/svgs/search_box.svg");
   background-repeat: no-repeat; }
 
-/*div{
-  border:1px solid black;
-}*/
 .categories {
   background-image: url("../../assets/imgs/kategoriler_bg@2x.png");
   border-radius: 0px 0px 60px 60px;
@@ -81,22 +87,19 @@
   transform: scale(0.7);
   cursor: pointer; }
 
-.scale {
-  transform: scale(0.8); }
-
 .click {
   transform: scale(0.6); }
 
 .font-class {
   font-family: 'Mark Pro-Bold';
-  font-size: 17px;
+  font-size: 14px;
   color: #f7e60f;
   white-space: nowrap; }
 
 .font-size {
-  font-size: 12px !important; }
+  font-size: 11px !important; }
 
 .logo-for-margin {
-  margin-left: 30px; }
+  margin-left: 80px; }
 
 /*# sourceMappingURL=header.component.css.map */
