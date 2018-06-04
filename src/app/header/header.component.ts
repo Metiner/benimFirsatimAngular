@@ -113,7 +113,6 @@ export class HeaderComponent implements OnDestroy{
 
       this.firsatEkleKucult = true;
       $('.font-class').addClass('font-size');
-      $('.logo').addClass('logo-for-margin');
       $('.footer-col').addClass('mx-auto');
 
 
@@ -124,13 +123,9 @@ export class HeaderComponent implements OnDestroy{
       if(!this._onResizeEventFlag){
 
         $('#for-responsiveness').addClass('col');
-        $('#for-responsiveness').addClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness').removeClass('col-8');
-        $('#for-responsiveness').removeClass('offset-1');
 
-        $('#for-responsiveness-singleDeal').addClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness-singleDeal').addClass('col');
-        $('#for-responsiveness-singleDeal').removeClass('offset-1');
         $('#for-responsiveness-singleDeal').removeClass('col-8');
 
 
@@ -142,22 +137,17 @@ export class HeaderComponent implements OnDestroy{
 
       if(this._onResizeEventFlag){
         $('#for-responsiveness').removeClass('col');
-        $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness').addClass('col-8');
-        $('#for-responsiveness').addClass('offset-1');
 
 
-        $('#for-responsiveness-singleDeal').addClass('offset-1');
         $('#for-responsiveness-singleDeal').addClass('col-8');
         $('#for-responsiveness-singleDeal').removeClass('col');
-        $('#for-responsiveness-singleDeal').removeClass('for-responsiveness-margin-left-right');
 
 
         this._onResizeEventFlag = false;
         this.benimFirsatimLibrary.showPointTable.next(true);
       }
       $('.font-class').removeClass('font-size');
-      $('.logo').removeClass('logo-for-margin');
       $('.footer-col').removeClass('mx-auto');
 
 

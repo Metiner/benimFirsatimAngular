@@ -8,7 +8,7 @@
 
 </div>
 <div class="row">
-  <div class="col-8 offset-1" id="for-responsiveness">
+  <div class="col-8 offset-1" id="for-responsiveness" style="padding-left: 0px">
     <div class="row" *ngIf="showResultText" style="margin-top: 50px">
       <div class="col">
         <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">{{resultText}}</span>
@@ -102,9 +102,10 @@
     </div>
   </div>
 
-  <div class="col" *ngIf="showPointTable">
+  <div class="col-2" style="position: fixed;right: 7%;padding-right: 0px" *ngIf="showPointTable">
     <app-point-table></app-point-table>
   </div>
+  <div class="col-1 nopadding"></div>
 
 </div>
 
