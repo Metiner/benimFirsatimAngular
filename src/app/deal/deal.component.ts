@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {FacebookService} from "ngx-facebook";
 import {NgForm} from '@angular/forms';
+import {HeaderComponent} from "../header/header.component";
 
 declare var lottie: any;
 declare var $: any;
@@ -18,19 +19,26 @@ declare var $: any;
 })
 export class DealComponent implements OnInit, OnDestroy {
 
-  deals = [];
-  displayedDeals = [];
   mySubscription: Subscription;
   showPointTableSubs: Subscription;
-  showPointTable = true;
+
+  deals = [];
+  displayedDeals = [];
   likeButtonAnimations = [];
   commentButtonAnimations = [];
+
   resultText = "";
+
+  showPointTable = true;
   showResultText = false;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public route: Router,
               public fb: FacebookService) {
+
+    $(document).ready(()=>{
+      this.benimFirsatimLib.responsiveDesignFunc();
+    })
 
     this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({
       next: () => {
@@ -159,7 +167,7 @@ export class DealComponent implements OnInit, OnDestroy {
       renderer: 'svg',
       loop: false,
       autoplay: false,
-      path: 'assets/animations/like_button.json' // the path to the animation json
+      path: 'assets/animations/like_icon_round.json' // the path to the animation json
     }));
 
     this.commentButtonAnimations.push(lottie.loadAnimation({
@@ -167,7 +175,7 @@ export class DealComponent implements OnInit, OnDestroy {
       renderer: 'svg',
       loop: true,
       autoplay: false,
-      path: 'assets/animations/comment_button.json' // the path to the animation json
+      path: 'assets/animations/comment_icon_round.json' // the path to the animation json
     }));
 
 

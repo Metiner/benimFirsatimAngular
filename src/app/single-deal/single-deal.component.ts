@@ -4,6 +4,7 @@ import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
 import {Subscription} from 'rxjs/Subscription';
+import {HeaderComponent} from "../header/header.component";
 declare var lottie: any;
 declare var $:any
 
@@ -43,6 +44,11 @@ export class SingleDealComponent implements OnInit {
     }
 
   ngOnInit() {
+
+    $(document).ready(()=>{
+
+      this.benimFirsatimLib.responsiveDesignFunc();
+    })
 
     this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
       next: (data) => {
@@ -92,14 +98,14 @@ export class SingleDealComponent implements OnInit {
         renderer: 'svg',
         loop: false,
         autoplay: false,
-        path: 'assets/animations/like_button.json' // the path to the animation json
+        path: 'assets/animations/like_icon_round.json' // the path to the animation json
       });
       this.commentButtonAnimation = lottie.loadAnimation({
         container: document.getElementById("lottieCommentButton"), // the dom element that will contain the animation
         renderer: 'svg',
         loop: true,
         autoplay: false,
-        path: 'assets/animations/comment_button.json' // the path to the animation json
+        path: 'assets/animations/comment_icon_round.json' // the path to the animation json
       });
     })
   }
@@ -115,7 +121,7 @@ export class SingleDealComponent implements OnInit {
               renderer:'svg',
               autoplay: false,
               loop:false,
-              path:'assets/animations/thumb_up.json'
+              path:'assets/animations/thumb_up_icon_round.json'
             })
           )
         }
@@ -131,7 +137,6 @@ export class SingleDealComponent implements OnInit {
         this.likeButtonAnimation.liked = false;
         this.benimFirsatimLib.upVoteDeal(this.deal.id).subscribe(response=>{
           this.deal.votes_sum = response.json().deal_score;
-          console.log(response.json());
         });
 
       }else{
@@ -139,7 +144,6 @@ export class SingleDealComponent implements OnInit {
         this.likeButtonAnimation.liked = true;
         this.benimFirsatimLib.downVoteDeal(this.deal.id).subscribe(response=>{
           this.deal.votes_sum = response.json().deal_score;
-          console.log(response.json());
         });
       }
     }else if(type === 'thumbsUp'){
@@ -272,7 +276,6 @@ export class SingleDealComponent implements OnInit {
 
   favDeal(){
     this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{
-      console.log(response.json());
     })
   }
   addSubcommentIndex(comment,index){

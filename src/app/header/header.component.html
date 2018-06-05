@@ -1,11 +1,11 @@
 <div id="top" style="position: fixed;z-index: 1;width: 100%">
   <div class="row align-items-center headerBackground" style="flex-wrap: nowrap">
-    <div class="cursor-pointer col-1  offset-1 logo" routerLink="/" style="outline:0;align-self: start;outline: 0">
-      <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
-    </div>
-    <div class="col">
+    <div class="col mx-auto nopadding" style="max-width: 1710px">
       <div class="row" style="flex-wrap: nowrap">
-        <div class="col cursor-pointer text-center scale"  routerLink="/" style="outline:0;margin-left: 60px">
+        <div class="cursor-pointer col-auto  offset-1 logo" routerLink="/" style="outline:0;align-self: start;outline: 0;padding-right: 0px;padding-left: 0px">
+          <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
+        </div>
+        <div class="col-auto nopadding mx-auto cursor-pointer text-center category-items"  routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('hot')">
             <div class="col click" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
               <lottie-animation-view
@@ -17,12 +17,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="col">
+            <div class="col-auto mx-auto">
               <span class="cursor-pointer font-class">ÖNE ÇIKANLAR</span>
             </div>
           </div>
         </div>
-        <div class="col cursor-pointer text-center scale" routerLink="/" style="outline:0;margin-left: -10px;">
+        <div class="col-auto nopadding mx-auto cursor-pointer text-center category-items" routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('rising')">
             <div class="col click" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
               <lottie-animation-view
@@ -34,14 +34,14 @@
             </div>
           </div>
           <div class="row">
-            <div class="col">
+            <div class="col-auto mx-auto">
               <span class="cursor-pointer font-class">YÜKSELENLER</span>
             </div>
           </div>
         </div>
-        <div class="col text-center scale cursor-pointer" routerLink="/" style="outline:0">
+        <div class="col-auto nopadding mx-auto text-center  cursor-pointer category-items" routerLink="/" style="outline:0">
           <div class="row" (click)="onCategoryChange('newcomers')">
-            <div class="col" (mouseenter)="playAnim(3)" style="  transform: scale(0.8)" (mouseleave)="stopAnim(3)">
+            <div class="col" (mouseenter)="playAnim(3)"  (mouseleave)="stopAnim(3)">
               <lottie-animation-view
                 [options]="yenilerAnimConf"
                 [width]="50"
@@ -50,12 +50,12 @@
               </lottie-animation-view></div>
           </div>
           <div class="row">
-            <div class="col">
+            <div class="col-auto mx-auto">
               <span class="cursor-pointer font-class">YENİLER</span>
             </div>
           </div>
         </div>
-        <div class="col text-center scale cursor-pointer">
+        <div class="col-auto nopadding mx-auto text-center  cursor-pointer category-items">
           <div class="row">
             <div class="col" (mouseenter)="slideCategoriesDiv('in')">
               <div class="col click" (mouseenter)="playAnim(4)" (mouseleave)="stopAnim(4)">
@@ -69,65 +69,66 @@
             </div>
           </div>
           <div class="row">
-            <div class="col">
+            <div class="col-auto mx-auto">
               <span class="cursor-pointer font-class" style="margin-top: 15px">KATEGORİLER</span>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div *ngIf="firsatEkleKucult" class="col-1 scale" style="text-align: center;margin-left: 20px">
-      <div class="row" style="margin-top: 10px">
-        <div class="col">
-          <img  src="../../assets/imgs/yeni_firsat_button@3x.png" style="max-width: 33px">
+        <div *ngIf="firsatEkleKucult" class="col-auto mx-auto  nopadding category-items" style="text-align: center;align-self: center">
+          <div class="row">
+            <div class="col-12" style="margin-top: -2px">
+              <img  src="../../assets/imgs/yeni_firsat_button@3x.png" style="max-width: 33px">
+            </div>
+            <div class="col-auto mx-auto" style="margin-top: 7px;padding: 0px">
+              <span class="cursor-pointer font-class font-size">FIRSAT EKLE</span>
+            </div>
+          </div>
         </div>
-        <div class="col" style="margin-top: 9px;margin-left: -17px">
-          <span class="cursor-pointer font-class">FIRSAT EKLE</span>
+        <div *ngIf="!firsatEkleKucult" class="col-auto  mx-auto nopadding category-items" style="text-align: center;align-self: center" (click)="onCreateNewDeal()" >
+          <div class="row">
+            <div class="col">
+              <img style="max-height: 50px;margin-top: -2.5px;" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div *ngIf="!firsatEkleKucult" class="col-2 scale" style="text-align: center" (click)="onCreateNewDeal()" >
-      <div class="row">
-        <div class="col">
-          <img style="height: 60px" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
+        <div class="col-auto cursor-pointer mx-auto  nopadding category-items" style="text-align: center">
+          <div class="row" style="margin-top: 10px">
+            <div class="col">
+              <img src="../../assets/svgs/search_icon.svg" style="height: 33px;margin-left: -7px" (click)="onSearchIcon()">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto mx-auto" style="margin-top: 7px">
+              <span class="cursor-pointer font-class">ARAMA YAP</span>
+            </div>
+          </div>
+          <!--<input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">-->
         </div>
-      </div>
-    </div>
-    <div class="col-1 cursor-pointer scale" style="text-align: center">
-      <div class="row" style="margin-top: 10px">
-        <div class="col">
-          <img src="../../assets/svgs/search_icon.svg" style="height: 33px" (click)="onSearchIcon()">
+        <div *ngIf="!isAuth" class="col-auto text-center  nopadding category-items" (click)="goToSignUpAndSignin()" style="margin-left: auto">
+          <div class="row">
+            <div class="col click cursor-pointer">
+              <img style="width:50px ;" src="../../assets/svgs/genel_bakis/login_icon.svg">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto mx-auto" style="margin-top: -1px">
+              <span class="cursor-pointer font-class" >GİRİŞ YAP</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col" style="margin-top: 9px">
-          <span class="cursor-pointer font-class">ARAMA</span>
+        <div *ngIf="isAuth" class="col-auto text-center  nopadding category-items" style="margin-top: 8px;margin-left:auto ">
+          <div class="row">
+            <div (mouseenter)="slideMyProfileDiv('in')" class="col cursor-pointer" style="padding: 0px">
+              <svg _ngcontent-c0="" class="ng-tns-c0-0" style="max-width: 40px" viewBox="0 0 35.56 35.56" xmlns="http://www.w3.org/2000/svg"><title _ngcontent-c0="" class="ng-tns-c0-0">location_iconAsset 1</title><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="Layer 2" id="Layer_2"><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="profilim icon" id="profilim_icon"><path _ngcontent-c0="" class="ng-tns-c0-0" d="M17.78,0A17.78,17.78,0,1,0,35.56,17.78,17.81,17.81,0,0,0,17.78,0Zm6.69,14.06V11.18a5.18,5.18,0,0,0-1.16-3.66c-1.17-1.32-3-1.94-5.53-1.94a7.3,7.3,0,0,0-5.52,1.94,5.14,5.14,0,0,0-1.17,3.66v2.88a2,2,0,0,0-.54,1.48v2.17a2.3,2.3,0,0,0,.85,1.79,10.68,10.68,0,0,0,1.95,4v1.79a1.51,1.51,0,0,1-.7,1.25l-5,2.72a1.38,1.38,0,0,0-.47.31A15.91,15.91,0,1,1,33.65,17.46v.25a15.7,15.7,0,0,1-5.36,11.83,2,2,0,0,0-.55-.31l-5.29-2.65a1.37,1.37,0,0,1-.78-1.24V23.47a3.36,3.36,0,0,0,.39-.54,11.32,11.32,0,0,0,1.63-3.19,2.34,2.34,0,0,0,1.33-2V15.54A2.5,2.5,0,0,0,24.47,14.06Z" style="fill:#f7e60f"></path></g></g></svg>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto nopadding mx-auto">
+              <span class="cursor-pointer font-class" >PROFİLİM</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <!--<input (keyup)="onSearchEvent($event)" class="search" type="text" style="position: absolute;height: 25px;width: 120px;margin-left: 10px;">-->
-    </div>
-    <div *ngIf="!isAuth" class="col-1 text-center scale" style="margin-right: 100px" (click)="goToSignUpAndSignin()">
-      <div class="row" style="    padding-left: 5px">
-        <div class="col click cursor-pointer">
-          <img style="width:50px ;" src="../../assets/svgs/genel_bakis/login_icon.svg">
-        </div>
-      </div>
-      <div class="row" style="    margin-left: -17px;">
-        <div class="col">
-          <span class="cursor-pointer font-class" >GİRİŞ YAP</span>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="isAuth" class="col-1 text-center scale" style="margin-right: 100px;margin-top: 8px">
-      <div class="row">
-        <div (mouseenter)="slideMyProfileDiv('in')" class="col cursor-pointer" style="padding: 0px">
-          <svg _ngcontent-c0="" class="ng-tns-c0-0" style="max-width: 40px" viewBox="0 0 35.56 35.56" xmlns="http://www.w3.org/2000/svg"><title _ngcontent-c0="" class="ng-tns-c0-0">location_iconAsset 1</title><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="Layer 2" id="Layer_2"><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="profilim icon" id="profilim_icon"><path _ngcontent-c0="" class="ng-tns-c0-0" d="M17.78,0A17.78,17.78,0,1,0,35.56,17.78,17.81,17.81,0,0,0,17.78,0Zm6.69,14.06V11.18a5.18,5.18,0,0,0-1.16-3.66c-1.17-1.32-3-1.94-5.53-1.94a7.3,7.3,0,0,0-5.52,1.94,5.14,5.14,0,0,0-1.17,3.66v2.88a2,2,0,0,0-.54,1.48v2.17a2.3,2.3,0,0,0,.85,1.79,10.68,10.68,0,0,0,1.95,4v1.79a1.51,1.51,0,0,1-.7,1.25l-5,2.72a1.38,1.38,0,0,0-.47.31A15.91,15.91,0,1,1,33.65,17.46v.25a15.7,15.7,0,0,1-5.36,11.83,2,2,0,0,0-.55-.31l-5.29-2.65a1.37,1.37,0,0,1-.78-1.24V23.47a3.36,3.36,0,0,0,.39-.54,11.32,11.32,0,0,0,1.63-3.19,2.34,2.34,0,0,0,1.33-2V15.54A2.5,2.5,0,0,0,24.47,14.06Z" style="fill:#f7e60f"></path></g></g></svg>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <span class="cursor-pointer font-class" >PROFİLİM</span>
-        </div>
+        <div class="col-1 nopadding"></div>
       </div>
     </div>
   </div>

@@ -10,8 +10,6 @@ export class UpperPointTableComponent implements OnInit {
 
   users= [];
 
-  feedbackDivOpen = false;
-
   constructor(private benimFirsatimLib: BenimFirsatimLibrary) { }
 
   ngOnInit() {
@@ -23,8 +21,5 @@ export class UpperPointTableComponent implements OnInit {
     })
   }
 
-  openFeedbackDiv(){
-    this.benimFirsatimLib.openFeedbackPopUpFunc();
-  }
 
 }

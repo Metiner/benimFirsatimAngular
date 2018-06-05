@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {Subscription} from "rxjs/Subscription";
 declare var $:any;
 
-
+@Injectable()
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,14 +32,15 @@ export class HeaderComponent implements OnDestroy{
   searchDivAnimation = 'out';
   categories = [];
 
-  firsatEkleKucult = false;
+  public firsatEkleKucult = false;
 
-  onResizeEventFlag = false;
+  public _onResizeEventFlag = false;
 
   isAuth = false;
   showSingUpSignInPopUp = false;
 
   autSubscription : Subscription;
+  responsiveDesignSubscription : Subscription;
   searchResponse:any;
 
   searchParam = "";
@@ -58,20 +59,24 @@ export class HeaderComponent implements OnDestroy{
       if(value === 'success'){
         this.isAuth = true;
       }
-    })
+    });
 
 
-    $(document).ready(()=>{
-      if(innerWidth < 1180)
-      {
-        this.onResizeEventFlag = false;
+    this.responsiveDesignSubscription = this.benimFirsatimLibrary.responsiveDesign.subscribe(value=>{
+
+      if(innerWidth < 1275){
+        this._onResizeEventFlag = false;
       }else{
-        this.onResizeEventFlag = true;
+        this._onResizeEventFlag = true;
       }
-      var event = {};
-      this.responsiveDesign(event)
 
-    })
+      var event = {};
+      this.responsiveDesign(event);
+
+    });
+
+
+
     window.onresize = (event:any)=>{
       this.responsiveDesign(event);
     }
@@ -84,61 +89,70 @@ export class HeaderComponent implements OnDestroy{
   }
 
   responsiveDesign(event){
-    var innerWidthToCheck;
+    let innerWidthToCheck;
 
     if(event.srcElement === undefined){
       innerWidthToCheck = innerWidth;
-
-
     }else{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
 
-    if(innerWidthToCheck < 1180){
+    if(innerWidthToCheck <1475){
+
+      $('.col-to-1').removeClass('col-2');
+      $('.col-to-1').addClass('col-auto');
+
+    }else{
+      $('.col-to-1').removeClass('col-auto');
+      $('.col-to-1').addClass('col-2');
+    }
+
+    if(innerWidthToCheck < 1275){
+
+
 
       this.firsatEkleKucult = true;
       $('.font-class').addClass('font-size');
-      $('.logo').addClass('logo-for-margin');
-      $('.dealTitleAndUserRow').addClass('text-center');
+      $('.footer-col').addClass('mx-auto');
 
-      if(!this.onResizeEventFlag){
+
+      if(innerWidthToCheck < 1000){
+        $('.dealTitleAndUserRow').addClass('text-center');
+      }
+
+      if(!this._onResizeEventFlag){
 
         $('#for-responsiveness').addClass('col');
-        $('#for-responsiveness').addClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness').removeClass('col-8');
-        $('#for-responsiveness').removeClass('offset-1');
 
-        $('#for-responsiveness-singleDeal').addClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness-singleDeal').addClass('col');
-        $('#for-responsiveness-singleDeal').removeClass('offset-1');
         $('#for-responsiveness-singleDeal').removeClass('col-8');
 
 
-        this.onResizeEventFlag = true;
+        this._onResizeEventFlag = true;
         this.benimFirsatimLibrary.showPointTable.next(false);
       }
     }else{
-
-
-      $('.font-class').removeClass('font-size');
-      $('.logo').removeClass('logo-for-margin');
-      $('.dealTitleAndUserRow').removeClass('text-center');
-
       this.firsatEkleKucult = false;
-      if(this.onResizeEventFlag){
 
+      if(this._onResizeEventFlag){
         $('#for-responsiveness').removeClass('col');
-        $('#for-responsiveness').removeClass('for-responsiveness-margin-left-right');
         $('#for-responsiveness').addClass('col-8');
-        $('#for-responsiveness').addClass('offset-1');
 
 
-        $('#for-responsiveness-singleDeal').addClass('offset-1');
         $('#for-responsiveness-singleDeal').addClass('col-8');
         $('#for-responsiveness-singleDeal').removeClass('col');
-        $('#for-responsiveness-singleDeal').removeClass('for-responsiveness-margin-left-right');
-        this.onResizeEventFlag = false;
+
+
+        this._onResizeEventFlag = false;
         this.benimFirsatimLibrary.showPointTable.next(true);
+      }
+      $('.font-class').removeClass('font-size');
+      $('.footer-col').removeClass('mx-auto');
+
+
+      if(innerWidthToCheck > 1000){
+        $('.dealTitleAndUserRow').removeClass('text-center');
       }
     }
   }
@@ -421,4 +435,6 @@ export class HeaderComponent implements OnDestroy{
       document.getElementById("myInput").focus();
     },500)
   }
+
+
 }

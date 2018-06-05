@@ -17,20 +17,22 @@ export class BenimFirsatimLibrary {
   showPointTable = new Subject<any>();
   resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
-  private _dealAnimationContinues = true;
+  responsiveDesign= new Subject<any>();
+
+
+  _dealAnimationContinues = true;
+  _currentPaging = 1;
+  _totalPage:number;
+  _currentDeals = [];
+  _categories =[];
+  _justCreatedDeal: any;
+  onTheLastPage = false;
+  _isAutho = false;
+  _currentUser:any;
+  token:string;
   searchResult:any = {};
 
   currentCategory = 'hot';
-  private _currentPaging = 1;
-  private _totalPage:number;
-  private _currentDeals = [];
-  private _categories =[];
-  private _justCreatedDeal: any;
-  onTheLastPage = false;
-
-  private _isAutho = false;
-  private _currentUser:any;
-  private token:string;
 
   constructor(public http: Http ,
               public fb: FacebookService,
@@ -64,14 +66,10 @@ export class BenimFirsatimLibrary {
       }
     }]);
 
-    console.log("pushladı babo");
     OneSignal.push(()=> {
 
-      console.log("girdiİPush");
       if (self.isAutho) {
-        console.log("girdiİsauto");
         OneSignal.sendTag('user_id', self.currentUser['id']).then((response)=>{
-          console.log(response);
         });
       }
     });
@@ -157,6 +155,9 @@ export class BenimFirsatimLibrary {
   }
   public openFeedbackPopUpFunc(){
     this.openFeedbackPopUp.next();
+  }
+  public responsiveDesignFunc(){
+    this.responsiveDesign.next();
   }
   //Gets information from given deal link.
   public getPullMeta(url){
@@ -280,6 +281,10 @@ export class BenimFirsatimLibrary {
   }
   public search(searchParam){
     return this.http.get(this.api_address + '/search?searchparam=' + searchParam );
+  }
+
+  public getTopCategories(){
+    return this.http.get(this.api_address + "/categories/top");
   }
 
   public oAuth(type: number){
