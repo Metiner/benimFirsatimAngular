@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-10 offset-1" style="background-color: white;border-radius: 30px;padding: 10px">
     <div class="row align-items-center">
-      <div class="col-2">
+      <div class="col-2 mx-auto">
         <img style="height: 20px" src="../../assets/svgs/genel_bakis/settings_icon.svg">
         <span  (click)="activeAnim('ayarlar')" class="tab cursor-pointer" [@tabActivation]="ayarlar.active">AYARLAR</span>
       </div>
-      <div class="col-2" style="white-space: nowrap">
+      <div class="col-2 mx-auto" style="white-space: nowrap">
         <img style="height: 20px" src="../../assets/svgs/genel_bakis/genel_bakis_icon.svg">
         <span (click)="activeAnim('genelBakis')" class="tab cursor-pointer" [@tabActivation]="genelBakis.active" >GENEL BAKIŞ</span>
       </div>
-      <div class="col-2">
+      <div class="col-2 mx-auto">
         <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
         <span (click)="activeAnim('firsatlar')" class="tab cursor-pointer" [@tabActivation]="firsatlar.active">FIRSATLAR</span>
       </div>
@@ -17,7 +17,7 @@
         <!--<img  style="height: 20px" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">-->
         <!--<span (click)="activeAnim('yorumlar')" class="tab cursor-pointer" [@tabActivation]="yorumlar.active">YORUMLAR</span>-->
       <!--</div>-->
-      <div class="col-2" style="white-space: nowrap">
+      <div class="col-2 mx-auto" style="white-space: nowrap">
         <img style="height: 20px" src="../../assets/svgs/genel_bakis/kaydedilenler_icon.svg">
         <span (click)="activeAnim('kaydedilenler')" class="tab cursor-pointer" [@tabActivation]="kaydedilenler.active">KAYDEDİLENLER</span>
       </div>
@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="row" style="margin-top: 1%;margin-bottom: 10%">
-  <div class="col-10 offset-1">
+  <div class="col offset-1">
     <div class="row">
       <div class="col-3 my-profile">
         <img src="../../assets/svgs/genel_bakis/user_panel_bg.svg">
@@ -42,16 +42,6 @@
         </div>
         <div class="update-profile" *ngIf="showUpdateProfile">
           <form #f="ngForm">
-            <!--<div class="row">
-              <div class="col">
-                <span class="form-element-span">YENİ EMAİL</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <input ngModel name="email" class="form-element-text-input">
-              </div>
-            </div>-->
             <div class="row">
               <div class="col">
                 <span #passwrod class="form-element-span">YENİ PAROLA</span>
