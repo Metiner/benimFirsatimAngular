@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import { FacebookService, InitParams} from "ngx-facebook";
 import {Router} from "@angular/router";
 import {Angular2TokenService} from 'angular2-token';
+import {Subscription} from "rxjs/Subscription";
 
 @Injectable()
 export class BenimFirsatimLibrary {
@@ -14,11 +15,11 @@ export class BenimFirsatimLibrary {
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
   openFeedbackPopUp = new Subject<any>();
-  showPointTable = new Subject<any>();
   resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   responsiveDesign= new Subject<any>();
 
+  showPointTable = true;
 
   _dealAnimationContinues = true;
   _currentPaging = 1;
@@ -295,7 +296,6 @@ export class BenimFirsatimLibrary {
       return this._tokenService.signInOAuth("google_oauth2");
     }
   }
-
   get isAutho(): boolean {
     return this._isAutho;
   }

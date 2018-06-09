@@ -130,7 +130,7 @@ export class HeaderComponent implements OnDestroy{
 
 
         this._onResizeEventFlag = true;
-        this.benimFirsatimLibrary.showPointTable.next(false);
+        this.benimFirsatimLibrary.showPointTable = true;
       }
     }else{
       this.firsatEkleKucult = false;
@@ -145,7 +145,7 @@ export class HeaderComponent implements OnDestroy{
 
 
         this._onResizeEventFlag = false;
-        this.benimFirsatimLibrary.showPointTable.next(true);
+        this.benimFirsatimLibrary.showPointTable = true;
       }
       $('.font-class').removeClass('font-size');
       $('.footer-col').removeClass('mx-auto');

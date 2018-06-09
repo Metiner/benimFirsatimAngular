@@ -20,7 +20,7 @@ declare var $: any;
 export class DealComponent implements OnInit, OnDestroy {
 
   mySubscription: Subscription;
-  showPointTableSubs: Subscription;
+
 
   deals = [];
   displayedDeals = [];
@@ -29,7 +29,7 @@ export class DealComponent implements OnInit, OnDestroy {
 
   resultText = "";
 
-  showPointTable = true;
+  showPointTable = false;
   showResultText = false;
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
@@ -37,6 +37,8 @@ export class DealComponent implements OnInit, OnDestroy {
               public fb: FacebookService) {
 
     $(document).ready(()=>{
+      this.showPointTable = this.benimFirsatimLib.showPointTable;
+      console.log(this.benimFirsatimLib.showPointTable);
       this.benimFirsatimLib.responsiveDesignFunc();
     })
 
@@ -45,13 +47,9 @@ export class DealComponent implements OnInit, OnDestroy {
         this.setDeals();
       }
     });
-    this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
-      next: (data) => {
-        console.log(data);
 
-        this.showPointTable = data;
-      }
-    });
+
+
   }
 
   ngOnInit() {
@@ -62,7 +60,6 @@ export class DealComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.mySubscription.unsubscribe();
-    this.showPointTableSubs.unsubscribe();
   }
 
   setDeals() {

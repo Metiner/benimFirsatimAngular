@@ -46,8 +46,9 @@ export class ProfileSettingsComponent implements OnInit {
 
   formatDeals(type){
 
+
+    this.benimFirsatimLibrary.showPointTable = false;
     $(document).ready(()=>{
-      this.benimFirsatimLibrary.showPointTable.next(false);
       var firsatlarim = document.getElementById(type);
       firsatlarim.children[0].children[0].classList.remove("col-8");
       firsatlarim.children[0].children[0].classList.remove("offset-1");

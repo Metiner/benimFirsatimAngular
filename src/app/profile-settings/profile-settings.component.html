@@ -1,33 +1,57 @@
 <div class="row">
   <div class="col-10 offset-1" style="background-color: white;border-radius: 30px;padding: 10px">
     <div class="row align-items-center">
-      <div class="col-2 mx-auto">
-        <img style="height: 20px" src="../../assets/svgs/genel_bakis/settings_icon.svg">
-        <span  (click)="activeAnim('ayarlar')" class="tab cursor-pointer" [@tabActivation]="ayarlar.active">AYARLAR</span>
+      <div class="col-2 mx-auto" style="white-space: nowrap">
+        <div class="row" style="flex-wrap: nowrap">
+          <div class="col-auto" style="margin-left: auto">
+            <img style="height: 20px" src="../../assets/svgs/genel_bakis/settings_icon.svg">
+          </div>
+          <div class="col-auto" style="margin-right: auto;padding-left: 0px">
+            <span  (click)="activeAnim('ayarlar')" class="tab cursor-pointer" [@tabActivation]="ayarlar.active">AYARLAR</span>
+          </div>
+        </div>
       </div>
       <div class="col-2 mx-auto" style="white-space: nowrap">
-        <img style="height: 20px" src="../../assets/svgs/genel_bakis/genel_bakis_icon.svg">
-        <span (click)="activeAnim('genelBakis')" class="tab cursor-pointer" [@tabActivation]="genelBakis.active" >GENEL BAKIŞ</span>
+        <div class="row" style="flex-wrap: nowrap">
+          <div class="col-auto" style="margin-left: auto">
+            <img style="height: 20px" src="../../assets/svgs/genel_bakis/genel_bakis_icon.svg">
+          </div>
+          <div class="col-auto" style="margin-right: auto;padding-left: 0px">
+            <span (click)="activeAnim('genelBakis')" class="tab cursor-pointer" [@tabActivation]="genelBakis.active" >GENEL BAKIŞ</span>
+          </div>
+        </div>
       </div>
       <div class="col-2 mx-auto">
-        <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
-        <span (click)="activeAnim('firsatlar')" class="tab cursor-pointer" [@tabActivation]="firsatlar.active">FIRSATLAR</span>
+        <div class="row" style="flex-wrap: nowrap">
+          <div class="col-auto" style="margin-left: auto">
+            <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
+          </div>
+          <div class="col-auto" style="margin-right: auto;padding-left: 0px">
+            <span (click)="activeAnim('firsatlar')" class="tab cursor-pointer" [@tabActivation]="firsatlar.active">FIRSATLAR</span>
+          </div>
+        </div>
       </div>
       <!--<div class="col-2">-->
         <!--<img  style="height: 20px" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">-->
         <!--<span (click)="activeAnim('yorumlar')" class="tab cursor-pointer" [@tabActivation]="yorumlar.active">YORUMLAR</span>-->
       <!--</div>-->
-      <div class="col-2 mx-auto" style="white-space: nowrap">
-        <img style="height: 20px" src="../../assets/svgs/genel_bakis/kaydedilenler_icon.svg">
-        <span (click)="activeAnim('kaydedilenler')" class="tab cursor-pointer" [@tabActivation]="kaydedilenler.active">KAYDEDİLENLER</span>
+      <div class="col-2 mx-auto">
+        <div class="row" style="flex-wrap: nowrap">
+          <div class="col-auto" style="margin-left: auto">
+            <img style="height: 20px" src="../../assets/svgs/genel_bakis/kaydedilenler_icon.svg">
+          </div>
+          <div class="col-auto" style="margin-right: auto;padding-left: 0px">
+            <span (click)="activeAnim('kaydedilenler')" class="tab cursor-pointer" [@tabActivation]="kaydedilenler.active">KAYDEDİLENLER</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div class="row" style="margin-top: 1%;margin-bottom: 10%">
-  <div class="col offset-1">
+  <div class="col-10 offset-1">
     <div class="row">
-      <div class="col-3 my-profile">
+      <div class="col-3 my-profile" style="    min-width: 360px;">
         <img src="../../assets/svgs/genel_bakis/user_panel_bg.svg">
         <span class="point-table">PUAN TABLOSUNDA <span style="font-family: 'Mark Pro-Black;font-size: 13px;color: #F7E60f'">232323</span>.SIRADA</span>
         <div class="photo-div">
