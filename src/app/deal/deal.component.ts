@@ -20,6 +20,7 @@ declare var $: any;
 export class DealComponent implements OnInit, OnDestroy {
 
   mySubscription: Subscription;
+  showPointTableSubs : Subscription;
 
 
   deals = [];
@@ -38,7 +39,6 @@ export class DealComponent implements OnInit, OnDestroy {
 
     $(document).ready(()=>{
       this.showPointTable = this.benimFirsatimLib.showPointTable;
-      console.log(this.benimFirsatimLib.showPointTable);
       this.benimFirsatimLib.responsiveDesignFunc();
     })
 
@@ -47,7 +47,12 @@ export class DealComponent implements OnInit, OnDestroy {
         this.setDeals();
       }
     });
-
+    this.showPointTableSubs = this.benimFirsatimLib.showPointTableSub.subscribe({
+      next: (data) => {
+        console.log(data);
+        this.showPointTable = data;
+      }
+    });
 
 
   }
@@ -60,6 +65,7 @@ export class DealComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.mySubscription.unsubscribe();
+    this.showPointTableSubs.unsubscribe();
   }
 
   setDeals() {

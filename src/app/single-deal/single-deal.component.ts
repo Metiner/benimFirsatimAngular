@@ -50,7 +50,7 @@ export class SingleDealComponent implements OnInit {
       this.benimFirsatimLib.responsiveDesignFunc();
     })
 
-    this.showPointTableSubs = this.benimFirsatimLib.showPointTable.subscribe({
+    this.showPointTableSubs = this.benimFirsatimLib.showPointTableSub.subscribe({
       next: (data) => {
         this.showPointTable = data;
       }

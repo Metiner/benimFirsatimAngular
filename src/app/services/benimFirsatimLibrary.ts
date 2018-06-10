@@ -15,9 +15,12 @@ export class BenimFirsatimLibrary {
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
   openFeedbackPopUp = new Subject<any>();
+  showPointTableSub = new Subject<any>();
   resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   responsiveDesign= new Subject<any>();
+
+
 
   showPointTable = true;
 

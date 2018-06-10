@@ -130,7 +130,7 @@ export class HeaderComponent implements OnDestroy{
 
 
         this._onResizeEventFlag = true;
-        this.benimFirsatimLibrary.showPointTable = true;
+        this.benimFirsatimLibrary.showPointTableSub.next(false);
       }
     }else{
       this.firsatEkleKucult = false;
@@ -145,7 +145,9 @@ export class HeaderComponent implements OnDestroy{
 
 
         this._onResizeEventFlag = false;
-        this.benimFirsatimLibrary.showPointTable = true;
+        if(this.benimFirsatimLibrary.showPointTable){
+          this.benimFirsatimLibrary.showPointTableSub.next(true);
+        }
       }
       $('.font-class').removeClass('font-size');
       $('.footer-col').removeClass('mx-auto');
@@ -280,6 +282,7 @@ export class HeaderComponent implements OnDestroy{
     this.myProfileAnimation = state;
   }
   onCategoryChange(type){
+    this.benimFirsatimLibrary.showPointTable = true;
     this.benimFirsatimLibrary.currentPaging = 1;
     this.benimFirsatimLibrary.totalPage = 2;
     this.benimFirsatimLibrary.changeCategory(type);
