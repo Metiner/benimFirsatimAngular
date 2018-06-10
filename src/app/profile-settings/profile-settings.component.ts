@@ -48,6 +48,7 @@ export class ProfileSettingsComponent implements OnInit {
 
 
     this.benimFirsatimLibrary.showPointTable = false;
+    this.benimFirsatimLibrary.responsiveDesign.next();
     $(document).ready(()=>{
       var firsatlarim = document.getElementById(type);
       firsatlarim.children[0].children[0].classList.remove("col-8");
@@ -105,8 +106,9 @@ export class ProfileSettingsComponent implements OnInit {
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'void';
-      this.firsatlar.active = 'void';
+      this.firsatlar.active = 'active';
       this.ayarlar.active = 'active';
+      this.formatDeals("firsatlarim");
     }
   }
   onProfileUpdateSubmit(form:NgForm){

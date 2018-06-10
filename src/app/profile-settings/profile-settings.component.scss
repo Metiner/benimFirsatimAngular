@@ -1,6 +1,6 @@
 .tab{
   font-family: 'Mark Pro-Book';
-  font-size: 15px;
+  font-size: 14px;
   color:#234491;
 }
 .nopadding{
@@ -9,9 +9,6 @@
 /*div{
   border:1px solid black;
 }*/
-.my-profile{
-  margin-right: 1%;
-}
 .point-table {
   font-family: 'Mark Pro-Light';
   font-size: 11px;
@@ -26,7 +23,7 @@
 }
 .user-name{
   font-family: 'Mark Pro-Heavy';
-  font-size: 20px;
+  font-size: 19px;
   color: #F7E60f;
 }
 .user-email{
@@ -34,26 +31,50 @@
   font-size: 13px;
   color: #F7E60f;
 }
-
-.form-element-span{
-  font-family: 'Mark Pro-Book';
-  color: #F7E60f;
-  font-size: 10px;
-  margin-bottom: 3%;
-}
 .form-element-text-input{
   border-bottom: 1px solid  #F7E60f;
   border-top: none;
   border-left: none;
   border-right: none;
   outline: none;
+  line-height: 1;
+  font-family: "Mark Pro-Heavy";
   color: #F7E60f;
   width: inherit;
-  margin-bottom: 10%;
+  font-size: 14px;
+  margin-bottom: 5%;
   background: none;
 }
 .tabLow{
   font-family: 'Mark Pro-Book';
   font-size: 10px;
   color:#F7E60f;
+}
+
+.tab-kucuk{
+  font-family: 'Mark Pro-Book';
+  font-size: 11px;
+  color:#234491;
+}
+
+.user-name-kucuk{
+  font-family: 'Mark Pro-Heavy';
+  font-size: 13px;
+  color: #F7E60f;
+}
+
+.margin-bottom-20px{
+  margin-bottom: 20px;
+}
+.margin-right-20px{
+  margin-right: 20px;
+}
+.tabLowBuyuk{
+  font-family: 'Mark Pro-Book';
+  font-size: 14px;
+  color:#F7E60f;
+}
+.margin-lef-minus-30px{
+  margin-left: -30px;
+  margin-right: 80px;
 }

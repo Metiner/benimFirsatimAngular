@@ -49,6 +49,7 @@ export class HeaderComponent implements OnDestroy{
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,
               public router:Router){
 
+
     this.initializeAnims();
     this.checkAuth();
     this.benimFirsatimLibrary.getCategories().subscribe(response=> {
@@ -89,6 +90,11 @@ export class HeaderComponent implements OnDestroy{
   }
 
   responsiveDesign(event){
+
+
+    $(document).ready(()=>{
+
+
     let innerWidthToCheck;
 
     if(event.srcElement === undefined){
@@ -97,6 +103,8 @@ export class HeaderComponent implements OnDestroy{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
 
+
+    console.log(innerWidthToCheck);
     if(innerWidthToCheck <1475){
 
       $('.col-to-1').removeClass('col-2');
@@ -107,18 +115,43 @@ export class HeaderComponent implements OnDestroy{
       $('.col-to-1').addClass('col-2');
     }
 
+    if(innerWidthToCheck < 1020){
+
+      $('.dealTitleAndUserRow').addClass('text-center');
+
+      $('.col-kucuk-responsive').removeClass('col-3');
+      $('.col-kucuk-responsive').addClass('col');
+      $('.col-kucuk-responsive').removeClass('margin-right-20px');
+      $('.col-kucuk-responsive').addClass('margin-bottom-20px');
+    }else{
+
+      $('.col-kucuk-responsive').addClass('col-3');
+      $('.col-kucuk-responsive').removeClass('col');
+      $('.col-kucuk-responsive').addClass('margin-bottom-20px');
+      $('.col-kucuk-responsive').addClass('margin-right-20px');
+
+    }
+    if(innerWidthToCheck < 970){
+      $('.user-info').addClass('margin-lef-minus-30px');
+    }else{
+      $('.user-info').removeClass('margin-lef-minus-30px');
+    }
     if(innerWidthToCheck < 1275){
 
-
+      if(innerWidthToCheck < 970){
+        $('.tabLow').addClass('tabLowBuyuk');
+      }else{
+        $('.tabLow').removeClass('tabLowBuyuk');
+      }
 
       this.firsatEkleKucult = true;
       $('.font-class').addClass('font-size');
       $('.footer-col').addClass('mx-auto');
 
+      //PROFILE SETTINGS RESPONSIVENESS
+      $('.user-name').addClass('user-name-kucuk');
+      $('.tab').addClass('tab-kucuk');
 
-      if(innerWidthToCheck < 1000){
-        $('.dealTitleAndUserRow').addClass('text-center');
-      }
 
       if(!this._onResizeEventFlag){
 
@@ -134,6 +167,13 @@ export class HeaderComponent implements OnDestroy{
       }
     }else{
       this.firsatEkleKucult = false;
+
+     $('.tabLow').addClass('tabLowBuyuk');
+
+      //PROFILE SETTINGS RESPONSIVENESS
+      $('.user-name').removeClass('user-name-kucuk');
+      $('.tab').removeClass('tab-kucuk');
+
 
       if(this._onResizeEventFlag){
         $('#for-responsiveness').removeClass('col');
@@ -153,10 +193,12 @@ export class HeaderComponent implements OnDestroy{
       $('.footer-col').removeClass('mx-auto');
 
 
+
       if(innerWidthToCheck > 1000){
         $('.dealTitleAndUserRow').removeClass('text-center');
       }
     }
+    })
   }
 
   checkAuth(){

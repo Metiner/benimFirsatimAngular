@@ -159,7 +159,7 @@ export class ContentComponent implements OnDestroy,OnInit{
           }
         }, error => {
           console.log(error);
-          this.snackBar.open('Yanlış e-mail veya parola girdiniz.','',{duration:3000});
+          this.snackBar.open('Bu e-posta zaten mevcut','',{duration:3000});
         });
       }
     }

@@ -52,122 +52,155 @@
 <div class="row" style="margin-top: 1%;margin-bottom: 10%">
   <div class="col-10 offset-1">
     <div class="row">
-      <div class="col-3 my-profile" style="min-width: 200px;background-size: cover;border-radius: 30px;background-image: url('../../assets/svgs/genel_bakis/user_panel_bg.svg');background-repeat: no-repeat">
-        <div class="row" style="margin-top: 20px;margin-bottom: 10px">
-          <div class="col-auto mx-auto">
-            <div class="row">
-              <div class="col-auto mx-auto">
-                <span class="point-table">PUAN TABLOSUNDA</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-auto mx-auto point-table-point">
-                <span style="font-family: 'Mark Pro-Black;font-size: 13px;color: #F7E60f'">99999<span class="point-table">.SIRADA</span></span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-3 col-kucuk-responsive margin-right-20px" style="min-width: 200px;background-size: cover;border-radius: 30px; max-height: fit-content;background-image: url('../../assets/svgs/genel_bakis/user_panel_bg.svg');background-repeat: no-repeat">
         <div class="row">
-          <div class="col-8 mx-auto">
-            <img style="border-radius: 120px;height: inherit;width: inherit;border: 3px solid #F7E60f" src="{{currentUser.avatar_url}}">
-          </div>
-          <div class="col-3 offset-2" style="position: absolute;align-self: flex-end">
-            <img src="../../assets/svgs/genel_bakis/change_photo_icon.svg">
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col-auto mx-auto">
-            <div class="row" style="margin-bottom: -5px">
+          <div class="col">
+            <div class="row" style="margin-top: 20px;margin-bottom: 10px">
               <div class="col-auto mx-auto">
-                <span style="white-space: nowrap" class="user-name">{{currentUser.name}}</span>
-              </div>
-            </div>
-            <div class="row" style="margin-bottom: 20px">
-              <div class="col-auto mx-auto">
-                <span class="user-email">{{currentUser.email}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="update-profile" *ngIf="showUpdateProfile">
-          <form #f="ngForm">
-            <div class="row">
-              <div class="col">
-                <span #passwrod class="form-element-span">YENİ PAROLA</span>
+                <div class="row">
+                  <div class="col-auto mx-auto">
+                    <span class="point-table">PUAN TABLOSUNDA</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-auto mx-auto point-table-point">
+                    <span style="font-family: 'Mark Pro-Black;font-size: 13px;color: #F7E60f'">99999<span class="point-table">.SIRADA</span></span>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="row">
-              <div class="col">
-                <input ngModel name="password" class="form-element-text-input">
+              <div class="col-7 mx-auto">
+                <img style="border-radius: 120px;height: inherit;width: inherit;border: 3px solid #F7E60f" src="{{currentUser.avatar_url}}">
               </div>
+              <!--<div class="col-3 offset-2" style="position: absolute;align-self: flex-end">
+                <img src="../../assets/svgs/genel_bakis/change_photo_icon.svg">
+              </div>-->
             </div>
             <div class="row">
-              <div class="col">
-                <span class="form-element-span">YENİ PAROLA (TEKRAR)</span>
+              <div class="col-auto mx-auto" style="padding-top: 15px">
+                <div class="row" style="margin-bottom: -5px">
+                  <div class="col-auto mx-auto">
+                    <span style="white-space: nowrap" class="user-name">{{currentUser.name}}</span>
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-auto mx-auto">
+                    <span class="user-email">{{currentUser.email}}</span>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="col"  style="align-self: center">
             <div class="row">
               <div class="col">
-                <input ngModel name="rePassword" class="form-element-text-input">
+                <div class="user-info" *ngIf="showUpdateProfile" style="  padding: 10px 15px 10px 15px;">
+                  <form #f="ngForm">
+                    <div class="row">
+                      <div class="col">
+                        <span #passwrod class="tabLow">YENİ PAROLA</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <input ngModel name="password" class="form-element-text-input">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <span class="tabLow">YENİ PAROLA (TEKRAR)</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <input ngModel name="rePassword" class="form-element-text-input">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <span class="tabLow">KULLANICI ADI</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <input ngModel name="username" class="form-element-text-input">
+                      </div>
+                    </div>
+                    <div class="row" style="text-align: center;padding-bottom: 10px">
+                      <div class="col-4"></div>
+                      <div class="col-4" (click)="onProfileUpdateSubmit(f)" style="align-self: center;padding: 0px">
+                        <img  src="../../assets/svgs/genel_bakis/guncelle_button.svg">
+                      </div>
+                      <div class="col-2" style="margin-left: auto !important;padding: 0 10px 0 0">
+                        <img (click)="onDeleteProfile()" src="../../assets/svgs/genel_bakis/hesabi_sil_icon.svg">
+                      </div>
+                      <div class="col-6" style="" *ngIf="showAreYouSure">
+                        <img src="../../assets/svgs/genel_bakis/deletion-areyousure-box.svg">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="user-info" *ngIf="showUserInfoSection" style="    padding: 20px 15px 0 15px;">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-auto" style="padding-right: 6px">
+                          <img style="height: 20px;    min-width: 25px;" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
+                        </div>
+                        <div class="col-auto" style="margin-right: auto;padding-left: 0px;align-self: center">
+                          <span class="tabLow">FIRSATLAR</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="padding-bottom:5px;padding-top: 5px">
+                    <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator-line.svg">
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-auto" style="padding-right: 6px">
+                          <img  style="height: 20px;    min-width: 25px;" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">
+                        </div>
+                        <div class="col-auto" style="margin-right: auto;padding-left: 0px;align-self: center">
+                          <span class="tabLow">YORUMLAR</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="padding-bottom:5px;padding-top: 5px">
+                    <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator-line.svg">
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-auto" style="padding-right: 6px">
+                          <img style="height: 20px;    min-width: 25px;" src="../../assets/svgs/genel_bakis/begeni_icon.svg">
+                        </div>
+                        <div class="col-auto" style="margin-right: auto;padding-left: 0px;align-self: center">
+                          <span class="tabLow">KAZANILAN BEĞENİ</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="padding-bottom:5px;padding-top: 5px">
+                    <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator-line.svg">
+                  </div>
+                  <div class="row" style="padding-bottom: 30px">
+                    <div class="col">
+                      <div class="row" style="flex-wrap: nowrap">
+                        <div class="col-auto" style="padding-right: 6px">
+                          <img style="height: 20px;    min-width: 25px;" src="../../assets/svgs/genel_bakis/follower_icon.svg">
+                        </div>
+                        <div class="col-auto" style="margin-right: auto;padding-left: 0px;align-self: center">
+                          <span class="tabLow">TAKİPÇİ SAYISI</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <span class="form-element-span">KULLANICI ADI</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <input ngModel name="username" class="form-element-text-input">
-              </div>
-            </div>
-            <div class="row" style="text-align: center;padding-bottom: 10px">
-              <div class="col-4"></div>
-              <div class="col-4" (click)="onProfileUpdateSubmit(f)" style="align-self: center;padding: 0px">
-                <img  src="../../assets/svgs/genel_bakis/guncelle_button.svg">
-              </div>
-              <div class="col-2" style="margin-left: auto !important;padding: 0 10px 0 0">
-                <img (click)="onDeleteProfile()" src="../../assets/svgs/genel_bakis/hesabi_sil_icon.svg">
-              </div>
-              <div class="col-6" style="" *ngIf="showAreYouSure">
-                <img src="../../assets/svgs/genel_bakis/deletion-areyousure-box.svg">
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="user-info" *ngIf="showUserInfoSection">
-          <div class="row">
-            <div class="col">
-              <img style="height: 20px" src="../../assets/svgs/genel_bakis/firsatlarim_icon.svg">
-              <span class="tabLow">FIRSATLAR</span>
-            </div>
-          </div>
-          <div class="row">
-            <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator-line.svg">
-          </div>
-          <div class="row">
-            <div class="col">
-              <img  style="height: 20px" src="../../assets/svgs/genel_bakis/yorumlar_icon.svg">
-              <span class="tabLow">YORUMLAR</span>
-            </div>
-          </div>
-          <div class="row">
-            <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator-line.svg">
-          </div>
-          <div class="row">
-            <div class="col">
-              <img style="height: 20px" src="../../assets/svgs/genel_bakis/begeni_icon.svg">
-              <span class="tabLow">KAZANILAN BEĞENİ</span>
-            </div>
-          </div>
-          <div class="row">
-            <img  style="width: 100%;padding: 15px" src="../../assets/svgs/genel_bakis/seperator-line.svg">
-          </div>
-          <div class="row" style="padding-bottom: 20px">
-            <div class="col">
-              <img style="height: 20px" src="../../assets/svgs/genel_bakis/follower_icon.svg">
-              <span class="tabLow">TAKİPÇİ SAYISI</span>
             </div>
           </div>
         </div>
