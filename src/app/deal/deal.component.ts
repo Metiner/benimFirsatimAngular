@@ -49,7 +49,6 @@ export class DealComponent implements OnInit, OnDestroy {
     });
     this.showPointTableSubs = this.benimFirsatimLib.showPointTableSub.subscribe({
       next: (data) => {
-        console.log(data);
         this.showPointTable = data;
       }
     });
@@ -199,15 +198,23 @@ export class DealComponent implements OnInit, OnDestroy {
     window.open(link, '_blank');
   }
 
-  playAnim(index, type) {
+  playAnim(index, type,deal) {
     if (type === 'like') {
+
       this.likeButtonAnimations[index].play();
       if (this.likeButtonAnimations[index].liked) {
+        this.benimFirsatimLib.downVoteDeal(deal.id).subscribe(response=>{
+          deal.votes_sum = response.json().deal_score;
+        });
 
         this.likeButtonAnimations[index].setDirection(-1);
         this.likeButtonAnimations[index].liked = false;
 
       } else {
+        this.benimFirsatimLib.upVoteDeal(deal.id).subscribe(response=>{
+          deal.votes_sum = response.json().deal_score;
+        });
+
         this.likeButtonAnimations[index].setDirection(1);
         this.likeButtonAnimations[index].liked = true;
       }

@@ -134,16 +134,17 @@ export class SingleDealComponent implements OnInit {
       if(this.likeButtonAnimation.liked){
         this.likeButtonAnimation.setDirection(-1);
         this.likeButtonAnimation.liked = false;
-        this.benimFirsatimLib.upVoteDeal(this.deal.id).subscribe(response=>{
+        this.benimFirsatimLib.downVoteDeal(this.deal.id).subscribe(response=>{
           this.deal.votes_sum = response.json().deal_score;
         });
 
       }else{
         this.likeButtonAnimation.setDirection(1);
         this.likeButtonAnimation.liked = true;
-        this.benimFirsatimLib.downVoteDeal(this.deal.id).subscribe(response=>{
+        this.benimFirsatimLib.upVoteDeal(this.deal.id).subscribe(response=>{
           this.deal.votes_sum = response.json().deal_score;
         });
+
       }
     }else if(type === 'thumbsUp'){
 

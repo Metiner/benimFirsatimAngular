@@ -37,13 +37,11 @@ export class HeaderComponent implements OnDestroy{
   public _onResizeEventFlag = false;
 
   isAuth = false;
-  showSingUpSignInPopUp = false;
 
   autSubscription : Subscription;
   responsiveDesignSubscription : Subscription;
   searchResponse:any;
 
-  searchParam = "";
   initializeSearchDiv: boolean;
 
   constructor(public benimFirsatimLibrary:BenimFirsatimLibrary,

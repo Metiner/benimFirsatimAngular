@@ -30,7 +30,7 @@ export class GeneralViewComponent implements OnInit {
     })
     this.benimFirsatimLibrary.getMyReplies().subscribe(response=>{
       this.myReplies = response.json();
-
+      console.log(this.myReplies);
 
     })
   }

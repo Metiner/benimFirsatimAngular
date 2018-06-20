@@ -255,14 +255,6 @@ export class CreateNewDealComponent implements OnInit {
       dealTitle.highlight = 'none';
     }
 
-    /*if (this.selectedCategory == 0) {
-      dealCategory.highlight = 'highlighted';
-      this.dealReadytoPublish = false;
-    } else {
-      dealCategory.highlight = 'none';
-    }
-*/
-    //form.value.deal_date = date;
     // Warn if user doesnt select any image for deal.
     if (this.selectedImageSrc == '../../assets/imgs/firsat_gorseli_unselected@3x.png') {
       dealImageContainer.highlight = 'highlighted';
