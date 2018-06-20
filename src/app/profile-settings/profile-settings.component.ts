@@ -67,7 +67,6 @@ export class ProfileSettingsComponent implements OnInit {
       this.kaydedilenler.active = 'void';
       this.firsatlar.active = 'void';
       this.ayarlar.active = 'void';
-      this.getActivity();
     }
     if (element === 'firsatlar') {
       this.benimFirsatimLibrary.currentCategory = 'myDeals';
@@ -126,13 +125,6 @@ export class ProfileSettingsComponent implements OnInit {
     this.showAreYouSure = !this.showAreYouSure;
 
   }
-  getActivity(){
-    this.benimFirsatimLibrary.getMyComments().subscribe(response=>{
-    });
-    this.benimFirsatimLibrary.getCommentsThatIliked().subscribe(response=>{
-    })
-    this.benimFirsatimLibrary.getMyReplies().subscribe(response=>{
-    })
-  }
+
 
 }

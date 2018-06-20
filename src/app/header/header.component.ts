@@ -103,8 +103,6 @@ export class HeaderComponent implements OnDestroy{
       innerWidthToCheck = event.srcElement.window.innerWidth;
     }
 
-
-    console.log(innerWidthToCheck);
     if(innerWidthToCheck <1475){
 
       $('.col-to-1').removeClass('col-2');

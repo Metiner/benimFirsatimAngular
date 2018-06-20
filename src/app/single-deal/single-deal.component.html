@@ -8,7 +8,7 @@
               <div class="col-auto mx-auto" style="text-align: center;align-self: center;margin-top: 20px">
                 <div class="row">
                   <div class="col">
-                    <img src="{{deal.image_url}}" style="max-width: 200px;min-width: 200px;">
+                    <img src="{{deal?.image_url}}" style="max-width: 200px;min-width: 200px;">
                   </div>
                 </div>
                 <div class="row" style="padding: 10px 0 10px 0;">
@@ -25,7 +25,7 @@
               <div class="col" style="padding: 0px 30px 0px 30px">
                 <div class="row title">
                   <div class="col nopadding dealTitleAndUserRow">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.title.slice(0,200).concat('..')}}</span>
+                    <span  style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal?.title.slice(0,200).concat('..')}}</span>
                   </div>
                 </div>
                 <div class="row">
@@ -33,15 +33,15 @@
                     <div class="row" style="align-items: center;flex-wrap: nowrap">
 
                       <div class="col dealTitleAndUserRow" style="padding-left: 0px">
-                        <img src="{{deal.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
+                        <img src="{{deal?.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
 
-                        <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal.user.name.slice(0,15).concat('..')}}&nbsp;</span>
+                        <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal?.user.name.slice(0,15).concat('..')}}&nbsp;</span>
 
-                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| {{deal.view_count}} görüntülenme |</span>
+                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| {{deal?.view_count}} görüntülenme |</span>
 
-                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal.created_at.substr(0,10)}} |</span>
+                        <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal?.created_at.substr(0,10)}} |</span>
 
-                        <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span>
+                        <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal?.vendor.website}}</span>
                       </div>
                     </div>
                   </div>
@@ -53,7 +53,7 @@
                         <img src="../../assets/svgs/price_tag.svg" style="min-width: 50px;max-width: 50px">
                       </div>
                       <div class="col-9" style="padding-left: 0px;">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 25px;color: #234491;padding: 10px">{{whatIsPrice(deal)}}</span>
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 25px;color: #234491;padding: 10px">{{whatIsPrice(deal?.price)}}</span>
                       </div>
                     </div>
                   </div>
@@ -65,7 +65,7 @@
                             <div style="max-height: 50px" id="lottieLikeButton" (click)="playAnim(0,'like','comment')"></div>
                           </div>
                           <div class="col-auto nopadding">
-                            <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal.votes_sum}}</span>
+                            <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal?.votes_sum}}</span>
                           </div>
                         </div>
                       </div>
@@ -75,7 +75,7 @@
                             <div style="max-height: 50px" id="lottieCommentButton" (mouseenter)="playAnim(0,'comment','comment')" (mouseleave)="stopAnim(0)"></div>
                           </div>
                           <div class="col-auto nopadding">
-                            <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal.comments_count}}</span>
+                            <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal?.comments_count}}</span>
                           </div>
                         </div>
                       </div>
@@ -86,20 +86,20 @@
                     <div class="row" style="align-items: center;flex-wrap: nowrap">
                       <div class="col-auto mx-auto nopadding">
                         <img  src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal.image_url}}&description={{deal.title}}" target="_blank">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal?.image_url}}&description={{deal?.title}}" target="_blank">
                         </a>
                       </div>
                       <div class="col-auto mx-auto nopadding cursor-pointer" >
                         <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
                       </div>
                       <div class="col cursor-pointer">
-                        <img (click)="goToLink(deal.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
+                        <img (click)="goToLink(deal?.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="row" style="padding-top: 20px;">
-                  <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491;line-height: 1.2;">{{deal.details.slice(0,304).concat('..')}}</span>
+                  <span style="font-family: 'Mark Pro-Medium';font-size: 14px;color:#234491;line-height: 1.2;">{{deal?.details.slice(0,304).concat('..')}}</span>
                 </div>
               </div>
             </div>
@@ -163,22 +163,22 @@
             </div>
           </div>
         </div>
-        <div *ngIf="newlyAddedComments.length > 0" style="    padding: 20px;">
+        <div *ngIf="newlyAddedComments?.length > 0" style="    padding: 20px;">
           <div @commentState *ngFor="let comment of newlyAddedComments" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%">
             <div class="col">
               <div class="row nowrap">
                 <div class="col">
                   <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
                     <div class="col-auto nopadding">
-                      <img src="{{comment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+                      <img src="{{comment?.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
                     </div>
                     <div class="col-auto">
-                      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment.user.name}}</span>
+                      <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment?.user.name}}</span>
                     </div>
                   </div>
                   <div class="row" style="padding: 1%;padding-left: 4%">
                     <div class="col">
-                      <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment.text}}</span>
+                      <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment?.text}}</span>
                     </div>
                   </div>
                 </div>
@@ -194,26 +194,26 @@
                   <div class="col">
                     <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
                       <div class="col-auto nopadding">
-                        <img src="{{comment.user.avatar_url}}" style="border-radius: 100%;max-width: 50px;min-width: 50px">
+                        <img src="{{comment?.user.avatar_url}}" style="border-radius: 100%;max-width: 50px;min-width: 50px">
                       </div>
                       <div class="col-auto">
-                        <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment.user.name}}</span>
+                        <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment?.user.name}}</span>
                       </div>
                       <div class="col" style="padding-left: 0px">
-                        <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{comment.timeCalculation}}</span>
+                        <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{comment?.timeCalculation}}</span>
                       </div>
                       <div class="col-auto" >
                         <div class="row">
                           <div class="col-auto" style="align-self: center;">
-                            <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment.comment_votes_count}}</span>
+                            <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment?.comment_votes_count}}</span>
                           </div>
-                          <div class="col-auto cursor-pointer" style="padding: 0px" (click)="writeToComment(comment)">
+                          <div class="col-auto cursor-pointer" style="padding: 0px" >
                             <div class="row">
                               <div class="col" style="padding-right: 0px">
                                 <div  class="lottieThumbUpButton" style="min-width: 50px;max-width: 50px;max-height: 50px" (click)="playAnim(i,'thumbsUp',comment)"></div>
                               </div>
                               <div class="col" style="padding-left: 0px">
-                                <img src="assets/svgs/comments_reply_icon.svg" style="min-width: 50px;max-width: 50px">
+                                <img src="assets/svgs/comments_reply_icon.svg" (click)="writeToComment(comment)" style="min-width: 50px;max-width: 50px">
                               </div>
                             </div>
                           </div>
@@ -229,60 +229,60 @@
                 </div>
               </div>
             </div>
-            <div @commentState *ngFor="let subComment of comment.newlyAddedSubComments;let j = index" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
+            <div @commentState *ngFor="let subComment of comment?.newlyAddedSubComments;let j = index" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
               <div class="col">
                 <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
                   <div class="col-auto nopadding">
-                    <img src="{{subComment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+                    <img src="{{subComment?.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
                   </div>
                   <div class="col-auto">
-                    <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{subComment.user.name}}</span>
+                    <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{subComment?.user.name}}</span>
                   </div>
                   <div class="col" style="padding-left: 0px">
-                    <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{subComment.timeCalculation}}</span>
+                    <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{subComment?.timeCalculation}}</span>
                   </div>
                 </div>
                 <div class="row" style="padding: 1%;padding-left: 4%">
                   <div class="col">
-                    <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment.text}}</span>
+                    <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment?.text}}</span>
                   </div>
                 </div>
               </div>
             </div>
             <div *ngIf="isHaveSubComment(comment)" style="margin-top: 3%">
-              <div *ngFor="let subComment of comment.comments;let j = index">
-                <div *ngIf="j < comment.showUntil" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
+              <div *ngFor="let subComment of comment?.comments;let j = index">
+                <div *ngIf="j < comment?.showUntil" class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%;margin-left: 50px">
                   <div  class="col">
                     <div class="row nowrap">
                       <div class="col">
                         <div class="row" style="align-items: center;border-radius: 30px;background-color: #e6e6e6">
                           <div class="col-auto nopadding">
-                            <img src="{{subComment.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
+                            <img src="{{subComment?.user.avatar_url}}" style="border-radius: 100%;max-height: 50px;min-height: 50px">
                           </div>
                           <div class="col-auto">
-                            <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{subComment.user.name}}</span>
+                            <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{subComment?.user.name}}</span>
                           </div>
                           <div class="col" style="padding-left: 0px">
-                            <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{subComment.timeCalculation}}</span>
+                            <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{subComment?.timeCalculation}}</span>
                           </div>
                         </div>
                         <div class="row" style="padding: 1%;padding-left: 4%">
                           <div class="col">
-                            <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment.text}}</span>
+                            <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{subComment?.text}}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="row" *ngIf="j === comment.comments.length-1" style="margin-top: 2%">
+                <div class="row" *ngIf="j === comment?.comments.length-1" style="margin-top: 2%">
                   <div class="col text-center cursor-pointer" (click)="addSubcommentIndex(comment,j)">
-                    <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment.dahaFazlaGetirText}}</span>
+                    <span style="font-family: 'Mark Pro-Medium';font-size: 13px;color:#234491">{{comment?.dahaFazlaGetirText}}</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="scrollToMe" @commentState *ngIf="comment.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px;margin-top: 2%">
+            <div id="scrollToMe" @commentState *ngIf="comment?.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px;margin-top: 2%">
               <div class="row nowrap">
                 <div class="col">
                   <input [(ngModel)]="newlyAddedSubComment" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">

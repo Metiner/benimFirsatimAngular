@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col" style=";border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-bottom: 2%">
+    <div *ngIf="myComments.entries.length > 0">
+      <div class="row" *ngFor="let comment of myComments.entries" style="padding-bottom: 15px">
+        <div class="col">
+          <div class="row" style="flex-wrap: nowrap">
+            <div class="col-auto">
+              <img src="http://via.placeholder.com/350x150" style="max-width: 60px;max-height:60px;min-height: 60px;min-width: 60px;border-radius: 15px;">
+            </div>
+            <div class="col">
+              <div class="row" style="align-items: center;flex-wrap: nowrap">
+                <div class="col-auto" style="padding-left: 0px;padding-right: 0px">
+                  <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color:#234491;white-space: nowrap;">{{comment.user.name.slice(0,50)}}</span>
+                </div>
+                <div class="col-auto" style="padding-left: 0px;padding-right: 0px">
+                  <span style="font-family: 'Mark Pro-Book';font-size: 16px;color:#234491;text-overflow: ellipsis;white-space: nowrap">&nbsp;- yeni yorum ekledi |</span>
+                </div>
+                <div class="col-auto" style="padding-left: 0px;padding-right: 0px">
+                  <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{timeCalculation(comment)}} </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col" style="padding-left: 0px;padding-right: 0px">
+                  <span style="font-family: 'Mark Pro';font-size: 18px;color:#234491;line-height: 1.2;">{{comment.text.slice(0,115)}}</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-auto">
+              <img src="../../assets/svgs/comment_button.svg" style="max-width: 60px;max-height:60px;min-height: 60px;min-width: 60px">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <hr style="border-top: 1px solid #234491;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

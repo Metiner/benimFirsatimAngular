@@ -27,6 +27,7 @@ import {AdsenseModule} from 'ng2-adsense';
 import {A2tUiModule, Angular2TokenService} from 'angular2-token';
 import {UpperPointTableComponent} from './upper-point-table/upper-point-table.component';
 import {PopularCategoriesComponent} from './popular-categories/popular-categories.component';
+import {GeneralViewComponent} from './general-view/general-view.component';
 
 const appRoutes : Routes = [
   { path : 'deal/:dealId' , component:SingleDealComponent},
@@ -51,7 +52,8 @@ const appRoutes : Routes = [
     ProfileSettingsComponent,
     FeedbackComponent,
     UpperPointTableComponent,
-    PopularCategoriesComponent
+    PopularCategoriesComponent,
+    GeneralViewComponent
   ],
   imports: [
     BrowserModule,

@@ -34,13 +34,11 @@ export class SingleDealComponent implements OnInit {
   sendCommentButtonActivated = false;
   animations:any;
   thereAreMoreCommentsHigherTen = false;
-  commentCount=0;
 
-  deal:any = {};
+  deal:any;
   constructor(public route: ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
-              private _scrollTo:ScrollToService,
-              private ref: ChangeDetectorRef) {
+              private _scrollTo:ScrollToService) {
     }
 
   ngOnInit() {
@@ -63,6 +61,7 @@ export class SingleDealComponent implements OnInit {
     } else {
 
       this.benimFirsatimLib.getDeal(this.route.snapshot.params['dealId']).subscribe(response => {
+
 
 
         this.deal = response.json();
@@ -205,6 +204,7 @@ export class SingleDealComponent implements OnInit {
       return true;
   }
   writeToComment(comment){
+
     comment.writeCommentToComment = true;
     this.scrollToTop();
   }
@@ -284,11 +284,16 @@ export class SingleDealComponent implements OnInit {
     }
     comment.showUntil += 3;
   }
-  whatIsPrice(deal){
-    if(deal.price.indexOf(".0") === -1){
-      return deal.price ? (deal.price + '₺') : '';
-    }else{
-      return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
+  whatIsPrice(price){
+    try{
+      if(price.indexOf(".0") === -1){
+        return price ? (price + '₺') : '';
+      }else{
+        return price ? (price.slice(0,price.indexOf(".")) + '₺') : '';
+      }
+    }catch (e){
+
     }
+
   }
 }
