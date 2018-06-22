@@ -56,16 +56,12 @@
   background-repeat: no-repeat;
   background-size: auto;
   z-index: 1;
-  position: absolute;
   overflow: hidden;
 }
 .myProfile{
   background-image: url('../../assets/imgs/profilim_bg@2x.png');
   border-radius: 0px 0px 40px 40px;
-  position: absolute;
   z-index: 1;
-  width: 80%;
-  padding-top: 5%;
 }
 
 .search-div-animation{
@@ -79,11 +75,11 @@
 }
 
 .row.myProfileItemRow{
-  margin: 6%;
   align-items: right;
 }
 .myProfileItemCol{
   text-align: right;
+  margin-top: 10px;
 }
 .menu_categories{
   width: 80%;
@@ -106,4 +102,6 @@
   font-size: 11px !important;
 }
 
-
+.categories-margin-responsive-added{
+  margin-left: 27% !important;
+}

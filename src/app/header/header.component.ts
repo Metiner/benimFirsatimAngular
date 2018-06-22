@@ -40,7 +40,6 @@ export class HeaderComponent implements OnDestroy{
 
   autSubscription : Subscription;
   responsiveDesignSubscription : Subscription;
-  searchResponse:any;
 
   initializeSearchDiv: boolean;
 
@@ -113,6 +112,7 @@ export class HeaderComponent implements OnDestroy{
 
     if(innerWidthToCheck < 1020){
 
+      $('.categories-margin-responsive').addClass('categories-margin-responsive-added');
       $('.dealTitleAndUserRow').addClass('text-center');
 
       $('.col-kucuk-responsive').removeClass('col-3');
@@ -121,6 +121,8 @@ export class HeaderComponent implements OnDestroy{
       $('.col-kucuk-responsive').addClass('margin-bottom-20px');
     }else{
 
+
+      $('.categories-margin-responsive').removeClass('categories-margin-responsive-added');
       $('.col-kucuk-responsive').addClass('col-3');
       $('.col-kucuk-responsive').removeClass('col');
       $('.col-kucuk-responsive').addClass('margin-bottom-20px');
