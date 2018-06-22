@@ -10,6 +10,7 @@ import {HeaderComponent} from "../header/header.component";
 
 declare var lottie: any;
 declare var $: any;
+declare var FB: any;
 
 @Component({
   selector: 'app-deal',
@@ -245,6 +246,13 @@ export class DealComponent implements OnInit, OnDestroy {
   shareDeal(deal,type){
       switch (type){
         case 'fb':
+          FB.ui({
+            method: 'share',
+            mobile_iframe: true,
+            quote: deal.title,
+            href: "https://benimfirsatim.com/deal/" + deal.id,
+            hastag: '#benimfirsatim'
+          }, function(response){});
           break;
         case 'tw':
           // Opens a pop-up with twitter sharing dialog
