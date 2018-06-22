@@ -84,7 +84,7 @@
                   <div class="col-2"></div>
                   <div class="col-auto">
                     <div class="row" style="align-items: center;flex-wrap: nowrap">
-                      <div class="col-auto mx-auto nopadding">
+                      <div class="col-auto mx-auto nopadding cursor-pointer" (click)="shareDeal(deal,'fb')">
                         <img  src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
                         <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal?.image_url}}&description={{deal?.title}}" target="_blank">
                         </a>
