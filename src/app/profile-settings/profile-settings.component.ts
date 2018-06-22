@@ -24,7 +24,7 @@ export class ProfileSettingsComponent implements OnInit {
   genelBakis = {active:'void'};
   yorumlar = {active:'void'};
   kaydedilenler = {active:'void'};
-  firsatlar = {active:'active'};
+  firsatlar = {active:'void'};
   ayarlar = {active:'void'};
 
   currentUser;any={};
@@ -105,8 +105,9 @@ export class ProfileSettingsComponent implements OnInit {
       this.genelBakis.active = 'void';
       this.yorumlar.active = 'void';
       this.kaydedilenler.active = 'void';
-      this.firsatlar.active = 'active';
+      this.firsatlar.active = 'void';
       this.ayarlar.active = 'active';
+      this.genelBakis.active = 'active';
       this.formatDeals("firsatlarim");
     }
   }

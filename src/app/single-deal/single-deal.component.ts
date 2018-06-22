@@ -297,4 +297,27 @@ export class SingleDealComponent implements OnInit {
     }
 
   }
+
+
+  shareDeal(deal,type){
+    switch (type){
+      case 'fb':
+        break;
+      case 'tw':
+        // Opens a pop-up with twitter sharing dialog
+        var shareURL = "http://twitter.com/share?"; //url base
+        //params
+        var params = {
+          url: "https://benimfirsatim.com/deal/" + deal.id,
+          text: deal.title,
+          // via: "sometwitterusername",
+          hashtags: "benimfirsatim"
+        }
+        for(let prop in params) shareURL += '&' + prop + '=' + encodeURIComponent(params[prop]);
+        window.open(shareURL, '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+
+        break;
+
+    }
+  }
 }

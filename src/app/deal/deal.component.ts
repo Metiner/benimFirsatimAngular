@@ -242,17 +242,26 @@ export class DealComponent implements OnInit, OnDestroy {
     }
   }
 
-  shareDeal(deal){
-    this.fb.ui(
-      {
-        method: 'feed',
-        name: deal.title,
-        link: 'benimfirsatim.com/deal/' + deal.id,
-        picture: "benimfirsatim.com" + deal.image_url,
-        caption: 'Top 3 reasons why you should care about your finance',
-        description: "What happens when you don't take care of your finances? Just look at our country -- you spend irresponsibly, get in debt up to your eyeballs, and stress about how you're going to make ends meet. The difference is that you don't have a glut of taxpayers…",
-        message: ""
-      });
+  shareDeal(deal,type){
+      switch (type){
+        case 'fb':
+          break;
+        case 'tw':
+          // Opens a pop-up with twitter sharing dialog
+          var shareURL = "http://twitter.com/share?"; //url base
+          //params
+          var params = {
+            url: "https://benimfirsatim.com/deal/" + deal.id,
+            text: deal.title,
+            // via: "sometwitterusername",
+            hashtags: "benimfirsatim"
+          }
+          for(let prop in params) shareURL += '&' + prop + '=' + encodeURIComponent(params[prop]);
+          window.open(shareURL, '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+
+          break;
+
+      }
   }
 
 

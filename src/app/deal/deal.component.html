@@ -62,11 +62,9 @@
           </div>
           <div class="col-2 col-to-1"></div>
           <div class="col-auto nopadding" style="    align-self: center">
-            <img (click)="shareDeal(deal)" src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 30px;min-width: 30px;transform: translate(15px)">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=benimfirsatim.com&picture=benimfirsatim.com{{deal.image_url}}&description={{deal.title}}" target="_blank">
-            </a>
+            <img (click)="shareDeal(deal,'fb')" src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 30px;min-width: 30px;transform: translate(15px)">
           </div>
-          <div class="col-auto  nopadding cursor-pointer" style="align-self: center;margin-left: 15px;transform: translate(15px)">
+          <div class="col-auto  nopadding cursor-pointer" style="align-self: center;margin-left: 15px;transform: translate(15px)" (click)="shareDeal(deal,'tw')">
             <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
           </div>
           <div class="col-auto cursor-pointer"   style="margin-left: 15px">

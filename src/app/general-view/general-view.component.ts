@@ -10,7 +10,8 @@ export class GeneralViewComponent implements OnInit {
 
   myComments:any = [];
   commentsThatIiked = [];
-  myReplies = [];
+  myReplies:any = [];
+  generalViewElements:any =[];
   constructor(private benimFirsatimLibrary: BenimFirsatimLibrary) {
     this.getActivity();
   }
@@ -20,7 +21,13 @@ export class GeneralViewComponent implements OnInit {
 
   getActivity(){
     this.benimFirsatimLibrary.getMyComments().subscribe(response=>{
-      this.myComments = response.json();
+      this.myComments = response.json().entries;
+
+      for(let i = 0;i<this.myComments.length;i++){
+
+        this.myComments[i].type = "myComments";
+        this.generalViewElements.push(this.myComments[i]);
+      }
     });
     this.benimFirsatimLibrary.getCommentsThatIliked().subscribe(response=>{
 
@@ -29,10 +36,18 @@ export class GeneralViewComponent implements OnInit {
 
     })
     this.benimFirsatimLibrary.getMyReplies().subscribe(response=>{
-      this.myReplies = response.json();
-      console.log(this.myReplies);
-
+      const temp = response.json().entries;
+      for(let i=0;i<temp.length;i++){
+        if(temp[i].comments.length > 0){
+          for(let j=0;j<temp[i].comments.length;j++){
+            temp[i].comments[j].type = "myReplies";
+            this.generalViewElements.push(temp[i].comments[j]);
+          }
+        }
+      }
+      console.log(this.generalViewElements);
     })
+
   }
 
   timeCalculation(comment){
