@@ -164,7 +164,7 @@ export class DealComponent implements OnInit, OnDestroy {
 
   loadAnimations(index, likeContainer, commentContainer) {
 
-    if (this.likeButtonAnimations.length > 9) {
+    if (this.likeButtonAnimations.length > 8) {
       this.likeButtonAnimations.length = 0;
     }
     this.likeButtonAnimations.push(lottie.loadAnimation({
@@ -204,12 +204,14 @@ export class DealComponent implements OnInit, OnDestroy {
 
       this.likeButtonAnimations[index].play();
       if (this.likeButtonAnimations[index].liked) {
+
         this.benimFirsatimLib.downVoteDeal(deal.id).subscribe(response=>{
           deal.votes_sum = response.json().deal_score;
         });
 
         this.likeButtonAnimations[index].setDirection(-1);
         this.likeButtonAnimations[index].liked = false;
+
 
       } else {
         this.benimFirsatimLib.upVoteDeal(deal.id).subscribe(response=>{
@@ -218,6 +220,7 @@ export class DealComponent implements OnInit, OnDestroy {
 
         this.likeButtonAnimations[index].setDirection(1);
         this.likeButtonAnimations[index].liked = true;
+
       }
     }
     else {

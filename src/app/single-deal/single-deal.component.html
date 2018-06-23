@@ -186,7 +186,7 @@
             </div>
           </div>
         </div>
-        <div *ngFor="let comment of comments ;let i = index" [ngClass]="{'lastItemMargin':isItLastItem(comment)}" style=";padding: 20px">
+        <div *ngFor="let comment of comments ;let i = index" [ngClass]="{'lastItemMargin':isItLastItem(comment)}" style=";padding-left: 20px;padding-right: 20px">
           <div *ngIf="i < commentIndex">
             <div class="row" style="background-color: #f2f2f2;border-radius:30px;margin-top: 2%">
               <div class="col">
@@ -200,7 +200,7 @@
                         <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{comment?.user.name}}</span>
                       </div>
                       <div class="col" style="padding-left: 0px">
-                        <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{comment?.timeCalculation}}</span>
+                        <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491">{{comment?.timeCalculation}}</span>
                       </div>
                       <div class="col-auto" >
                         <div class="row">
@@ -239,7 +239,7 @@
                     <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{subComment?.user.name}}</span>
                   </div>
                   <div class="col" style="padding-left: 0px">
-                    <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{subComment?.timeCalculation}}</span>
+                    <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491">{{subComment?.timeCalculation}}</span>
                   </div>
                 </div>
                 <div class="row" style="padding: 1%;padding-left: 4%">
@@ -263,7 +263,7 @@
                             <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{subComment?.user.name}}</span>
                           </div>
                           <div class="col" style="padding-left: 0px">
-                            <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491"> | {{subComment?.timeCalculation}}</span>
+                            <span style="font-family: 'Mark Pro-Light';font-size: 15px;color:#234491">{{subComment?.timeCalculation}}</span>
                           </div>
                         </div>
                         <div class="row" style="padding: 1%;padding-left: 4%">

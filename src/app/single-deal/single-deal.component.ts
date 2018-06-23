@@ -5,6 +5,8 @@ import {commentStateTrigger} from "../animations";
 import {ScrollToService,ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
 import {Subscription} from 'rxjs/Subscription';
 import {HeaderComponent} from "../header/header.component";
+import set = Reflect.set;
+import {MatSnackBar} from "@angular/material";
 declare var lottie: any;
 declare var $:any
 declare var FB:any;
@@ -36,10 +38,13 @@ export class SingleDealComponent implements OnInit {
   animations:any;
   thereAreMoreCommentsHigherTen = false;
 
+  preventDuplicate = false;
+
   deal:any;
   constructor(public route: ActivatedRoute,
               public benimFirsatimLib:BenimFirsatimLibrary,
-              private _scrollTo:ScrollToService) {
+              private _scrollTo:ScrollToService,
+              private snackBar:MatSnackBar) {
     }
 
   ngOnInit() {
@@ -186,13 +191,13 @@ export class SingleDealComponent implements OnInit {
     let days = Number((millisec / (1000 * 60 * 60 * 24)).toFixed());
 
     if (seconds < 60) {
-      return seconds + " Saniye önce";
+      return " | " + seconds + " Saniye önce";
     } else if (minutes < 60) {
-      return minutes + " Dakika önce";
+      return " | "  + minutes + " Dakika önce";
     } else if (hours < 24) {
-      return hours + " Saat önce";
+      return " | " + hours + " Saat önce";
     } else {
-      return days + " Gün önce"
+      return " | " + days + " Gün önce"
     }
   }
   isHaveSubComment(comment){
@@ -225,15 +230,24 @@ export class SingleDealComponent implements OnInit {
 
   sendComment(){
     if(this.benimFirsatimLib.isAutho){
-      this.sendCommentButtonActivated = true;
-      var comment:any = {};
-      comment.text = this.newlyAddedComment;
-      comment.user = this.benimFirsatimLib.currentUser;
-      comment.timeCalculation = "";
-      this.newlyAddedComments.push(comment);
-      this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],null,this.newlyAddedComment).subscribe((response)=>{
-        this.sendCommentButtonActivated = false;
-      });
+      if(!this.preventDuplicate){
+        this.preventDuplicate = true;
+        this.sendCommentButtonActivated = true;
+        var comment:any = {};
+        comment.text = this.newlyAddedComment;
+        comment.user = this.benimFirsatimLib.currentUser;
+        comment.timeCalculation = "";
+        this.newlyAddedComments.push(comment);
+        this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],null,this.newlyAddedComment).subscribe((response)=>{
+          this.sendCommentButtonActivated = false;
+
+        });
+        setTimeout(()=>{
+          this.preventDuplicate = false;
+        },10000);
+      }else{
+        this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
+      }
     }else{
       this.benimFirsatimLib.openSignUpPopUp.next();
     }
@@ -249,15 +263,24 @@ export class SingleDealComponent implements OnInit {
     }
   }
   writeCommentSubcomment(comment){
-    comment.newlyAddedSubComments = [];
-    var newlyAddedSubCommentTemp:any = {};
-    newlyAddedSubCommentTemp.text = this.newlyAddedSubComment;
-    newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
-    newlyAddedSubCommentTemp.timeCalculation = "";
-    comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
-    this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],comment.id,this.newlyAddedSubComment).subscribe((response)=>{
 
-    });
+    if(!this.preventDuplicate) {
+      this.preventDuplicate = true;
+      comment.newlyAddedSubComments = [];
+      var newlyAddedSubCommentTemp: any = {};
+      newlyAddedSubCommentTemp.text = this.newlyAddedSubComment;
+      newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
+      newlyAddedSubCommentTemp.timeCalculation = "";
+      comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
+      this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, this.newlyAddedSubComment).subscribe((response) => {
+
+      });
+      setTimeout(()=>{
+        this.preventDuplicate = false;
+      },10000);
+    }else{
+      this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
+    }
   }
 
   deadOnDeadLine(){
