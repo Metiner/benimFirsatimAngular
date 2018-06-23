@@ -36,6 +36,8 @@ export class HeaderComponent implements OnDestroy{
 
   public _onResizeEventFlag = false;
 
+
+  displayCategoriesProfileDiv = false;
   isAuth = false;
 
   autSubscription : Subscription;
@@ -315,11 +317,18 @@ export class HeaderComponent implements OnDestroy{
         break;
     }
   }
-  slideCategoriesDiv(state){
-    this.categoriesAnimation = state;
+  slideCategoriesDiv(state,displayCategoriesProfileDivBoolean){
+    this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
+    setTimeout(()=>{
+      this.categoriesAnimation = state;
+    },100)
   }
-  slideMyProfileDiv(state){
-    this.myProfileAnimation = state;
+  slideMyProfileDiv(state,displayCategoriesProfileDivBoolean){
+    this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
+    setTimeout(()=>{
+      this.myProfileAnimation = state;
+
+    },100)
   }
   onCategoryChange(type){
     this.benimFirsatimLibrary.showPointTable = true;
