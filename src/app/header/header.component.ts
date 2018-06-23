@@ -317,18 +317,22 @@ export class HeaderComponent implements OnDestroy{
         break;
     }
   }
-  slideCategoriesDiv(state,displayCategoriesProfileDivBoolean){
-    this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
-    setTimeout(()=>{
-      this.categoriesAnimation = state;
-    },100)
-  }
-  slideMyProfileDiv(state,displayCategoriesProfileDivBoolean){
-    this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
-    setTimeout(()=>{
-      this.myProfileAnimation = state;
+  slideDiv(type,state,displayCategoriesProfileDivBoolean){
 
-    },100)
+    this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
+
+    switch (type) {
+      case 'categories':
+        setTimeout(() => {
+          this.categoriesAnimation = state;
+        }, 100)
+        break;
+      case 'profile':
+        setTimeout(() => {
+          this.myProfileAnimation = state;
+        }, 100)
+        break;
+    }
   }
   onCategoryChange(type){
     this.benimFirsatimLibrary.showPointTable = true;
