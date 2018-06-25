@@ -42,10 +42,12 @@ export class ProfileSettingsComponent implements OnInit {
     if(this.activatedRoute.snapshot.params['type'] === 'settings'){
       this.activeAnim("ayarlar");
     }
+    if(this.activatedRoute.snapshot.params['type'] === 'notifications'){
+      this.activeAnim('genelBakis');
+    }
   }
 
   formatDeals(type){
-
 
     this.benimFirsatimLibrary.showPointTable = false;
     this.benimFirsatimLibrary.responsiveDesign.next();

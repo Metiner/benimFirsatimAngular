@@ -92,7 +92,7 @@ export class DealComponent implements OnInit, OnDestroy {
         this.benimFirsatimLib.getFavDeal().subscribe(data => {
           let responseData = data.json();
           this.displayedDeals = [];
-          this.deals = responseData;
+          this.deals = responseData.entries;
           this.benimFirsatimLib.currentDeals = this.deals;
           this.benimFirsatimLib.currentPaging = responseData.current_page;
           this.benimFirsatimLib.totalPage = Math.floor(responseData.total_entries / 10) + 1;

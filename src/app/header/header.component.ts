@@ -432,7 +432,9 @@ export class HeaderComponent implements OnDestroy{
   onSettingsPage(){
     this.router.navigate(['/myProfile/settings']);
   }
-
+  onNotifications(){
+    this.router.navigate(['/myProfile/notifications']);
+  }
   onSearchEvent(event){
 
     if(event.key === 'Enter'){

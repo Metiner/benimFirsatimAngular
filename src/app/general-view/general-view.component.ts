@@ -12,6 +12,8 @@ export class GeneralViewComponent implements OnInit {
   commentsThatIiked = [];
   myReplies:any = [];
   generalViewElements:any =[];
+
+  showCount:number = 100;
   constructor(private benimFirsatimLibrary: BenimFirsatimLibrary) {
     this.getActivity();
   }

@@ -301,6 +301,8 @@ export class SingleDealComponent implements OnInit {
 
   favDeal(){
     this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{
+      this.snackBar.open('!!!! KAYDEDİLDİ !!!??*??!!!   Tamam sakinim.','',{duration:3000});
+
     })
   }
   addSubcommentIndex(comment,index){

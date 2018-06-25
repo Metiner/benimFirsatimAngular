@@ -171,7 +171,7 @@
     <div class="col-2" style=" margin-left: auto;margin-right: -4%;max-width: 200px;padding: 0px">
       <div class="myProfile" (mouseleave)="slideDiv('profile','out',false)" [@slideInOut]="myProfileAnimation">
         <div *ngIf="isAuth" class="row myProfileItemRow">
-          <div class="col  myProfileItemCol cursor-pointer">
+          <div class="col  myProfileItemCol cursor-pointer" (click)="onNotifications()">
             <img src="../../assets/imgs/bildirimler@2x.png" style="max-width: 120px;margin-right: 15px">
           </div>
         </div>
