@@ -127,7 +127,7 @@ export class HeaderComponent implements OnDestroy{
       $('.categories-margin-responsive').removeClass('categories-margin-responsive-added');
       $('.col-kucuk-responsive').addClass('col-3');
       $('.col-kucuk-responsive').removeClass('col');
-      $('.col-kucuk-responsive').addClass('margin-bottom-20px');
+      $('.col-kucuk-responsive').removeClass('margin-bottom-20px');
       $('.col-kucuk-responsive').addClass('margin-right-20px');
 
     }
