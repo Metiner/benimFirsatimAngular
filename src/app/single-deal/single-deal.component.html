@@ -282,7 +282,7 @@
                 </div>
               </div>
             </div>
-            <div id="scrollToMe" @commentState *ngIf="comment?.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px;margin-top: 2%">
+            <div #scrollToMe @commentState *ngIf="comment?.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px;margin-top: 2%">
               <div class="row nowrap">
                 <div class="col">
                   <input [(ngModel)]="newlyAddedSubComment" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">

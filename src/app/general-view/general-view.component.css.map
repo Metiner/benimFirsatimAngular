@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,mBAAoB;EAClB,OAAO,EAAE,IAAI",
+"sources": ["general-view.component.scss"],
 "names": [],
 "file": "general-view.component.css"
 }

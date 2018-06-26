@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
@@ -217,11 +217,16 @@ export class SingleDealComponent implements OnInit {
   }
   scrollToTop(){
 
-    const config: ScrollToConfigOptions = {
-      offset : 400
-    }
 
-    this._scrollTo.scrollTo(config);
+    $(document).ready(()=>{
+      const config: ScrollToConfigOptions = {
+        target: document.getElementById("scrollToMe")
+      }
+
+      this._scrollTo.scrollTo(config);
+    })
+
+
   }
 
   goToLink(link:string){
@@ -230,23 +235,28 @@ export class SingleDealComponent implements OnInit {
 
   sendComment(){
     if(this.benimFirsatimLib.isAutho){
-      if(!this.preventDuplicate){
-        this.preventDuplicate = true;
-        this.sendCommentButtonActivated = true;
-        var comment:any = {};
-        comment.text = this.newlyAddedComment;
-        comment.user = this.benimFirsatimLib.currentUser;
-        comment.timeCalculation = "";
-        this.newlyAddedComments.push(comment);
-        this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],null,this.newlyAddedComment).subscribe((response)=>{
-          this.sendCommentButtonActivated = false;
+      if(this.newlyAddedComment.length < 1){
+        if(!this.preventDuplicate){
+          this.preventDuplicate = true;
+          this.sendCommentButtonActivated = true;
+          var comment:any = {};
+          comment.text = this.newlyAddedComment;
+          comment.user = this.benimFirsatimLib.currentUser;
+          comment.timeCalculation = "";
+          this.newlyAddedComments.push(comment);
+          this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'],null,this.newlyAddedComment).subscribe((response)=>{
+            this.sendCommentButtonActivated = false;
+            this.newlyAddedComment = "";
 
-        });
-        setTimeout(()=>{
-          this.preventDuplicate = false;
-        },10000);
+          });
+          setTimeout(()=>{
+            this.preventDuplicate = false;
+          },10000);
+        }else{
+          this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
+        }
       }else{
-        this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
+        this.snackBar.open('Bir şeyler söyleyecek misin.','',{duration:3000});
       }
     }else{
       this.benimFirsatimLib.openSignUpPopUp.next();
@@ -265,19 +275,23 @@ export class SingleDealComponent implements OnInit {
   writeCommentSubcomment(comment){
 
     if(!this.preventDuplicate) {
-      this.preventDuplicate = true;
-      comment.newlyAddedSubComments = [];
-      var newlyAddedSubCommentTemp: any = {};
-      newlyAddedSubCommentTemp.text = this.newlyAddedSubComment;
-      newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
-      newlyAddedSubCommentTemp.timeCalculation = "";
-      comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
-      this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, this.newlyAddedSubComment).subscribe((response) => {
-
-      });
-      setTimeout(()=>{
-        this.preventDuplicate = false;
-      },10000);
+      if(this.newlyAddedComment.length < 1){
+        this.preventDuplicate = true;
+        comment.newlyAddedSubComments = [];
+        var newlyAddedSubCommentTemp: any = {};
+        newlyAddedSubCommentTemp.text = this.newlyAddedSubComment;
+        newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
+        newlyAddedSubCommentTemp.timeCalculation = "";
+        comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
+        this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, this.newlyAddedSubComment).subscribe((response) => {
+          this.newlyAddedSubComment = "";
+        });
+        setTimeout(()=>{
+          this.preventDuplicate = false;
+        },10000);
+      }else{
+        this.snackBar.open('Bir şeyler söyleyecek misin.','',{duration:3000});
+      }
     }else{
       this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
     }

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col"
        style=";border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-bottom: 2%;max-height: 600px;
-    overflow: scroll;">
+    overflow: scroll">
     <div *ngIf="generalViewElements.length > 0">
       <div class="row" *ngFor="let element of generalViewElements;let i = index" style="padding-bottom: 15px">
         <div *ngIf="element.type == 'myComments' && i<showCount" class="col" >

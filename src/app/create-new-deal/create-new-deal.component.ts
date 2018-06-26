@@ -80,9 +80,15 @@ export class CreateNewDealComponent implements OnInit {
         pager: false,
         easing: 'ease-in-out'
       });
+
+    $('.footer').hide();
     });
     this.fillImagesArrayWithDefaultImages();
 
+  }
+
+  ngOnDestroy(){
+    $('.footer').show();
   }
 
 // it fills the array with default images.
@@ -240,13 +246,13 @@ export class CreateNewDealComponent implements OnInit {
     } else {
       dealPrice.highlight = 'none';
     }
-    if (form.value.dealDate == '' || form.value.dealDate == null) {
-      baslangicTarihi.highlight = 'highlighted';
-      this.dealReadytoPublish = false;
+    /*if (form.value.dealDate == '' || form.value.dealDate == null) {
+      //baslangicTarihi.highlight = 'highlighted';
+      //this.dealReadytoPublish = false;
     } else {
       var date = form.value.dealDate.toLocaleDateString().replace('.', '/').replace('.', '/');
       baslangicTarihi.highlight = 'none';
-    }
+    }*/
 
     if (form.value.dealTitlePreview == '') {
       dealTitle.highlight = 'highlighted';
