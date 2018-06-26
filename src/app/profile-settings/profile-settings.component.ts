@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {tabActivationTrigger} from '../animations';
 import {NgForm} from "@angular/forms";
+import {MatSnackBar} from "@angular/material";
 declare var $:any;
 
 @Component({
@@ -17,7 +18,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private benimFirsatimLibrary: BenimFirsatimLibrary,
-              private route: Router) {
+              private snackBar: MatSnackBar) {
   }
 
 
@@ -118,16 +119,30 @@ export class ProfileSettingsComponent implements OnInit {
   }
   onProfileUpdateSubmit(form:NgForm){
 
-    if(form.value.password.length > 7){
-      if(form.value.password !== '' && form.value.rePassword !== '' && form.value.username.length > 3){
+    if(form.value.password.length > 7 && form.value.username.length > 3){
+      if(form.value.password !== '' && form.value.rePassword !== '' ){
 
         if(form.value.password === form.value.rePassword){
 
           this.benimFirsatimLibrary.updateUser(form.value.username,form.value.password).subscribe(response=>{
-            console.log(response.json());
+            const data = response.json();
+            if(data.status === 'success'){
+              this.currentUser.name = data.data.name;
+              this.snackBar.open("Başarıyla güncellendi.",'',{duration:3000});
+
+            }
+            else{
+              this.snackBar.open("Sıkıntı var.",'',{duration:3000});
+            }
           })
         }
+      }else{
+        this.snackBar.open("Parolaların uyuştuğuna emin misin ?",'',{duration:3000});
+
       }
+    }else{
+      this.snackBar.open("Parola, en az 8. Kullanıcı adı, en az 4 haneli olmalı.",'',{duration:3000});
+
     }
   }
   onDeleteProfile(){

@@ -175,7 +175,7 @@ export class BenimFirsatimLibrary {
   }
 
   public updateUser(nickname,password){
-    return this._tokenService.put('users.json',{"name":nickname,"password":password});
+    return this._tokenService.put('auth',{"name":nickname,"password":password});
   }
 
   public getComments(deal_id){
