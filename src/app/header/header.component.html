@@ -168,7 +168,7 @@
       </div>
     </div>-->
     <div class="col" style="padding: 0px;"></div>
-    <div class="col-2" style=" margin-left: auto;margin-right: -4%;max-width: 200px;padding: 0px">
+    <div class="col" style="margin-right: 5%;max-width: 200px">
       <div class="myProfile" (mouseleave)="slideDiv('profile','out',false)" [@slideInOut]="myProfileAnimation">
         <div *ngIf="isAuth" class="row myProfileItemRow">
           <div class="col  myProfileItemCol cursor-pointer" (click)="onNotifications()">
@@ -192,7 +192,6 @@
         </div>
       </div>
     </div>
-    <div class="col-1"></div>
   </div>
   <div *ngIf="initializeSearchDiv">
     <div class="searchDiv" (click)="initializeSearchDiv = !initializeSearchDiv">

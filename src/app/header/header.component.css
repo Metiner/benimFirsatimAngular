@@ -58,7 +58,8 @@
 .myProfile {
   background-image: url("../../assets/imgs/profilim_bg@2x.png");
   border-radius: 0px 0px 40px 40px;
-  z-index: 1; }
+  z-index: 1;
+  padding: 5px 0 0 5px; }
 
 .search-div-animation {
   border-radius: 0px 0px 40px 40px;

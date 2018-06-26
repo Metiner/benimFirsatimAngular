@@ -52,10 +52,13 @@ export class ProfileSettingsComponent implements OnInit {
     this.benimFirsatimLibrary.showPointTable = false;
     this.benimFirsatimLibrary.responsiveDesign.next();
     $(document).ready(()=>{
+
       var firsatlarim = document.getElementById(type);
-      firsatlarim.children[0].children[0].classList.remove("col-8");
-      firsatlarim.children[0].children[0].classList.remove("offset-1");
-      firsatlarim.children[0].children[0].classList.add("col-12");
+      if(firsatlarim){
+        firsatlarim.children[0].children[0].classList.remove("col-8");
+        firsatlarim.children[0].children[0].classList.remove("offset-1");
+        firsatlarim.children[0].children[0].classList.add("col-12");
+      }
     })
 
   }
@@ -114,15 +117,18 @@ export class ProfileSettingsComponent implements OnInit {
     }
   }
   onProfileUpdateSubmit(form:NgForm){
-    if(form.value.password === '' && form.value.rePassword === '' && form.value.username.length > 6){
-      if(form.value.password === form.value.rePassword){
-        this.benimFirsatimLibrary.updateUser(form.value.username,form.value.password).subscribe(response=>{
-          //nativeElement.style.color
-        })
+
+    if(form.value.password.length > 7){
+      if(form.value.password !== '' && form.value.rePassword !== '' && form.value.username.length > 3){
+
+        if(form.value.password === form.value.rePassword){
+
+          this.benimFirsatimLibrary.updateUser(form.value.username,form.value.password).subscribe(response=>{
+            console.log(response.json());
+          })
+        }
       }
     }
-
-    //this.benimFirsatimLibrary.updateUser()
   }
   onDeleteProfile(){
     this.showAreYouSure = !this.showAreYouSure;

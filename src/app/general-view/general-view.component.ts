@@ -47,9 +47,7 @@ export class GeneralViewComponent implements OnInit {
           }
         }
       }
-      console.log(this.generalViewElements);
     })
-
   }
 
   timeCalculation(comment){

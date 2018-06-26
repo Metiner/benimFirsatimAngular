@@ -28,6 +28,7 @@ export class HeaderComponent implements OnDestroy{
   categoriesAnim:any;
 
   categoriesAnimation = 'out';
+
   myProfileAnimation = 'out';
   searchDivAnimation = 'out';
   categories = [];
@@ -325,12 +326,12 @@ export class HeaderComponent implements OnDestroy{
       case 'categories':
         setTimeout(() => {
           this.categoriesAnimation = state;
-        }, 100)
+        }, 100);
         break;
       case 'profile':
         setTimeout(() => {
           this.myProfileAnimation = state;
-        }, 100)
+        }, 100);
         break;
     }
   }
