@@ -235,7 +235,7 @@ export class SingleDealComponent implements OnInit {
 
   sendComment(){
     if(this.benimFirsatimLib.isAutho){
-      if(this.newlyAddedComment.length < 1){
+      //if(this.newlyAddedComment.length < 1000){
         if(!this.preventDuplicate){
           this.preventDuplicate = true;
           this.sendCommentButtonActivated = true;
@@ -258,9 +258,9 @@ export class SingleDealComponent implements OnInit {
       }else{
         this.snackBar.open('Bir şeyler söyleyecek misin.','',{duration:3000});
       }
-    }else{
-      this.benimFirsatimLib.openSignUpPopUp.next();
-    }
+    //}else{
+      //this.benimFirsatimLib.openSignUpPopUp.next();
+
   }
 
   loadMoreComment(){
