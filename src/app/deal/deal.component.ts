@@ -69,6 +69,9 @@ export class DealComponent implements OnInit, OnDestroy {
   }
 
   setDeals() {
+
+    this.likeButtonAnimations.length = 0;
+    this.commentButtonAnimations.length = 0;
     this.deals = [];
     this.displayedDeals = [];
 
@@ -144,29 +147,29 @@ export class DealComponent implements OnInit, OnDestroy {
         }
       });
     }
+
   }
 
   onDealAnimated(event: AnimationEvent, lastItemIndex, likeContainer, commentContainer) {
-    if (lastItemIndex < 10) {
-      this.loadAnimations(lastItemIndex, likeContainer, commentContainer);
-    }
-    if (event.fromState !== 'void') {
-      return;
-    }
-    if (this.deals.length > lastItemIndex + 1) {
-      this.displayedDeals.push(this.deals[lastItemIndex + 1]);
-      this.benimFirsatimLib.dealAnimationContinues = true;
-    } else {
-      this.benimFirsatimLib.dealAnimationContinues = false;
-      this.deals = this.displayedDeals;
+
+    if(this.displayedDeals.length > 0){
+      this.loadAnimations(likeContainer, commentContainer);
+      if (event.fromState !== 'void') {
+        return;
+      }
+      if (this.deals.length > lastItemIndex + 1) {
+        this.displayedDeals.push(this.deals[lastItemIndex + 1]);
+        this.benimFirsatimLib.dealAnimationContinues = true;
+      } else {
+        this.benimFirsatimLib.dealAnimationContinues = false;
+        this.deals = this.displayedDeals;
+      }
     }
   }
 
-  loadAnimations(index, likeContainer, commentContainer) {
+  loadAnimations( likeContainer, commentContainer) {
 
-    if (this.likeButtonAnimations.length > 8) {
-      this.likeButtonAnimations.length = 0;
-    }
+
     this.likeButtonAnimations.push(lottie.loadAnimation({
       container: likeContainer, // the dom element that will contain the animation
       renderer: 'svg',
@@ -200,8 +203,10 @@ export class DealComponent implements OnInit, OnDestroy {
     window.open(link, '_blank');
   }
 
-  playAnim(index, type,deal) {
+  playAnim(index, type,deal,lol) {
+
     if (type === 'like') {
+
 
       this.likeButtonAnimations[index].play();
       if (this.likeButtonAnimations[index].liked) {
