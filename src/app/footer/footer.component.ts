@@ -38,15 +38,19 @@ export class FooterComponent implements OnInit {
   }
 
   nextPage(){
-    this.benimFirsatimLib.currentPaging++;
-    this.currentPage = this.benimFirsatimLib.currentPaging;
-    this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
+    if(this.currentPage < this.totalPage){
+      this.benimFirsatimLib.currentPaging++;
+      this.currentPage = this.benimFirsatimLib.currentPaging;
+      this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
+    }
   }
 
   previousPage(){
-    this.benimFirsatimLib.currentPaging--;
-    this.currentPage = this.benimFirsatimLib.currentPaging;
-    this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
+    if(this.currentPage > 1){
+      this.benimFirsatimLib.currentPaging--;
+      this.currentPage = this.benimFirsatimLib.currentPaging;
+      this.benimFirsatimLib.changeCategory(this.benimFirsatimLib.currentCategory);
+    }
   }
   resetFooter(){
     this.currentPage = this.benimFirsatimLib.currentPaging;

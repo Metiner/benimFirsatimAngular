@@ -22,7 +22,6 @@ import { MaterialModule } from './material.module';
 import './../polyfills';
 import {FacebookModule} from "ngx-facebook";
 import {ProfileSettingsComponent} from './profile-settings/profile-settings.component';
-import {FeedbackComponent} from './feedback/feedback.component';
 import {AdsenseModule} from 'ng2-adsense';
 import {A2tUiModule, Angular2TokenService} from 'angular2-token';
 import {UpperPointTableComponent} from './upper-point-table/upper-point-table.component';
@@ -34,7 +33,6 @@ const appRoutes : Routes = [
   { path : '' , component:DealComponent},
   { path : 'myProfile/:type', component : ProfileSettingsComponent},
   { path : 'createNewDeal', component: CreateNewDealComponent},
-  { path : 'feedback' , component: FeedbackComponent}
   ]
 
 @NgModule({
@@ -50,7 +48,6 @@ const appRoutes : Routes = [
     SignInComponent,
     CreateNewDealComponent,
     ProfileSettingsComponent,
-    FeedbackComponent,
     UpperPointTableComponent,
     PopularCategoriesComponent,
     GeneralViewComponent

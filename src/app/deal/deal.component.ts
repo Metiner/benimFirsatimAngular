@@ -175,6 +175,7 @@ export class DealComponent implements OnInit, OnDestroy {
       path: 'assets/animations/like_icon_round.json' // the path to the animation json
     }));
 
+
     this.commentButtonAnimations.push(lottie.loadAnimation({
       container: commentContainer, // the dom element that will contain the animation
       renderer: 'svg',

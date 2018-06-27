@@ -327,13 +327,21 @@ export class HeaderComponent implements OnDestroy{
         setTimeout(() => {
           this.categoriesAnimation = state;
         }, 100);
+
         break;
       case 'profile':
         setTimeout(() => {
           this.myProfileAnimation = state;
         }, 100);
+
         break;
     }
+
+    setTimeout(()=>{
+      this.categoriesAnimation = 'out';
+      this.myProfileAnimation = 'out';
+    },10000);
+
   }
   onCategoryChange(type){
     this.benimFirsatimLibrary.showPointTable = true;
@@ -422,9 +430,7 @@ export class HeaderComponent implements OnDestroy{
   }
   logout(){
     this.isAuth = false;
-    this.benimFirsatimLibrary.isAutho = false;
-    localStorage.clear();
-    this.benimFirsatimLibrary.currentUser = {};
+    this.benimFirsatimLibrary.logout();
     this.onCategoryChange('hot');
   }
   onMyDealsPage(){
@@ -446,46 +452,12 @@ export class HeaderComponent implements OnDestroy{
         this.onCategoryChange('search');
 
       });
-      /*if(event.key === 'Backspace'){
-        this.searchParam = this.searchParam.slice(0,-1);
-        if(event.srcElement.value.length === 0){
-          this.searchParam = "";
-          this.searchDivAnimation = 'out';
-        }
-      }
-      if(event.key.length < 2){
-        this.searchParam += event.key;
-
-        }
-      }*/
     }
     if(event.key === 'Escape'){
       this.initializeSearchDiv = false;
     }
   }
-  goToDeal(dealId) {
-    var searchInput:any = document.getElementsByClassName("search");
-    searchInput[0].value = "";
-    this.searchDivAnimation = 'out';
-    this.router.navigate(['/deal/' + dealId]);
-  }
-  whatIsPrice(deal){
-    try {
 
-      if(deal.price.indexOf(".0") === -1){
-        return deal.price ? (deal.price + '₺') : '';
-      }else{
-        return deal.price ? (deal.price.slice(0,deal.price.indexOf(".")) + '₺') : '';
-      }
-    }catch (e)
-    {
-
-    }
-  }
-
-  onFeedback(){
-    this.router.navigate(["feedback"]);
-  }
 
   onSearchIcon(){
     this.initializeSearchDiv = true;

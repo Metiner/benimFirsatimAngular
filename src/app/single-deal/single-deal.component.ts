@@ -60,7 +60,6 @@ export class SingleDealComponent implements OnInit {
       }
     });
 
-    this.loadAnimations();
     if (this.route.snapshot.params['dealId'] == 0) {
       this.deal = this.benimFirsatimLib.justCreatedDeal;
       this.dealId = this.benimFirsatimLib.justCreatedDeal.id;
@@ -73,6 +72,7 @@ export class SingleDealComponent implements OnInit {
         this.deal = response.json();
         this.benimFirsatimLib.getComments(this.route.snapshot.params['dealId']).subscribe(comments => {
           this.comments = comments.json();
+          this.loadAnimations();
           this.loadThumbsupAnimations();
           for (let i = 0; i < this.comments.length; i++) {
             this.comments[i].timeCalculation = this.timeCalculation(this.comments[i]);
@@ -105,6 +105,10 @@ export class SingleDealComponent implements OnInit {
         autoplay: false,
         path: 'assets/animations/like_icon_round.json' // the path to the animation json
       });
+      if(this.deal.is_liked_by_me){
+        this.playAnim(0,'like',"");
+      }
+
       this.commentButtonAnimation = lottie.loadAnimation({
         container: document.getElementById("lottieCommentButton"), // the dom element that will contain the animation
         renderer: 'svg',
@@ -171,7 +175,7 @@ export class SingleDealComponent implements OnInit {
 
   }
 
-  stopAnim(index) {
+  stopAnim() {
     this.commentButtonAnimation.stop();
   }
   playSegments(from,to){
@@ -210,17 +214,16 @@ export class SingleDealComponent implements OnInit {
     if(this.comments[this.comments.length-1].id == comment.id)
       return true;
   }
-  writeToComment(comment){
+  writeToComment(comment,scrollToMe){
 
     comment.writeCommentToComment = true;
-    this.scrollToTop();
+    this.scrollToTop(scrollToMe);
   }
-  scrollToTop(){
-
+  scrollToTop(scrollToMe){
 
     $(document).ready(()=>{
       const config: ScrollToConfigOptions = {
-        target: document.getElementById("scrollToMe")
+        target: scrollToMe
       }
 
       this._scrollTo.scrollTo(config);
@@ -235,12 +238,13 @@ export class SingleDealComponent implements OnInit {
 
   sendComment(){
     if(this.benimFirsatimLib.isAutho){
-      //if(this.newlyAddedComment.length < 1000){
+      if(this.newlyAddedComment.length > 1){
         if(!this.preventDuplicate){
           this.preventDuplicate = true;
           this.sendCommentButtonActivated = true;
           var comment:any = {};
           comment.text = this.newlyAddedComment;
+          console.log(this.benimFirsatimLib.currentUser);
           comment.user = this.benimFirsatimLib.currentUser;
           comment.timeCalculation = "";
           this.newlyAddedComments.push(comment);
@@ -256,11 +260,11 @@ export class SingleDealComponent implements OnInit {
           this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
         }
       }else{
-        this.snackBar.open('Bir şeyler söyleyecek misin.','',{duration:3000});
+        this.snackBar.open('Bir şeyler söyleyecek misin?','',{duration:3000});
       }
-    //}else{
-      //this.benimFirsatimLib.openSignUpPopUp.next();
-
+    }else {
+      this.benimFirsatimLib.openSignUpPopUp.next();
+    }
   }
 
   loadMoreComment(){
@@ -272,25 +276,25 @@ export class SingleDealComponent implements OnInit {
       this.loadThumbsupAnimations();
     }
   }
-  writeCommentSubcomment(comment){
+  writeCommentSubcomment(comment,subCommentText){
 
     if(!this.preventDuplicate) {
-      if(this.newlyAddedComment.length < 1){
+      if(subCommentText.value.length > 1){
         this.preventDuplicate = true;
         comment.newlyAddedSubComments = [];
         var newlyAddedSubCommentTemp: any = {};
-        newlyAddedSubCommentTemp.text = this.newlyAddedSubComment;
+        newlyAddedSubCommentTemp.text = subCommentText.value;
         newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
         newlyAddedSubCommentTemp.timeCalculation = "";
         comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
-        this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, this.newlyAddedSubComment).subscribe((response) => {
-          this.newlyAddedSubComment = "";
+        this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, subCommentText.value).subscribe((response) => {
+          subCommentText.value = "";
         });
         setTimeout(()=>{
           this.preventDuplicate = false;
         },10000);
       }else{
-        this.snackBar.open('Bir şeyler söyleyecek misin.','',{duration:3000});
+        this.snackBar.open('Bir şeyler söyleyecek misin?','',{duration:3000});
       }
     }else{
       this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});

@@ -33,7 +33,6 @@ export class BenimFirsatimLibrary {
   onTheLastPage = false;
   _isAutho = false;
   _currentUser:any;
-  token:string;
   searchResult:any = {};
 
   currentCategory = 'hot';
@@ -53,8 +52,9 @@ export class BenimFirsatimLibrary {
     }catch (e){
       console.log(e);
     }
-    this.silentLogin();
-    this.registerOneSignal();
+    if(this.silentLogin()){
+      this.registerOneSignal();
+    }
   }
 
   registerOneSignal(): void {
@@ -79,14 +79,26 @@ export class BenimFirsatimLibrary {
     });
   }
 
-  silentLogin(){
-
+  silentLogin():boolean{
     if(this._tokenService.userSignedIn()){
+      console.log("logged in");
       let user = JSON.parse(localStorage.getItem("userBenimFirsatim"));
       this.currentUser = user;
       this.isAutho = true;
+      return true;
+    }else{
+      console.log("logged out");
+      this.logout();
+      this.openSignUpPopUp.next();
     }
+    return false;
   }
+  logout(){
+    this.isAutho = false;
+    localStorage.clear();
+    this.currentUser = {};
+  }
+
   //Page code can be,
   //'hot','rising' or 'newcomers'
   public getPage(page_code,pagination){
@@ -102,29 +114,9 @@ export class BenimFirsatimLibrary {
       password:             password,
       passwordConfirmation: password
     })
-    //return this.http.post(this.api_address + '/users', {"user":{"email":email,"password":password}});
-  }
-  public signupOrLogin(email,name,avatar_url,uid,authResponse,provider_name){
-    return this._tokenService.post('users/auto_oauth',{"email":email,"name":name,"avatar_url":avatar_url,"uid":uid,"provider":provider_name,login_data:authResponse});
-  }
-
-  // to set request header for authentication
-  private setHeader(): RequestOptions{
-
-    let opt:RequestOptions;
-    let myHeaders: Headers = new Headers;
-
-     myHeaders.set('Authorization',this.token);
-
-     opt = new RequestOptions({
-       headers:myHeaders
-     });
-
-    return opt;
   }
 
   public signIn(email,password){
-    //return this.http.post(this.api_address + '/users/sign_in.json',{"user":{"email":email,"password":password}});
     return this._tokenService.signIn({
       email:    email,
       password: password
@@ -140,18 +132,8 @@ export class BenimFirsatimLibrary {
 
     this.route.navigate(['']);
     if(!this.dealAnimationContinues){
-      if(this.currentPaging < this.totalPage + 1){
-        if(this.currentPaging == this.totalPage){
-          this.onTheLastPage = true;
-        }else{
-          this.onTheLastPage = false;
-        }
-        if(!this.onTheLastPage){
-          this.currentCategory = type;
-          this.categoryChanged.next();
-        }
-
-      }
+      this.currentCategory = type;
+      this.categoryChanged.next();
     }
   }
   public openSignUpPopUpFunc(){
@@ -167,12 +149,7 @@ export class BenimFirsatimLibrary {
   public getPullMeta(url){
     return this.http.get(this.api_address + '/deals/pull_meta?target=' + url);
   }
-  getDealById(id:string){
-    for(let i=0;i<this.currentDeals.length;i++){
-      if(this.currentDeals[i].id == id)
-        return this.currentDeals[i];
-    }
-  }
+
 
   public updateUser(nickname,password){
     return this._tokenService.put('auth',{"name":nickname,"password":password});

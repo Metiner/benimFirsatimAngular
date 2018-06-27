@@ -213,7 +213,7 @@
                                 <div  class="lottieThumbUpButton" style="min-width: 50px;max-width: 50px;max-height: 50px" (click)="playAnim(i,'thumbsUp',comment)"></div>
                               </div>
                               <div class="col" style="padding-left: 0px">
-                                <img src="assets/svgs/comments_reply_icon.svg" (click)="writeToComment(comment)" style="min-width: 50px;max-width: 50px">
+                                <img src="assets/svgs/comments_reply_icon.svg" (click)="writeToComment(comment,scrollToMe)" style="min-width: 50px;max-width: 50px">
                               </div>
                             </div>
                           </div>
@@ -282,13 +282,15 @@
                 </div>
               </div>
             </div>
-            <div #scrollToMe @commentState *ngIf="comment?.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px;margin-top: 2%">
-              <div class="row nowrap">
-                <div class="col">
-                  <input [(ngModel)]="newlyAddedSubComment" type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
-                </div>
-                <div class="col cursor-pointer" style="text-align: right;padding: 0px" (click)="writeCommentSubcomment(comment)">
-                  <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
+            <div #scrollToMe>
+              <div  @commentState *ngIf="comment?.writeCommentToComment"  class="col" style="background-color: #f2f2f2;border-radius: 30px;height: 50px;margin-top: 2%">
+                <div class="row nowrap">
+                  <div class="col">
+                    <input #subCommentText type="text" placeholder="Düşüncelerin neler?" class="writeComment" style="outline: none;border: none;background-color: #f2f2f2;">
+                  </div>
+                  <div class="col-auto cursor-pointer" style="text-align: right;padding: 0px" (click)="writeCommentSubcomment(comment,subCommentText)">
+                    <img style="height: 50px" src="assets/svgs/write_comment_box_icon.svg">
+                  </div>
                 </div>
               </div>
             </div>
@@ -302,7 +304,7 @@
       </div>
     </div>
   </div>
-  <div class="col-2" style="position: fixed;right: 7%;padding-right: 0px" *ngIf="showPointTable">
+  <div class="col-2" style="position: fixed;right: 7%;padding-right: 0px;z-index: 9999" *ngIf="showPointTable">
     <app-point-table></app-point-table>
   </div>
   <div class="col-1 nopadding"></div>
