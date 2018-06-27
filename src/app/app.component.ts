@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import {Angular2TokenService} from "angular2-token";
-declare var $:any;
+import {Angular2TokenService} from 'angular2-token';
+
+declare let $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +10,7 @@ declare var $:any;
 export class AppComponent {
   title = 'app';
 
-  constructor(private _tokenService: Angular2TokenService){
+  constructor(private _tokenService: Angular2TokenService) {
 
 
     this._tokenService.init({
@@ -45,10 +47,10 @@ export class AppComponent {
       }
     });
 
-    $(document).ready(function(){
-      var ua = navigator.userAgent;
-      var state = '';
-      var flag = false;
+    $(document).ready(function() {
+      const ua = navigator.userAgent;
+      const state = '';
+      const flag = false;
       // $(window).resize(()=>{
       //
       //   if(state === 'web' && flag && $(window).width() < 768 ){
@@ -77,15 +79,11 @@ export class AppComponent {
       //
       // });
 
-      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
-      window.location.href= 'https://mobile.benimfirsatim.com';
-      }
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
+      window.location.href = 'https://mobile.benimfirsatim.com';
+      } else if (/Chrome/i.test(ua)) {
 
-      else if(/Chrome/i.test(ua)){
-
-      }
-      else
-      {
+      } else {
 
       }
     });

@@ -6,16 +6,16 @@
       <img class="fullwidth" src="../../assets/imgs/puan_tablosu_icon@2x.png">
     </div>
   </div>
-  <div class="row" style="margin-left: 0px;margin-right: 0px;">
-    <div class="col" style="background-color: white;border-color: #234491;border-radius: 0px 0px 29px 29px;">
+  <div class="row" style="margin-left: 0;margin-right: 0;">
+    <div class="col" style="background-color: white;border-color: #234491;border-radius: 0 0 29px 29px;">
       <div class="row" >
         <div class="col">
           <div class="row" *ngFor="let user of users;let i=index" style="margin-top: 5%;flex-wrap: nowrap">
             <div class="col-1">
               <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{i+1}}</span>
             </div>
-            <div class="col text-center">
-              <span style="font-family: 'Mark Pro-Heavy';font-size: 18px;color:#234491">{{user.name.slice(0,15).concat('..')}}</span>
+            <div class="col text-center" style="align-self: center;">
+              <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">{{user.name.slice(0,17)}}</span>
             </div>
             <!--  <div class="col-2 text-center" style="align-self: center">
                 <img  src="../../assets/imgs/dropdown_blue@2x.png" style="width: 100%">

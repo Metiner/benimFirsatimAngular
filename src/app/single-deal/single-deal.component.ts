@@ -318,10 +318,14 @@ export class SingleDealComponent implements OnInit {
   }
 
   favDeal(){
-    this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{
-      this.snackBar.open('Fırsatı kaydettin','',{duration:3000});
+    if(this.benimFirsatimLib.isAutho){
+      this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{
+        this.snackBar.open('Fırsatı kaydettin','',{duration:3000});
 
-    })
+      })
+    }else{
+      this.benimFirsatimLib.openSignUpPopUp.next();
+    }
   }
   addSubcommentIndex(comment,index){
     if(index  === comment.comments.length ){

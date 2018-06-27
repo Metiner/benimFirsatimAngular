@@ -11,7 +11,7 @@
   overflow: scroll;
 }
 .nopadding {
-  padding: 0px;
+  padding: 0;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -36,7 +36,7 @@
 
 
 .nopadding{
-  padding: 0px;
+  padding: 0;
 }
 
 .dealDetailsSpans{
@@ -79,7 +79,7 @@ div{
 
 /deep/.bx-wrapper{
   box-shadow: white !important;
-  margin:0px !important;
+  margin:0 !important;
 }
 /deep/.mat-form-field-infix{
   width: 150px !important;

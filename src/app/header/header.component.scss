@@ -46,29 +46,28 @@
   -webkit-backdrop-filter: blur(10px);
 }
 .searchBackground{
-  background-image: url("../../assets/svgs/search_box.svg");
-  background-repeat: no-repeat;
+  background: url("../../assets/svgs/search_box.svg") no-repeat;
 }
 
 .categories {
-  background-image: url('../../assets/imgs/kategoriler_bg@2x.png');
-  border-radius: 0px 0px 60px 60px;
-  background-repeat: no-repeat;
+  border-radius: 0 0 60px 60px;
+  background: url('../../assets/imgs/kategoriler_bg@2x.png') no-repeat;
   background-size: auto;
   z-index: 1;
   overflow: hidden;
 }
 .myProfile{
   background-image: url('../../assets/imgs/profilim_bg@2x.png');
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0 0 40px 40px;
   z-index: 1;
   padding: 5px 0 0 5px;
 
 
 }
 
+//noinspection ALL
 .search-div-animation{
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0 0 40px 40px;
   position: absolute;
   background-color: white;
   width: 320px;

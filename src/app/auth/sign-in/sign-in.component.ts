@@ -9,7 +9,7 @@ export class SignInComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit(): void {
+}
 
 }

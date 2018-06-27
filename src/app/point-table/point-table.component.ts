@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BenimFirsatimLibrary} from "../services/benimFirsatimLibrary";
+import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -9,24 +9,24 @@ import {NgForm} from '@angular/forms';
 })
 export class PointTableComponent implements OnInit {
 
-  users= [];
+  users = [];
 
   feedbackDivOpen = false;
 
   constructor(private benimFirsatimLib: BenimFirsatimLibrary) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
-    this.benimFirsatimLib.getUsersTop().subscribe(response=>{
-      for(let i = 0 ;i<response.json().length;i++){
-        this.users.push(response.json()[i][0]);
-      }
-    })
-  }
+  this.benimFirsatimLib.getUsersTop().subscribe(response => {
+    for (let i = 0; i < response.json().length; i++) {
+      this.users.push(response.json()[i][0]);
+    }
+  });
+}
 
-  openFeedbackDiv(){
-    this.benimFirsatimLib.openFeedbackPopUpFunc();
-  }
+  openFeedbackDiv(): void {
+  this.benimFirsatimLib.openFeedbackPopUpFunc();
+}
 
 
 }

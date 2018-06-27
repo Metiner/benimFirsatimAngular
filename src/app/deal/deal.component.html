@@ -18,7 +18,7 @@
       <div class="col-auto mx-auto" style="text-align: center;align-self: center;margin-top: 25px;margin-bottom: 25px">
         <img src="{{deal.image_url}}" style="max-width: 180px;min-width: 180px;">
       </div>
-      <div class="col" style="padding: 0px 30px 0px 30px;">
+      <div class="col" style="padding: 0 30px 0 30px;">
         <div class="row title dealTitleAndUserRow">
           <div class="col">
             <span (click)="goToDeal(deal.id)" style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.title.slice(0,200).concat('..')}}</span>
@@ -32,31 +32,31 @@
         <div class="row" style="padding-top: 1%;flex-wrap: nowrap">
           <div class="col-auto" style="margin-right: auto">
             <div class="row" style="align-items: center;flex-wrap: nowrap">
-              <div class="col" style="padding-right: 0px">
+              <div class="col" style="padding-right: 0">
                 <img src="../../assets/svgs/price_tag.svg" style="min-width: 50px;max-width: 50px">
               </div>
-              <div class="col-9" style="padding-left: 0px">
+              <div class="col-9" style="padding-left: 0">
                 <span style="font-family: 'Mark Pro-Heavy';font-size: 25px;color: #234491;padding: 0 0 0 8px">{{whatIsPrice(deal)}}</span>
               </div>
             </div>
           </div>
-          <div class="col-auto" style="padding-left: 0px;">
+          <div class="col-auto" style="padding-left: 0;">
             <div class="row" style="align-items: center">
-              <div class="col" style="padding-right: 0px">
+              <div class="col" style="padding-right: 0">
                 <div #lol style="max-height: 50px;max-width: 50px;min-width: 50px;" #likeContainer class="lottieLikeButton" (click)="playAnim(i,'like',deal,lol)"></div>
               </div>
-              <div class="col-auto" style="padding-left: 0px;">
-                <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 0px 0px 2px">{{deal.votes_sum}}</span>
+              <div class="col-auto" style="padding-left: 0;">
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0 0 0 2px">{{deal.votes_sum}}</span>
               </div>
             </div>
           </div>
-          <div class="col-auto mx-auto" style="padding-left: 0px;">
+          <div class="col-auto mx-auto" style="padding-left: 0;">
             <div class="row" style="align-items: center">
-              <div class="col" style="padding-right: 0px">
+              <div class="col" style="padding-right: 0">
                 <div style="max-height: 50px;min-width: 50px;max-width: 50px" #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div>
               </div>
               <div class="col-auto nopadding">
-                <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0px 10px 0px 2px">{{deal.comments_count}}</span>
+                <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0 10px 0 2px">{{deal.comments_count}}</span>
               </div>
             </div>
           </div>
@@ -74,19 +74,19 @@
         <div class="row" style="margin-top: 10px">
           <div class="col-auto footer-col">
             <div class="row" style="align-items: center;flex-wrap: nowrap">
-              <div class="col-auto" style="padding-right: 0px">
+              <div class="col-auto" style="padding-right: 0">
                 <img src="{{deal.user.avatar_url}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
               </div>
-              <div class="col-auto" style="padding-left: 0px;padding-right: 0px">
+              <div class="col-auto" style="padding-left: 0;padding-right: 0">
                 <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{deal.user.name.slice(0,50)}}&nbsp;</span>
               </div>
-              <div class="col-auto" style="padding-left: 0px;padding-right: 0px">
+              <div class="col-auto" style="padding-left: 0;padding-right: 0">
                 <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| {{deal.view_count}} görüntülenme |</span>
               </div>
-              <div class="col-auto" style="padding-left: 0px;padding-right: 0px">
+              <div class="col-auto" style="padding-left: 0;padding-right: 0">
                 <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal.created_at.substr(0,10)}} |</span>
               </div>
-              <div class="col-auto" style="padding-left: 0px">
+              <div class="col-auto" style="padding-left: 0">
                 <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span>
               </div>
             </div>
@@ -95,7 +95,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="showPointTable" class="col-2" style="position: fixed;right: 7%;padding-right: 0px">
+  <div *ngIf="showPointTable" class="col-2" style="position: fixed;right: 7%;padding-right: 0">
     <app-point-table></app-point-table>
   </div>
   <div class="col-1"></div>

@@ -47,7 +47,7 @@
       <div class="col offset-1" style="text-indent: -12px">
         <textarea
           autofocus
-          class="urlInput cursor-pointer" style="min-height: 300px;padding:0px;resize:none;overflow: hidden;"
+          class="urlInput cursor-pointer" style="min-height: 300px;padding:0;resize:none;overflow: hidden;"
           ngModel name="detail"
           ></textarea>
       </div>
@@ -68,7 +68,7 @@
      *ngIf="showSingUpSignInPopUp"
      [@singinSignupPopup]
       (@singinSignupPopup.done)="onTutorialAnimFinished()">
-  <div class="row" style="margin-top: 7%">
+  <div class="row" style="margin-top: 7%;margin-left: 1%;">
     <div class="col kayit-success" [@kayitSuccess] *ngIf="kayitBasariliText">
         <span style="font-family: 'Mark Pro-Heavy';font-size: 40px;color:#234491">KAYIT,<br>BAŞARILI!</span>
      </div>
@@ -107,11 +107,11 @@
       <div class="row" *ngIf="beniHatirlaBool" [@loadingBlackDiv]>
         <div class="col-4 offset-1" style="margin-right: -10px">
           <div class="row" style="flex-wrap: nowrap;align-items: center">
-            <div class="col" style="padding: 0px;text-align: right">
+            <div class="col" style="padding: 0;text-align: right">
               <mat-radio-button color = "primary" class="example-margin" value="start"></mat-radio-button>
 
             </div>
-            <div class="col" style="padding: 0px">
+            <div class="col" style="padding: 0">
               <span style="font-family: 'Mark Pro-Book';font-size: 10px;white-space: nowrap;color:#234491">BENİ HATIRLA</span>
 
             </div>
@@ -134,7 +134,7 @@
 </div>
 
 <div class="row background">
-  <div class="col" style="margin-top: 100px;padding-left: 0px;padding-right: 0px">
+  <div class="col" style="margin-top: 100px;padding-left: 0;padding-right: 0">
     <router-outlet></router-outlet>
   </div>
 </div>

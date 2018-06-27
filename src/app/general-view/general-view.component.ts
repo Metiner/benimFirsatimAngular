@@ -8,70 +8,71 @@ import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 })
 export class GeneralViewComponent implements OnInit {
 
-  myComments:any = [];
+  myComments: any = [];
   commentsThatIiked = [];
-  myReplies:any = [];
-  generalViewElements:any =[];
+  myReplies: any = [];
+  generalViewElements: any = [];
 
-  showCount:number = 100;
+  showCount = 100;
   constructor(private benimFirsatimLibrary: BenimFirsatimLibrary) {
     this.getActivity();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit(): void {
+}
 
-  getActivity(){
-    this.benimFirsatimLibrary.getMyComments().subscribe(response=>{
-      this.myComments = response.json().entries;
+  getActivity(): void {
+  this.benimFirsatimLibrary.getMyComments().subscribe(response => {
+    this.myComments = response.json().entries;
 
-      for(let i = 0;i<this.myComments.length;i++){
+    for (let i = 0; i < this.myComments.length; i++) {
 
-        this.myComments[i].type = "myComments";
-        this.generalViewElements.push(this.myComments[i]);
-      }
-    });
-    this.benimFirsatimLibrary.getCommentsThatIliked().subscribe(response=>{
+      this.myComments[i].type = 'myComments';
+      this.generalViewElements.push(this.myComments[i]);
+    }
+  });
+  this.benimFirsatimLibrary.getCommentsThatIliked().subscribe(response => {
 
-      this.commentsThatIiked = response.json();
+    this.commentsThatIiked = response.json();
 
 
-    })
-    this.benimFirsatimLibrary.getMyReplies().subscribe(response=>{
-      const temp = response.json().entries;
-      for(let i=0;i<temp.length;i++){
-        if(temp[i].comments.length > 0){
-          for(let j=0;j<temp[i].comments.length;j++){
-            temp[i].comments[j].type = "myReplies";
-            this.generalViewElements.push(temp[i].comments[j]);
-          }
+  });
+  this.benimFirsatimLibrary.getMyReplies().subscribe(response => {
+    const temp = response.json().entries;
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].comments.length > 0) {
+        for (let j = 0; j < temp[i].comments.length; j++) {
+          temp[i].comments[j].type = 'myReplies';
+          this.generalViewElements.push(temp[i].comments[j]);
         }
       }
-    })
-  }
-
-  timeCalculation(comment){
-    return this.timeConversion(Date.now()-Date.parse(comment.created_at));
-  }
-  timeConversion(millisec) {
-
-    let seconds = Number((millisec / 1000).toFixed());
-
-    let minutes = Number((millisec / (1000 * 60)).toFixed());
-
-    let hours = Number((millisec / (1000 * 60 * 60)).toFixed());
-
-    let days = Number((millisec / (1000 * 60 * 60 * 24)).toFixed());
-
-    if (seconds < 60) {
-      return seconds + " Saniye önce";
-    } else if (minutes < 60) {
-      return minutes + " Dakika önce";
-    } else if (hours < 24) {
-      return hours + " Saat önce";
-    } else {
-      return days + " Gün önce"
     }
+  });
+}
+
+  timeCalculation(comment): string {
+  return this.timeConversion(Date.now() - Date.parse(comment.created_at));
+}
+
+  timeConversion(millisec): string {
+
+  const seconds = Number((millisec / 1000).toFixed());
+
+  const minutes = Number((millisec / (1000 * 60)).toFixed());
+
+  const hours = Number((millisec / (1000 * 60 * 60)).toFixed());
+
+  const days = Number((millisec / (1000 * 60 * 60 * 24)).toFixed());
+
+  if (seconds < 60) {
+    return seconds + ' Saniye önce';
+  } else if (minutes < 60) {
+    return minutes + ' Dakika önce';
+  } else if (hours < 24) {
+    return hours + ' Saat önce';
+  } else {
+    return days + ' Gün önce';
   }
+}
 
 }

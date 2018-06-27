@@ -2,14 +2,20 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subscription} from 'rxjs/Subscription';
 import {
-  girisYapAnimTrigger, kayitOlAnimTrigger, kayitSuccessTrigger, loadingBlackDivAnimationTrigger, signupSigninPopupAnimTrigger,
+  girisYapAnimTrigger,
+  kayitOlAnimTrigger,
+  kayitSuccessTrigger,
+  loadingBlackDivAnimationTrigger,
+  signupSigninPopupAnimTrigger,
   tutorialPopupAnimTrigger
 } from '../animations';
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {FacebookService} from "ngx-facebook";
-declare var lottie:any;
-declare var gapi:any;
+
+declare let lottie: any;
+declare let gapi: any;
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -21,17 +27,17 @@ declare var gapi:any;
     girisYapAnimTrigger,
     kayitSuccessTrigger]
 })
-export class ContentComponent implements OnDestroy,OnInit{
+export class ContentComponent implements OnDestroy, OnInit {
 
   mySignUpPopUpSubscription: Subscription;
   myFeedbackPopUpSubscription: Subscription;
 
 
   auth2: any;
-  email:string;
-  password2:string;
-  kayitOlAnim:any;
-  tutorialAnim:any;
+  email: string;
+  password2: string;
+  kayitOlAnim: any;
+  tutorialAnim: any;
 
   kayitOlState = 'down';
   girisYapState = 'up';
@@ -53,29 +59,29 @@ export class ContentComponent implements OnDestroy,OnInit{
               public snackBar: MatSnackBar,
               public fb: FacebookService) {
 
-    gapi.load('auth2', function() {
-      const googleAut = gapi.auth2.init({client_id :'57374298212-94cgvbkf14685g846vcq95trf50qt69v.apps.googleusercontent.com'});
+    gapi.load('auth2', function () {
+      const googleAut = gapi.auth2.init({client_id: '57374298212-94cgvbkf14685g846vcq95trf50qt69v.apps.googleusercontent.com'});
 
     });
-    this.myFeedbackPopUpSubscription = this.benimFirsatimLib.openFeedbackPopUp.subscribe(()=>{
+    this.myFeedbackPopUpSubscription = this.benimFirsatimLib.openFeedbackPopUp.subscribe(() => {
       this.blackDiv = true;
       this.feedbackDivOpen = true;
-    })
+    });
     this.mySignUpPopUpSubscription = this.benimFirsatimLib.openSignUpPopUp.subscribe(
-      next =>{
+      next => {
 
         this.initiliaze();
 
-        setTimeout(()=>{
+        setTimeout(() => {
           this.loadAnimations();
 
-        },200)
+        }, 200);
       }
     );
 
   }
 
-  initiliaze(){
+  initiliaze(): void {
     this.tutorial = true;
     this.blackDiv = true;
     this.showSingUpSignInPopUp = true;
@@ -90,7 +96,8 @@ export class ContentComponent implements OnDestroy,OnInit{
     this.girisBasariliText = false;
     this.showForm = true;
   }
-  ngOnInit(){
+
+  ngOnInit(): void {
     // let initParams: InitParams = {
     //   appId: '1234566778',
     //   xfbml: true,
@@ -98,125 +105,120 @@ export class ContentComponent implements OnDestroy,OnInit{
     // };
     // this.fb.init();
   }
-  ngOnDestroy() {
+
+  ngOnDestroy(): void {
     this.mySignUpPopUpSubscription.unsubscribe();
   }
 
-  onGirisButtonClick(form:NgForm) {
+  onGirisButtonClick(form: NgForm): void {
 
     if (this.girisYapButtonClickable) {
       this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
 
         console.log(data);
-        if (data.json() != null && data.ok == true) {
-          this.benimFirsatimLib.successLogin(data.json(),1);
+        if (data.json() != null && data.ok === true) {
+          this.benimFirsatimLib.successLogin(data.json(), 1);
           this.girisBasariliText = true;
           this.showForm = false;
           this.girisYapState = 'down';
 
           setTimeout(
-            ()=>{
+            () => {
               this.tutorial = false;
               this.blackDiv = false;
               this.showSingUpSignInPopUp = false;
               this.benimFirsatimLib.silentLogin();
-            },1500);
+            }, 1500);
         }
       }, error => {
-        this.snackBar.open('Yanlış e-mail veya parola girdiniz.','',{duration:3000});
+        this.snackBar.open('Yanlış e-mail veya parola girdiniz.', '', {duration: 3000});
       });
     }
   }
-  onKayitButtonClick(form:NgForm){
+
+  onKayitButtonClick(form: NgForm): void {
 
     if (this.kayitOlButtonClickable) {
       if (form.value.password !== form.value.password2) {
-        this.snackBar.open('Parolalar Uyuşmamakta','',{duration:3000});
+        this.snackBar.open('Parolalar Uyuşmamakta', '', {duration: 3000});
       } else {
         this.benimFirsatimLib.signUp(form.value.email, form.value.password).subscribe(data => {
           if (data != null) {
-            if (data.status == 200 && data.ok) {
-              this.snackBar.open('Kullanıcı Yaratıldı','',{duration:3000});
+            if (data.status === 200 && data.ok) {
+              this.snackBar.open('Kullanıcı Yaratıldı', '', {duration: 3000});
               this.showForm = false;
               this.kayitBasariliText = true;
               this.kayitOlAnim.play();
-              this.benimFirsatimLib.signIn(form.value.email,form.value.password).subscribe(data=>{
-                this.benimFirsatimLib.successLogin(data.json(),1);
+              this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
+                this.benimFirsatimLib.successLogin(data.json(), 1);
                 setTimeout(
-                  ()=>{
+                  () => {
                     this.tutorial = false;
                     this.showSingUpSignInPopUp = false;
                     this.showForm = true;
                     this.blackDiv = false;
 
-                  },1500);
+                  }, 1500);
               });
-            } else if (data.json().state.code == 1) {
+            } else if (data.json().state.code === 1) {
 
-              this.snackBar.open(data.json().state.messages[0],'',{duration:3000});
+              this.snackBar.open(data.json().state.messages[0], '', {duration: 3000});
               form.reset();
             }
           }
         }, error => {
           console.log(error);
-          this.snackBar.open('Bu e-posta zaten mevcut','',{duration:3000});
+          this.snackBar.open('Bu e-posta zaten mevcut', '', {duration: 3000});
         });
       }
     }
   }
 
-  makeSignUpButtonClickable(event){
-    if(event.fromState === 'down' && event.toState === 'up' && event.triggerName === 'kayitOl'){
-      this.kayitOlButtonClickable = true;
+  makeSignUpButtonClickable(event): void {
+    this.kayitOlButtonClickable = event.fromState === 'down' && event.toState === 'up' && event.triggerName === 'kayitOl';
+  }
 
-    }else{
-      this.kayitOlButtonClickable = false;
-    }
- }
-  makeLoginButtonClickable(event){
-    if(event.fromState === 'down' && event.toState === 'up' && event.triggerName === 'girisYap'){
-    this.girisYapButtonClickable = true;
-
-    }else {
-      this.girisYapButtonClickable = false;
-    }
-    if(event.fromState === 'void' && event.toState === 'up' && event.triggerName === 'girisYap')
+  makeLoginButtonClickable(event): void {
+    this.girisYapButtonClickable = event.fromState === 'down' && event.toState === 'up' && event.triggerName === 'girisYap';
+    if (event.fromState === 'void' && event.toState === 'up' && event.triggerName === 'girisYap') {
       this.girisYapButtonClickable = true;
+    }
 
   }
-  changeState(type){
-    if(this.currentState !== type){
+
+  changeState(type): void {
+    if (this.currentState !== type) {
       this.currentState = type;
 
-      if(type === 'kayit')
-      {
+      if (type === 'kayit') {
         this.beniHatirlaBool = false;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.kayitOlBool = true;
-        },1000)
-        if(this.kayitOlState === 'up'){
-          this.kayitOlState = 'down'
-          this.girisYapState = 'up'
-        }else {
-          this.kayitOlState = 'up';
-          this.girisYapState = 'down'
-        }
-      } else{
-          this.kayitOlBool = false;
-        setTimeout(()=>{
-          this.beniHatirlaBool = true;
-        },1000)
-        if(this.girisYapState === 'up'){
-          this.girisYapState = 'down'
-          this.kayitOlState = 'up'
-        }else {
+        }, 1000);
+        if (this.kayitOlState === 'up') {
+          this.kayitOlState = 'down';
           this.girisYapState = 'up';
-          this.kayitOlState = 'down'
+        } else {
+          this.kayitOlState = 'up';
+          this.girisYapState = 'down';
+        }
+      } else {
+        this.kayitOlBool = false;
+        setTimeout(() => {
+          this.beniHatirlaBool = true;
+        }, 1000);
+        if (this.girisYapState === 'up') {
+          this.girisYapState = 'down';
+          this.kayitOlState = 'up';
+        } else {
+          this.girisYapState = 'up';
+          this.kayitOlState = 'down';
         }
       }
     }
   }
-  loadAnimations(){
+
+  loadAnimations(): void {
 
     this.tutorialAnim = lottie.loadAnimation({
       container: document.getElementById('tutorialAnim'), // the dom element that will contain the animation
@@ -234,50 +236,51 @@ export class ContentComponent implements OnDestroy,OnInit{
     });
   }
 
-  exitFromSignup(){
+  exitFromSignup(): void {
     this.showSingUpSignInPopUp = false;
     this.tutorial = false;
     this.blackDiv = false;
     this.feedbackDivOpen = false;
   }
-  onTutorialAnimFinished(){
+
+  onTutorialAnimFinished(): void {
   }
 
 
-  fbLogin(){
+  fbLogin(): void {
 
-    this.benimFirsatimLib.oAuth(1).subscribe(response=>{
+    this.benimFirsatimLib.oAuth(1).subscribe(response => {
 
-      this.benimFirsatimLib.successLogin(response,2);
+      this.benimFirsatimLib.successLogin(response, 2);
       setTimeout(
-        ()=>{
+        () => {
           this.tutorial = false;
           this.showSingUpSignInPopUp = false;
           this.showForm = true;
           this.blackDiv = false;
 
-        },1500);
+        }, 1500);
     });
   }
 
-   onGooglePlusLogin(){
+  onGooglePlusLogin(): void {
 
-     this.benimFirsatimLib.oAuth(2).subscribe(response=>{
+    this.benimFirsatimLib.oAuth(2).subscribe(response => {
 
-      this.benimFirsatimLib.successLogin(response,2);
+      this.benimFirsatimLib.successLogin(response, 2);
       setTimeout(
-        ()=>{
+        () => {
           this.tutorial = false;
           this.showSingUpSignInPopUp = false;
           this.showForm = true;
           this.blackDiv = false;
 
-        },1500);
+        }, 1500);
     });
   }
 
 
-  onFeedbackSubmit(f:NgForm){
+  onFeedbackSubmit(f: NgForm): void {
     this.blackDiv = false;
     this.feedbackDivOpen = false;
   }

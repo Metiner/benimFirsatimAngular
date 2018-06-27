@@ -33,7 +33,7 @@ const appRoutes : Routes = [
   { path : '' , component:DealComponent},
   { path : 'myProfile/:type', component : ProfileSettingsComponent},
   { path : 'createNewDeal', component: CreateNewDealComponent},
-  ]
+  ];
 
 @NgModule({
   declarations: [

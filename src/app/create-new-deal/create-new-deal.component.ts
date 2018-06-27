@@ -1,58 +1,65 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
-import {dealAvatarSelectionTrigger, highlightTrigger, loadingBlackDivAnimationTrigger, showMeTrigger} from '../animations';
+import {
+  dealAvatarSelectionTrigger,
+  highlightTrigger,
+  loadingBlackDivAnimationTrigger,
+  showMeTrigger
+} from '../animations';
 import {MatDatepickerInputEvent, MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {NgForm} from '@angular/forms';
-import {Router} from "@angular/router";
-declare var $:any;
-declare var lottie:any;
+import {Router} from '@angular/router';
+
+declare let $: any;
+declare let lottie: any;
+
 @Component({
   selector: 'app-create-new-deal',
   templateUrl: './create-new-deal.component.html',
   styleUrls: ['./create-new-deal.component.scss'],
-  animations: [showMeTrigger,dealAvatarSelectionTrigger,loadingBlackDivAnimationTrigger,highlightTrigger]
+  animations: [showMeTrigger, dealAvatarSelectionTrigger, loadingBlackDivAnimationTrigger, highlightTrigger]
 })
 export class CreateNewDealComponent implements OnInit {
 
   @ViewChild('allCategories') allCategories: any;
   @ViewChild('allImages') allImages: any;
 
-  dealUrlPreview: string = "";
-  dealTitlePreview: string = "";
-  dealPricePreview: string = "";
-  dealDetailPreview: string = "";
-  dealOwner: string = "";
-  dealOwnerAvatar: string = "";
+  dealUrlPreview = '';
+  dealTitlePreview = '';
+  dealPricePreview = '';
+  dealDetailPreview = '';
+  dealOwner = '';
+  dealOwnerAvatar = '';
 
 
-  currentDate: string = "";
+  currentDate = '';
 
   createButtonActivated = false;
 
   images: any[] = [];
-  selectedCity:any;
+  selectedCity: any;
 
   states = ['Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin',
-  'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale',
-  'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir',
-  'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir',
-  'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya',
-  'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya',
-  'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak',
-  'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman', 'Kırıkkale', 'Batman', 'Şırnak',
-  'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'];
+    'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale',
+    'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir',
+    'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir',
+    'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya',
+    'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya',
+    'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak',
+    'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman', 'Kırıkkale', 'Batman', 'Şırnak',
+    'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'];
 
-  isLinkEmpty: boolean = true;
+  isLinkEmpty = true;
 
   showProgressBar = false;
 
-  selectedImageSrc = "../../assets/imgs/firsat_gorseli_unselected@3x.png";
+  selectedImageSrc = '../../assets/imgs/firsat_gorseli_unselected@3x.png';
 
   createDealAnimation: any;
 
   dealReadytoPublish: boolean;
 
-  selectedCategory: number = -1;
+  selectedCategory = -1;
   categories = [];
 
 
@@ -61,7 +68,7 @@ export class CreateNewDealComponent implements OnInit {
               public router: Router) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.createButtonActivated = false;
 
@@ -81,44 +88,44 @@ export class CreateNewDealComponent implements OnInit {
         easing: 'ease-in-out'
       });
 
-    $('.footer').hide();
+      $('.footer').hide();
     });
     this.fillImagesArrayWithDefaultImages();
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy(): void {
     $('.footer').show();
   }
 
 // it fills the array with default images.
-  fillImagesArrayWithDefaultImages() {
+  fillImagesArrayWithDefaultImages(): void {
     for (let i = 0; i < 4; i++) {
       this.images.push('../../assets/imgs/firsat_gorseli_unselected@3x.png');
     }
   }
 
-  showMe(element) {
+  showMe(element): void {
 
     const arr = this.allCategories.nativeElement.children;
     this.selectedCategory = this.getCategoryId(element.innerText);
 
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i] != element)
+      if (arr[i] !== element) {
         arr[i].show = 'notShow';
+      }
     }
 
-    if (element.show == 'show') {
+    if (element.show === 'show') {
       element.show = 'notShow';
-    }
-    else {
+    } else {
       element.show = 'show';
     }
   }
 
-  loadAnimations() {
+  loadAnimations(): void {
     this.createDealAnimation = lottie.loadAnimation({
-      container: document.getElementById("createDealAnim"), // the dom element that will contain the animation
+      container: document.getElementById('createDealAnim'), // the dom element that will contain the animation
       renderer: 'svg',
       loop: false,
       autoplay: false,
@@ -126,23 +133,23 @@ export class CreateNewDealComponent implements OnInit {
     });
   }
 
-  selectMe(element) {
+  selectMe(element): void {
     this.selectedImageSrc = element.src;
     const arr = this.allImages.nativeElement.children;
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i] != element)
+      if (arr[i] !== element) {
         arr[i].children[0].select = 'unSelected';
+      }
     }
 
-    if (element.select == 'selected') {
+    if (element.select === 'selected') {
       element.select = 'unSelected';
-    }
-    else {
+    } else {
       element.select = 'selected';
     }
   }
 
-  concatGivenString(element: string, sliceFrom: number) {
+  concatGivenString(element: string, sliceFrom: number): string {
     if (element.length > sliceFrom) {
       return element.slice(0, sliceFrom).concat('...');
     } else {
@@ -150,21 +157,21 @@ export class CreateNewDealComponent implements OnInit {
     }
   }
 
-  playSegments(from, to) {
+  playSegments(from, to): void {
     this.createDealAnimation
       .playSegments([from, to], true);
   }
 
-  playAnim() {
+  playAnim(): void {
     this.createDealAnimation.play();
   }
 
-  stopAnim() {
+  stopAnim(): void {
     this.createDealAnimation.stop();
   }
 
   // it replaces title,images,description of deals with given link.
-  onUrlChangeWithGivenLink(event) {
+  onUrlChangeWithGivenLink(event): void {
     this.dealUrlPreview = event.target.value;
     if (this.isLinkEmpty) {
       this.showProgressBar = true;
@@ -172,10 +179,10 @@ export class CreateNewDealComponent implements OnInit {
       this.benimFirsatimlib.getPullMeta(event.target.value).subscribe(response => {
         console.log(response);
 
-        if (!response.json().hasOwnProperty("errors") && response.json().best_image != null && response.json().other_images != []) {
+        if (!response.json().hasOwnProperty('errors') && response.json().best_image != null && response.json().other_images !== []) {
           this.images = [];
           this.images.push(response.json().best_image);
-          for (var i = 0; i < response.json().other_images.length; i++) {
+          for (let i = 0; i < response.json().other_images.length; i++) {
             if (this.images.length < 5) {
               this.images.push(response.json().other_images[i][0]);
             }
@@ -190,71 +197,67 @@ export class CreateNewDealComponent implements OnInit {
       }, error2 => {
         this.showProgressBar = false;
         this.snackBar.open('Lütfen girdiğiniz linki kontrol edin.', '', {duration: 3000});
-      })
+      });
     }
-    if (event.target.value == '') {
-      this.isLinkEmpty = true;
-    } else {
-      this.isLinkEmpty = false;
-    }
+    this.isLinkEmpty = event.target.value === '';
   }
 
 
   events: string[] = [];
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>): void {
     this.events.push(`${type}: ${event.value}`);
   }
 
-  onPriceChange(event) {
+  onPriceChange(event): void {
     this.dealPricePreview = event.target.value;
   }
 
-  onTitleChange(event) {
+  onTitleChange(event): void {
     this.dealTitlePreview = event.target.value;
   }
 
-  onDetailChange(event) {
+  onDetailChange(event): void {
     this.dealDetailPreview = event.target.value;
   }
 
-  onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealTitle, dealImageContainer,lsd) {
+  onSubmit(form: NgForm, dealUrl, dealDetail, dealPrice, baslangicTarihi, dealTitle, dealImageContainer, lsd): void {
     this.dealReadytoPublish = true;
 
-    if(this.selectedCategory === undefined || this.selectedCategory === -1){
+    if (this.selectedCategory === undefined || this.selectedCategory === -1) {
       lsd.highlight = 'highlighted';
       this.dealReadytoPublish = false;
-    }else{
+    } else {
       lsd.highlight = 'none';
     }
 
-    if (form.value.dealUrlPreview === "") {
+    if (form.value.dealUrlPreview === '') {
       dealUrl.highlight = 'highlighted';
       this.dealReadytoPublish = false;
     } else {
       dealUrl.highlight = 'none';
     }
-    if (form.value.dealDetailPreview == '') {
+    if (form.value.dealDetailPreview === '') {
       this.dealReadytoPublish = false;
       dealDetail.highlight = 'highlighted';
     } else {
       dealDetail.highlight = 'none';
     }
-    if (form.value.dealPricePreview == '') {
+    if (form.value.dealPricePreview === '') {
       dealPrice.highlight = 'highlighted';
       this.dealReadytoPublish = false;
     } else {
       dealPrice.highlight = 'none';
     }
     /*if (form.value.dealDate == '' || form.value.dealDate == null) {
-      //baslangicTarihi.highlight = 'highlighted';
-      //this.dealReadytoPublish = false;
-    } else {
-      var date = form.value.dealDate.toLocaleDateString().replace('.', '/').replace('.', '/');
-      baslangicTarihi.highlight = 'none';
-    }*/
+        //baslangicTarihi.highlight = 'highlighted';
+        //this.dealReadytoPublish = false;
+      } else {
+        var date = form.value.dealDate.toLocaleDateString().replace('.', '/').replace('.', '/');
+        baslangicTarihi.highlight = 'none';
+      }*/
 
-    if (form.value.dealTitlePreview == '') {
+    if (form.value.dealTitlePreview === '') {
       dealTitle.highlight = 'highlighted';
       this.dealReadytoPublish = false;
     } else {
@@ -262,7 +265,7 @@ export class CreateNewDealComponent implements OnInit {
     }
 
     // Warn if user doesnt select any image for deal.
-    if (this.selectedImageSrc == '../../assets/imgs/firsat_gorseli_unselected@3x.png') {
+    if (this.selectedImageSrc === '../../assets/imgs/firsat_gorseli_unselected@3x.png') {
       dealImageContainer.highlight = 'highlighted';
       this.dealReadytoPublish = false;
     } else {
@@ -271,22 +274,21 @@ export class CreateNewDealComponent implements OnInit {
     if (this.dealReadytoPublish) {
       this.createButtonActivated = true;
       form.value.selectedCategory = this.selectedCategory;
-      this.benimFirsatimlib.createDeal(form, this.selectedImageSrc, "").subscribe(response => {
+      this.benimFirsatimlib.createDeal(form, this.selectedImageSrc, '').subscribe(response => {
 
-        if (response.json().hasOwnProperty("id")) {
+        if (response.json().hasOwnProperty('id')) {
           this.benimFirsatimlib.justCreatedDeal = response.json();
           this.router.navigate(['/deal/0']);
-        }
-        else {
+        } else {
           this.snackBar.open(response.statusText, '', {duration: 3000});
         }
       }, error => {
         this.snackBar.open(error.toLocaleString(), '', {duration: 3000});
-      })
+      });
     }
   }
 
-  getCategoryId(name) {
+  getCategoryId(name): number {
 
     switch (name) {
       case 'OFİS & KIRTASİYE':

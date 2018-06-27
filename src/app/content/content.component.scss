@@ -5,10 +5,9 @@ div{
 .background{
 //    height: -moz-available;          /* WebKit-based browsers will ignore this. */
 //  height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-  background-image: url('../../assets/imgs/background_pattern@2x.png');
   background-size: cover;
+  background: url('../../assets/imgs/background_pattern@2x.png') fixed;
   background-repeat: inherit;
-  background-attachment: fixed;
 }
 
 .kayit-success{
@@ -42,7 +41,7 @@ div{
   top:50%;
   left: 64%;
   z-index: 19;
-  border-radius: 0 20px 20px 0px;
+  border-radius: 0 20px 20px 0;
   width: 25%;
   height: 66%;
   transform: translate(-50%,-50%);
@@ -91,8 +90,7 @@ input[type=checkbox].css-checkbox + label.css-label {
   height:18px;
   display:inline-block;
   line-height:18px;
-  background-repeat:no-repeat;
-  background-position: 0 0;
+  background: no-repeat 0 0;
   font-size:18px;
   vertical-align:middle;
   cursor:pointer;
@@ -117,7 +115,7 @@ label.css-label {
 
 .kayit-ol{
   transform: scale(0.7);
-  margin-top: 0px;
+  margin-top: 0;
   position: fixed;
   width: 40%;
   top: 60%;
@@ -125,7 +123,7 @@ label.css-label {
 }
 
 .giris-yap{
-  margin-top: 0px;
+  margin-top: 0;
   position: fixed;
   transform: scale(1);
   width: 40%;
@@ -139,6 +137,7 @@ label.css-label {
   font-size:0;
 }
 
+//noinspection CssOverwrittenProperties,CssOverwrittenProperties
 .blurheader {
   background: transparent;
   overflow: hidden;

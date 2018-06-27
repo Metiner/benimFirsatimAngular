@@ -1,3 +1,11 @@
+<!--suppress ALL -->
+
+
+
+
+
+
+
 <form #f="ngForm">
   <div class="row">
     <div class="col-10 offset-1">
@@ -41,7 +49,7 @@
                   </div>
                   <div #allImages class="row scroll align-items-center" style="flex-wrap: nowrap;padding:20px 2% 0 2%;border-radius: 15px;overflow-x: scroll;overflow-y: hidden">
                     <div class="col-3" *ngFor="let dealImage of images"
-                         style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0px;padding-right: 0px">
+                         style="display: flex;margin-bottom: 10px;align-items: center;min-width: 150px;height: 150px;max-height: 150px;margin-left: 5px;padding-left: 0;padding-right: 0">
                       <img class="cursor-pointer" [@selectMe]="element.select" #element (click)="selectMe(element)" src="{{dealImage}}"
                            style="max-height:150px;max-width: 150px;border-radius: 15px;margin: auto">
                     </div>
@@ -50,7 +58,7 @@
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/firsat_tarihleri_icon.svg">
                     </div>
-                    <div class="col-1" style="padding: 0px;margin-right: 3%">
+                    <div class="col-1" style="padding: 0;margin-right: 3%">
                       <span #dealDate [@highlight]="dealDate.highlight" class="dealDetailsSpans">TARİH</span>
                     </div>
                     <div class="col-4">
@@ -81,11 +89,11 @@
             <div class="col" style="margin-left: 1%;border-radius: 30px;background-color: white;margin-top: 1%;">
               <div class="row">
                 <div class="col">
-                  <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0px">
+                  <div class="row align-items-center" style="flex-wrap: nowrap;padding: 0">
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/fiyat_icon.svg">
                     </div>
-                    <div class="col-1" style="padding: 0px">
+                    <div class="col-1" style="padding: 0">
                       <span #dealPrice [@highlight]="dealPrice.highlight" class="dealDetailsSpans">FİYAT ₺</span>
                     </div>
                     <div class="col-2 cursor-pointer">
@@ -94,7 +102,7 @@
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/kupon_kodu_icon.svg">
                     </div>
-                    <div class="col-2" style="padding: 0px">
+                    <div class="col-2" style="padding: 0">
                       <span class="dealDetailsSpans">KUPON KODU</span>
                     </div>
                     <div class="col cursor-pointer">
@@ -110,7 +118,7 @@
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/baslik_icon.svg">
                     </div>
-                    <div class="col-1" style="padding: 0px">
+                    <div class="col-1" style="padding: 0">
                       <span #dealTitle [@highlight]="dealTitle.highlight" class="dealDetailsSpans">BAŞLIK</span>
                     </div>
                     <div class="col">
@@ -133,12 +141,12 @@
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/detay_icon.svg">
                     </div>
-                    <div class="col-1" style="padding: 0px">
+                    <div class="col-1" style="padding: 0">
                       <span #dealDetail [@highlight]="dealDetail.highlight" class="dealDetailsSpans">DETAY</span>
                     </div>
                     <div class="col">
                       <textarea
-                        class="urlInput cursor-pointer" style="min-height: 100px;padding: 10px 0 10px 0px;resize:none"
+                        class="urlInput cursor-pointer" style="min-height: 100px;padding: 10px 0 10px 0;resize:none"
                         (input)="onDetailChange($event)"
                         ngModel name="dealDetailPreview"
                         [ngModel]="dealDetailPreview"
@@ -170,7 +178,7 @@
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/kategori_icon.svg">
                     </div>
-                    <div class="col-1" style="padding: 0px;margin-right: 3%">
+                    <div class="col-1" style="padding: 0;margin-right: 3%">
                       <span #lsd [@highlight]="lsd.highlight" class="dealDetailsSpans">KATEGORİ</span>
                     </div>
                     <div class="col">
@@ -184,7 +192,7 @@
                     <div class="col-1 padding max-width">
                       <img src="assets/svgs/sehir_icon.svg">
                     </div>
-                    <div class="col-1" style="padding: 0px">
+                    <div class="col-1" style="padding: 0">
                       <span class="dealDetailsSpans">ŞEHİR</span>
                     </div>
                     <div class="col">
@@ -219,7 +227,7 @@
                   <div class="row">
                     <div class="col">
                       <div class="row" style="align-items: center;flex-wrap: nowrap">
-                        <div class="col" style="padding-left: 0px;display: contents">
+                        <div class="col" style="padding-left: 0;display: contents">
                           <img src="{{dealOwnerAvatar}}" style="max-width: 30px;min-width: 30px;border-radius: 50%">
                           <span style="padding: 10px;font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491;white-space: nowrap;">&nbsp;{{dealOwner.slice(0,15).concat('..')}}&nbsp;</span>
                           <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;text-overflow: ellipsis;white-space: nowrap">| 0 görüntülenme |</span>
@@ -252,10 +260,10 @@
                     </div>
                     <div class="col-auto">
                       <div class="row" style="align-items: center;flex-wrap: nowrap">
-                        <div class="col-auto" style="padding: 0px">
+                        <div class="col-auto" style="padding: 0">
                           <img  src="../../assets/imgs/FB-Icon@2x.png" style="max-width: 40px;min-width: 40px;">
                         </div>
-                        <div class="col-auto cursor-pointer" style="padding: 0px">
+                        <div class="col-auto cursor-pointer" style="padding: 0">
                           <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 40px;">
                         </div>
                         <div class="col cursor-pointer">

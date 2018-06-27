@@ -10,16 +10,16 @@ export class SignUpComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit(): void {
+}
 
-  onSignUp(form:NgForm){
+  onSignUp(form: NgForm): void {
 
-    const email = form.value.email;
-    const password = form.value.password;
-    const repassword = form.value.repassword;
+  const email = form.value.email;
+  const password = form.value.password;
+  const repassword = form.value.repassword;
 
-    if(password != repassword)
-      window.alert("Şifreler uyumuyor");
-  }
+  if (password != repassword)
+    window.alert("Şifreler uyumuyor");
+}
 }

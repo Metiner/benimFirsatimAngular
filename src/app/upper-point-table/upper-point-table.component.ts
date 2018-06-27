@@ -8,18 +8,18 @@ import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 })
 export class UpperPointTableComponent implements OnInit {
 
-  users= [];
+  users = [];
 
   constructor(private benimFirsatimLib: BenimFirsatimLibrary) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
-    this.benimFirsatimLib.getUsersTop().subscribe(response=>{
-      for(let i = 0 ;i<response.json().length;i++){
-        this.users.push(response.json()[i][0]);
-      }
-    })
-  }
+  this.benimFirsatimLib.getUsersTop().subscribe(response => {
+    for (let i = 0; i < response.json().length; i++) {
+      this.users.push(response.json()[i][0]);
+    }
+  });
+}
 
 
 }

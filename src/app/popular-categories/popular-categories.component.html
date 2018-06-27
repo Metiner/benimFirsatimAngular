@@ -1,23 +1,23 @@
 <div class="col">
-  <div class="row">
-    <div class="col" style="padding-right: 0;padding-left: 0px">
-      <img src="../../assets/imgs/puan_tablosu_box@2x.png" style="max-width: inherit;">
-      <span style="font-family: 'Mark Pro-Book';font-size: 12px;color:#F7E60f;white-space: nowrap;position: absolute;top: 10px;left: 20px">POPÜLER KATEGORİLER</span>
-      <img class="fullwidth" src="../../assets/imgs/freebies_icon@2x.png">
+  <div class="row" style="flex-wrap: nowrap">
+    <div class="col" style="position: absolute;padding: 0">
+      <img src="../../assets/imgs/puan_tablosu_box@2x.png" style="width:100%;">
+    </div>
+    <div class="col" style="padding: 10px 2px 3px 15px">
+      <span style="font-family: 'Mark Pro-Book';font-size: 12px;color:#F7E60f;white-space: nowrap">POPÜLER KATEGORİLER</span>
+    </div>
+    <div class="col" style="text-align: right;padding: 5px 20px 0 0;" >
+      <img  style="max-width: 20px" src="../../assets/imgs/freebies_icon@2x.png">
     </div>
   </div>
   <div class="row">
-    <div class="col" style="background-color: white;border-color: #234491;border-radius: 0px 0px 29px 29px;">
-      <div class="row" >
-        <div class="col" style="padding-bottom: 15px">
-          <div class="row nowrap" *ngFor="let item of categories;let i=index" style="margin-top: 5%">
-            <div class="col-auto">
-              <img src="{{item.image_url}}" style="border-radius: 15px;max-width: 50px;min-width: 50px">
-            </div>
-            <div class="col text-center">
-              <span style="font-family: 'Mark Pro-Light';font-size: 13px;color:#234491">{{item.name}}</span>
-            </div>
-          </div>
+    <div class="col" style="background-color: white;border-color: #234491;border-radius: 0 0 29px 29px;">
+      <div class="row nowrap" *ngFor="let item of categories;let i=index" style="margin-top: 5%">
+        <div class="col-auto">
+          <img src="{{item.image_url}}" style="border-radius: 15px;max-width: 50px;min-width: 50px">
+        </div>
+        <div class="col text-center">
+          <span style="font-family: 'Mark Pro-Light';font-size: 13px;color:#234491">{{item.name}}</span>
         </div>
       </div>
     </div>
