@@ -1,0 +1,16 @@
+<div *ngIf="initializeSearchDiv">
+  <div class="searchDiv" (click)="initializeSearchDiv = !initializeSearchDiv">
+  </div>
+  <div style="z-index: 1000;position: fixed;transform: translate(-50%,-50%);top:46%;left: 50%;text-align: center;width: 90%;">
+    <div class="row">
+      <div class="col">
+        <input  id="myInput" (keyup)="onSearchEvent($event)" class="search" type="text"  autofocus>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span class="searchSpan">ARAMAK İSTEDİĞİNİ YAZDIKTAN SONRA, ENTER TUŞUNA BASABİLİRSİN</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,7 +26,7 @@
               <div class="col" style="padding: 0 30px 0 30px">
                 <div class="row title">
                   <div class="col nopadding dealTitleAndUserRow">
-                    <span  style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal?.title.slice(0,200).concat('..')}}</span>
+                    <a href="{{deal?.link}}" target="_blank"><span  style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal?.title.slice(0,200).concat('..')}}</span></a>
                   </div>
                 </div>
                 <div class="row">
@@ -42,7 +42,7 @@
 
                         <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal?.created_at.substr(0,10)}} |</span>
 
-                        <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal?.vendor.website}}</span>
+                        <a href="http://{{deal?.vendor.website}}"><span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal?.vendor.website}}</span></a>
                       </div>
                     </div>
                   </div>
@@ -94,7 +94,7 @@
                         <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
                       </div>
                       <div class="col cursor-pointer">
-                        <img (click)="goToLink(deal?.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
+                        <a href="{{deal?.link}}" target="_blank"><img src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px"></a>
                       </div>
                     </div>
                   </div>
@@ -305,9 +305,7 @@
       </div>
     </div>
   </div>
-  <div class="col-2" style="position: fixed;right: 7%;padding-right: 0;z-index: 9999" *ngIf="showPointTable">
-    <app-point-table></app-point-table>
-  </div>
+  <app-point-table *ngIf="showPointTable"></app-point-table>
   <div class="col-1 nopadding"></div>
 
 </div>

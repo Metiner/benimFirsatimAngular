@@ -41,6 +41,7 @@ export class DealComponent implements OnInit, OnDestroy {
     $(document).ready(()=>{
       this.showPointTable = this.benimFirsatimLib.showPointTable;
       this.benimFirsatimLib.responsiveDesignFunc();
+
     })
 
     this.mySubscription = this.benimFirsatimLib.categoryChanged.subscribe({
@@ -193,11 +194,16 @@ export class DealComponent implements OnInit, OnDestroy {
   goToDeal(dealId) {
     this.route.navigate(['/deal/' + dealId]);
   }
+  goToDealNewTab(dealId){
+    window.open('https://benimfirsatim.com/deal/'+dealId,'_blank');
+  }
 
   isItLastItem(deal) {
     if (this.deals[this.deals.length - 1].id === deal.id)
       return true;
   }
+
+
 
   goToLink(link: string) {
     window.open(link, '_blank');
@@ -205,33 +211,36 @@ export class DealComponent implements OnInit, OnDestroy {
 
   playAnim(index, type,deal,lol) {
 
-    if (type === 'like') {
+    if (this.benimFirsatimLib.isAutho) {
+      if (type === 'like') {
+        this.likeButtonAnimations[index].play();
+        if (this.likeButtonAnimations[index].liked) {
+
+          this.benimFirsatimLib.downVoteDeal(deal.id).subscribe(response=>{
+            deal.votes_sum = response.json().deal_score;
+          });
+
+          this.likeButtonAnimations[index].setDirection(-1);
+          this.likeButtonAnimations[index].liked = false;
 
 
-      this.likeButtonAnimations[index].play();
-      if (this.likeButtonAnimations[index].liked) {
+        } else {
+          this.benimFirsatimLib.upVoteDeal(deal.id).subscribe(response=>{
+            deal.votes_sum = response.json().deal_score;
+          });
 
-        this.benimFirsatimLib.downVoteDeal(deal.id).subscribe(response=>{
-          deal.votes_sum = response.json().deal_score;
-        });
+          this.likeButtonAnimations[index].setDirection(1);
+          this.likeButtonAnimations[index].liked = true;
 
-        this.likeButtonAnimations[index].setDirection(-1);
-        this.likeButtonAnimations[index].liked = false;
-
-
-      } else {
-        this.benimFirsatimLib.upVoteDeal(deal.id).subscribe(response=>{
-          deal.votes_sum = response.json().deal_score;
-        });
-
-        this.likeButtonAnimations[index].setDirection(1);
-        this.likeButtonAnimations[index].liked = true;
-
+        }
       }
+      else {
+        this.commentButtonAnimations[index].play();
+      }
+    } else if ( !this.benimFirsatimLib.isAutho && type !== 'comment'){
+      this.benimFirsatimLib.openSignUpPopUp.next();
     }
-    else {
-      this.commentButtonAnimations[index].play();
-    }
+
   }
 
   stopAnim(index) {

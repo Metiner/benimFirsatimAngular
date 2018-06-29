@@ -1,14 +1,15 @@
-<div>
+<div class="col-2" style="position: fixed;right: 7%;padding-right: 0">
   <div class="row">
     <div class="col">
       <img src="../../assets/imgs/puan_tablosu_box@2x.png" style="width: inherit;">
-      <span style="font-family: 'Mark Pro-Book';font-size: 12px;color:#F7E60f;white-space: nowrap;position: absolute;top: 10px;left: 30px">AYIN KULLANICILARI</span>
+      <span
+        style="font-family: 'Mark Pro-Book';font-size: 12px;color:#F7E60f;white-space: nowrap;position: absolute;top: 10px;left: 30px">AYIN KULLANICILARI</span>
       <img class="fullwidth" src="../../assets/imgs/puan_tablosu_icon@2x.png">
     </div>
   </div>
   <div class="row" style="margin-left: 0;margin-right: 0;">
     <div class="col" style="background-color: white;border-color: #234491;border-radius: 0 0 29px 29px;">
-      <div class="row" >
+      <div class="row">
         <div class="col">
           <div class="row" *ngFor="let user of users;let i=index" style="margin-top: 5%;flex-wrap: nowrap">
             <div class="col-1">
@@ -26,8 +27,8 @@
       </div>
     </div>
   </div>
-  <div class="row cursor-pointer" style="    margin: 10px 0 0 0;"(click)="openFeedbackDiv()">
-    <div class="col" style="border-radius: 30px;background-color: #F7E60F;text-align: center;padding:5px" >
+  <div class="row cursor-pointer" style="    margin: 10px 0 0 0;" (click)="openFeedbackDiv()">
+    <div class="col" style="border-radius: 30px;background-color: #F7E60F;text-align: center;padding:5px">
       <span style="font-family: 'Mark Pro-Heavy';font-size: 15px;color:#234491">FİKRİNİ SÖYLE!</span><br>
       <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491">SİZLERE DAHA KALİTELİ HİZMETLER SUNABİLMEK İÇİN,</span><br>
       <span style="font-family: 'Mark Pro-Book';font-size: 8px;color:#234491">FİKİRLERİNİZ BİZLER İÇİN ÇOK ÖNEMLİ</span>

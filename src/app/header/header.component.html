@@ -3,11 +3,11 @@
   <div class="row align-items-center headerBackground" style="flex-wrap: nowrap">
     <div class="col mx-auto nopadding">
       <div class="row" style="flex-wrap: nowrap">
-        <div class="cursor-pointer col-auto  offset-1 logo" routerLink="/" style="outline:0;align-self: start;outline: 0;padding-right: 0;padding-left: 0">
+        <div class="cursor-pointer col-auto  offset-1 logo" (click)="onCategoryChange('hot')"  style="outline:0;align-self: start;outline: 0;padding-right: 0;padding-left: 0">
           <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
         </div>
-        <div class="col-auto nopadding mx-auto cursor-pointer text-center category-items"  routerLink="/" style="outline:0">
-          <div class="row" (click)="onCategoryChange('hot')">
+        <div (click)="onCategoryChange('hot')" class="col-auto nopadding mx-auto cursor-pointer text-center category-items"  routerLink="/" style="outline:0">
+          <div class="row">
             <div class="col click" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
               <lottie-animation-view
                 [options]="oneCikanlarAnimConf"
@@ -23,8 +23,8 @@
             </div>
           </div>
         </div>
-        <div class="col-auto nopadding mx-auto cursor-pointer text-center category-items" routerLink="/" style="outline:0">
-          <div class="row" (click)="onCategoryChange('rising')">
+        <div (click)="onCategoryChange('rising')" class="col-auto nopadding mx-auto cursor-pointer text-center category-items" routerLink="/" style="outline:0">
+          <div class="row">
             <div class="col click" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
               <lottie-animation-view
                 [options]="yukselenlerAnimConf"
@@ -40,8 +40,8 @@
             </div>
           </div>
         </div>
-        <div class="col-auto nopadding mx-auto text-center  cursor-pointer category-items" routerLink="/" style="outline:0">
-          <div class="row" (click)="onCategoryChange('newcomers')">
+        <div (click)="onCategoryChange('newcomers')" class="col-auto nopadding mx-auto text-center  cursor-pointer category-items" routerLink="/" style="outline:0">
+          <div class="row">
             <div class="col" (mouseenter)="playAnim(3)"  (mouseleave)="stopAnim(3)">
               <lottie-animation-view
                 [options]="yenilerAnimConf"
@@ -56,9 +56,9 @@
             </div>
           </div>
         </div>
-        <div class="col-auto nopadding mx-auto text-center  cursor-pointer category-items">
-          <div class="row">
-            <div class="col" (mouseenter)="slideDiv('categories','in',true)">
+        <div (mouseenter)="slideDiv('categories','in',true)" class="col-auto nopadding mx-auto text-center  cursor-pointer category-items">
+          <div class="row" >
+            <div class="col">
               <div class="col click" (mouseenter)="playAnim(4)" (mouseleave)="stopAnim(4)">
                 <lottie-animation-view
                   [options]="categoriesAnimConf"
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="firsatEkleKucult" class="col-auto mx-auto  nopadding category-items" style="text-align: center;align-self: center">
+        <div *ngIf="firsatEkleKucult" (click)="onCreateNewDeal()" class="col-auto mx-auto cursor-pointer  nopadding category-items" style="text-align: center;align-self: center">
           <div class="row">
             <div class="col-12" style="margin-top: -2px">
               <img  src="../../assets/imgs/yeni_firsat_button@3x.png" style="max-width: 33px">
@@ -85,17 +85,17 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!firsatEkleKucult" class="col-auto  mx-auto nopadding category-items" style="text-align: center;align-self: center" (click)="onCreateNewDeal()" >
+        <div *ngIf="!firsatEkleKucult" class="col-auto  mx-auto nopadding  cursor-pointer category-items" style="text-align: center;align-self: center" (click)="onCreateNewDeal()" >
           <div class="row">
             <div class="col">
               <img style="max-height: 50px;margin-top: -2.5px;" src="../../assets/imgs/yeni_firsat_ekle@2x.png">
             </div>
           </div>
         </div>
-        <div class="col-auto cursor-pointer mx-auto  nopadding category-items" style="text-align: center">
+        <div (click)="onSearchIcon()" class="col-auto cursor-pointer mx-auto  nopadding category-items" style="text-align: center">
           <div class="row" style="margin-top: 10px">
             <div class="col">
-              <img src="../../assets/svgs/search_icon.svg" style="height: 33px;margin-left: -7px" (click)="onSearchIcon()">
+              <img src="../../assets/svgs/search_icon.svg" style="height: 33px;margin-left: -7px">
             </div>
           </div>
           <div class="row">
@@ -117,13 +117,13 @@
             </div>
           </div>
         </div>
-        <div *ngIf="isAuth" class="col-auto text-center  nopadding category-items" style="margin-top: 8px;margin-left:auto ">
+        <div *ngIf="isAuth" (mouseenter)="slideDiv('profile','in',true)" (mousedown)="goToProfile()" class="col-auto text-center  nopadding category-items" style="margin-top: 8px;margin-left:auto ">
           <div class="row">
-            <div (mouseenter)="slideDiv('profile','in',true)" class="col cursor-pointer" style="padding: 0">
+            <div  class="col cursor-pointer" style="padding: 0">
               <svg _ngcontent-c0="" class="ng-tns-c0-0" style="max-width: 40px" viewBox="0 0 35.56 35.56" xmlns="http://www.w3.org/2000/svg"><title _ngcontent-c0="" class="ng-tns-c0-0">location_iconAsset 1</title><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="Layer 2" id="Layer_2"><g _ngcontent-c0="" class="ng-tns-c0-0" data-name="profilim icon" id="profilim_icon"><path _ngcontent-c0="" class="ng-tns-c0-0" d="M17.78,0A17.78,17.78,0,1,0,35.56,17.78,17.81,17.81,0,0,0,17.78,0Zm6.69,14.06V11.18a5.18,5.18,0,0,0-1.16-3.66c-1.17-1.32-3-1.94-5.53-1.94a7.3,7.3,0,0,0-5.52,1.94,5.14,5.14,0,0,0-1.17,3.66v2.88a2,2,0,0,0-.54,1.48v2.17a2.3,2.3,0,0,0,.85,1.79,10.68,10.68,0,0,0,1.95,4v1.79a1.51,1.51,0,0,1-.7,1.25l-5,2.72a1.38,1.38,0,0,0-.47.31A15.91,15.91,0,1,1,33.65,17.46v.25a15.7,15.7,0,0,1-5.36,11.83,2,2,0,0,0-.55-.31l-5.29-2.65a1.37,1.37,0,0,1-.78-1.24V23.47a3.36,3.36,0,0,0,.39-.54,11.32,11.32,0,0,0,1.63-3.19,2.34,2.34,0,0,0,1.33-2V15.54A2.5,2.5,0,0,0,24.47,14.06Z" style="fill:#f7e60f"></path></g></g></svg>
             </div>
           </div>
-          <div class="row">
+          <div class="row" >
             <div class="col-auto nopadding mx-auto">
               <span class="cursor-pointer font-class" >PROFİLİM</span>
             </div>
@@ -177,22 +177,6 @@
           <div class="col myProfileItemCol cursor-pointer" (click)="logout()">
             <img src="../../assets/imgs/cikis@2x.png" style="max-width: 70px;margin-right: 17px;margin-bottom: 10px">
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="initializeSearchDiv">
-    <div class="searchDiv" (click)="initializeSearchDiv = !initializeSearchDiv">
-    </div>
-    <div style="z-index: 1000;position: fixed;transform: translate(-50%,-50%);top:46%;left: 50%;text-align: center;width: 90%;">
-      <div class="row">
-        <div class="col">
-          <input  id="myInput" (keyup)="onSearchEvent($event)" class="search" type="text"  autofocus>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <span class="searchSpan">ARAMAK İSTEDİĞİNİ YAZDIKTAN SONRA, ENTER TUŞUNA BASABİLİRSİN</span>
         </div>
       </div>
     </div>

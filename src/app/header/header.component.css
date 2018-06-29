@@ -15,34 +15,6 @@
 /*.row{
   margin: 0px !important;
 }*/
-.search {
-  font-family: "Mark Pro-Heavy";
-  color: #234491;
-  font-size: 80px;
-  z-index: 10001;
-  outline: none;
-  border: none;
-  width: 100%;
-  background: none;
-  text-align: center; }
-
-.searchSpan {
-  font-family: 'Mark Pro-Bold';
-  font-size: 15px;
-  color: #234491;
-  margin-left: 15px; }
-
-.searchDiv {
-  background-color: #F7E60f;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1000;
-  margin-top: -3px;
-  opacity: .75;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); }
-
 .searchBackground {
   background: url("../../assets/svgs/search_box.svg") no-repeat; }
 

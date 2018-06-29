@@ -24,5 +24,11 @@ export class PopularCategoriesComponent implements OnInit {
   ngOnInit(): void {
 }
 
+  onCategoryChange(type): void {
+    this.benimFirsatimLibrary.showPointTable = true;
+    this.benimFirsatimLibrary.currentPaging = 1;
+    this.benimFirsatimLibrary.totalPage = 2;
+    this.benimFirsatimLibrary.changeCategory(type);
+  }
 
 }

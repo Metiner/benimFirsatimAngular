@@ -10,9 +10,9 @@
       <img  style="max-width: 20px" src="../../assets/imgs/freebies_icon@2x.png">
     </div>
   </div>
-  <div class="row">
+  <div class="row cursor-pointer">
     <div class="col" style="background-color: white;border-color: #234491;border-radius: 0 0 29px 29px;">
-      <div class="row nowrap" *ngFor="let item of categories;let i=index" style="margin-top: 5%">
+      <div class="row nowrap" (click)="onCategoryChange(item.id)" *ngFor="let item of categories;let i=index" style="margin-top: 5%">
         <div class="col-auto">
           <img src="{{item.image_url}}" style="border-radius: 15px;max-width: 50px;min-width: 50px">
         </div>

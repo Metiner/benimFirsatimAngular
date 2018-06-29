@@ -43,7 +43,6 @@ export class HeaderComponent implements OnDestroy {
   autSubscription: Subscription;
   responsiveDesignSubscription: Subscription;
 
-  initializeSearchDiv: boolean;
 
   constructor(public benimFirsatimLibrary: BenimFirsatimLibrary,
               public router: Router) {
@@ -198,6 +197,9 @@ export class HeaderComponent implements OnDestroy {
   this.isAuth = this.benimFirsatimLibrary.isAutho;
 }
 
+  goToProfile() {
+    this.onNotifications();
+  }
   goToSignUpAndSignin(): void {
   this.benimFirsatimLibrary.openSignUpPopUpFunc();
 }
@@ -272,26 +274,20 @@ export class HeaderComponent implements OnDestroy {
 }
 
   pauseAnim(type): void {
-  // type
-  // 1- onceCikanlar
-  // 2 - yukselenler
-  // 3 - yeniler
-  // 4- kategoriler
-
-  switch (type) {
-    case 1:
-      this.oneCikanlarAnim.pause();
-      break;
-    case 2:
-      this.yukselenlerAnim.pause();
-      break;
-    case 3:
-      this.yenilerAnim.pause();
-      break;
-    case 4:
-      this.categoriesAnim.pause();
-      break;
-  }
+    switch (type) {
+      case 1:
+        this.oneCikanlarAnim.pause();
+        break;
+      case 2:
+        this.yukselenlerAnim.pause();
+        break;
+      case 3:
+        this.yenilerAnim.pause();
+        break;
+      case 4:
+        this.categoriesAnim.pause();
+        break;
+    }
 }
 
   stopAnim(type): void {
@@ -336,11 +332,12 @@ export class HeaderComponent implements OnDestroy {
       break;
   }
 
-  setTimeout(() => {
-    this.categoriesAnimation = 'out';
-    this.myProfileAnimation = 'out';
-  }, 10000);
-
+  /*if ( this.displayCategoriesProfileDiv) {
+    setTimeout(() => {
+      this.categoriesAnimation = 'out';
+      this.myProfileAnimation = 'out';
+    }, 10000);
+  }*/
 }
 
   onCategoryChange(type): void {
@@ -432,6 +429,8 @@ export class HeaderComponent implements OnDestroy {
 }
 
   logout(): void {
+  this.slideDiv('categories', 'out', false);
+  this.slideDiv('profile', 'out', false);
   this.isAuth = false;
   this.benimFirsatimLibrary.logout();
   this.onCategoryChange('hot');
@@ -448,26 +447,8 @@ export class HeaderComponent implements OnDestroy {
   onNotifications(): void {
   this.router.navigate(['/myProfile/notifications']);
 }
-
-  onSearchEvent(event): void {
-
-  if (event.key === 'Enter') {
-
-    this.benimFirsatimLibrary.search(event.path[0].value).subscribe(response => {
-      this.benimFirsatimLibrary.searchResult = response.json();
-      this.initializeSearchDiv = false;
-      this.onCategoryChange('search');
-
-    });
-  }
-  if (event.key === 'Escape') {
-    this.initializeSearchDiv = false;
-  }
-}
-
-
   onSearchIcon(): void {
-  this.initializeSearchDiv = true;
+  this.benimFirsatimLibrary.searchInitializeSubject.next(true);
 
   setTimeout(() => {
     document.getElementById('myInput').focus();

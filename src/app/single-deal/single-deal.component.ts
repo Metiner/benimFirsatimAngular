@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {commentStateTrigger} from "../animations";
@@ -17,7 +17,7 @@ declare var FB:any;
   styleUrls: ['./single-deal.component.scss'],
   animations:[commentStateTrigger]
 })
-export class SingleDealComponent implements OnInit {
+export class SingleDealComponent implements OnInit , OnDestroy{
 
   dealId:string = "";
   newlyAddedComment = "";
@@ -52,6 +52,7 @@ export class SingleDealComponent implements OnInit {
     $(document).ready(()=>{
 
       this.benimFirsatimLib.responsiveDesignFunc();
+      $('.footer').hide();
     })
 
     this.showPointTableSubs = this.benimFirsatimLib.showPointTableSub.subscribe({
@@ -87,6 +88,9 @@ export class SingleDealComponent implements OnInit {
         })
       });
     }
+  }
+  ngOnDestroy(){
+    $('.footer').show();
   }
 
   loadAnimations(){
@@ -215,9 +219,12 @@ export class SingleDealComponent implements OnInit {
       return true;
   }
   writeToComment(comment,scrollToMe){
-
-    comment.writeCommentToComment = true;
-    this.scrollToTop(scrollToMe);
+    if(this.benimFirsatimLib.isAutho){
+      comment.writeCommentToComment = true;
+      this.scrollToTop(scrollToMe);
+    }else{
+      this.benimFirsatimLib.openSignUpPopUp.next();
+    }
   }
   scrollToTop(scrollToMe){
 
@@ -277,46 +284,60 @@ export class SingleDealComponent implements OnInit {
     }
   }
   writeCommentSubcomment(comment,subCommentText){
-
-    if(!this.preventDuplicate) {
-      if(subCommentText.value.length > 1){
-        this.preventDuplicate = true;
-        comment.newlyAddedSubComments = [];
-        var newlyAddedSubCommentTemp: any = {};
-        newlyAddedSubCommentTemp.text = subCommentText.value;
-        newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
-        newlyAddedSubCommentTemp.timeCalculation = "";
-        comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
-        this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, subCommentText.value).subscribe((response) => {
-          subCommentText.value = "";
-        });
-        setTimeout(()=>{
-          this.preventDuplicate = false;
-        },10000);
+    if(this.benimFirsatimLib.isAutho){
+      if(!this.preventDuplicate) {
+        if(subCommentText.value.length > 1){
+          this.preventDuplicate = true;
+          comment.newlyAddedSubComments = [];
+          var newlyAddedSubCommentTemp: any = {};
+          newlyAddedSubCommentTemp.text = subCommentText.value;
+          newlyAddedSubCommentTemp.user = this.benimFirsatimLib.currentUser;
+          newlyAddedSubCommentTemp.timeCalculation = "";
+          comment.newlyAddedSubComments.push(newlyAddedSubCommentTemp);
+          this.benimFirsatimLib.createComment(this.route.snapshot.params['dealId'], comment.id, subCommentText.value).subscribe((response) => {
+            subCommentText.value = "";
+          });
+          setTimeout(()=>{
+            this.preventDuplicate = false;
+          },10000);
+        }else{
+          this.snackBar.open('Bir şeyler söyleyecek misin?','',{duration:3000});
+        }
       }else{
-        this.snackBar.open('Bir şeyler söyleyecek misin?','',{duration:3000});
+        this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
       }
     }else{
-      this.snackBar.open('Spamliyorsun.Spamleme.','',{duration:3000});
+      this.benimFirsatimLib.openSignUpPopUp.next();
     }
   }
 
   deadOnDeadLine(){
-    this.benimFirsatimLib.ended(this.route.snapshot.params['dealId']).subscribe((response)=>{
+    if(this.benimFirsatimLib.isAutho){
+      this.benimFirsatimLib.ended(this.route.snapshot.params['dealId']).subscribe((response)=>{
     });
     this.dealReported = true;
+    }else{
+      this.benimFirsatimLib.openSignUpPopUp.next();
+    }
   }
   dealOutOfStock(){
+    if(this.benimFirsatimLib.isAutho){
     this.benimFirsatimLib.stockFinished(this.route.snapshot.params['dealId']).subscribe((response)=>{
     });
     this.dealReported = true;
+    }else{
+      this.benimFirsatimLib.openSignUpPopUp.next();
+    }
   }
   onReportDeal(){
-    this.benimFirsatimLib.report(this.route.snapshot.params['dealId']).subscribe((response)=>{
-    });
-    this.dealReported = true;
+    if(this.benimFirsatimLib.isAutho){
+      this.benimFirsatimLib.report(this.route.snapshot.params['dealId']).subscribe((response)=>{
+      });
+      this.dealReported = true;
+    }else{
+      this.benimFirsatimLib.openSignUpPopUp.next();
+    }
   }
-
   favDeal(){
     if(this.benimFirsatimLib.isAutho){
       this.benimFirsatimLib.favDeal(this.route.snapshot.params['dealId']).subscribe((response)=>{

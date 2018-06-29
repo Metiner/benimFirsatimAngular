@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {
   dealAvatarSelectionTrigger,
@@ -19,7 +19,7 @@ declare let lottie: any;
   styleUrls: ['./create-new-deal.component.scss'],
   animations: [showMeTrigger, dealAvatarSelectionTrigger, loadingBlackDivAnimationTrigger, highlightTrigger]
 })
-export class CreateNewDealComponent implements OnInit {
+export class CreateNewDealComponent implements OnInit, OnDestroy {
 
   @ViewChild('allCategories') allCategories: any;
   @ViewChild('allImages') allImages: any;

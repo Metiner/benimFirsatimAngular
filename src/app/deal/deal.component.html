@@ -15,13 +15,13 @@
          @dealState
          (@dealState.done)="onDealAnimated($event,i,likeContainer,commentContainer)"
          style=";border-radius: 30px;background-color: white;padding-top: 1%;padding-bottom: 1%;align-items: center;justify-content: center;margin-bottom: 2%">
-      <div class="col-auto mx-auto" style="text-align: center;align-self: center;margin-top: 25px;margin-bottom: 25px">
-        <img src="{{deal.image_url}}" style="max-width: 180px;min-width: 180px;">
+      <div class="col-auto mx-auto"   style="text-align: center;align-self: center;margin-top: 25px;margin-bottom: 25px">
+        <a href="https://benimfirsatim.com/deal/{{deal.id}}"> <img src="{{deal.image_url}}" style="max-width: 180px;min-width: 180px;"></a>
       </div>
       <div class="col" style="padding: 0 30px 0 30px;">
         <div class="row title dealTitleAndUserRow">
           <div class="col">
-            <span (click)="goToDeal(deal.id)" style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.title.slice(0,200).concat('..')}}</span>
+            <a href="https://benimfirsatim.com/deal/{{deal.id}}"><span style="font-family: 'Mark Pro-Heavy';font-size: 20px;color:#234491;white-space: nowrap">{{deal.title.slice(0,200).concat('..')}}</span></a>
           </div>
         </div>
         <div class="row dealTitleAndUserRow" style="padding-top: 1%">
@@ -53,7 +53,7 @@
           <div class="col-auto mx-auto" style="padding-left: 0;">
             <div class="row" style="align-items: center">
               <div class="col" style="padding-right: 0">
-                <div style="max-height: 50px;min-width: 50px;max-width: 50px" #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div>
+                <a href="https://benimfirsatim.com/deal/{{deal.id}}"><div style="max-height: 50px;min-width: 50px;max-width: 50px" #commentContainer class="lottieCommentButton" (mouseenter)="playAnim(i,'comment')" (mouseleave)="stopAnim(i)"></div></a>
               </div>
               <div class="col-auto nopadding">
                 <span style="font-family: 'Mark Pro-Heavy';font-size: 16px;color: #234491;padding: 0 10px 0 2px">{{deal.comments_count}}</span>
@@ -68,7 +68,7 @@
             <img src="../../assets/imgs/TW-Icon@2x.png" style="max-width: 30px;min-width: 30px;">
           </div>
           <div class="col-auto cursor-pointer"   style="margin-left: 15px">
-            <img (click)="goToLink(deal.link)" src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px">
+            <a href="{{deal.link}}" target="_blank"><img src="../../assets/imgs/firsata_git_button@2x.png" style="max-width: 160px;min-width: 160px"></a>
           </div>
         </div>
         <div class="row" style="margin-top: 10px">
@@ -87,7 +87,7 @@
                 <span style="font-family: 'Mark Pro-Book';font-size: 14px;color:#234491;white-space: nowrap">&nbsp;{{deal.created_at.substr(0,10)}} |</span>
               </div>
               <div class="col-auto" style="padding-left: 0">
-                <span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span>
+                <a href="http://{{deal.vendor.website}}"><span style="font-family: 'Mark Pro-Italic';font-size: 14px;color:#234491;">&nbsp;{{deal.vendor.website}}</span></a>
               </div>
             </div>
           </div>
@@ -95,10 +95,8 @@
       </div>
     </div>
   </div>
-  <div *ngIf="showPointTable" class="col-2" style="position: fixed;right: 7%;padding-right: 0">
-    <app-point-table></app-point-table>
-  </div>
-  <div class="col-1"></div>
+  <app-point-table *ngIf="showPointTable"></app-point-table>
+  <div class="col-1" style="margin-left: auto !important;"></div>
 </div>
 
 

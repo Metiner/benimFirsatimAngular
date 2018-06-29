@@ -18,6 +18,7 @@ export class BenimFirsatimLibrary {
   resetFooter = new Subject<any>();
   successLoginProfileMenuChange = new Subject<any>();
   responsiveDesign = new Subject<any>();
+  searchInitializeSubject = new Subject<any>();
 
 
 
@@ -29,7 +30,6 @@ export class BenimFirsatimLibrary {
   _currentDeals = [];
   _categories = [];
   _justCreatedDeal: any;
-  onTheLastPage = false;
   _isAutho = false;
   _currentUser: any;
   searchResult: any = {};
@@ -80,23 +80,19 @@ export class BenimFirsatimLibrary {
 
   silentLogin(): boolean {
     if (this._tokenService.userSignedIn()) {
-      console.log('logged in');
-      // noinspection UnnecessaryLocalVariableJS
+
       const user = JSON.parse(localStorage.getItem('userBenimFirsatim'));
       this.currentUser = user;
       this.isAutho = true;
       return true;
-    } else {
-      console.log('logged out');
-      this.logout();
-      this.openSignUpPopUp.next();
     }
     return false;
   }
 
   logout(): void {
   this.isAutho = false;
-  localStorage.clear();
+  this._tokenService.signOut();
+  localStorage.setItem('userBenimFirsatim', '');
   this.currentUser = {};
 }
 
@@ -214,9 +210,9 @@ export class BenimFirsatimLibrary {
     coupon_code: form.value.coupon_code,
     city: form.value.selectedCity
   };
-
   return this._tokenService.post('deals/create.json', body);
 }
+
 
   public upVoteDeal(dealId) {
   return this._tokenService.get('deals/' + dealId + '/upvote');
@@ -340,11 +336,6 @@ export class BenimFirsatimLibrary {
 
   set dealAnimationContinues(value: boolean) {
     this._dealAnimationContinues = value;
-  }
-
-
-  get currentDeals(): any[] {
-    return this._currentDeals;
   }
 
   set currentDeals(value: any[]) {

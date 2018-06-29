@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {BenimFirsatimLibrary} from '../services/benimFirsatimLibrary';
 import {Subscription} from 'rxjs/Subscription';
 import {
@@ -11,7 +11,7 @@ import {
 } from '../animations';
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
-import {FacebookService} from "ngx-facebook";
+import {FacebookService} from 'ngx-facebook';
 
 declare let lottie: any;
 declare let gapi: any;
@@ -36,12 +36,15 @@ export class ContentComponent implements OnDestroy, OnInit {
   auth2: any;
   email: string;
   password2: string;
+  password: string;
   kayitOlAnim: any;
   tutorialAnim: any;
 
   kayitOlState = 'down';
   girisYapState = 'up';
   currentState = 'giris';
+
+  f: NgForm;
 
   showSingUpSignInPopUp = false;
   tutorial = false;
@@ -54,6 +57,20 @@ export class ContentComponent implements OnDestroy, OnInit {
   showForm = true;
   kayitBasariliText = false;
   girisBasariliText = false;
+
+  @HostListener('window:keydown', ['$event'])
+    onkeyDown (ev: KeyboardEvent) {
+      if (ev.key === 'Enter') {
+        if (this.girisYapButtonClickable) {
+
+
+          this.onGirisButtonClick();
+        } else if (this.kayitOlButtonClickable) {
+
+          this.onKayitButtonClick();
+        }
+      }
+    }
 
   constructor(public benimFirsatimLib: BenimFirsatimLibrary,
               public snackBar: MatSnackBar,
@@ -110,12 +127,11 @@ export class ContentComponent implements OnDestroy, OnInit {
     this.mySignUpPopUpSubscription.unsubscribe();
   }
 
-  onGirisButtonClick(form: NgForm): void {
+  onGirisButtonClick(): void {
 
-    if (this.girisYapButtonClickable) {
-      this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
+    if (this.girisYapButtonClickable && this.email !== undefined && this.password !== undefined) {
+      this.benimFirsatimLib.signIn(this.email, this.password).subscribe(data => {
 
-        console.log(data);
         if (data.json() != null && data.ok === true) {
           this.benimFirsatimLib.successLogin(data.json(), 1);
           this.girisBasariliText = true;
@@ -127,29 +143,30 @@ export class ContentComponent implements OnDestroy, OnInit {
               this.tutorial = false;
               this.blackDiv = false;
               this.showSingUpSignInPopUp = false;
-              this.benimFirsatimLib.silentLogin();
             }, 1500);
         }
       }, error => {
         this.snackBar.open('Yanlış e-mail veya parola girdiniz.', '', {duration: 3000});
       });
+    } else {
+        this.snackBar.open('Lütfen eksiksiz girdiğinize emin olun.', '', {duration: 3000});
     }
   }
 
-  onKayitButtonClick(form: NgForm): void {
+  onKayitButtonClick(): void {
 
-    if (this.kayitOlButtonClickable) {
-      if (form.value.password !== form.value.password2) {
+    if (this.kayitOlButtonClickable && this.password2 !== undefined && this.password !== undefined && this.email !== undefined) {
+      if (this.password !== this.password2) {
         this.snackBar.open('Parolalar Uyuşmamakta', '', {duration: 3000});
       } else {
-        this.benimFirsatimLib.signUp(form.value.email, form.value.password).subscribe(data => {
+        this.benimFirsatimLib.signUp(this.email, this.password).subscribe(data => {
           if (data != null) {
             if (data.status === 200 && data.ok) {
               this.snackBar.open('Kullanıcı Yaratıldı', '', {duration: 3000});
               this.showForm = false;
               this.kayitBasariliText = true;
               this.kayitOlAnim.play();
-              this.benimFirsatimLib.signIn(form.value.email, form.value.password).subscribe(data => {
+              this.benimFirsatimLib.signIn(this.email, this.password).subscribe(data => {
                 this.benimFirsatimLib.successLogin(data.json(), 1);
                 setTimeout(
                   () => {
@@ -163,7 +180,6 @@ export class ContentComponent implements OnDestroy, OnInit {
             } else if (data.json().state.code === 1) {
 
               this.snackBar.open(data.json().state.messages[0], '', {duration: 3000});
-              form.reset();
             }
           }
         }, error => {
@@ -171,6 +187,8 @@ export class ContentComponent implements OnDestroy, OnInit {
           this.snackBar.open('Bu e-posta zaten mevcut', '', {duration: 3000});
         });
       }
+    } else {
+      this.snackBar.open('Lütfen eksiksiz girdiğinize emin olun.', '', {duration: 3000});
     }
   }
 

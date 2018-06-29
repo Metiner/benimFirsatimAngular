@@ -44,7 +44,7 @@
                       <img src="assets/svgs/ilan_detaylari_icon.svg">
                     </div>
                     <div class="col nopadding">
-                      <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491" #dealImageContainer [@highlight]="dealImageContainer.highlight">İLAN DETAYLARI &nbsp;(GÖRSEL SEÇ)</span>
+                      <span style="font-family: 'Mark Pro-Heavy';font-size: 14px;color:#234491" #dealImageContainer [@highlight]="dealImageContainer.highlight">İLAN DETAYLARI &nbsp;(BİR GÖRSEL SEÇ)</span>
                     </div>
                   </div>
                   <div #allImages class="row scroll align-items-center" style="flex-wrap: nowrap;padding:20px 2% 0 2%;border-radius: 15px;overflow-x: scroll;overflow-y: hidden">
@@ -56,30 +56,31 @@
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
                     <div class="col-1 padding max-width">
-                      <img src="assets/svgs/firsat_tarihleri_icon.svg">
+                      <img src="assets/svgs/kategori_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0;margin-right: 3%">
-                      <span #dealDate [@highlight]="dealDate.highlight" class="dealDetailsSpans">TARİH</span>
-                    </div>
-                    <div class="col-4">
-                      <mat-form-field>
-                        <input
-                          style="border-radius: 15px"
-                          ngModel name="dealDate"
-                          matInput (dateInput)="addEvent('input', $event)"
-                          (dateChange)="addEvent('change', $event)"
-                          [matDatepicker]="picker" placeholder="Başlangıç Tarihi">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
+                      <span #lsd [@highlight]="lsd.highlight" class="dealDetailsSpans">KATEGORİ *</span>
                     </div>
                     <div class="col">
                       <mat-form-field>
-                        <input matInput (dateInput)="addEvent('input', $event)"
-                               (dateChange)="addEvent('change', $event)"
-                               [matDatepicker]="picker2" placeholder="Bitiş Tarihi">
-                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
+                        <mat-select placeholder="Kategori" [(value)]="selectedCategory">
+                          <mat-option>Lütfen Seçiniz</mat-option>
+                          <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-1 padding max-width">
+                      <img src="assets/svgs/sehir_icon.svg">
+                    </div>
+                    <div class="col-1" style="padding: 0">
+                      <span class="dealDetailsSpans">ŞEHİR</span>
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-select placeholder="Şehir" [(value)]="selectedCity">
+                          <mat-option>Lütfen Seçiniz</mat-option>
+                          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                        </mat-select>
                       </mat-form-field>
                     </div>
                   </div>
@@ -94,7 +95,7 @@
                       <img src="assets/svgs/fiyat_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0">
-                      <span #dealPrice [@highlight]="dealPrice.highlight" class="dealDetailsSpans">FİYAT ₺</span>
+                      <span #dealPrice [@highlight]="dealPrice.highlight" class="dealDetailsSpans">FİYAT ₺ *</span>
                     </div>
                     <div class="col-2 cursor-pointer">
                       <input  class="urlInput" ngModel name="dealPricePreview" (input)="onPriceChange($event)">
@@ -119,7 +120,7 @@
                       <img src="assets/svgs/baslik_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0">
-                      <span #dealTitle [@highlight]="dealTitle.highlight" class="dealDetailsSpans">BAŞLIK</span>
+                      <span #dealTitle [@highlight]="dealTitle.highlight" class="dealDetailsSpans">BAŞLIK *</span>
                     </div>
                     <div class="col">
                       <div class="row">
@@ -142,7 +143,7 @@
                       <img src="assets/svgs/detay_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0">
-                      <span #dealDetail [@highlight]="dealDetail.highlight" class="dealDetailsSpans">DETAY</span>
+                      <span #dealDetail [@highlight]="dealDetail.highlight" class="dealDetailsSpans">DETAY *</span>
                     </div>
                     <div class="col">
                       <textarea
@@ -176,31 +177,30 @@
                   </div>
                   <div class="row align-items-center" style="flex-wrap: nowrap">
                     <div class="col-1 padding max-width">
-                      <img src="assets/svgs/kategori_icon.svg">
+                      <img src="assets/svgs/firsat_tarihleri_icon.svg">
                     </div>
                     <div class="col-1" style="padding: 0;margin-right: 3%">
-                      <span #lsd [@highlight]="lsd.highlight" class="dealDetailsSpans">KATEGORİ</span>
+                      <span #dealDate [@highlight]="dealDate.highlight" class="dealDetailsSpans">TARİH</span>
                     </div>
-                    <div class="col">
+                    <div class="col-4">
                       <mat-form-field>
-                        <mat-select placeholder="Kategori" [(value)]="selectedCategory">
-                          <mat-option>Lütfen Seçiniz</mat-option>
-                          <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
-                        </mat-select>
+                        <input
+                          style="border-radius: 15px"
+                          ngModel name="dealDate"
+                          matInput (dateInput)="addEvent('input', $event)"
+                          (dateChange)="addEvent('change', $event)"
+                          [matDatepicker]="picker" placeholder="Başlangıç Tarihi">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field>
                     </div>
-                    <div class="col-1 padding max-width">
-                      <img src="assets/svgs/sehir_icon.svg">
-                    </div>
-                    <div class="col-1" style="padding: 0">
-                      <span class="dealDetailsSpans">ŞEHİR</span>
-                    </div>
                     <div class="col">
                       <mat-form-field>
-                        <mat-select placeholder="Şehir" [(value)]="selectedCity">
-                          <mat-option>Lütfen Seçiniz</mat-option>
-                          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
-                        </mat-select>
+                        <input matInput (dateInput)="addEvent('input', $event)"
+                               (dateChange)="addEvent('change', $event)"
+                               [matDatepicker]="picker2" placeholder="Bitiş Tarihi">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
                       </mat-form-field>
                     </div>
                   </div>
