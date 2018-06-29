@@ -24,7 +24,6 @@ export class BenimFirsatimLibrary {
 
   showPointTable = true;
 
-  _dealAnimationContinues = true;
   _currentPaging = 1;
   _totalPage: number;
   _currentDeals = [];
@@ -128,12 +127,9 @@ export class BenimFirsatimLibrary {
 }
 
   public changeCategory(type): void {
-
-  this.route.navigate(['']);
-  if (!this.dealAnimationContinues) {
+    this.route.navigate(['']);
     this.currentCategory = type;
     this.categoryChanged.next();
-  }
 }
 
   public openSignUpPopUpFunc(): void {
@@ -326,18 +322,10 @@ export class BenimFirsatimLibrary {
 
   set currentPaging(value: number) {
 
-    if (value > 0 && !this.dealAnimationContinues && value <= this.totalPage) {
+    if (value > 0 &&  value <= this.totalPage) {
       this._currentPaging = value;
     }
   }
-  get dealAnimationContinues(): boolean {
-    return this._dealAnimationContinues;
-  }
-
-  set dealAnimationContinues(value: boolean) {
-    this._dealAnimationContinues = value;
-  }
-
   set currentDeals(value: any[]) {
     this._currentDeals = value;
   }

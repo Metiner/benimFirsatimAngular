@@ -139,9 +139,9 @@
         <div class="row" style="padding-right: 30px;padding-left: 30px">
           <div class="col">
             <div class="row" style="align-items: center">
-              <div class="col-6 cursor-pointer" *ngFor="let category of categories">
-                <div (click)="onCategoryChange(category.id)" class="row" style="padding: 10px 0 10px 0;flex-wrap: nowrap">
-                  <div class="col-3" style="padding-right: 0">
+              <div class="col-6  cursor-pointer" *ngFor="let category of categories">
+                <div (click)="onCategoryChange(category.id)" class="row category-click" style="padding: 10px 0 10px 0;flex-wrap: nowrap">
+                  <div class="col-3 " style="padding-right: 0">
                     <img style=" max-height: 20px;min-height: 20px" src="{{getCategoryIcon(category.id)}}">
                   </div>
                   <div class="col" style="margin-right: auto;padding-left: 0">

@@ -67,7 +67,9 @@
 .click{
   transform: scale(0.6);
 }
-
+.category-click:active{
+  transform: scale(0.8);
+}
 .font-class{
   font-family: 'Mark Pro-Bold';
   font-size: 14px;

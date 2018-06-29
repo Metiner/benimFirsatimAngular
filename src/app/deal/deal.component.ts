@@ -29,7 +29,7 @@ export class DealComponent implements OnInit, OnDestroy {
   likeButtonAnimations = [];
   commentButtonAnimations = [];
 
-  resultText = "";
+  resultText = "Bu kategoride fırsat bulamadık :(";
 
   showPointTable = false;
   showResultText = false;
@@ -137,7 +137,7 @@ export class DealComponent implements OnInit, OnDestroy {
     } else {
       this.benimFirsatimLib.getCategoryDeals(this.benimFirsatimLib.currentCategory, this.benimFirsatimLib.currentPaging).subscribe((data) => {
         let responseData = data.json();
-        this.showResultText = false;
+
         this.displayedDeals = [];
         this.deals = responseData.entries;
         this.benimFirsatimLib.currentDeals = this.deals;
@@ -146,7 +146,13 @@ export class DealComponent implements OnInit, OnDestroy {
         if (this.deals.length >= 1) {
           this.displayedDeals.push(this.deals[0]);
         }
+        if(this.displayedDeals.length < 1) {
+          this.showResultText = true;
+        }else {
+          this.showResultText = false;
+        }
       });
+
     }
 
   }
@@ -160,9 +166,7 @@ export class DealComponent implements OnInit, OnDestroy {
       }
       if (this.deals.length > lastItemIndex + 1) {
         this.displayedDeals.push(this.deals[lastItemIndex + 1]);
-        this.benimFirsatimLib.dealAnimationContinues = true;
       } else {
-        this.benimFirsatimLib.dealAnimationContinues = false;
         this.deals = this.displayedDeals;
       }
     }
