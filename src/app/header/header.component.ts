@@ -42,6 +42,7 @@ export class HeaderComponent implements OnDestroy {
 
   autSubscription: Subscription;
   responsiveDesignSubscription: Subscription;
+  displayCategoriesProfileDivSubscription: Subscription;
 
 
   constructor(public benimFirsatimLibrary: BenimFirsatimLibrary,
@@ -315,29 +316,20 @@ export class HeaderComponent implements OnDestroy {
 
   slideDiv(type, state, displayCategoriesProfileDivBoolean): void {
 
-  this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
+    this.displayCategoriesProfileDiv = displayCategoriesProfileDivBoolean;
+    switch (type) {
+      case 'categories':
+        setTimeout(() => {
+          this.categoriesAnimation = state;
+        }, 100);
 
-  switch (type) {
-    case 'categories':
-      setTimeout(() => {
-        this.categoriesAnimation = state;
-      }, 100);
-
-      break;
-    case 'profile':
-      setTimeout(() => {
-        this.myProfileAnimation = state;
-      }, 100);
-
-      break;
+        break;
+      case 'profile':
+        setTimeout(() => {
+          this.myProfileAnimation = state;
+        }, 100);
+        break;
   }
-
-  /*if ( this.displayCategoriesProfileDiv) {
-    setTimeout(() => {
-      this.categoriesAnimation = 'out';
-      this.myProfileAnimation = 'out';
-    }, 10000);
-  }*/
 }
 
   onCategoryChange(type): void {

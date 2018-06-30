@@ -134,8 +134,9 @@
     </div>
   </div>
   <div class="row" style="flex-wrap: nowrap" *ngIf="displayCategoriesProfileDiv">
-    <div class="col categories-margin-responsive" style=" min-width: 500px;margin-left: 38.666667%;">
-      <div class="categories" (mouseleave)="slideDiv('categories','out',false)" [@slideInOut]="categoriesAnimation">
+    <div (mouseenter)="slideDiv('categories','out',false);slideDiv('profile','out',false)" style="padding-left: 21.666667%" class="col"></div>
+    <div class="col categories-margin-responsive" style=" min-width: 500px">
+      <div class="categories" (mouseleave)="slideDiv('categories','out',false);slideDiv('profile','out',false)" [@slideInOut]="categoriesAnimation">
         <div class="row" style="padding-right: 30px;padding-left: 30px">
           <div class="col">
             <div class="row" style="align-items: center">
@@ -155,9 +156,9 @@
         </div>
       </div>
     </div>
-    <div class="col" style="padding: 0;"></div>
-    <div class="col" style="margin-right: 5%;max-width: 200px">
-      <div class="myProfile" (mouseleave)="slideDiv('profile','out',false)" [@slideInOut]="myProfileAnimation">
+    <div class="col" (mouseenter)="slideDiv('categories','out',false);slideDiv('profile','out',false)" style="padding: 0;"></div>
+    <div class="col"  style="margin-right: 5%;max-width: 200px">
+      <div class="myProfile" (mouseleave)="slideDiv('categories','out',false);slideDiv('profile','out',false)" [@slideInOut]="myProfileAnimation">
         <div *ngIf="isAuth" class="row myProfileItemRow">
           <div class="col  myProfileItemCol cursor-pointer" (click)="onNotifications()">
             <img src="../../assets/imgs/bildirimler@2x.png" style="max-width: 120px;margin-right: 15px">

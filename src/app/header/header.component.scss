@@ -17,7 +17,12 @@
 /*.row{
   margin: 0px !important;
 }*/
-
+/*.col{
+  border:1px solid blue;
+}
+.row{
+  border:1px solid red;
+}*/
 
 .searchBackground{
   background: url("../../assets/svgs/search_box.svg") no-repeat;
@@ -80,6 +85,6 @@
   font-size: 11px !important;
 }
 
-.categories-margin-responsive-added{
-  margin-left: 27% !important;
+.categories-padding-responsive-added{
+  padding-left: 17% !important;
 }

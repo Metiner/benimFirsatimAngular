@@ -21,7 +21,6 @@ export class BenimFirsatimLibrary {
   searchInitializeSubject = new Subject<any>();
 
 
-
   showPointTable = true;
 
   _currentPaging = 1;
