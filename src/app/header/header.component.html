@@ -5,7 +5,7 @@
         <div class="cursor-pointer col-auto  offset-1 logo" (click)="onCategoryChange('hot')"  style="outline:0;align-self: start;outline: 0;padding-right: 0;padding-left: 0">
           <img src="../../assets/svgs/main_logo.svg" style="width: 123px;margin-bottom: 5px">
         </div>
-        <div (click)="onCategoryChange('hot')" class="col-auto nopadding mx-auto cursor-pointer text-center category-items"  routerLink="/" style="outline:0">
+        <div (click)="onCategoryChange('')" class="col-auto nopadding mx-auto cursor-pointer text-center category-items"  routerLink="/" style="outline:0">
           <div class="row">
             <div class="col click" (mouseenter)="playAnim(1)" (mouseleave)="stopAnim(1)">
               <lottie-animation-view
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div (click)="onCategoryChange('rising')" class="col-auto nopadding mx-auto cursor-pointer text-center category-items" routerLink="/" style="outline:0">
+        <div (click)="onCategoryChange('/rising')" class="col-auto nopadding mx-auto cursor-pointer text-center category-items" routerLink="/" style="outline:0">
           <div class="row">
             <div class="col click" (mouseenter)="playAnim(2)" (mouseleave)="stopAnim(2)">
               <lottie-animation-view
@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-        <div (click)="onCategoryChange('newcomers')" class="col-auto nopadding mx-auto text-center  cursor-pointer category-items" routerLink="/" style="outline:0">
+        <div (click)="onCategoryChange('/newcomers')" class="col-auto nopadding mx-auto text-center  cursor-pointer category-items" routerLink="/" style="outline:0">
           <div class="row">
             <div class="col" (mouseenter)="playAnim(3)"  (mouseleave)="stopAnim(3)">
               <lottie-animation-view

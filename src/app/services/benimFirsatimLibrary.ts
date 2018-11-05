@@ -9,7 +9,7 @@ import {Angular2TokenService} from 'angular2-token';
 @Injectable()
 export class BenimFirsatimLibrary {
 
-  api_address = 'https://api.benimfirsatim.com';
+  api_address = 'https://benimfirsatim.com';
 
   categoryChanged = new Subject<any>();
   openSignUpPopUp = new Subject<any>();
@@ -32,7 +32,7 @@ export class BenimFirsatimLibrary {
   _currentUser: any;
   searchResult: any = {};
 
-  currentCategory = 'hot';
+  currentCategory = '';
 
   constructor(public http: Http ,
               public fb: FacebookService,
@@ -93,12 +93,10 @@ export class BenimFirsatimLibrary {
   localStorage.setItem('userBenimFirsatim', '');
   this.currentUser = {};
 }
-
-  // Page code can be,
-  // 'hot','rising' or 'newcomers'
-  public getPage(page_code, pagination)  {
-  return this.http.get(this.api_address + '/' + page_code + '.json?page=' + pagination);
-}
+  //'hot','rising' or 'newcomers'
+  public getPage( page_code, pagination ) {
+    return this.http.get(this.api_address + '/deals'+ page_code +'.json?page='+ pagination );
+  }
 
   public getDeal(deal_id)  {
   return this._tokenService.get('deals/0/' + deal_id);
